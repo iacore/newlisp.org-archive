@@ -1,0 +1,431 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><title>     jedit-mode-generator</title><body><pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'>;; @module      jedit-mode-generator</font>
+<font color='#555555'>;; @description jEdit newLISP mode generator</font>
+<font color='#555555'>;; @author      m35, Lutz</font>
+<font color='#555555'>;; @location    http://www.newlisp.org/index.cgi?Code_Contributions</font>
+<font color='#555555'>;; @version 0.42 - generates jEdit 4.2 compatable syntax</font>
+<font color='#555555'>;; @version 0.43 - added type 2 in sym-to-xml for 9.4.5 and after, L.M. Nov 2008</font>
+<font color='#555555'>;; @version 0.50 - generates jEdit 4.3 compatable syntax, added newlispdoc and deprecated symbols, m35 Nov 2008</font>
+<font color='#555555'>;; @version 0.51 - general code and newlispdoc improvements, added platform specific symbols, m35 Dec 2008</font>
+<font color='#555555'>;; @version 0.52 - added missing '@link' and fixed digit regex, m35 Dec 2008</font>
+<font color='#555555'>;; @version 0.53 - Fixed digit regex more, m35 Dec 2008</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; Written for newLISP v10, newlispdoc 2.0, and jEdit 4.3pre15</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; Generates the xml for a jEdit newLISP edit mode.</font>
+<font color='#555555'>;; All default primitives and symbols found in the MAIN context will be</font>
+<font color='#555555'>;; added as keywords.</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; Copy the file created with this program to your jEdit "modes" sub-directory</font>
+<font color='#555555'>;; in your jEdit settings directory.</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; Your modes directory is:</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; On Windows&lt;br&gt; &lt;tt&gt;%USERPROFILE%\.jedit\modes\&lt;/tt&gt;</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; On Linux and Mac&lt;br&gt; &lt;tt&gt;~/.jedit/modes/&lt;/tt&gt;</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; Be sure to also include a line in your "catalog" file, also found in your</font>
+<font color='#555555'>;; modes sub-directory. e.g.</font>
+<font color='#555555'>;; &lt;pre&gt;</font>
+<font color='#555555'>;; &amp;lt;MODE NAME="newlisp" FILE="&lt;generated file&gt;" FILE_NAME_GLOB="*.lsp" FIRST_LINE_GLOB="#!/*newlisp*"/&amp;gt;</font>
+<font color='#555555'>;; &lt;/pre&gt;</font>
+<font color='#555555'>;; There are a number of ways you can customize jEdit's syntax highlighting.</font>
+<font color='#555555'>;; For more information, see your jEdit documentation about writing edit modes.</font>
+
+<font color='#555555'>; Copy all the MAIN symbols into MAIN-SYMBOLS context</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>dolist</font> <font color='#AA0000'>(</font>x <font color='#AA0000'>(</font><font color='#0000AA'>symbols</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> <font color='#AA0000'>(</font><font color='#0000AA'>sym</font> x 'MAIN-SYMBOLS<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>eval</font> x<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#555555'>; Three symbols need to be restored: $idx, x, and MAIN-SYMBOLS</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'MAIN-SYMBOLS:$idx <font color='#0000AA'>nil</font><font color='#AA0000'>)</font> <font color='#555555'>; the $idx symbol is nil by default</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>delete</font> 'MAIN-SYMBOLS:x<font color='#AA0000'>)</font>     <font color='#555555'>; the x symbol doesn't exist by default</font>
+
+<font color='#555555'>; and the MAIN-SYMBOLS symbol doesn't exist by default</font>
+<font color='#555555'>; (have to set the symbol to nil before deleting it</font>
+<font color='#555555'>;  to prevent crash on earlier newlisp versions)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'MAIN-SYMBOLS:MAIN-SYMBOLS <font color='#0000AA'>nil</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>delete</font> 'MAIN-SYMBOLS:MAIN-SYMBOLS<font color='#AA0000'>)</font>
+
+<font color='#555555'>;-------------------------------------------------------------------------------</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'generator-version <font color='#008800'>"0.53"</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'deprecated '<font color='#AA0000'>(</font><font color='#0000AA'>default</font> command-line <font color='#0000AA'>unless</font> <font color='#0000AA'>integer</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'platform-specific 
+	'<font color='#AA0000'>(</font><font color='#0000AA'>fork</font> <font color='#0000AA'>net-ping</font> <font color='#0000AA'>parse-date</font> <font color='#0000AA'>peek</font> <font color='#0000AA'>share</font> unicode utf8 utf8len <font color='#0000AA'>wait-pid</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#555555'>; Check properties of the newlisp environment</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'istk? <font color='#AA0000'>(</font><font color='#0000AA'>lambda?</font> tk<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'ver <font color='#AA0000'>(</font><font color='#0000AA'>sys-info</font> <font color='#665500'>-2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'isutf8? <font color='#AA0000'>(</font><font color='#0000AA'>not</font> <font color='#AA0000'>(</font><font color='#0000AA'>zero?</font> <font color='#AA0000'>(</font>&amp; <font color='#AA0000'>(</font><font color='#0000AA'>sys-info</font> <font color='#665500'>-1</font><font color='#AA0000'>)</font> <font color='#665500'>128</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'generator-comment
+	<font color='#AA0000'>(</font><font color='#0000AA'>append</font>
+		<font color='#008800'>{&lt;!-- Generated by jedit-newlisp-mode-generator v}</font> generator-version <font color='#008800'>{ -->}</font>
+	<font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'newlisp-comment
+	<font color='#AA0000'>(</font><font color='#0000AA'>string</font>
+		<font color='#008800'>{&lt;!-- with newLISP}</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>if</font> istk? <font color='#008800'>"-tk"</font> <font color='#008800'>""</font><font color='#AA0000'>)</font> <font color='#008800'>" v."</font> ver <font color='#008800'>" on "</font> ostype <font color='#AA0000'>(</font><font color='#0000AA'>if</font> isutf8? <font color='#008800'>" UTF-8"</font> <font color='#008800'>""</font><font color='#AA0000'>)</font>
+		<font color='#008800'>{ -->}</font>
+	<font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#555555'>; Escapes forbidden XML characters: &amp; < ></font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>encode-xml s<font color='#AA0000'>)</font>
+   <font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>">"</font> <font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"<"</font> <font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&amp;"</font> s <font color='#008800'>"&amp;amp&#059;"</font><font color='#AA0000'>)</font> <font color='#008800'>"&amp;lt&#059;"</font><font color='#AA0000'>)</font> <font color='#008800'>"&amp;gt&#059;"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#555555'>; Converts a newLISP symbol to jEdit xml</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>sym-to-xml x , sym-type sym-name i<font color='#AA0000'>)</font>
+	<font color='#555555'>; Find the symbol type using the (dump) function.</font>
+	<font color='#555555'>; &lt;http://www.alh.net/newlisp/phpbb/viewtopic.php?p=219&gt;</font>
+	<font color='#555555'>; See newlisp.h in the source distribution for the full list of values.</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'sym-type
+		<font color='#AA0000'>(</font>&amp; <font color='#665500'>15</font> <font color='#AA0000'>(</font><font color='#0000AA'>nth</font> <font color='#665500'>1</font> <font color='#AA0000'>(</font><font color='#0000AA'>dump</font> <font color='#AA0000'>(</font><font color='#0000AA'>eval</font> x<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'sym-name <font color='#AA0000'>(</font><font color='#0000AA'>string</font> x<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#555555'>; Remove the context from the symbol name (is there a better way to do this?)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'i <font color='#AA0000'>(</font><font color='#0000AA'>find</font> <font color='#008800'>":"</font> sym-name<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'sym-name <font color='#AA0000'>(</font><font color='#0000AA'>slice</font> sym-name <font color='#AA0000'>(</font><font color='#0000AA'>+</font> i <font color='#665500'>1</font><font color='#AA0000'>)</font> <font color='#AA0000'>)</font> <font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font>
+
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>case</font> sym-type
+		<font color='#AA0000'>(</font><font color='#665500'>0</font>  <font color='#555555'>; nil and other symbols that have a nil value</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> sym-name <font color='#008800'>"nil"</font><font color='#AA0000'>)</font>
+				<font color='#008800'>"&lt;KEYWORD2&gt;nil&lt;/KEYWORD2&gt;"</font>
+				<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>starts-with</font> <font color='#AA0000'>(</font><font color='#0000AA'>string</font> x<font color='#AA0000'>)</font> <font color='#008800'>"MAIN:"</font><font color='#AA0000'>)</font>
+					<font color='#0000AA'>nil</font> <font color='#555555'>; tk has a leftover symbol (MAIN:result)</font>
+					<font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>"&lt;KEYWORD3&gt;"</font> <font color='#AA0000'>(</font>encode-xml sym-name<font color='#AA0000'>)</font> <font color='#008800'>"&lt;/KEYWORD3&gt;"</font><font color='#AA0000'>)</font>
+				<font color='#AA0000'>)</font>
+			<font color='#AA0000'>)</font>
+		<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#665500'>1</font>  <font color='#555555'>; true and other symbols that = true</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> sym-name <font color='#008800'>"true"</font><font color='#AA0000'>)</font>
+				<font color='#008800'>"&lt;KEYWORD2&gt;true&lt;/KEYWORD2&gt;"</font>
+				<font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>"&lt;KEYWORD3&gt;"</font> <font color='#AA0000'>(</font>encode-xml sym-name<font color='#AA0000'>)</font> <font color='#008800'>"&lt;/KEYWORD3&gt;"</font><font color='#AA0000'>)</font>
+			<font color='#AA0000'>)</font>
+		<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#665500'>2</font>  <font color='#555555'>; symbols that are a number (none by default, but just in case)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>"&lt;KEYWORD3&gt;"</font> <font color='#AA0000'>(</font>encode-xml sym-name<font color='#AA0000'>)</font> <font color='#008800'>"&lt;/KEYWORD3&gt;"</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#665500'>4</font>  <font color='#555555'>; symbols that are a string: ostype</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>"&lt;KEYWORD3&gt;"</font> <font color='#AA0000'>(</font>encode-xml sym-name<font color='#AA0000'>)</font> <font color='#008800'>"&lt;/KEYWORD3&gt;"</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#665500'>6</font>  <font color='#555555'>; contexts: MAIN, SYS (for tk), Class, and Tree</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>"&lt;KEYWORD4&gt;"</font> <font color='#AA0000'>(</font>encode-xml sym-name<font color='#AA0000'>)</font> <font color='#008800'>"&lt;/KEYWORD4&gt;"</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#665500'>7</font>  <font color='#555555'>; primitive functions</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>"&lt;KEYWORD1&gt;"</font> <font color='#AA0000'>(</font>encode-xml sym-name<font color='#AA0000'>)</font> <font color='#008800'>"&lt;/KEYWORD1&gt;"</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#665500'>11</font> <font color='#555555'>; expressions (i.e. lists)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>"&lt;KEYWORD3&gt;"</font> <font color='#AA0000'>(</font>encode-xml sym-name<font color='#AA0000'>)</font> <font color='#008800'>"&lt;/KEYWORD3&gt;"</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#665500'>12</font> <font color='#555555'>; lambda (exit in newlisp-tk)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>"&lt;KEYWORD1&gt;"</font> <font color='#AA0000'>(</font>encode-xml sym-name<font color='#AA0000'>)</font> <font color='#008800'>"&lt;/KEYWORD1&gt;"</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>true</font>
+			<font color='#555555'>; New and exciting symbols must have been</font>
+			<font color='#555555'>; added since newLISP v10 that we don't</font>
+			<font color='#555555'>; have handling for.</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>throw-error</font>
+				<font color='#AA0000'>(</font><font color='#0000AA'>string</font> <font color='#008800'>"Unhandled type "</font> sym-type <font color='#008800'>" for symbol "</font> sym-name<font color='#AA0000'>)</font>
+			<font color='#AA0000'>)</font>
+		<font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#555555'>; Maps the symbols of a context to the proper jEdit XML code</font>
+<font color='#555555'>; Also adds fn and lambda to the list, and the list of deprecated symbols</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>print-symbols-mapped-to-xml ctx int-indent str-indent , sym-to-xml-list line<font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'sym-to-xml-list
+		<font color='#AA0000'>(</font><font color='#0000AA'>append</font> 
+			<font color='#555555'>; add platform specific symbols</font>
+			<font color='#555555'>; this formatting will be overridden by any duplicates below</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#AA0000'>(</font>fn <font color='#AA0000'>(</font>x<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>string</font> <font color='#008800'>"&lt;INVALID&gt;"</font> x <font color='#008800'>"&lt;/INVALID&gt;"</font> <font color='#AA0000'>)</font><font color='#AA0000'>)</font> 
+				platform-specific
+			<font color='#AA0000'>)</font>
+			<font color='#555555'>; add fn and lambda</font>
+			'<font color='#AA0000'>(</font> <font color='#008800'>{&lt;KEYWORD1&gt;fn&lt;/KEYWORD1&gt;}</font> <font color='#008800'>{&lt;KEYWORD1&gt;lambda&lt;/KEYWORD1&gt;}</font> <font color='#AA0000'>)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>sort</font>
+				<font color='#AA0000'>(</font><font color='#0000AA'>map</font> sym-to-xml <font color='#AA0000'>(</font><font color='#0000AA'>symbols</font> ctx<font color='#AA0000'>)</font> <font color='#AA0000'>)</font>
+			<font color='#AA0000'>)</font>
+			<font color='#555555'>; add deprecated symbols</font>
+			<font color='#555555'>; this formatting will override any duplicates above</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#AA0000'>(</font>fn <font color='#AA0000'>(</font>x<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>string</font> <font color='#008800'>"&lt;INVALID&gt;"</font> x <font color='#008800'>"&lt;/INVALID&gt;"</font> <font color='#AA0000'>)</font><font color='#AA0000'>)</font> 
+				deprecated
+			<font color='#AA0000'>)</font>
+		<font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>dolist</font> <font color='#AA0000'>(</font>line sym-to-xml-list<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>dup</font> str-indent int-indent<font color='#AA0000'>)</font> line<font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'template-header <font color='#AA0000'>(</font><font color='#0000AA'>append</font>
+<font color='#008800'>[text]
+|	&lt;?xml version="1.0"?>
+|	&lt;!DOCTYPE MODE SYSTEM "xmode.dtd">
+|	[/text]</font> generator-comment <font color='#008800'>[text]
+|	[/text]</font> newlisp-comment <font color='#008800'>[text]
+|
+|	&lt;MODE&gt;
+||		&lt;PROPS&gt;
+|||			&lt;PROPERTY NAME="lineComment" VALUE="&#059;" /&gt;
+|||			&lt;PROPERTY NAME="noWordSep" VALUE="_-+?!@$%^&amp;amp&#059;*/|&#092;&amp;lt&#059;&amp;gt&#059;.~`" /&gt;
+|||			&lt;!-- Uncomment this to enable auto indent
+|||			&lt;PROPERTY NAME="indentOpenBrackets" VALUE="(" /&gt;
+|||			&lt;PROPERTY NAME="indentCloseBrackets" VALUE=")" /&gt;
+|||			&lt;PROPERTY NAME="electricKeys" VALUE=")" /&gt;
+|||			&lt;PROPERTY NAME="doubleBracketIndent" VALUE="false" /&gt;
+|||			&lt;PROPERTY NAME="lineUpClosingBracket" VALUE="true" /&gt;
+|||			-->
+||		&lt;/PROPS&gt;
+||
+||
+||		&lt;!-- ESCAPE attribute removed from &lt;RULES&gt; for jEdit 4.3 -->
+||		&lt;RULES
+|||			IGNORE_CASE="FALSE"
+|||			HIGHLIGHT_DIGITS="TRUE"
+|||			DIGIT_RE="(0x[&#092;da-fA-F]+|[+-]?0&#092;d+|([+-]?(0|[1-9]&#092;d*)(&#092;.&#092;d*)?|&#092;.&#092;d+)([eE][+-]?&#092;d+)?)"
+|||			NO_WORD_SEP="_-+?!@$%^&amp;amp&#059;*/|&#092;&amp;lt&#059;&amp;gt&#059;.~`">
+|||
+|||
+|||			&lt;!-- Operators -->
+|||			&lt;SEQ TYPE="OPERATOR">)&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="OPERATOR">(&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="OPERATOR">:&lt;/SEQ&gt;
+|||			&lt;!-- Uncomment for highlighting quoted symbols (works for jEdit 4.3)
+|||			&lt;MARK_FOLLOWING TYPE="LITERAL4" MATCH_TYPE="OPERATOR">'&lt;/MARK_FOLLOWING&gt;
+|||			-->
+|||
+|||
+|||			&lt;!-- newlispdoc -->
+|||			&lt;EOL_SPAN TYPE="COMMENT3" AT_LINE_START="TRUE"
+||||			DELEGATE="newlispdoc"
+||||			NO_LINE_BREAK="TRUE">&#059;&#059;&lt;/EOL_SPAN&gt;
+|||
+|||			&lt;!-- Comments -->
+|||			&lt;EOL_SPAN TYPE="COMMENT1">&#059;&lt;/EOL_SPAN&gt;
+|||			&lt;EOL_SPAN TYPE="COMMENT1">#&lt;/EOL_SPAN&gt;
+|||
+|||
+|||			&lt;!-- Text literals -->
+|||			&lt;!-- ESCAPE attribute added for jEdit 4.3 -->
+|||			&lt;SPAN TYPE="LITERAL1" ESCAPE="&#092;&#034;>
+||||			&lt;BEGIN&gt;"&lt;/BEGIN&gt;
+||||			&lt;END&gt;"&lt;/END&gt;
+|||			&lt;/SPAN&gt;
+|||
+|||			&lt;!-- NO_ESCAPE attribute removed for jEdit 4.3 -->
+|||			&lt;SPAN TYPE="LITERAL2">
+||||			&lt;BEGIN&gt;{&lt;/BEGIN&gt;
+||||			&lt;END&gt;}&lt;/END&gt;
+|||			&lt;/SPAN&gt;
+|||
+|||			&lt;!-- NO_ESCAPE attribute removed for jEdit 4.3 -->
+|||			&lt;SPAN TYPE="LITERAL2">
+||||			&lt;BEGIN&gt;[/text]</font> <font color='#008800'>"&#091;text]"</font> <font color='#008800'>[text]&lt;/BEGIN&gt;
+||||			&lt;END&gt;[/text]</font> <font color='#008800'>"&#091;/text]"</font> <font color='#008800'>[text]&lt;/END&gt;
+|||			&lt;/SPAN&gt;
+|||
+|||
+|||			&lt;!-- [cmd] -->
+|||			&lt;SPAN TYPE="LITERAL3" DELEGATE="MAIN">
+||||			&lt;BEGIN&gt;[cmd]&lt;/BEGIN&gt;
+||||			&lt;END&gt;[/cmd]&lt;/END&gt;
+|||			&lt;/SPAN&gt;
+|||
+|||
+|||			&lt;!-- Highlight bracketed symbols -->
+|||			&lt;!-- NO_ESCAPE attribute removed for jEdit 4.3 -->
+|||			&lt;SPAN TYPE="LITERAL4">
+||||			&lt;BEGIN&gt;[&lt;/BEGIN&gt;
+||||			&lt;END&gt;]&lt;/END&gt;
+|||			&lt;/SPAN&gt;
+|||
+|||
+|||			&lt;!-- Built-in keywords -->
+|||			&lt;KEYWORDS&gt;
+[/text]</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'template-footer
+<font color='#008800'>[text]
+|||			&lt;/KEYWORDS&gt;
+|||
+||		&lt;/RULES&gt;
+||
+||
+||		&lt;RULES SET="newlispdoc" IGNORE_CASE="FALSE" DEFAULT="COMMENT3">
+|||
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;h1&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;h2&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;h3&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;h4&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;/h1&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;/h2&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;/h3&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;/h4&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;i&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;/i&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;em&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;/em&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;b&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;/b&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;tt&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;/tt&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;p&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;/p&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;br&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;br/&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;pre&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;/pre&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;center&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;/center&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;li&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;/li&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;/ul&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;ul&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;/blockquote&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;blockquote&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;hr&amp;gt&#059;&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">&amp;lt&#059;hr/&amp;gt&#059;&lt;/SEQ&gt;
+|||
+|||			&lt;SEQ TYPE="MARKUP">[h1]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[h2]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[h3]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[h4]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[/h1]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[/h2]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[/h3]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[/h4]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[i]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[/i]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[em]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[/em]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[b]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[/b]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[tt]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[/tt]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[p]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[/p]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[br]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[br/]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[pre]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[/pre]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[center]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[/center]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[li]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[/li]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[/ul]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[ul]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[/blockquote]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[blockquote]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[hr]&lt;/SEQ&gt;
+|||			&lt;SEQ TYPE="MARKUP">[hr/]&lt;/SEQ&gt;
+|||
+|||			&lt;KEYWORDS&gt;
+||||				&lt;LABEL&gt;@module&lt;/LABEL&gt;
+||||				&lt;LABEL&gt;@index&lt;/LABEL&gt;
+||||				&lt;LABEL&gt;@description&lt;/LABEL&gt;
+||||				&lt;LABEL&gt;@location&lt;/LABEL&gt;
+||||				&lt;LABEL&gt;@version&lt;/LABEL&gt;
+||||				&lt;LABEL&gt;@author&lt;/LABEL&gt;
+||||				&lt;LABEL&gt;@syntax&lt;/LABEL&gt;
+||||				&lt;LABEL&gt;@param&lt;/LABEL&gt;
+||||				&lt;LABEL&gt;@return&lt;/LABEL&gt;
+||||				&lt;LABEL&gt;@example&lt;/LABEL&gt;
+||||				&lt;LABEL&gt;@link&lt;/LABEL&gt;
+|||			&lt;/KEYWORDS&gt;
+|||
+||		&lt;/RULES&gt;
+|	&lt;/MODE&gt;
+[/text]</font><font color='#AA0000'>)</font>
+
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>print-parse-template str-template str-indent , int-bars <font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>dolist</font> <font color='#AA0000'>(</font> line <font color='#AA0000'>(</font><font color='#0000AA'>parse</font> str-template <font color='#008800'>{[\r\n]+}</font> <font color='#665500'>0</font><font color='#AA0000'>)</font> <font color='#AA0000'>)</font>
+		<font color='#555555'>; search for leading bars</font>
+		<font color='#555555'>; (# of bars) - 1 = how much to indent</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> '$0 <font color='#0000AA'>nil</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>regex</font> <font color='#008800'>{^\|+}</font> line<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>string?</font> $0<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>begin</font>  <font color='#555555'>; skip lines that have no bars</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'int-bars <font color='#AA0000'>(</font><font color='#0000AA'>length</font> $0<font color='#AA0000'>)</font> <font color='#AA0000'>)</font>
+			<font color='#555555'>; remove leading bars and surrounding white-space</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{(^[\|\s]+|\s+$)}</font> line <font color='#008800'>""</font> <font color='#665500'>0</font><font color='#AA0000'>)</font>
+			<font color='#555555'>; print the indented line</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>dup</font> str-indent <font color='#AA0000'>(</font><font color='#0000AA'>-</font> int-bars <font color='#665500'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> line <font color='#AA0000'>)</font>
+		<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>generate-syntax-file  str-out-file str-indent , int-file<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'int-file <font color='#AA0000'>(</font><font color='#0000AA'>open</font> str-out-file <font color='#008800'>"write"</font><font color='#AA0000'>)</font> <font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>not</font> int-file<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>throw-error</font> <font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>"Unable to open output file "</font> str-out-file<font color='#AA0000'>)</font> <font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>device</font> int-file<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>print-parse-template template-header str-indent<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>print-symbols-mapped-to-xml MAIN-SYMBOLS <font color='#665500'>3</font> str-indent<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>print-parse-template template-footer str-indent<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>close</font> int-file<font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#555555'>################################################################################</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'out-file
+	<font color='#AA0000'>(</font><font color='#0000AA'>string</font> <font color='#008800'>"newlisp"</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>if</font> istk? <font color='#008800'>"-tk"</font> <font color='#008800'>""</font><font color='#AA0000'>)</font>
+		ver
+		<font color='#008800'>"-"</font> ostype
+		<font color='#AA0000'>(</font><font color='#0000AA'>if</font> isutf8? <font color='#008800'>"-utf8"</font> <font color='#008800'>""</font><font color='#AA0000'>)</font>
+		<font color='#008800'>".xml"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font>generate-syntax-file out-file <font color='#008800'>"&#092;t"</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>dolist</font> <font color='#AA0000'>(</font>line <font color='#AA0000'>(</font><font color='#0000AA'>list</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>"Generated jEdit syntax file: "</font> out-file<font color='#AA0000'>)</font>
+		<font color='#008800'>{}</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>{Copy }</font> out-file <font color='#008800'>{ to your jEdit &#034;modes&#034; sub-directory}</font> <font color='#AA0000'>)</font>
+		<font color='#008800'>{in your jEdit settings directory.}</font>
+		<font color='#008800'>{}</font>
+		<font color='#008800'>{Your modes directory is:}</font>
+		<font color='#008800'>{}</font>
+		<font color='#008800'>{On Windows        %USERPROFILE%\.jedit\modes\}</font>
+		<font color='#008800'>{On Linux and Mac  ~/.jedit/modes/}</font>
+		<font color='#008800'>{}</font>
+		<font color='#008800'>{Be sure to also include a line in your &#034;catalog&#034; file, also found in your}</font>
+		<font color='#008800'>{modes sub-directory. e.g.}</font>
+		<font color='#008800'>{}</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>{   &lt;MODE NAME=&#034;newlisp&#034; FILE=&#034;}</font> out-file <font color='#008800'>{&#034;}</font><font color='#AA0000'>)</font>
+		<font color='#008800'>{         FILE_NAME_GLOB=&#034;*.lsp&#034; FIRST_LINE_GLOB=&#034;#!/*newlisp*&#034;/&gt;}</font>
+		<font color='#008800'>{}</font>
+		<font color='#008800'>{There are a number of ways you can customize jEdit's syntax highlighting.}</font>
+		<font color='#008800'>{For more information, see your jEdit documentation about writing edit modes.}</font>
+	<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> line<font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+<font color='#555555'>; eof</font>
+
+
+</pre><center><font face='Arial' size='-3' color='#666666'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/newLISPdoc.html">newLISPdoc</a></font></center></body></html>

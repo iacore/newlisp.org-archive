@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://newlispfanclub.com/Themes/default/css/minified_8611ac371ac9acf73a59230185a95d14.css?smf213_1668469015">
+	<style>.main_icons.sfs::before { background: url(https://newlispfanclub.com/Themes/default/images/admin/sfs.webp) no-repeat; background-size: contain;}
+	
+	img.avatar { max-width: 65px !important; max-height: 65px !important; }
+	
+	</style>
+	<script>
+		var smf_theme_url = "https://newlispfanclub.com/Themes/default";
+		var smf_default_theme_url = "https://newlispfanclub.com/Themes/default";
+		var smf_images_url = "https://newlispfanclub.com/Themes/default/images";
+		var smf_smileys_url = "https://newlispfanclub.com/Smileys";
+		var smf_smiley_sets = "default,aaron,akyhne,fugue,alienine";
+		var smf_smiley_sets_default = "default";
+		var smf_avatars_url = "https://newlispfanclub.com/avatars";
+		var smf_scripturl = "https://newlispfanclub.com/index.php";
+		var smf_iso_case_folding = false;
+		var smf_charset = "UTF-8";
+		var smf_session_id = "820175742d334db2a0ec2d714db371a1";
+		var smf_session_var = "ace096301";
+		var smf_member_id = 0;
+		var ajax_notification_text = 'Loading...';
+		var help_popup_heading_text = 'A little lost? Let me explain:';
+		var banned_text = 'Sorry Guest, you are banned from using this forum!';
+		var smf_txt_expand = 'Expand';
+		var smf_txt_shrink = 'Shrink';
+		var smf_quote_expand = false;
+		var allow_xhjr_credentials = false;
+	</script>
+	<script src="https://newlispfanclub.com/Themes/default/scripts/jquery-3.6.0.min.js"></script>
+	<script src="https://newlispfanclub.com/Themes/default/scripts/jquery.sceditor.bbcode.min.js?smf213_1668469015"></script>
+	<script src="https://newlispfanclub.com/Themes/default/scripts/minified_6a5c83f7686bf1653f27f8dabdf2fd19.js?smf213_1668469015"></script>
+	<script src="https://newlispfanclub.com/Themes/default/scripts/minified_d7b6b28cb77ef943ed25bf5e475439dc.js?smf213_1668469015" defer></script>
+	<script>
+		var smf_smileys_url = 'https://newlispfanclub.com/Smileys/default';
+		var bbc_quote_from = 'Quote from';
+		var bbc_quote = 'Quote';
+		var bbc_search_on = 'on';
+	var smf_you_sure ='Are you sure you want to do this?';
+	</script>
+	<title>Why dynamic scope?</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:site_name" content="newLISP Fan Club">
+	<meta property="og:title" content="Why dynamic scope?">
+	<meta property="og:url" content="https://newlispfanclub.com/index.php?topic=4108.0">
+	<meta property="og:description" content="Why dynamic scope?">
+	<meta name="description" content="Why dynamic scope?">
+	<meta name="theme-color" content="#557EA0">
+	<meta name="robots" content="noindex">
+	<link rel="canonical" href="https://newlispfanclub.com/index.php?topic=4108.0">
+	<link rel="help" href="https://newlispfanclub.com/index.php?action=help">
+	<link rel="contents" href="https://newlispfanclub.com/index.php">
+	<link rel="search" href="https://newlispfanclub.com/index.php?action=search">
+	<link rel="alternate" type="application/rss+xml" title="newLISP Fan Club - RSS" href="https://newlispfanclub.com/index.php?action=.xml;type=rss2;board=15">
+	<link rel="alternate" type="application/atom+xml" title="newLISP Fan Club - Atom" href="https://newlispfanclub.com/index.php?action=.xml;type=atom;board=15">
+	<link rel="index" href="https://newlispfanclub.com/index.php?board=15.0">
+</head>
+<body id="smf" class="action_messageindex board_15">
+<div id="footerfix">
+	<div id="top_section">
+		<div class="inner_wrap">
+			<ul class="floatleft" id="top_info">
+				<li class="welcome">
+					Welcome to <strong>newLISP Fan Club</strong>.
+				</li>
+				<li class="button_login">
+					<a href="https://newlispfanclub.com/index.php?action=login" class="open" onclick="return reqOverlayDiv(this.href, 'Log in', 'login');">
+						<span class="main_icons login"></span>
+						<span class="textmenu">Log in</span>
+					</a>
+				</li>
+				<li class="button_signup">
+					<a href="https://newlispfanclub.com/index.php?action=signup" class="open">
+						<span class="main_icons regcenter"></span>
+						<span class="textmenu">Sign up</span>
+					</a>
+				</li>
+			</ul>
+			<form id="search_form" class="floatright" action="https://newlispfanclub.com/index.php?action=search2" method="post" accept-charset="UTF-8">
+				<input type="search" name="search" value="">&nbsp;
+				<select name="search_selection">
+					<option value="all">Entire forum </option>
+					<option value="topic" selected>This topic</option>
+					<option value="board">This board</option>
+				</select>
+				<input type="hidden" name="sd_topic" value="4108">
+				<input type="submit" name="search2" value="Search" class="button">
+				<input type="hidden" name="advanced" value="0">
+			</form>
+		</div><!-- .inner_wrap -->
+	</div><!-- #top_section -->
+	<div id="header">
+		<h1 class="forumtitle">
+			<a id="top" href="https://newlispfanclub.com/index.php">newLISP Fan Club</a>
+		</h1>
+		<img id="smflogo" src="https://newlispfanclub.com/Themes/default/images/smflogo.svg" alt="Simple Machines Forum" title="Simple Machines Forum">
+	</div>
+	<div id="wrapper">
+		<div id="upper_section">
+			<div id="inner_section">
+				<div id="inner_wrap" class="hide_720">
+					<div class="user">
+						<time datetime="2023-07-19T00:52:14Z">July 18, 2023, 05:52:14 PM</time>
+					</div>
+					<div class="news">
+						<h2>News: </h2>
+						<p><a href="https://newlispfanclub.com/index.php?topic=5248.0" class="bbc_link" target="_blank" rel="noopener">Welcome to the new forums!</a></p>
+					</div>
+				</div>
+				<a class="mobile_user_menu">
+					<span class="menu_icon"></span>
+					<span class="text_menu">Main Menu</span>
+				</a>
+				<div id="main_menu">
+					<div id="mobile_user_menu" class="popup_container">
+						<div class="popup_window description">
+							<div class="popup_heading">Main Menu
+								<a href="javascript:void(0);" class="main_icons hide_popup"></a>
+							</div>
+							
+					<ul class="dropmenu menu_nav">
+						<li class="button_home">
+							<a class="active" href="https://newlispfanclub.com/index.php">
+								<span class="main_icons home"></span><span class="textmenu">Home</span>
+							</a>
+						</li>
+						<li class="button_search">
+							<a href="https://newlispfanclub.com/index.php?action=search">
+								<span class="main_icons search"></span><span class="textmenu">Search</span>
+							</a>
+						</li>
+					</ul><!-- .menu_nav -->
+						</div>
+					</div>
+				</div>
+				<div class="navigate_section">
+					<ul>
+						<li>
+							<a href="https://newlispfanclub.com/index.php"><span>newLISP Fan Club</span></a>
+						</li>
+						<li>
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php#c1"><span>Forum</span></a>
+						</li>
+						<li>
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php?board=15.0"><span>Whither newLISP?</span></a>
+						</li>
+						<li class="last">
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php?topic=4108.0"><span>Why dynamic scope?</span></a>
+						</li>
+					</ul>
+				</div><!-- .navigate_section -->
+			</div><!-- #inner_section -->
+		</div><!-- #upper_section -->
+		<div id="content_section">
+			<div id="main_content_section">
+		<div id="display_head" class="information">
+			<h2 class="display_title">
+				<span id="top_subject">Why dynamic scope?</span>
+			</h2>
+			<p>Started by arquebus, May 02, 2012, 08:42:57 PM</p>
+			<span class="nextlinks floatright"><a href="https://newlispfanclub.com/index.php?topic=4108.0;prev_next=prev#new">Previous topic</a> - <a href="https://newlispfanclub.com/index.php?topic=4108.0;prev_next=next#new">Next topic</a></span>
+		</div><!-- #display_head -->
+		
+		<div class="pagesection top">
+			
+		<div class="buttonlist floatright">
+			
+				<a class="button button_strip_print" href="https://newlispfanclub.com/index.php?action=printpage;topic=4108.0"  rel="nofollow">Print</a>
+		</div>
+			 
+			<div class="pagelinks floatleft">
+				<a href="#bot" class="button">Go Down</a>
+				<span class="pages">Pages</span><span class="current_page">1</span> 
+			</div>
+		<div class="mobile_buttons floatright">
+			<a class="button mobile_act">User actions</a>
+			
+		</div>
+		</div>
+		<div id="forumposts">
+			<form action="https://newlispfanclub.com/index.php?action=quickmod2;topic=4108.0" method="post" accept-charset="UTF-8" name="quickModForm" id="quickModForm" onsubmit="return oQuickModify.bInEditMode ? oQuickModify.modifySave('820175742d334db2a0ec2d714db371a1', 'ace096301') : false">
+				<div class="windowbg" id="msg20374">
+					
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://newlispfanclub.com/index.php?action=profile;u=811" title="View the profile of arquebus">arquebus</a>
+							</h4>
+							<ul class="user_info">
+								<li class="avatar">
+									<a href="https://newlispfanclub.com/index.php?action=profile;u=811"><img class="avatar" src="https://newlispfanclub.com/avatars/default.png" alt=""></a>
+								</li>
+								<li class="icons"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"></li>
+								<li class="postgroup">Newbie</li>
+								<li class="postcount">Posts: 2</li>
+								<li class="profile">
+									<ol class="profile_icons">
+									</ol>
+								</li><!-- .profile -->
+								<li class="poster_ip">Logged</li>
+							</ul>
+						</div><!-- .poster -->
+						<div class="postarea">
+							<div class="keyinfo">
+								<div id="subject_20374" class="subject_title subject_hidden">
+									<a href="https://newlispfanclub.com/index.php?msg=20374" rel="nofollow">Why dynamic scope?</a>
+								</div>
+								
+								<div class="postinfo">
+									<span class="messageicon"  style="position: absolute; z-index: -1;">
+										<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+									</span>
+									<a href="https://newlispfanclub.com/index.php?msg=20374" rel="nofollow" title="Why dynamic scope?" class="smalltext">May 02, 2012, 08:42:57 PM</a>
+									<span class="spacer"></span>
+									<span class="smalltext modified floatright mvisible" id="modified_20374"><span class="lastedit">Last Edit</span>: May 02, 2012, 11:31:54 PM by arquebus
+									</span>
+								</div>
+								<div id="msg_20374_quick_mod"></div>
+							</div><!-- .keyinfo -->
+							<div class="post">
+								<div class="inner" data-msgid="20374" id="msg_20374">
+									<t>I cant believe no one has asked this yet, but why does NewLisp have dynamic scope? I dont see any benefit to dynamic scope as all it does is create danger for name clashes between functions although I did notice that their is lexical scope for namespaces and modules. Is the reason for avoiding lexical scope is that you want to avoid incuring an overhead on speed in NewLisp? Is there any practical reason for having dynamic scope over lexical scope other than speed and efficiency of the running code?</t>
+								</div>
+							</div><!-- .post -->
+							<div class="under_message">
+							</div><!-- .under_message -->
+						</div><!-- .postarea -->
+						<div class="moderatorbar">
+							<div class="signature" id="msg_20374_signature">
+								<t></t>
+							</div>
+						</div><!-- .moderatorbar -->
+					</div><!-- .post_wrapper -->
+				</div><!-- $message[css_class] -->
+				<hr class="post_separator">
+				<div class="windowbg" id="msg20377">
+					
+					
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://newlispfanclub.com/index.php?action=profile;u=5" title="View the profile of Lutz">Lutz</a>
+							</h4>
+							<ul class="user_info">
+								<li class="membergroup">Global Moderator</li>
+								<li class="avatar">
+									<a href="https://newlispfanclub.com/index.php?action=profile;u=5"><img class="avatar" src="https://newlispfanclub.com/avatars/default.png" alt=""></a>
+								</li>
+								<li class="icons"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icongmod.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icongmod.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icongmod.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icongmod.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icongmod.png" alt="*"></li>
+								<li class="postgroup">Veteran</li>
+								<li class="postcount">Posts: 5,296</li>
+								<li class="profile">
+									<ol class="profile_icons">
+									</ol>
+								</li><!-- .profile -->
+								<li class="poster_ip">Logged</li>
+							</ul>
+						</div><!-- .poster -->
+						<div class="postarea">
+							<div class="keyinfo">
+								<div id="subject_20377" class="subject_title subject_hidden">
+									<a href="https://newlispfanclub.com/index.php?msg=20377" rel="nofollow">Re: Why dynamic scope?</a>
+								</div>
+								<span class="page_number floatright">#1</span>
+								<div class="postinfo">
+									<span class="messageicon"  style="position: absolute; z-index: -1;">
+										<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+									</span>
+									<a href="https://newlispfanclub.com/index.php?msg=20377" rel="nofollow" title="Reply #1 - Re: Why dynamic scope?" class="smalltext">May 02, 2012, 11:15:30 PM</a>
+									<span class="spacer"></span>
+									<span class="smalltext modified floatright mvisible" id="modified_20377"><span class="lastedit">Last Edit</span>: December 31, 1969, 04:00:00 PM by Guest
+									</span>
+								</div>
+								<div id="msg_20377_quick_mod"></div>
+							</div><!-- .keyinfo -->
+							<div class="post">
+								<div class="inner" data-msgid="20377" id="msg_20377">
+									<r>The dangers of dynamic scope are vastly overrated and because of that, possibilities of dynamic scoping are almost unexplored. <br/><br><br/><br>Over the years, we have hardly ever seen dynamic scope to be a problem. Where the danger is somewhat present, is in 'define-maccro' <I><s><i></s>fexprs<e></i></e></I> and that danger is easily avoided using namespaces. There are very few reasons in newLISP style of programming to pass quoted symbols to 'define' functions, there are other safe ways to pass data by reference in newLISP, i.e. via namespace handles.<br/><br><br/><br>You <U><s><u></s>can<e></u></e></U> have lexical isolation using namespaces, which have very minimal overhead in newLISP - you can literally have millions of them. 'define-macro' style fexprs can be put in their own namespace context and then are completely safe. Generally, the best style of newLISP programming is, to put related data, functions and fexprs into a namespace context. <br/><br><br/><br>The absence of Scheme like lexical closures lets newLISP do a different kind of automatic memory management - not traditional garbage collection, but a synchronous type of memory management - much faster, without unexpected garbage collection pauses and much more efficient in using memory resources. There is no way to write a fully dynamic language that small and fast as newLISP using traditional garbage collection memory management. <br/><br><br/><br>see also:<br/><br><br/><br><URL url="<a href="http://www.newlisp.org/index.cgi?Closures" class="bbc_link" target="_blank" rel="noopener">http://www.newlisp.org/index.cgi?Closures</a>"><a href="http://www.newlisp.org/index.cgi?Closures" class="bbc_link" target="_blank" rel="noopener">http://www.newlisp.org/index.cgi?Closures</a></URL><br/><br><URL url="<a href="http://www.newlisp.org/MemoryManagement.html" class="bbc_link" target="_blank" rel="noopener">http://www.newlisp.org/MemoryManagement.html</a>"><a href="http://www.newlisp.org/MemoryManagement.html" class="bbc_link" target="_blank" rel="noopener">http://www.newlisp.org/MemoryManagement.html</a></URL><br/><br><URL url="<a href="http://www.newlisp.org/ExpressionEvaluation.html" class="bbc_link" target="_blank" rel="noopener">http://www.newlisp.org/ExpressionEvaluation.html</a>"><a href="http://www.newlisp.org/ExpressionEvaluation.html" class="bbc_link" target="_blank" rel="noopener">http://www.newlisp.org/ExpressionEvaluation.html</a></URL><br/><br><br/><br>these links all referenced from here: <br/><br><br/><br><URL url="<a href="http://www.newlisp.org/index.cgi?page=Differences_to_Other_LISPs" class="bbc_link" target="_blank" rel="noopener">http://www.newlisp.org/index.cgi?page=Differences_to_Other_LISPs</a>"><LINK_TEXT text="<a href="http://www.newlisp.org/index.cgi?page=D" class="bbc_link" target="_blank" rel="noopener">http://www.newlisp.org/index.cgi?page=D</a> ... ther_LISPs"><a href="http://www.newlisp.org/index.cgi?page=Differences_to_Other_LISPs" class="bbc_link" target="_blank" rel="noopener">http://www.newlisp.org/index.cgi?page=Differences_to_Other_LISPs</a></LINK_TEXT></URL></r>
+								</div>
+							</div><!-- .post -->
+							<div class="under_message">
+							</div><!-- .under_message -->
+						</div><!-- .postarea -->
+						<div class="moderatorbar">
+							<div class="signature" id="msg_20377_signature">
+								<t></t>
+							</div>
+						</div><!-- .moderatorbar -->
+					</div><!-- .post_wrapper -->
+				</div><!-- $message[css_class] -->
+				<hr class="post_separator">
+				<div class="windowbg" id="msg20379">
+					
+					
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://newlispfanclub.com/index.php?action=profile;u=153" title="View the profile of cormullion">cormullion</a>
+							</h4>
+							<ul class="user_info">
+								<li class="membergroup">Global Moderator</li>
+								<li class="avatar">
+									<a href="https://newlispfanclub.com/index.php?action=profile;u=153"><img class="avatar" src="https://newlispfanclub.com/avatars/default.png" alt=""></a>
+								</li>
+								<li class="icons"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icongmod.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icongmod.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icongmod.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icongmod.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icongmod.png" alt="*"></li>
+								<li class="postgroup">Veteran</li>
+								<li class="postcount">Posts: 2,038</li>
+								<li class="profile">
+									<ol class="profile_icons">
+									</ol>
+								</li><!-- .profile -->
+								<li class="poster_ip">Logged</li>
+							</ul>
+						</div><!-- .poster -->
+						<div class="postarea">
+							<div class="keyinfo">
+								<div id="subject_20379" class="subject_title subject_hidden">
+									<a href="https://newlispfanclub.com/index.php?msg=20379" rel="nofollow">Re: Why dynamic scope?</a>
+								</div>
+								<span class="page_number floatright">#2</span>
+								<div class="postinfo">
+									<span class="messageicon"  style="position: absolute; z-index: -1;">
+										<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+									</span>
+									<a href="https://newlispfanclub.com/index.php?msg=20379" rel="nofollow" title="Reply #2 - Re: Why dynamic scope?" class="smalltext">May 03, 2012, 01:00:26 AM</a>
+									<span class="spacer"></span>
+									<span class="smalltext modified floatright mvisible" id="modified_20379"><span class="lastedit">Last Edit</span>: December 31, 1969, 04:00:00 PM by Guest
+									</span>
+								</div>
+								<div id="msg_20379_quick_mod"></div>
+							</div><!-- .keyinfo -->
+							<div class="post">
+								<div class="inner" data-msgid="20379" id="msg_20379">
+									<r>There have been quite a few discussions about this topic here on the forum, over the years. Also, there are some interesting posts on other blogs, such as Kazimir's: <URL url="<a href="http://kazimirmajorinc.blogspot.co.uk/2008/11/dont-fear-dynamic-scope.html" class="bbc_link" target="_blank" rel="noopener">http://kazimirmajorinc.blogspot.co.uk/2008/11/dont-fear-dynamic-scope.html</a>"><s><a href="//</s%3E%3CLINK_TEXT%20text=%22http://kazimirmajorinc.blogspot.co.uk/2%20...%20scope.html%22%3Ehttp://kazimirmajorinc.blogspot.co.uk/2008/11/dont-fear-dynamic-scope.html%3C/LINK_TEXT%3E%3Ce%3E" class="bbc_link" target="_blank" rel="noopener">//</s><LINK_TEXT%20text="http://kazimirmajorinc.blogspot.co.uk/2%20...%20scope.html">http://kazimirmajorinc.blogspot.co.uk/2008/11/dont-fear-dynamic-scope.html</LINK_TEXT><e></a></e></URL>. <br/><br><br/><br>You may find that dynamic scope is not a problem for your scripting needs, or proves advantageous. Or you may find it a huge stumbling block...</r>
+								</div>
+							</div><!-- .post -->
+							<div class="under_message">
+							</div><!-- .under_message -->
+						</div><!-- .postarea -->
+						<div class="moderatorbar">
+							<div class="signature" id="msg_20379_signature">
+								<t></t>
+							</div>
+						</div><!-- .moderatorbar -->
+					</div><!-- .post_wrapper -->
+				</div><!-- $message[css_class] -->
+				<hr class="post_separator">
+				<div class="windowbg" id="msg20386">
+					
+					
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://newlispfanclub.com/index.php?action=profile;u=5" title="View the profile of Lutz">Lutz</a>
+							</h4>
+							<ul class="user_info">
+								<li class="membergroup">Global Moderator</li>
+								<li class="avatar">
+									<a href="https://newlispfanclub.com/index.php?action=profile;u=5"><img class="avatar" src="https://newlispfanclub.com/avatars/default.png" alt=""></a>
+								</li>
+								<li class="icons"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icongmod.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icongmod.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icongmod.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icongmod.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icongmod.png" alt="*"></li>
+								<li class="postgroup">Veteran</li>
+								<li class="postcount">Posts: 5,296</li>
+								<li class="profile">
+									<ol class="profile_icons">
+									</ol>
+								</li><!-- .profile -->
+								<li class="poster_ip">Logged</li>
+							</ul>
+						</div><!-- .poster -->
+						<div class="postarea">
+							<div class="keyinfo">
+								<div id="subject_20386" class="subject_title subject_hidden">
+									<a href="https://newlispfanclub.com/index.php?msg=20386" rel="nofollow">Re: Why dynamic scope?</a>
+								</div>
+								<span class="page_number floatright">#3</span>
+								<div class="postinfo">
+									<span class="messageicon"  style="position: absolute; z-index: -1;">
+										<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+									</span>
+									<a href="https://newlispfanclub.com/index.php?msg=20386" rel="nofollow" title="Reply #3 - Re: Why dynamic scope?" class="smalltext">May 03, 2012, 08:04:47 AM</a>
+									<span class="spacer"></span>
+									<span class="smalltext modified floatright mvisible" id="modified_20386"><span class="lastedit">Last Edit</span>: December 31, 1969, 04:00:00 PM by Guest
+									</span>
+								</div>
+								<div id="msg_20386_quick_mod"></div>
+							</div><!-- .keyinfo -->
+							<div class="post">
+								<div class="inner" data-msgid="20386" id="msg_20386">
+									<r>Just to point out the essential in Kazimir's post:<br/><br><br><CODE><s><div class="codeheader"><span class="code floatleft">Code</span> <a class="codeoperation smf_select_text">Select</a> <a class="codeoperation smf_expand_code hidden" data-shrink-txt="Shrink" data-expand-txt="Expand">Expand</a></div><code class="bbc_code"></s><i><br></i>(define (sum f n)<br>&nbsp; &nbsp; (set 'result 0)<br>&nbsp; &nbsp; (for (i 1 n)<br>&nbsp; &nbsp; &nbsp; &nbsp; (inc result (f i)))<br>&nbsp; &nbsp; result)<br><br>; works because no clash of free j in f with i in sum<br>(for (j 1 5)<br>&nbsp; &nbsp; (define (f x) (pow x j))<br>&nbsp; &nbsp; (println j ": " (sum f 10)))<br><br>; does not work, free i in f clashes with i in sum<br>(for (i 1 5)<br>&nbsp; &nbsp; &nbsp;(define (f x) (pow x i))<br>&nbsp; &nbsp; &nbsp;(println i ": " (sum f 10)))<br><br>; works with previous expansion of free variable<br>(for (i 1 5)<br>&nbsp; &nbsp; &nbsp;(letex (e i) (define (f x) (pow x e))) ; expansion of free variable <br>&nbsp; &nbsp; &nbsp;(println i ": " (sum f 10)))<br><e></code></e></CODE><br><br>produces:<br/><br><br><CODE><s><div class="codeheader"><span class="code floatleft">Code</span> <a class="codeoperation smf_select_text">Select</a> <a class="codeoperation smf_expand_code hidden" data-shrink-txt="Shrink" data-expand-txt="Expand">Expand</a></div><code class="bbc_code"></s><i><br></i>1: 55<br>2: 385<br>3: 3025<br>4: 25333<br>5: 220825<br>1: 1.040507132e+10<br>2: 1.040507132e+10<br>3: 1.040507132e+10<br>4: 1.040507132e+10<br>5: 1.040507132e+10<br>1: 55<br>2: 385<br>3: 3025<br>4: 25333<br>5: 220825<br><e></code></e></CODE><br><br>Free variables in dynamic scoping are not pre-bound during function definition. But just like a Scheme closure would bind free variables to its environment during definition of f, the same can be done using 'letex' or 'expand' binding the free variable during function definition.</r>
+								</div>
+							</div><!-- .post -->
+							<div class="under_message">
+							</div><!-- .under_message -->
+						</div><!-- .postarea -->
+						<div class="moderatorbar">
+							<div class="signature" id="msg_20386_signature">
+								<t></t>
+							</div>
+						</div><!-- .moderatorbar -->
+					</div><!-- .post_wrapper -->
+				</div><!-- $message[css_class] -->
+				<hr class="post_separator">
+				<div class="windowbg" id="msg20388">
+					
+					
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://newlispfanclub.com/index.php?action=profile;u=811" title="View the profile of arquebus">arquebus</a>
+							</h4>
+							<ul class="user_info">
+								<li class="avatar">
+									<a href="https://newlispfanclub.com/index.php?action=profile;u=811"><img class="avatar" src="https://newlispfanclub.com/avatars/default.png" alt=""></a>
+								</li>
+								<li class="icons"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"></li>
+								<li class="postgroup">Newbie</li>
+								<li class="postcount">Posts: 2</li>
+								<li class="profile">
+									<ol class="profile_icons">
+									</ol>
+								</li><!-- .profile -->
+								<li class="poster_ip">Logged</li>
+							</ul>
+						</div><!-- .poster -->
+						<div class="postarea">
+							<div class="keyinfo">
+								<div id="subject_20388" class="subject_title subject_hidden">
+									<a href="https://newlispfanclub.com/index.php?msg=20388" rel="nofollow">Re: Why dynamic scope?</a>
+								</div>
+								<span class="page_number floatright">#4</span>
+								<div class="postinfo">
+									<span class="messageicon"  style="position: absolute; z-index: -1;">
+										<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+									</span>
+									<a href="https://newlispfanclub.com/index.php?msg=20388" rel="nofollow" title="Reply #4 - Re: Why dynamic scope?" class="smalltext">May 03, 2012, 02:10:55 PM</a>
+									<span class="spacer"></span>
+									<span class="smalltext modified floatright mvisible" id="modified_20388"><span class="lastedit">Last Edit</span>: December 31, 1969, 04:00:00 PM by Guest
+									</span>
+								</div>
+								<div id="msg_20388_quick_mod"></div>
+							</div><!-- .keyinfo -->
+							<div class="post">
+								<div class="inner" data-msgid="20388" id="msg_20388">
+									<t>Lutz and Cormullian- Thank you for your responses. Although I was hoping for a quick 2 sentence explanation, the fact that the reason for using dynamic scope requires a deeper understanding of Lisp is of course a good thing. I have also discovered PicoLisp which is another light weight Lisp scripting language which is also dynamically scoped. Incidentally it was also designed by a german fellow. I also plan to learn emacs which means I will learn elisp, so I am now much more motivated to thoroughly understand elisp now that I have discovered that dynamic typing is used in NewLisp and PicoLisp. <br/><br><br/><br>I myself enjoy learning programming languages as a hobby so I have a general understanding of Lisp syntax as well as most other major functional languages. So hopefully I know enough to be able to understand the articles youve linked to. <br/><br><br/><br>I have applied to some universities and hopefully I will be accepted by one and start my CS degree this fall.<br/><br>&nbsp; &nbsp;thanks much</t>
+								</div>
+							</div><!-- .post -->
+							<div class="under_message">
+							</div><!-- .under_message -->
+						</div><!-- .postarea -->
+						<div class="moderatorbar">
+							<div class="signature" id="msg_20388_signature">
+								<t></t>
+							</div>
+						</div><!-- .moderatorbar -->
+					</div><!-- .post_wrapper -->
+				</div><!-- $message[css_class] -->
+				<hr class="post_separator">
+				<div class="windowbg" id="msg20468">
+					
+					
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://newlispfanclub.com/index.php?action=profile;u=742" title="View the profile of Ishpeck">Ishpeck</a>
+							</h4>
+							<ul class="user_info">
+								<li class="avatar">
+									<a href="https://newlispfanclub.com/index.php?action=profile;u=742"><img class="avatar" src="https://newlispfanclub.com/avatars/default.png" alt=""></a>
+								</li>
+								<li class="icons"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"></li>
+								<li class="postgroup">Fan</li>
+								<li class="postcount">Posts: 14</li>
+								<li class="profile">
+									<ol class="profile_icons">
+									</ol>
+								</li><!-- .profile -->
+								<li class="poster_ip">Logged</li>
+							</ul>
+						</div><!-- .poster -->
+						<div class="postarea">
+							<div class="keyinfo">
+								<div id="subject_20468" class="subject_title subject_hidden">
+									<a href="https://newlispfanclub.com/index.php?msg=20468" rel="nofollow">Re: Why dynamic scope?</a>
+								</div>
+								<span class="page_number floatright">#5</span>
+								<div class="postinfo">
+									<span class="messageicon"  style="position: absolute; z-index: -1;">
+										<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+									</span>
+									<a href="https://newlispfanclub.com/index.php?msg=20468" rel="nofollow" title="Reply #5 - Re: Why dynamic scope?" class="smalltext">June 02, 2012, 07:39:04 AM</a>
+									<span class="spacer"></span>
+									<span class="smalltext modified floatright mvisible" id="modified_20468"><span class="lastedit">Last Edit</span>: December 31, 1969, 04:00:00 PM by Guest
+									</span>
+								</div>
+								<div id="msg_20468_quick_mod"></div>
+							</div><!-- .keyinfo -->
+							<div class="post">
+								<div class="inner" data-msgid="20468" id="msg_20468">
+									<r><QUOTE author="arquebus"><s><blockquote class="bbc_standard_quote"><cite>Quote from: "arquebus"</cite></s>I also plan to learn emacs which means I will learn elisp, so I am now much more motivated to thoroughly understand elisp now...<e></blockquote></e></QUOTE><br><br>emacs is my very best friend. &nbsp;<br/><br><br/><br>Be sure to get newlisp mode for emacs.<br/><br><URL url="<a href="http://www.artfulcode.net/projects/" class="bbc_link" target="_blank" rel="noopener">http://www.artfulcode.net/projects/</a>"><a href="http://www.artfulcode.net/projects/" class="bbc_link" target="_blank" rel="noopener">http://www.artfulcode.net/projects/</a></URL><br/><br><br/><br>It's delightful.</r>
+								</div>
+							</div><!-- .post -->
+							<div class="under_message">
+							</div><!-- .under_message -->
+						</div><!-- .postarea -->
+						<div class="moderatorbar">
+							<div class="signature" id="msg_20468_signature">
+								<t></t>
+							</div>
+						</div><!-- .moderatorbar -->
+					</div><!-- .post_wrapper -->
+				</div><!-- $message[css_class] -->
+				<hr class="post_separator">
+				<div class="windowbg" id="msg23705">
+					
+					
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://newlispfanclub.com/index.php?action=profile;u=1195" title="View the profile of abaddon1234">abaddon1234</a>
+							</h4>
+							<ul class="user_info">
+								<li class="avatar">
+									<a href="https://newlispfanclub.com/index.php?action=profile;u=1195"><img class="avatar" src="https://newlispfanclub.com/avatars/default.png" alt=""></a>
+								</li>
+								<li class="icons"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"></li>
+								<li class="postgroup">Fan</li>
+								<li class="postcount">Posts: 21</li>
+								<li class="profile">
+									<ol class="profile_icons">
+									</ol>
+								</li><!-- .profile -->
+								<li class="poster_ip">Logged</li>
+							</ul>
+						</div><!-- .poster -->
+						<div class="postarea">
+							<div class="keyinfo">
+								<div id="subject_23705" class="subject_title subject_hidden">
+									<a href="https://newlispfanclub.com/index.php?msg=23705" rel="nofollow">Re: Why dynamic scope?</a>
+								</div>
+								<span class="page_number floatright">#6</span>
+								<div class="postinfo">
+									<span class="messageicon"  style="position: absolute; z-index: -1;">
+										<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+									</span>
+									<a href="https://newlispfanclub.com/index.php?msg=23705" rel="nofollow" title="Reply #6 - Re: Why dynamic scope?" class="smalltext">June 08, 2016, 07:50:46 PM</a>
+									<span class="spacer"></span>
+									<span class="smalltext modified floatright mvisible" id="modified_23705"><span class="lastedit">Last Edit</span>: December 31, 1969, 04:00:00 PM by Guest
+									</span>
+								</div>
+								<div id="msg_23705_quick_mod"></div>
+							</div><!-- .keyinfo -->
+							<div class="post">
+								<div class="inner" data-msgid="23705" id="msg_23705">
+									<r>the fact that the reason for using dynamic scope requires a deeper understanding of Lisp is of course a good thing.<br/><br><br/><br><br/><br><URL url="<a href="https://www.gclub88.com/" class="bbc_link" target="_blank" rel="noopener">https://www.gclub88.com/</a>"><s><a href="//https" class="bbc_link" target="_blank" rel="noopener"></s><COLOR color="#E1EBF2"><s><span style="color: #E1EBF2;" class="bbc_color"></s>gclub online<e></span></e></COLOR><e></a></e></URL></r>
+								</div>
+							</div><!-- .post -->
+							<div class="under_message">
+							</div><!-- .under_message -->
+						</div><!-- .postarea -->
+						<div class="moderatorbar">
+							<div class="signature" id="msg_23705_signature">
+								<t></t>
+							</div>
+						</div><!-- .moderatorbar -->
+					</div><!-- .post_wrapper -->
+				</div><!-- $message[css_class] -->
+				<hr class="post_separator">
+				<div class="windowbg" id="msg23716">
+					
+					
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://newlispfanclub.com/index.php?action=profile;u=104" title="View the profile of rickyboy">rickyboy</a>
+							</h4>
+							<ul class="user_info">
+								<li class="avatar">
+									<a href="https://newlispfanclub.com/index.php?action=profile;u=104"><img class="avatar" src="https://newlispfanclub.com/avatars/default.png" alt=""></a>
+								</li>
+								<li class="icons"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"></li>
+								<li class="postgroup">Veteran</li>
+								<li class="postcount">Posts: 606</li>
+								<li class="profile">
+									<ol class="profile_icons">
+									</ol>
+								</li><!-- .profile -->
+								<li class="poster_ip">Logged</li>
+							</ul>
+						</div><!-- .poster -->
+						<div class="postarea">
+							<div class="keyinfo">
+								<div id="subject_23716" class="subject_title subject_hidden">
+									<a href="https://newlispfanclub.com/index.php?msg=23716" rel="nofollow">Re: Why dynamic scope?</a>
+								</div>
+								<span class="page_number floatright">#7</span>
+								<div class="postinfo">
+									<span class="messageicon"  style="position: absolute; z-index: -1;">
+										<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+									</span>
+									<a href="https://newlispfanclub.com/index.php?msg=23716" rel="nofollow" title="Reply #7 - Re: Why dynamic scope?" class="smalltext">June 24, 2016, 10:55:52 AM</a>
+									<span class="spacer"></span>
+									<span class="smalltext modified floatright mvisible" id="modified_23716"><span class="lastedit">Last Edit</span>: December 31, 1969, 04:00:00 PM by Guest
+									</span>
+								</div>
+								<div id="msg_23716_quick_mod"></div>
+							</div><!-- .keyinfo -->
+							<div class="post">
+								<div class="inner" data-msgid="23716" id="msg_23716">
+									<r><QUOTE author="abaddon1234"><s><blockquote class="bbc_standard_quote"><cite>Quote from: "abaddon1234"</cite></s>the fact that the reason for using dynamic scope requires a deeper understanding of Lisp is of course a good thing.<br><e></blockquote></e></QUOTE><br>Nice plagarism. &nbsp;All you did was copy exactly what arquebus wrote two posts above yours.<br/><br><br><QUOTE author="abaddon1234"><s><blockquote class="bbc_standard_quote"><cite>Quote from: "abaddon1234"</cite></s><br><URL url="<a href="https://www.gclub88.com/" class="bbc_link" target="_blank" rel="noopener">https://www.gclub88.com/</a>"><s><a href="//https" class="bbc_link" target="_blank" rel="noopener"></s><COLOR color="#E1EBF2"><s><span style="color: #E1EBF2;" class="bbc_color"></s>gclub online<e></span></e></COLOR><e></a></e></URL><e></blockquote></e></QUOTE><br>Again, you should be banned from this forum.</r>
+								</div>
+							</div><!-- .post -->
+							<div class="under_message">
+							</div><!-- .under_message -->
+						</div><!-- .postarea -->
+						<div class="moderatorbar">
+							<div class="signature" id="msg_23716_signature">
+								<t>(λx. x x) (λx. x x)</t>
+							</div>
+						</div><!-- .moderatorbar -->
+					</div><!-- .post_wrapper -->
+				</div><!-- $message[css_class] -->
+				<hr class="post_separator">
+				<div class="windowbg" id="msg23908">
+					
+					
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								clubZa
+							</h4>
+							<ul class="user_info">
+								<li class="membergroup">Guest</li>
+								<li class="poster_ip">Logged</li>
+							</ul>
+						</div><!-- .poster -->
+						<div class="postarea">
+							<div class="keyinfo">
+								<div id="subject_23908" class="subject_title subject_hidden">
+									<a href="https://newlispfanclub.com/index.php?msg=23908" rel="nofollow">Re: Why dynamic scope?</a>
+								</div>
+								<span class="page_number floatright">#8</span>
+								<div class="postinfo">
+									<span class="messageicon"  style="position: absolute; z-index: -1;">
+										<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+									</span>
+									<a href="https://newlispfanclub.com/index.php?msg=23908" rel="nofollow" title="Reply #8 - Re: Why dynamic scope?" class="smalltext">December 02, 2016, 02:13:33 AM</a>
+									<span class="spacer"></span>
+									<span class="smalltext modified floatright mvisible" id="modified_23908"><span class="lastedit">Last Edit</span>: December 31, 1969, 04:00:00 PM by Guest
+									</span>
+								</div>
+								<div id="msg_23908_quick_mod"></div>
+							</div><!-- .keyinfo -->
+							<div class="post">
+								<div class="inner" data-msgid="23908" id="msg_23908">
+									<r>I understand what you want<br/><br><br/><br><URL url="<a href="https://gclub.bbet88.com/gclub-download.html" class="bbc_link" target="_blank" rel="noopener">https://gclub.bbet88.com/gclub-download.html</a>"><s><a href="//https" class="bbc_link" target="_blank" rel="noopener"></s><COLOR color="#e1ebf2"><s><span style="color: #e1ebf2;" class="bbc_color"></s>gclub download<e></span></e></COLOR><e></a></e></URL></r>
+								</div>
+							</div><!-- .post -->
+							<div class="under_message">
+							</div><!-- .under_message -->
+						</div><!-- .postarea -->
+						<div class="moderatorbar">
+						</div><!-- .moderatorbar -->
+					</div><!-- .post_wrapper -->
+				</div><!-- $message[css_class] -->
+				<hr class="post_separator">
+				<div class="windowbg" id="msg23909">
+					
+					
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://newlispfanclub.com/index.php?action=profile;u=346" title="View the profile of TedWalther">TedWalther</a>
+							</h4>
+							<ul class="user_info">
+								<li class="avatar">
+									<a href="https://newlispfanclub.com/index.php?action=profile;u=346"><img class="avatar" src="https://newlispfanclub.com/avatars/default.png" alt=""></a>
+								</li>
+								<li class="icons"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"></li>
+								<li class="postgroup">Veteran</li>
+								<li class="postcount">Posts: 608</li>
+								<li class="profile">
+									<ol class="profile_icons">
+									</ol>
+								</li><!-- .profile -->
+								<li class="poster_ip">Logged</li>
+							</ul>
+						</div><!-- .poster -->
+						<div class="postarea">
+							<div class="keyinfo">
+								<div id="subject_23909" class="subject_title subject_hidden">
+									<a href="https://newlispfanclub.com/index.php?msg=23909" rel="nofollow">Re: Why dynamic scope?</a>
+								</div>
+								<span class="page_number floatright">#9</span>
+								<div class="postinfo">
+									<span class="messageicon"  style="position: absolute; z-index: -1;">
+										<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+									</span>
+									<a href="https://newlispfanclub.com/index.php?msg=23909" rel="nofollow" title="Reply #9 - Re: Why dynamic scope?" class="smalltext">December 02, 2016, 09:49:11 AM</a>
+									<span class="spacer"></span>
+									<span class="smalltext modified floatright mvisible" id="modified_23909"><span class="lastedit">Last Edit</span>: December 31, 1969, 04:00:00 PM by Guest
+									</span>
+								</div>
+								<div id="msg_23909_quick_mod"></div>
+							</div><!-- .keyinfo -->
+							<div class="post">
+								<div class="inner" data-msgid="23909" id="msg_23909">
+									<t>We have a flood of spammers bumping topics. &nbsp;But anyway... wow. &nbsp;artfulcode is gone. :(</t>
+								</div>
+							</div><!-- .post -->
+							<div class="under_message">
+							</div><!-- .under_message -->
+						</div><!-- .postarea -->
+						<div class="moderatorbar">
+							<div class="signature" id="msg_23909_signature">
+								<t>Cavemen in bearskins invaded the ivory towers of Artificial Intelligence. &nbsp;Nine months later, they left with a baby named newLISP. &nbsp;The women of the ivory towers wept and wailed. &nbsp;\"Abomination!\" they cried.</t>
+							</div>
+						</div><!-- .moderatorbar -->
+					</div><!-- .post_wrapper -->
+				</div><!-- $message[css_class] -->
+				<hr class="post_separator">
+				<div class="windowbg" id="msg25234">
+					
+					<a id="new"></a>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://newlispfanclub.com/index.php?action=profile;u=398" title="View the profile of itistoday">itistoday</a>
+							</h4>
+							<ul class="user_info">
+								<li class="membergroup">Administrator</li>
+								<li class="avatar">
+									<a href="https://newlispfanclub.com/index.php?action=profile;u=398"><img class="avatar" src="https://newlispfanclub.com/custom_avatar/avatar_398_1684595239.png" alt=""></a>
+								</li>
+								<li class="icons"><img src="https://newlispfanclub.com/Themes/default/images/membericons/iconadmin.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/iconadmin.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/iconadmin.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/iconadmin.png" alt="*"><img src="https://newlispfanclub.com/Themes/default/images/membericons/iconadmin.png" alt="*"></li>
+								<li class="postgroup">Veteran</li>
+								<li class="postcount">Posts: 432</li>
+								<li class="im_icons">
+									<ol>
+										<li class="custom cust_gender"><span class=" main_icons gender_0" title="None"></span></li>
+									</ol>
+								</li>
+								<li class="profile">
+									<ol class="profile_icons">
+										<li><a href="https://fixingtao.com" title="" target="_blank" rel="noopener"><span class="main_icons www centericon" title=""></span></a></li>
+									</ol>
+								</li><!-- .profile -->
+								<li class="poster_ip">Logged</li>
+							</ul>
+						</div><!-- .poster -->
+						<div class="postarea">
+							<div class="keyinfo">
+								<div id="subject_25234" class="subject_title subject_hidden">
+									<a href="https://newlispfanclub.com/index.php?msg=25234" rel="nofollow">Re: Why dynamic scope?</a>
+								</div>
+								<span class="page_number floatright">#10</span>
+								<div class="postinfo">
+									<span class="messageicon"  style="position: absolute; z-index: -1;">
+										<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+									</span>
+									<a href="https://newlispfanclub.com/index.php?msg=25234" rel="nofollow" title="Reply #10 - Re: Why dynamic scope?" class="smalltext">May 23, 2023, 01:10:27 PM</a>
+									<span class="spacer"></span>
+									<span class="smalltext modified floatright" id="modified_25234">
+									</span>
+								</div>
+								<div id="msg_25234_quick_mod"></div>
+							</div><!-- .keyinfo -->
+							<div class="post">
+								<div class="inner" data-msgid="25234" id="msg_25234">
+									<blockquote class="bbc_standard_quote"><cite><a href="https://newlispfanclub.com/index.php?msg=23716">Quote from: rickyboy on June 24, 2016, 10:55:52 AM</a></cite>Again, you should be banned from this forum. </blockquote><br>They&#39;ve been banned, along with most/all of the other spammers. <img src="https://newlispfanclub.com/Smileys/default/grin.gif" alt=";D" title="Grin" class="smiley"> 
+								</div>
+							</div><!-- .post -->
+							<div class="under_message">
+							</div><!-- .under_message -->
+						</div><!-- .postarea -->
+						<div class="moderatorbar">
+							<div class="signature" id="msg_25234_signature">
+								Get your <a href="https://www.taoeffect.com/blog/2009/12/introducing-objective-newlisp/" class="bbc_link" target="_blank" rel="noopener">Objective newLISP</a> groove on.
+							</div>
+						</div><!-- .moderatorbar -->
+					</div><!-- .post_wrapper -->
+				</div><!-- $message[css_class] -->
+				<hr class="post_separator">
+			</form>
+		</div><!-- #forumposts -->
+		<div class="pagesection">
+			
+		<div class="buttonlist floatright">
+			
+				<a class="button button_strip_print" href="https://newlispfanclub.com/index.php?action=printpage;topic=4108.0"  rel="nofollow">Print</a>
+		</div>
+			 
+			<div class="pagelinks floatleft">
+				<a href="#main_content_section" class="button" id="bot">Go Up</a>
+				<span class="pages">Pages</span><span class="current_page">1</span> 
+			</div>
+		<div class="mobile_buttons floatright">
+			<a class="button mobile_act">User actions</a>
+			
+		</div>
+		</div>
+				<div class="navigate_section">
+					<ul>
+						<li>
+							<a href="https://newlispfanclub.com/index.php"><span>newLISP Fan Club</span></a>
+						</li>
+						<li>
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php#c1"><span>Forum</span></a>
+						</li>
+						<li>
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php?board=15.0"><span>Whither newLISP?</span></a>
+						</li>
+						<li class="last">
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php?topic=4108.0"><span>Why dynamic scope?</span></a>
+						</li>
+					</ul>
+				</div><!-- .navigate_section -->
+		<div id="moderationbuttons">
+			
+		</div>
+		<div id="display_jump_to"></div>
+		<div id="mobile_action" class="popup_container">
+			<div class="popup_window description">
+				<div class="popup_heading">
+					User actions
+					<a href="javascript:void(0);" class="main_icons hide_popup"></a>
+				</div>
+				
+		<div class="buttonlist">
+			
+				<a class="button button_strip_print" href="https://newlispfanclub.com/index.php?action=printpage;topic=4108.0"  rel="nofollow">Print</a>
+		</div>
+			</div>
+		</div>
+		<script>
+			if ('XMLHttpRequest' in window)
+			{
+				var oQuickModify = new QuickModify({
+					sScriptUrl: smf_scripturl,
+					sClassName: 'quick_edit',
+					bShowModify: true,
+					iTopicId: 4108,
+					sTemplateBodyEdit: '\n\t\t\t\t\t\t<div id="quick_edit_body_container">\n\t\t\t\t\t\t\t<div id="error_box" class="error"><' + '/div>\n\t\t\t\t\t\t\t<textarea class="editor" name="message" rows="12" tabindex="1">%body%<' + '/textarea><br>\n\t\t\t\t\t\t\t<input type="hidden" name="ace096301" value="820175742d334db2a0ec2d714db371a1">\n\t\t\t\t\t\t\t<input type="hidden" name="topic" value="4108">\n\t\t\t\t\t\t\t<input type="hidden" name="msg" value="%msg_id%">\n\t\t\t\t\t\t\t<div class="righttext quickModifyMargin">\n\t\t\t\t\t\t\t\t<input type="submit" name="post" value="Save" tabindex="2" onclick="return oQuickModify.modifySave(\'820175742d334db2a0ec2d714db371a1\', \'ace096301\');" accesskey="s" class="button"> <input type="submit" name="cancel" value="Cancel" tabindex="3" onclick="return oQuickModify.modifyCancel();" class="button">\n\t\t\t\t\t\t\t<' + '/div>\n\t\t\t\t\t\t<' + '/div>',
+					sTemplateSubjectEdit: '<input type="text" name="subject" value="%subject%" size="80" maxlength="80" tabindex="4">',
+					sTemplateBodyNormal: '%body%',
+					sTemplateSubjectNormal: '<a hr'+'ef="' + smf_scripturl + '?topic=4108.msg%msg_id%#msg%msg_id%" rel="nofollow">%subject%<' + '/a>',
+					sTemplateTopSubject: '%subject%',
+					sTemplateReasonEdit: 'Reason for editing: <input type="text" name="modify_reason" value="%modify_reason%" size="80" maxlength="80" tabindex="5" class="quickModifyMargin">',
+					sTemplateReasonNormal: '%modify_text',
+					sErrorBorderStyle: '1px solid red'
+				});
+
+				aJumpTo[aJumpTo.length] = new JumpTo({
+					sContainerId: "display_jump_to",
+					sJumpToTemplate: "<label class=\"smalltext jump_to\" for=\"%select_id%\">Jump to<" + "/label> %dropdown_list%",
+					iCurBoardId: 15,
+					iCurBoardChildLevel: 0,
+					sCurBoardName: "Whither newLISP?",
+					sBoardChildLevelIndicator: "==",
+					sBoardPrefix: "=> ",
+					sCatSeparator: "-----------------------------",
+					sCatPrefix: "",
+					sGoButtonLabel: "Go"
+				});
+
+				aIconLists[aIconLists.length] = new IconList({
+					sBackReference: "aIconLists[" + aIconLists.length + "]",
+					sIconIdPrefix: "msg_icon_",
+					sScriptUrl: smf_scripturl,
+					bShowModify: true,
+					iBoardId: 15,
+					iTopicId: 4108,
+					sSessionId: smf_session_id,
+					sSessionVar: smf_session_var,
+					sLabelIconList: "Message icon",
+					sBoxBackground: "transparent",
+					sBoxBackgroundHover: "#ffffff",
+					iBoxBorderWidthHover: 1,
+					sBoxBorderColorHover: "#adadad" ,
+					sContainerBackground: "#ffffff",
+					sContainerBorder: "1px solid #adadad",
+					sItemBorder: "1px solid #ffffff",
+					sItemBorderHover: "1px dotted gray",
+					sItemBackground: "transparent",
+					sItemBackgroundHover: "#e0e0f0"
+				});
+			}
+		</script><!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://m.okturtles.org/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '6']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="https://m.okturtles.org/matomo.php?idsite=6&rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+			</div><!-- #main_content_section -->
+		</div><!-- #content_section -->
+	</div><!-- #wrapper -->
+</div><!-- #footerfix -->
+	<div id="footer">
+		<div class="inner_wrap">
+		<ul>
+			<li class="floatright"><a href="https://newlispfanclub.com/index.php?action=help">Help</a> | <a href="https://newlispfanclub.com/index.php?action=agreement">Terms and Rules</a> | <a href="#top_section">Go Up &#9650;</a></li>
+			<li class="copyright"><a href="https://newlispfanclub.com/index.php?action=credits" title="License" target="_blank" rel="noopener">SMF 2.1.3 &copy; 2022</a>, <a href="https://www.simplemachines.org" title="Simple Machines" target="_blank" rel="noopener">Simple Machines</a></li>
+		</ul>
+		</div>
+	</div><!-- #footer -->
+<script>
+window.addEventListener("DOMContentLoaded", function() {
+	function triggerCron()
+	{
+		$.get('https://newlispfanclub.com' + "/cron.php?ts=1689727920");
+	}
+	window.setTimeout(triggerCron, 1);
+		$.sceditor.locale["en"] = {
+			"Width (optional):": "Width (optional):",
+			"Height (optional):": "Height (optional):",
+			"Insert": "Insert",
+			"Description (optional):": "Description (optional)",
+			"Rows:": "Rows:",
+			"Cols:": "Cols:",
+			"URL:": "URL:",
+			"E-mail:": "E-mail:",
+			"Video URL:": "Video URL:",
+			"More": "More",
+			"Close": "Close",
+			dateFormat: "month/day/year"
+		};
+});
+</script>
+</body>
+</html>

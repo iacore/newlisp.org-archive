@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>code/gc.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+<font color='#555555'># gc - google count</font>
+<font color='#555555'># USAGE:</font>
+<font color='#555555'>#     gc &lt;term-1&gt; [&lt;term-2&gt; ...]</font>
+<font color='#555555'>#</font>
+<font color='#555555'># When supplying exactly 2 terms, a ratio is calculated from the counts.</font>
+<font color='#555555'># When a term contains spaces, enclose the term in quotes.</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'pattern <font color='#008800'>"(?i)About.*?([&#092;&#092;d,]+).*?"</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>hits str<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>regex</font> pattern <font color='#AA0000'>(</font><font color='#0000AA'>get-url</font> 
+		<font color='#AA0000'>(</font><font color='#0000AA'>string</font> <font color='#008800'>"http://www.google.com/search?hl=en&amp;q="</font> <font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>" "</font> str <font color='#008800'>"+"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  	$1<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>dolist</font> <font color='#AA0000'>(</font>str <font color='#AA0000'>(</font><font color='#998800'>2</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"%s -> %s"</font> str <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'hts <font color='#AA0000'>(</font>hits str<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>push</font> <font color='#AA0000'>(</font><font color='#0000AA'>int</font> <font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>","</font> hts <font color='#008800'>""</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> lst<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> <font color='#AA0000'>(</font><font color='#0000AA'>length</font> lst<font color='#AA0000'>)</font> <font color='#998800'>2</font><font color='#AA0000'>)</font>
+       <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"ratio: %.2f"</font> <font color='#AA0000'>(</font><font color='#0000AA'>div</font> <font color='#AA0000'>(</font>lst <font color='#998800'>1</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>lst <font color='#998800'>0</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

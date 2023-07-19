@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>benchmarks/ackermann.newlisp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp -s1000000</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; Ackermann's Function</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; By Brent Fulgham</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>ack m n<font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>cond</font> <font color='#AA0000'>(</font><font color='#AA0000'>(</font><font color='#0000AA'>=</font> m <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>+</font> n <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+          <font color='#AA0000'>(</font><font color='#AA0000'>(</font><font color='#0000AA'>=</font> n <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>ack <font color='#AA0000'>(</font><font color='#0000AA'>-</font> m <font color='#998800'>1</font><font color='#AA0000'>)</font> <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	  <font color='#AA0000'>(</font><font color='#0000AA'>true</font>    <font color='#AA0000'>(</font>ack <font color='#AA0000'>(</font><font color='#0000AA'>-</font> m <font color='#998800'>1</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>ack m <font color='#AA0000'>(</font><font color='#0000AA'>-</font> n <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'N <font color='#AA0000'>(</font><font color='#0000AA'>integer</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>println</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"Ack(3,%d): %d"</font> N <font color='#AA0000'>(</font>ack <font color='#998800'>3</font> N<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

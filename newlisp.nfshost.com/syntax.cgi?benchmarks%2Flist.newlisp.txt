@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>benchmarks/list.newlisp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'># list - benchmark - newLISP 8.3.0 or later</font>
+<font color='#555555'># now mimics Python's way</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'SIZE <font color='#998800'>10000</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>test-lists<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'Li1  <font color='#AA0000'>(</font><font color='#0000AA'>sequence</font> <font color='#998800'>1</font> SIZE<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'Li2 Li1<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'Li3 '<font color='#AA0000'>(</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#555555'>; remove each item from left of Li2 and append to Li3</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>reverse</font> Li2<font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>while</font> Li2 <font color='#AA0000'>(</font><font color='#0000AA'>push</font> <font color='#AA0000'>(</font><font color='#0000AA'>pop</font> Li2<font color='#AA0000'>)</font> Li3 <font color='#998800'>-1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>while</font> Li3 <font color='#AA0000'>(</font><font color='#0000AA'>push</font> <font color='#AA0000'>(</font><font color='#0000AA'>pop</font> Li3<font color='#AA0000'>)</font> Li2 <font color='#998800'>-1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>reverse</font> Li1<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> 	<font color='#AA0000'>(</font><font color='#0000AA'>!=</font> <font color='#AA0000'>(</font><font color='#0000AA'>first</font> Li1<font color='#AA0000'>)</font> SIZE<font color='#AA0000'>)</font> <font color='#998800'>0</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>=</font> Li1 Li2<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>length</font> Li1<font color='#AA0000'>)</font>
+		<font color='#998800'>0</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'n <font color='#AA0000'>(</font><font color='#0000AA'>integer</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>dotimes</font> <font color='#AA0000'>(</font>i n<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'result <font color='#AA0000'>(</font>test-lists<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>println</font> result<font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

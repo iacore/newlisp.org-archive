@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>benchmarks/except.newlisp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'># exception - benchmark</font>
+<font color='#555555'># requires 7.5.1 or later</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>context</font> 'MAIN<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'HI <font color='#998800'>0</font> 'LO <font color='#998800'>0</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>some_function num<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>catch</font> <font color='#AA0000'>(</font>hi_function num<font color='#AA0000'>)</font> 'result<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>not</font> <font color='#AA0000'>(</font><font color='#0000AA'>integer?</font> result<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"we never get here"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>hi_function num<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>catch</font> <font color='#AA0000'>(</font>lo_function num<font color='#AA0000'>)</font> 'result<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> result 'HI_exception<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>inc</font> 'HI<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>throw</font> result<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>lo_function num<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>catch</font> <font color='#AA0000'>(</font>blowup num<font color='#AA0000'>)</font> 'result<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> result 'LO_exception<font color='#AA0000'>)</font> 
+		<font color='#AA0000'>(</font><font color='#0000AA'>inc</font> 'LO<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>throw</font> result<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>blowup num<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> <font color='#AA0000'>(</font><font color='#0000AA'>&amp;</font> num <font color='#998800'>1</font><font color='#AA0000'>)</font> <font color='#998800'>1</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>throw</font> 'HI_exception<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>throw</font> 'LO_exception<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>dotimes</font> <font color='#AA0000'>(</font>i n<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font>some_function i<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"Exceptions: HI="</font> HI <font color='#008800'>" / LO="</font> LO<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'n <font color='#AA0000'>(</font><font color='#0000AA'>integer</font> <font color='#AA0000'>(</font><font color='#0000AA'>nth</font> <font color='#998800'>2</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

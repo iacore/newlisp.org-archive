@@ -1,0 +1,302 @@
+<!-- newLISP generated page -->
+<html>
+<head>
+<!-- header -->
+<script type="text/javascript">
+
+var canvasWidth, canvasHeight;
+var xpos, ypos, orient;
+var turtleStack = new Array();
+var xsave, ysave, orientsave;
+var ctx;
+
+function Ctx(c) { ctx = c; }
+
+function Gsave() { 
+	PushTurtle(); ctx.save(); 
+	}
+
+function Grestore() { 
+	ctx.restore(); PopTurtle(); 
+	}
+
+function PushTurtle() {
+	turtleStack.push(canvasHeight, xpos, ypos, orient);
+	}
+
+function PopTurtle() {
+	orient = turtleStack.pop();
+	ypos = turtleStack.pop();
+	xpos = turtleStack.pop();
+	canvasHeight = turtleStack.pop();
+	}
+
+function Scale(x, y) {
+	ctx.scale(x, y);
+	canvasHeight = canvasHeight / y;
+	}
+	
+function Turn(dg) {
+	orient = orient - Math.PI * dg / 180;
+	}
+
+function Goto(x, y) { xpos = x; ypos = canvasHeight - y; }
+
+function Angle(dg) {
+	orient = Math.PI - Math.PI * dg / 180;
+	}
+
+function Move(s) {
+	xpos = xpos + s *  Math.sin(orient);
+	ypos = ypos + s *  Math.cos(orient);
+	}
+
+function Draw(s) {
+	ctx.beginPath();
+	ctx.moveTo(xpos, ypos);
+	xpos = xpos + s *  Math.sin(orient);
+	ypos = ypos + s *  Math.cos(orient);
+	ctx.lineTo(xpos, ypos);
+	ctx.stroke();
+	}
+
+function Drawto(x, y) {
+	ctx.beginPath(); ctx.moveTo(xpos, ypos);
+	y = canvasHeight - y;
+	ctx.lineTo(x, y); ctx.stroke();
+	orient = Math.PI / 2 - Math.atan2(y - ypos, x - xpos); 
+	xpos = x; ypos = y;
+	}
+
+function Line(lst) {
+	Path(lst); ctx.stroke();
+	}
+	
+function Shape(lst, flag) {
+	turtleStack.push(xpos, ypos, orient);
+	Path(lst);
+	ctx.closePath(); 
+	if(flag == true) { ctx.fill(); }
+    ctx.stroke();
+	orient = turtleStack.pop();
+	ypos = turtleStack.pop();
+	xpos = turtleStack.pop();
+	}
+
+function Clip(lst, flag) {
+	turtleStack.push(xpos, ypos, orient);
+	Path(lst); ctx.closePath();
+	if(flag == true) ctx.stroke(); 
+	ctx.clip();
+	orient = turtleStack.pop();
+	ypos = turtleStack.pop();
+	xpos = turtleStack.pop();
+	}
+
+function Path(lst) {
+	var x1, y1, x2, y2, x3, y3;
+	var type, dg, dist, phi;
+	
+	ctx.beginPath(); ctx.moveTo(xpos, ypos);
+
+	for (var i = 0; i < lst.length; ) {
+		if(lst[i] == "B")
+			{
+			x1 = lst[i + 1]; y1 = -lst[i + 2]; 
+			x2 = lst[i + 3]; y2 = -lst[i + 4]; 
+			x3 = lst[i + 5]; y3 = -lst[i + 6]; 
+			PathBezier(x1, y1, x2, y2, x3, y3);
+			phi = Math.atan2(y3, x3);
+			orient = orient - 0.5 * Math.PI - phi; // turn 90 right + phi
+			if(phi == 0) Move(x3); else Move(y3 / Math.sin(phi)); 
+			orient = orient + 0.5 * Math.PI; // turn 90 left
+			i += 7;
+			}
+		else {
+			if(lst[i] == "L") {
+				dg = lst[i + 1];
+				dist = lst[i + 2];
+				orient = orient - Math.PI * dg / 180;
+				xpos = xpos + dist *  Math.sin(orient);
+				ypos = ypos + dist *  Math.cos(orient);
+				ctx.lineTo(xpos, ypos);
+				i += 3;
+				}
+			// else invalid format
+			}
+		}
+	}
+	
+function Bezier(x1, y1, x2, y2, x3, y3) {
+	var phi = Math.atan2(y3, x3);
+	ctx.beginPath(); 
+	PathBezier(x1, -y1, x2, -y2, x3, -y3); 
+	orient += phi;
+	orient = orient - Math.PI * 0.5; // turn 90
+	if (phi == 0) { Move(x3); } else { Move(y3 / Math.sin(phi));}
+	orient = orient + Math.PI * 0.5; // turn -90
+	}
+		
+function PathBezier(x1, y1, x2, y2, x3, y3) {
+	ctx.save(); 
+	ctx.translate(xpos, ypos); ctx.rotate(Math.PI - orient);
+	ctx.moveTo(0, 0); ctx.bezierCurveTo(x1, y1, x2, y2, x3, y3);
+	ctx.restore();
+	}
+
+function Polygon(rad, n, flag) {
+	var orientinc = 2 * Math.PI / n;
+	ctx.save();
+	ctx.translate(xpos, ypos); ctx.rotate(-orient);
+	ctx.beginPath(); ctx.moveTo(0, rad);
+	for (var angle = 0; angle < 2 * Math.PI; angle += orientinc) {
+		ctx.lineTo(Math.sin(angle) * rad, Math.cos(angle) * rad);
+		}
+	ctx.closePath(); 
+	if (flag == true) ctx.fill();
+    ctx.stroke();
+	ctx.restore();
+	}
+
+function Pie(rad, height, flag) {
+	var start = Math.PI / 2 - orient;
+	var end = start + (Math.PI / 2) * (height / 90);
+	ctx.beginPath(); ctx.moveTo(xpos, ypos);
+	ctx.arc(xpos, ypos, rad, start, end, false); 
+	ctx.closePath();
+	if (flag == true) ctx.fill();
+    ctx.stroke();
+	}
+
+function Circle(rad, flag) {
+	ctx.beginPath(); ctx.moveTo(xpos + rad, ypos);
+	ctx.arc(xpos, ypos, rad, 0, 6.39, 0);
+	if (flag == true) ctx.fill();
+	ctx.stroke();
+	}
+
+function Ellipse(xrad, yrad, start, end, flag) {
+	ctx.save();
+	ctx.translate(xpos, ypos);
+	ctx.rotate(Math.PI - orient);
+	ctx.beginPath();
+	ctx.scale(1, yrad/xrad);
+	start = Math.PI * start / 180 - Math.PI/2;
+	end =  Math.PI * end / 180 - Math.PI/2;
+	ctx.arc(0, 0, xrad, start, end, 0);
+	ctx.closePath();
+	if (flag == true) ctx.fill();
+    ctx.stroke();
+	ctx.restore();
+	}   
+
+function Text(str) {
+	ctx.save(); ctx.translate(xpos, ypos); ctx.rotate(Math.PI / 2 - orient);
+	ctx.fillText(str, 0, 0);
+	var txt = ctx.measureText(str);	 
+	ctx.restore();
+	Move(txt.width);
+	}
+
+function TextOutline(str) {
+	ctx.save(); ctx.translate(xpos, ypos); ctx.rotate(Math.PI / 2 - orient);
+	ctx.strokeText(str, 0, 0);
+	var txt = ctx.measureText(str);	
+	ctx.restore();
+	Move(txt.width);
+	}
+
+function TextArc(str, radius) {
+	var ainc;
+	for(var i = 0; i < str.length; i++) {
+		ainc =  ctx.measureText(str[i]).width / (2 * radius);
+		orient -= ainc; Text(str[i]); orient -= ainc;
+		}
+	}
+
+function TextArcOutline(str, radius) {
+	var ainc;
+	for(var i = 0; i < str.length; i++) {
+		ainc =  ctx.measureText(str[i]).width / (2 * radius);
+		orient -= ainc; TextOutline(str[i]); orient -= ainc;
+		}
+	}
+
+function drawAllCanvas() { try
+	{
+	// if(!ctx.fillText) document.write('function fillText() not suppported on this browser');
+
+	var canvas=document.getElementById('myCanvas');
+	var ctx=canvas.getContext('2d'); Ctx(ctx);
+	canvasWidth = 400; canvasHeight = 600;
+	xpos = 0; ypos = canvasHeight;
+	orient = Math.PI;
+	turtleStack = new Array();
+	ctx.lineWidth = 1;
+	ctx.strokeStyle = 'rgb(0, 0, 0)';
+	ctx.fillStyle = 'rgb(0, 0, 0)';
+
+<!-- start generated JavaScript -->
+
+ctx.font = "bold 26px serif";
+Angle(0);
+ctx.fillStyle = 'rgb(51, 153, 153)';
+ctx.strokeStyle = 'rgb(51, 153, 153)';
+Shape(new Array('L',0,600,'L',90,400,'L',90,600), true);
+Angle(0);
+ctx.fillStyle = 'rgb(127, 127, 127)';
+ctx.strokeStyle = 'rgb(127, 127, 127)';
+Shape(new Array('L',0,600,'L',90,400,'L',90,600), true);
+ctx.lineWidth = 10;
+ctx.strokeStyle = 'rgb(204, 204, 51)';
+Goto(200, 0);
+Angle(0);
+ctx.fillStyle = 'rgb(204, 153, 102)';
+Shape(new Array('B',-200,200,200,400,0.1,600,'L',180,200,'L',90,600), true);
+ctx.fillStyle = 'rgb(51, 102, 153)';
+Shape(new Array('B',-200,200,200,400,0.1,600,'L',0,200,'L',-90,600), true);
+Goto(320, 300);
+Gsave();
+ctx.translate(xpos, - (canvasHeight - ypos));
+Scale(1, 1);
+Goto(0, 0);
+ctx.lineWidth = 6;
+ctx.strokeStyle = 'rgb(51, 51, 51)';
+Circle(5, false);
+Angle(90);
+ctx.lineWidth = 5;
+ctx.lineCap = 'round';
+Bezier(-20, 20, 20, 40, 0.01, 50); ctx.stroke();
+ctx.lineWidth = 3;
+Circle(8, false);
+Grestore();
+ctx.strokeStyle = 'rgb(204, 204, 51)';
+ctx.fillStyle = 'rgb(204, 204, 51)';
+Angle(90);
+Goto(100, 450);
+Text("Art");
+Goto(113, 429);
+ctx.font = "bold 16px serif";
+Text("&");
+Goto(67, 410);
+Text("Computer Craft");
+ctx.strokeStyle = 'rgb(76, 76, 76)';
+ctx.fillStyle = 'rgb(76, 76, 76)';
+ctx.font = "bold 12px serif";
+Goto(220, 50);
+Text("Images and linked PDF files");
+Goto(210, 30);
+Text("copyright (c) 2015 Lutz Mueller");
+
+<!-- end generated JavaScript -->
+
+	} catch (er) {    }
+} 
+</script></head><body onload="drawAllCanvas();">
+<head><TITLE>Art & Computer Craft</TITLE></head>
+<br/><center>
+<a href="pictures.cgi">
+<canvas id="myCanvas" width="400" height="600"></canvas>
+</a>
+</center>
+</body></html>

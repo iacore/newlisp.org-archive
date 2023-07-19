@@ -1,0 +1,1878 @@
+<!doctype html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" data-behavior="i18n" class="js-no-scroll">
+
+  <head>
+    <meta charset="utf-8"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Twitterサービス利用規約</title>
+<meta name="description"/>
+<link rel="canonical" href="https://twitter.com/ja/tos/previous/version_14"/>
+
+
+
+<meta property="og:url" content="https://twitter.com/ja/tos/previous/version_14"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="Twitterサービス利用規約"/>
+
+<meta property="og:image" content="/content/dam/legal-twitter/privacy-policy-2022/Twitter-terms-of-service-share.jpg.twimg.768.jpg"/>
+<meta name="keywords"/>
+
+
+<meta name="twitter:card" content="summary"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="twitter:widgets:new-embed-design" content="on"/>
+<meta name="twitter:widgets:csp" content="on"/>
+
+<link href="https://abs.twimg.com/favicons/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+
+
+<script type="application/json" id="analytics-settings">{&quot;google&quot;:{&quot;accounts&quot;:[],&quot;options&quot;:{&quot;displayAdvertisingFeatures&quot;:false}},&quot;scribe&quot;:{&quot;scribeSectionWithImpression&quot;:false},&quot;trackingPixel&quot;:{},&quot;bing&quot;:{}}</script>
+
+    
+
+<link rel="preconnect" href="https://twitter.com"/>
+
+<link rel="dns-prefetch" href="//syndication.twitter.com"/>
+<link rel="dns-prefetch" href="//fonts.twitter.com"/>
+<link rel="dns-prefetch" href="//platform.twitter.com"/>
+<link rel="dns-prefetch" href="//cdn.cms-twdigitalassets.com"/>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/css/main.ja.css" media="screen" type="text/css"/>
+
+<link rel="stylesheet" href="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/css/print.css.twhash.a.f.a1ddadfc5c50e9e986f7b8872a6b28a3.css" media="print" type="text/css"/>
+
+
+
+<script type="text/javascript" src="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/js/common.js.twhash.a.f.1844c17326b60941bebeb7d8f1d882dc.js"></script>
+
+
+
+  </head>
+  <body class="
+        twtr-theme--blue
+        twtr-shade--dark
+        page single-page
+        
+        twtr-color-bg--light-gray-neutral
+        js-no-scroll
+      " data-analytics-page="twitter" data-analytics-section="ja" data-analytics-component="tos/previous/version_14" data-analytics-element="page">
+      
+      
+<main class="twtr-container  twtr-color-bg--white-neutral">
+  
+
+
+
+
+    
+    
+    <div class="p01-single-page-site-header">
+
+
+
+
+
+<div class="p01">
+  <div class="p01__item  twtr-container  twtr-color-bg--blue-dark">
+    <div class="p01__nav-bar  twtr-grid">
+      <div class="p01__brand">
+        <span class="p01__brand-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" class="twtr-icon--base  twtr-color-fill--white-neutral"> 
+ <path opacity="0" d="M0 0h24v24H0z" /> 
+ <path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z" /> 
+</svg></span>
+        <span class="p01__brand-name  twtr-type--bold-16  twtr-color--white-neutral">
+          Twitterサービス利用規約
+        </span>
+      </div>
+      <div class="p01__menu-container">
+        <ul class="p01__menu">
+          <li class="p01__menu-item  p01__menu-item-download-pdf">
+            <a class="p01__item-link  p01__item-link--downlaod  twtr-type--bold-14  twtr-color--white-neutral  has-hover" target="_blank" rel="noopener" href="https://cdn.cms-twdigitalassets.com/content/dam/legal-twitter/site-assets/privacy-policy-new/Twitter-User-Agreement-JA.pdf">ダウンロード：Twitterユーザー同意書</a>
+          </li>
+          <li class="p01__menu-item  p01__menu-item-hamburger  has-menu  js-toggle-menu">
+            <div role="button" class="p01__menu-toggle  js-toggle-nav  is-collapsed  twtr-color--white-neutral" data-target=".p01__menu--site">
+              <span class="p01__menu-toggle-text  visuallyhidden" data-open-message="Open menu" data-close-message="Close menu">
+                
+              </span>
+              <div class="p01__menu-toggle-icon">
+                <span class="p01__menu-toggle-icon-bar"></span>
+                <span class="p01__menu-toggle-icon-bar"></span>
+                <span class="p01__menu-toggle-icon-bar"></span>
+                <span class="p01__menu-toggle-icon-bar"></span>
+              </div>
+            </div>
+            <div class="p01__dropdown-container  twtr-container">
+              <div class="twtr-grid  twtr-gutter">
+                <ul class="p01__dropdown  twtr-type--bold-18  twtr-color--white-neutral">
+                  
+                  <li class="p01__dropdown-item  p01__dropdown-item--pdf">
+                    <a href="https://cdn.cms-twdigitalassets.com/content/dam/legal-twitter/site-assets/privacy-policy-new/Twitter-User-Agreement-JA.pdf" class="p01__dropdown-item-link  has-hover  twtr-type--bold-18  twtr-color--white-neutral">
+                      ダウンロード：Twitterユーザー同意書
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="p02-statement-masthead">
+
+
+
+
+
+<div class="p02  twtr-component-space--xl">
+  <div class="p02__item">
+    <div class="p02__wrapper  p02__wrapper--top  p02__min-height--short  twtr-gutter  twtr-color-bg--blue-dark">
+      <div class="p02__copy-content">
+        <h1 class="p02__headline  twtr-grid__col-md-12  twtr-color--white-neutral   twtr-type">Twitterサービス利用規約</h1>
+        
+      </div>
+    </div>
+    <p style="display: none;">goglobalwithtwitterbanner</p>
+    
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01  twtr-gutter  cr01--section      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--black-neutral)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-3">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+
+        </div>
+      </div>
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-9">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--block      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    has-inner-border" style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--group      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>Twitterユーザー契約は<a href="/content/twitter-com/content/twitter-com/legal/ja/tos1.html#update" rel="nofollow">本サービス利用規約</a>、当社の<a href="https://twitter.com/ja/privacy" rel="nofollow">プライバシーポリシー</a>、<a href="https://help.twitter.com/ja/rules-and-policies#twitter-rules" rel="nofollow">Twitterルール</a>、およびすべての組み込まれたポリシーから構成されます。</p>
+
+  </div>
+
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="p22-chapters-container">
+
+
+<div class="p22  ">
+  <div class="p22__item">
+    
+
+
+
+
+    
+    
+    <div class="p20-scroll-anchor">
+
+
+
+<section class="p20  " id="update-intlTerms">&nbsp;</section>
+</div>
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01  twtr-gutter  cr01--section      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--black-neutral)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-3">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+
+        </div>
+      </div>
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-9">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--block      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    has-inner-border" style="--theme-color: var(--black-neutral)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--group      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <h3>Twitterサービス利用規約</h3>
+
+  </div>
+
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>本サービス利用規約&#xff08;以下、「本規約」と称します&#xff09;は、当社の様々なウェブサイト、SMS、API、メール通知、アプリケーション、ボタン、ウィジェット、広告、およびeコマースサービスなどのTwitterのサービスと、本規約に関連するTwitterの他の対象サービス&#xff08;<a href="https://help.twitter.com/ja/rules-and-policies/twitter-services-and-corporate-affiliates" target="_blank" rel="nofollow noopener noreferrer">https://help.twitter.com/ja/rules-and-policies/twitter-services-and-corporate-affiliates</a>&#xff09;&#xff08;以下、「本サービス」と総称します&#xff09;、ならびに本サービスにアップロード、ダウンロードまたは表示される情報、テキスト、リンク、グラフィック、写真、音声、動画、その他のマテリアルやアレンジされたマテリアル&#xff08;以下、「コンテンツ」と総称します&#xff09;にアクセスし、利用する場合に適用されます。本サービスを利用することによって、ユーザーは本規約に拘束されることに同意したことになります。</p>
+
+  </div>
+
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="p23-chapter">
+
+
+<div class="p23" data-chapter="">
+  <div class="p23__item">
+    
+
+
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01  twtr-gutter  cr01--section      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-3">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="p05-chapter-navigation">
+
+
+
+
+
+<div class="p05">
+  <div class="p05__item  twtr-container">
+    <div class="p05__list-wrapper  p05__wrapper-desktop">
+      <ul class="p05__list">
+        <li class="p05__list-item  twtr-color--blue-dark">
+          <a href="#intTerms-update-Chapter1" data-target-id="intTerms-update-Chapter1" class="p05__link  twtr-type--bold-16  twtr-color--blue-dark  has-hover">1.本サービスを利用できる人</a>
+        </li>
+      
+        <li class="p05__list-item  twtr-color--blue-dark">
+          <a href="#intTerms-update-Chapter2" data-target-id="intTerms-update-Chapter2" class="p05__link  twtr-type--bold-16  twtr-color--blue-dark  has-hover">2.プライバシー</a>
+        </li>
+      
+        <li class="p05__list-item  twtr-color--blue-dark">
+          <a href="#intTerms-update-Chapter3" data-target-id="intTerms-update-Chapter3" class="p05__link  twtr-type--bold-16  twtr-color--blue-dark  has-hover">3.本サービス上のコンテンツ</a>
+        </li>
+      
+        <li class="p05__list-item  twtr-color--blue-dark">
+          <a href="#intTerms-update-Chapter4" data-target-id="intTerms-update-Chapter4" class="p05__link  twtr-type--bold-16  twtr-color--blue-dark  has-hover">4.本サービスの利用</a>
+        </li>
+      
+        <li class="p05__list-item  twtr-color--blue-dark">
+          <a href="#intTerms-update-Chapter5" data-target-id="intTerms-update-Chapter5" class="p05__link  twtr-type--bold-16  twtr-color--blue-dark  has-hover">5.責任の制限</a>
+        </li>
+      
+        <li class="p05__list-item  twtr-color--blue-dark">
+          <a href="#intTerms-update-Chapter6" data-target-id="intTerms-update-Chapter6" class="p05__link  twtr-type--bold-16  twtr-color--blue-dark  has-hover">6.一般条件</a>
+        </li>
+      </ul>
+    </div>
+    <div class="p05__wrapper  p05__wrapper-mobile">
+      <div class="p05__title-wrapper">
+        <div class="p05__title-content">
+          <span class="p05__title  twtr-type--bold-16  twtr-color--blue-dark">&nbsp;</span>
+          <div class="p05__icon--arrow-down">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path id="bounds" opacity="0" d="M0 0h24v24H0z"/>
+    <path d="M20.207 7.043c-.39-.39-1.023-.39-1.414 0L12 13.836 5.207 7.043c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414l7.5 7.5c.195.195.45.293.707.293s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.023 0-1.414z"/>
+</svg>
+
+          </div>
+        </div>
+      </div>
+      <div class="p05__dropdown-content  is-closed">
+        <ul class="p05__dropdown-list  twtr-gutter">
+          <li class="p05__dropdown-list-item  twtr-type--bold-16  twtr-color--blue-dark" data-target-id="1.本サービスを利用できる人" data-val="#intTerms-update-Chapter1">
+            <!-- 1.本サービスを利用できる人 -->
+            <a href="#intTerms-update-Chapter1" data-target-id="intTerms-update-Chapter1" class="p05__dropdown-link  twtr-type--bold-16  twtr-color--blue-dark">1.本サービスを利用できる人</a>
+          </li>
+        
+          <li class="p05__dropdown-list-item  twtr-type--bold-16  twtr-color--blue-dark" data-target-id="2.プライバシー" data-val="#intTerms-update-Chapter2">
+            <!-- 2.プライバシー -->
+            <a href="#intTerms-update-Chapter2" data-target-id="intTerms-update-Chapter2" class="p05__dropdown-link  twtr-type--bold-16  twtr-color--blue-dark">2.プライバシー</a>
+          </li>
+        
+          <li class="p05__dropdown-list-item  twtr-type--bold-16  twtr-color--blue-dark" data-target-id="3.本サービス上のコンテンツ" data-val="#intTerms-update-Chapter3">
+            <!-- 3.本サービス上のコンテンツ -->
+            <a href="#intTerms-update-Chapter3" data-target-id="intTerms-update-Chapter3" class="p05__dropdown-link  twtr-type--bold-16  twtr-color--blue-dark">3.本サービス上のコンテンツ</a>
+          </li>
+        
+          <li class="p05__dropdown-list-item  twtr-type--bold-16  twtr-color--blue-dark" data-target-id="4.本サービスの利用" data-val="#intTerms-update-Chapter4">
+            <!-- 4.本サービスの利用 -->
+            <a href="#intTerms-update-Chapter4" data-target-id="intTerms-update-Chapter4" class="p05__dropdown-link  twtr-type--bold-16  twtr-color--blue-dark">4.本サービスの利用</a>
+          </li>
+        
+          <li class="p05__dropdown-list-item  twtr-type--bold-16  twtr-color--blue-dark" data-target-id="5.責任の制限" data-val="#intTerms-update-Chapter5">
+            <!-- 5.責任の制限 -->
+            <a href="#intTerms-update-Chapter5" data-target-id="intTerms-update-Chapter5" class="p05__dropdown-link  twtr-type--bold-16  twtr-color--blue-dark">5.責任の制限</a>
+          </li>
+        
+          <li class="p05__dropdown-list-item  twtr-type--bold-16  twtr-color--blue-dark" data-target-id="6.一般条件" data-val="#intTerms-update-Chapter6">
+            <!-- 6.一般条件 -->
+            <a href="#intTerms-update-Chapter6" data-target-id="intTerms-update-Chapter6" class="p05__dropdown-link  twtr-type--bold-16  twtr-color--blue-dark">6.一般条件</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+        </div>
+      </div>
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-9">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--group      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="p20-scroll-anchor">
+
+
+
+<section class="p20  " id="intTerms-update-Chapter1">&nbsp;</section>
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h3 class="cr03__headline  twtr-color--blue-dark  twtr-type  ">1.本サービスを利用できる人</h3>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>本サービスを利用できるのは、Twitterと拘束力のある契約を締結することに同意し、適用のある法域の法律によりサービスを受けることが禁止されていない者に限ります。また、いかなる場合においても、本サービスを利用するためには少なくとも13歳&#xff08;Periscopeの場合には16歳&#xff09;以上でなければならないものとします。ユーザーが、特定の企業、組織、政府、その他の法人のために本規約を受け入れ、本サービスを利用する場合、そのような権限を有していることおよび当該法人を本規約に法的に拘束することができる権限を有していることを表明し保証するものとします。その場合、本規約における「ユーザー」は当該法人を指すものとします。<br />
+</p>
+
+  </div>
+
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--group      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="p20-scroll-anchor">
+
+
+
+<section class="p20  " id="intTerms-update-Chapter2">&nbsp;</section>
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h3 class="cr03__headline  twtr-color--blue-dark  twtr-type  ">2.プライバシー</h3>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>当社の<a href="https://twitter.com/ja/privacy" target="_blank" rel="nofollow noopener noreferrer">プライバシーポリシー</a>&#xff08;<a href="https://www.twitter.com/privacy" target="_blank" rel="nofollow noopener noreferrer">https://www.twitter.com/privacy</a>&#xff09;は、Twitterサービスをご使用いただく際に当社に提供された情報が、当社でどのように取り扱われるかについて説明しています。ユーザーは、本サービスを利用することによって、Twitterおよびその関係会社がこれら情報を保管、処理、使用するために米国、アイルランド、および&#xff0f;またはその他の国々に転送することを含め、これら情報の収集および使用&#xff08;プライバシーポリシーの定めに従って&#xff09;に同意することを理解しているものとします。</p>
+
+  </div>
+
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--group      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="p20-scroll-anchor">
+
+
+
+<section class="p20  " id="intTerms-update-Chapter3">&nbsp;</section>
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h3 class="cr03__headline  twtr-color--blue-dark  twtr-type  ">3.本サービス上のコンテンツ</h3>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>ユーザーは、適用される法令や規則への遵守を含め、本サービスの利用および自身が提供するコンテンツに対して責任を負います。提供されるコンテンツは、他の人たちと共有して差し支えのないものに限定してください。</p>
+<p>本サービスを介して投稿されたまたは本サービスを通じて取得したコンテンツやマテリアルの使用またはこれらへの依拠は、ユーザーの自己責任において行ってください。当社は、本サービスを介して投稿されたいかなるコンテンツや通信内容についても、その完全性、真実性、正確性、もしくは信頼性を是認、支持、表明もしくは保証せず、また本サービスを介して表示されるいかなる意見についても、それらを是認するものではありません。利用者は、本サービスの利用により、不快、有害、不正確あるいは不適切なコンテンツ、または場合によっては、不当表示されている投稿またはその他欺瞞的な投稿に接する可能性があることを、理解しているものとします。すべてのコンテンツは、そのコンテンツの作成者が単独で責任を負うものとします。当社は、本サービスを介して投稿されるコンテンツを監視または管理することはできず、また、そのようなコンテンツについて責任を負うこともできません。</p>
+<p>当社は、Twitterユーザー契約に違反しているコンテンツ&#xff08;著作権もしくは商標の侵害その他の知的財産の不正利用、なりすまし、不法行為または嫌がらせ等&#xff09;を削除する権利を留保します。違反を報告または上申するための特定のポリシーおよびプロセスに関する情報は、当社のヘルプセンター&#xff08;<a href="https://help.twitter.com/ja/rules-and-policies/twitter-report-violation#specific-violations" target="_blank" rel="nofollow noopener noreferrer">https://help.twitter.com/ja/rules-and-policies/twitter-report-violation#specific-violations</a>および<a href="https://help.twitter.com/ja/managing-your-account/suspended-twitter-accounts" target="_blank" rel="nofollow noopener noreferrer">https://help.twitter.com/ja/managing-your-account/suspended-twitter-accounts</a>&#xff09;でご覧いただけます。</p>
+<p>ご自身のコンテンツが著作権を侵害する方法でコピーされたと判断される場合は、当社の著作権侵害報告フォーム&#xff08;<a href="https://help.twitter.com/forms/dmca" target="_blank" rel="nofollow noopener noreferrer">https://help.twitter.com/forms/dmca</a>&#xff09;にアクセスしていただくか、以下の当社のCopyright Agent&#xff08;著作権通知窓口&#xff09;まで報告をお願いします。</p>
+<p>Twitter, Inc.<br /> 宛名&#xff1a;Copyright Agent<br /> 1355 Market Street, Suite 900<br /> San Francisco, CA 94103<br /> 報告先&#xff1a;<a href="https://help.twitter.com/forms/dmca" target="_blank" rel="nofollow noopener noreferrer"> https://help.twitter.com/forms/dmca</a><br /> 電子メール&#xff1a;<a href="mailto:copyright&#64;pscp.tv" rel="nofollow">copyright&#64;twitter.com</a><br />&#xff08;Twitter上のコンテンツの場合&#xff09;</p>
+<p>Twitter, Inc.<br /> 宛名&#xff1a;Copyright Agent - Periscope<br /> 1355 Market Street, Suite 900<br /> San Francisco, CA 94103<br /> 報告先&#xff1a;<a href="https://help.twitter.com/forms/dmca" target="_blank" rel="nofollow noopener noreferrer">https://help.twitter.com/forms/dmca<br /> </a>電子メール&#xff1a;<a href="mailto:copyright&#64;pscp.tv" rel="nofollow">copyright&#64;pscp.tv</a><br />&#xff08;Periscope上のコンテンツの場合&#xff09;</p>
+
+  </div>
+
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h1 class="cr03__headline  twtr-color--black-neutral  twtr-type  ">ユーザーの権利およびコンテンツに対する権利の許諾</h1>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>ユーザーは、本サービス上にまたは本サービスを介して自ら送信、投稿または表示するあらゆるコンテンツに対する権利を留保するものとします。ユーザーのコンテンツはユーザーのものです。すなわち、ユーザーのコンテンツ&#xff08;他のコンテンツに組み込まれたユーザーの音声、写真および動画もユーザーのコンテンツの一部と考えられます&#xff09;の所有権はユーザーにあります。</p>
+<p>ユーザーは、本サービス上にまたは本サービスを介してコンテンツを送信、投稿または表示することによって、当社が、既知のものか今後開発されるものかを問わず、あらゆる媒体または配信方法を使ってかかるコンテンツを使用、コピー、複製、処理、改変、修正、公表、送信、表示および配信するための、世界的かつ非独占的ライセンス&#xff08;サブライセンスを許諾する権利と共に&#xff09;を当社に対し無償で許諾することになります&#xff08;明確化のために、これらの権利は、たとえば、キュレーション、変形、翻訳を含むものとします&#xff09;。このライセンスによって、ユーザーは、当社や他の利用者に対し、ご自身のツイートを世界中で閲覧可能とすることを承認することになります。ユーザーは、このライセンスには、Twitterが、コンテンツ利用に関する当社の条件に従うことを前提に、本サービスを提供、宣伝および向上させるための権利ならびに本サービスに対しまたは本サービスを介して送信されたコンテンツを他の媒体やサービスで配給、放送、配信、リツイート、プロモーションまたは公表することを目的として、その他の企業、組織または個人に提供する権利が含まれていることに同意するものとします。ユーザーが本サービスを介して送信、投稿、送信またはそれ以外で閲覧可能としたコンテンツに関して、Twitter、またはその他の企業、組織もしくは個人は、ユーザーに報酬を支払うことなく&#xff08;ユーザーは、ユーザーによる本サービスの利用がコンテンツおよびコンテンツに関する権利の許諾に対する十分な対価であることに同意するものとします&#xff09;、当該コンテンツを上記のように追加的に使用します。</p>
+<p>Twitterでは、エコシステムパートナーが本サービス上のユーザーのコンテンツを使用する方法について、発展的なルールを用意しています。 これらのルールは、ユーザーの権利を念頭に置いた上で、オープンなエコシステムを構築するために存在しています。ユーザーは、TwitterならびにTwitterのパートナーがユーザーのコンテンツを配信、配給、公表、または放送する際にコンテンツが修正または変更される可能性があること、および&#xff0f;またはコンテンツを異なるメディアに適合させるためにコンテンツに変更を加える可能性があることを理解しているものとします。</p>
+<p>ユーザーは、ご自身が本サービス上でまたは本サービスを通じて送信、投稿または表示するコンテンツに関して、本規約で付与される権利を許諾するために必要な、すべての権利、ライセンス、同意、許可、権能および&#xff0f;または権限を有していることまたは得ていることを表明し保証するものとします。ユーザーは、ご自身が必要な許可を得ているまたはその他の理由により素材を投稿しTwitterに上記のライセンスを許諾することができる法的権限を有している場合を除き、当該コンテンツが著作権その他の財産権の対象となる素材を含むものではないことに同意するものとします。</p>
+
+  </div>
+
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--group      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="p20-scroll-anchor">
+
+
+
+<section class="p20  " id="intTerms-update-Chapter4">&nbsp;</section>
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h3 class="cr03__headline  twtr-color--blue-dark  twtr-type  ">4.本サービスの利用</h3>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>本ユーザー契約の一部であり、本サービスでの禁止事項の内容を記載する<a href="https://help.twitter.com/ja/rules-and-policies#twitter-rules" target="_blank" rel="nofollow noopener noreferrer">Twitterルールとポリシー</a>&#xff08;Periscopeについては、<a href="https://www.pscp.tv/content" target="_blank" rel="nofollow noopener noreferrer">Periscopeのコミュニティガイドライン</a>&#xff08;<a href="https://www.pscp.tv/content" target="_blank" rel="nofollow noopener noreferrer">https://www.pscp.tv/content</a>&#xff09;&#xff09;をご覧ください。ユーザーは、本規約およびすべての適用法、規約および規則を遵守する場合にのみ本サービスを利用することができます。</p>
+<p>Twitterサービスは常に進化し続けています。そのため、本サービスは、当社独自の判断により適宜変更されることがあります。当社は、本サービスまたは本サービス内の機能をユーザーまたは利用者全般に提供することを&#xff08;永久的または一時的に&#xff09;中止することがあります。当社はまた、いつでも、当社の独自判断により、使用と保存に制限を設ける権利を留保します。当社はまた、ユーザーに責任を負うことなく、本サービス上のコンテンツの削除または配信の拒否、本サービス上のコンテンツの配信または表示の制限、利用者の資格停止または終了、および利用者名の返還を要求することができるものとします。</p>
+<p>ユーザーは、Twitterより本サービスへのアクセスとその利用について許諾を得ることの対価として、Twitterならびにその第三者プロバイダーおよびパートナーが、本サービス上に広告を掲載すること、またはコンテンツもしくは本サービスから得られる情報 (その提供者がユーザーであるか他者であるかを問わず) の表示に関連した広告を掲載することに同意するものとします。ユーザーはまた、たとえばTwitterサービスの妨害や当社が提供するインターフェースおよび手順以外の方法を使ったTwitterサービスへのアクセスにより、Twitterサービスの不正利用をしないことにも同意するものとします。ユーザーは、本サービスへのアクセスまたはその使用中に、次のいずれも行ってはなりません。(i)本サービス、Twitterのコンピュータシステム、またはTwitterプロバイダーのテクニカルデリバリーシステムの非公開部分へのアクセス、不正な改ざんもしくは使用、(ii)システムもしくはネットワークの脆弱性の探索、スキャンもしくはテスト、またはセキュリティもしくは認証方法の侵害もしくは回避、(iii)Twitterから提供される&#xff08;かつ該当する利用条件に従う場合にのみ提供される&#xff09;、当社の現在利用可能な公開インターフェース以外の方法&#xff08;自動プログラムか否かを問わない&#xff09;で、本サービスへのアクセスもしくはその探索またはアクセスもしくは探索の試み&#xff08;ただし、Twitterとの個別契約で特に許可されている場合は除く&#xff09;&#xff08;注&#xff1a;本サービスへのクローリングは、robots.txtファイルの定めによる場合は認められていますが、Twitterによる事前の同意がないまま本サービスのスクレイピングをすることは明示的に禁止されています&#xff09;、(iv)電子メールもしくは投稿でのTCP/IPパケットヘッダーまたはヘッダー情報の一部の偽造、または方法の如何を問わず、改ざんされた情報、詐欺的情報もしくは情報源を偽装した情報を送る目的での本サービスの利用、または(v)いずれかの利用者、ホストもしくはネットワークのアクセスの妨害、または遮断&#xff08;もしくはその試み&#xff09;&#xff08;本サービスへのウィルスの送信、オーバーロード、フラッディング、スパミング、メールの大量送信、あるいは本サービスを妨害したり過度な負荷を与える方法でコンテンツの作成をスクリプトすることを含みますが、これらに限定されません&#xff09;。当社はさらに、(i)適用されるすべての法令、規則、法的手続や政府の要請へ対応し、(ii)本規約を実施し(規約違反の疑いがある場合の調査を含みます)、(iii)不正利用、セキュリティもしくは技術的な問題を検知、防止もしくはその対処をし、(iv)利用者からのサポート要請に対応し、または (v)Twitterやその利用者および社会全体の権利、財産もしくは安全を保護するために、当社が必要であると合理的に判断する一切の情報について、アクセス、閲覧、保存、および公開する権利を留保します。Twitterは、当社の<a href="https://twitter.com/ja/privacy" rel="nofollow">プライバシーポリシー</a>&#xff08;https://twitter.com/ja/privacy&#xff09;の定めによる場合を除き、個人識別情報を第三者に開示することはありません。</p>
+<p>本サービスの開発者用機能&#xff08;<a href="https://developer.twitter.com/docs/twitter-for-websites/overview" target="_blank" rel="nofollow noopener noreferrer">ウェブサイト用Twitter</a>&#xff08;<a href="https://developer.twitter.com/docs/twitter-for-websites/overview" rel="nofollow">https://developer.twitter.com/docs/twitter-for-websites/overview</a>&#xff09;、<a href="https://developer.twitter.com/docs/tweets/optimize-with-cards/guides/getting-started" target="_blank" rel="nofollow noopener noreferrer">Twitterカード</a>&#xff08;<a href="https://developer.twitter.com/docs/tweets/optimize-with-cards/guides/getting-started" rel="nofollow">https://developer.twitter.com/docs/tweets/optimize-with-cards/guides/getting-started</a>&#xff09;、<a href="https://developer.twitter.com/en/docs" target="_blank" rel="nofollow noopener noreferrer">パブリックAPI</a>&#xff08;<a href="https://developer.twitter.com/en/docs" rel="nofollow">https://developer.twitter.com/en/docs</a>&#xff09;、または<a href="https://developer.twitter.com/docs/basics/authentication/guides/log-in-with-twitter" target="_blank" rel="nofollow noopener noreferrer">Twitterでのサインイン</a>&#xff08;<a href="https://developer.twitter.com/docs/basics/authentication/guides/log-in-with-twitter" rel="nofollow">https://developer.twitter.com/docs/basics/authentication/guides/log-in-with-twitter</a>&#xff09;を含みますが、これらに限定されません&#xff09;を利用する場合、ユーザーは、当社の<a href="https://developer.twitter.com/ja/developer-terms/agreement" target="_blank" rel="nofollow noopener noreferrer">開発者契約</a>&#xff08;<a href="https://developer.twitter.com/ja/developer-terms/agreement" target="_blank" rel="nofollow noopener noreferrer">https://developer.twitter.com/ja/developer-terms/agreement</a>&#xff09;および<a href="https://developer.twitter.com/ja/developer-terms/policy" target="_blank" rel="nofollow noopener noreferrer">開発者ポリシー</a>&#xff08;<a href="https://developer.twitter.com/ja/developer-terms/policy" rel="nofollow">https://developer.twitter.com/ja/developer-terms/policy</a>&#xff09;に同意するものとします。ユーザーは、本サービスまたは本サービス上のコンテンツの複製、修正、これに基づいた二次的著作物の作成、配信、販売、移転、公の展示、公の実演、送信、または他の形での使用を望む場合には、Twitterサービス、本規約または<a href="https://developer.twitter.com/en/developer-terms" rel="nofollow">https://developer.twitter.com/en/developer-terms</a>に定める条件により認められる場合を除いて、当社が提供するインターフェースおよび手順を使用しなければなりません。ユーザーがセキュリティ研究者の場合には、Twitterの<a href="https://hackerone.com/twitter" rel="nofollow">脆弱性報告プログラム</a>&#xff08;<a href="https://hackerone.com/twitter" rel="nofollow">https://hackerone.com/twitter</a>&#xff09;に従わなければなりません。  Twitterの脆弱性報告プログラムに参加するユーザーには上記パラグラフに規定される要求事項は適用されません。</p>
+<p>ユーザーは、本サービスの広告機能を利用する場合には、当社の<a href="https://ads.twitter.com/terms" target="_blank" rel="nofollow noopener noreferrer">Twitterマスターサービス契約</a>&#xff08;<a href="https://ads.twitter.com/terms" target="_blank" rel="nofollow noopener noreferrer">https://ads.twitter.com/terms</a>&#xff09;に同意しなければなりません。</p>
+<p>ユーザーがPeriscope上でスーパーハート、コインまたはスターを利用する場合には、Periscopeの<a href="https://legal.twitter.com/ja/periscope/super/terms.html" target="_blank" rel="nofollow noopener noreferrer">スーパーハート利用規約</a>&#xff08;<a href="https://legal.twitter.com/ja/periscope/super/terms.html" target="_blank" rel="nofollow noopener noreferrer">https://legal.twitter.com/ja/periscope/super/terms.html</a>&#xff09;に同意しなければなりません。</p>
+
+  </div>
+
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h1 class="cr03__headline  twtr-color--black-neutral  twtr-type  ">ユーザーアカウント</h1>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>ユーザーは、Twitterサービスのいくつかを利用するために、アカウントを作成する必要があります。ユーザーは自身のアカウントの安全を守る責任があります。したがって、強力なパスワードを使用し、その使用は本アカウントに限定するようにしてください。ユーザーによる上記の不遵守に起因する一切の損失または損害に対して当社は責任を負うことはできず、また今後も責任を負うものではありません。<br />
+</p>
+<p>ユーザーは、本サービスからのほとんどの通信をコントロールすることができます。当社は、サービスに係わる案内や管理上のメッセージなど、ユーザーに一定の通知を行う必要がある場合があります。これらの通知は本サービスおよびユーザーアカウントの一部とみなされ、ユーザーは、これらの連絡の受信を拒否することができない場合があります。ユーザーがアカウントにご自身の電話番号を追加し、その後当該電話番号を変更または削除した場合、ユーザーは、当社がユーザーの旧電話番号を取得した者と連絡を取ることがないようにするため、ご自身でアカウント情報を更新する必要があります。</p>
+
+  </div>
+
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h1 class="cr03__headline  twtr-color--black-neutral  twtr-type  ">本サービスを利用するためのユーザーライセンス</h1>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>Twitterはユーザーに、本サービスの一環として当社が提供するソフトウェアを使用するための、個人的で世界的、譲渡不能の非独占的なライセンスを無償で許諾します。このライセンスの唯一の目的は、ユーザーがTwitterの提供する本サービスを本規約に従った形で利用し、その恩恵を受けられるようにすることにあります。<br />
+</p>
+<p>本サービスは、米国およびその他の国の双方の著作権法、商標法その他の法律により保護されています。本規約のいずれの内容も、ユーザーに対してTwitterの名称またはTwitterの商標、ロゴ、ドメイン名、ブランドとして特徴的なその他の要素を使用する権利およびその他の権利を付与するものではありません。本サービス&#xff08;利用者から提供されるコンテンツを除きます&#xff09;に関するすべての権利、権原および利益は、Twitterとそのライセンサーの独占的財産であり続けます。ユーザーがTwitterまたは本サービスについて提供するフィードバック、意見または提案は、すべて完全に自発的なものであり、当社はこのようなフィードバック、意見または提案を、ユーザーに対して何ら義務を負うことなく、当社が適切であると判断する方法で、自由に利用できるものとします。</p>
+
+  </div>
+
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h4 class="cr03__headline  twtr-color--black-neutral  twtr-type  ">本規約の終了</h4>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>ユーザーは、いつでもアカウントを削除し本サービスの利用を中止することにより、Twitterとの法的契約を終了することができます。アカウントの削除方法に関する説明は<a href="https://help.twitter.com/ja/managing-your-account/how-to-deactivate-twitter-account" target="_blank" rel="nofollow noopener noreferrer">https://help.twitter.com/ja/managing-your-account/how-to-deactivate-twitter-account</a>&#xff08;Periscopeについては、<a href="https://help.pscp.tv/customer/portal/articles/2460220" target="_blank" rel="nofollow noopener noreferrer">https://help.pscp.tv/customer/portal/articles/2460220</a>&#xff09;をご覧ください。ユーザー情報についての詳細は、プライバシーポリシーをご覧ください。</p>
+<p>当社は、(i)ユーザーが本規約または<a href="https://help.twitter.com/ja/rules-and-policies#twitter-rules" target="_blank" rel="nofollow noopener noreferrer">Twitterルールとポリシー</a>もしくは<a href="https://www.pscp.tv/content" target="_blank" rel="nofollow noopener noreferrer">Periscopeのコミュニティガイドライン</a>に違反している、(ii)ユーザーが当社にリスクまたは法的責任の可能性をもたらす、(iii)不法行為によりユーザーのアカウントの削除が必要となった、(iv)ユーザーの長期的不活動によりアカウントの削除が必要となった、または(v)当社によるユーザーへの本サービスの提供が商業的に困難となった&#xff08;ただし、これらに限定されません&#xff09;と、当社が合理的に確信した場合、理由の如何を問わず、または理由なく、いつでもユーザーのアカウントを一時停止もしくは削除するか、本サービスの全部または一部の提供を終了することができます。かかる状況になった場合、当社は、状況に応じ、ユーザーのアカウントに関連するメールアドレスに通知を送るか、あるいはユーザーが次にアカウントにアクセスを試みる際に通知をするための合理的努力を行います。上記のいずれの場合においても、本規約は、ユーザーが本サービスを利用するためのライセンスとともに&#xff08;ただしこれに限定されません&#xff09;終了します。ただし、第2、3、5および6条の規定は引き続き適用されます。ご自身のアカウントが誤って終了されたと判断される場合、当社の<a href="https://help.twitter.com/forms/general?subtopic&#61;suspended" target="_blank" rel="nofollow noopener noreferrer">ヘルプセンター</a>&#xff08;<a href="https://help.twitter.com/forms/general?subtopic&#61;suspended" target="_blank" rel="nofollow noopener noreferrer">https://help.twitter.com/forms/general?subtopic&#61;suspended</a>&#xff09;に記載される方法に従い、上申書を提出することができます。疑義を避けるために、本規約は、ユーザーアカウントの一時停止または削除後も有効に存続するものとします。</p>
+
+  </div>
+
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--group      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--black-neutral)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="p20-scroll-anchor">
+
+
+
+<section class="p20  " id="intTerms-update-Chapter5">&nbsp;</section>
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h3 class="cr03__headline  twtr-color--blue-dark  twtr-type  ">5.責任の制限</h3>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h4 class="cr03__headline  twtr-color--black-neutral  twtr-type  ">本サービスは「現状のまま」で提供されます。</h4>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p><b>EUまたは欧州経済領域&#xff08;EEA&#xff09;以外に居住しているユーザーの場合</b>、ユーザーは、<b></b>ご自身の責任で、本サービスやコンテンツにアクセスし利用することに同意するものとします。  ユーザーは、本サービスが「現状のまま」で提供されることを理解し、同意するものとします。「Twitterエンティティ」とは、Twitter、その親会社、関連会社、関係会社、役員、取締役、従業員、代理人、代表者、パートナーおよびライセンサーをいいます。上記の規定を制限することなく、適用法令の下で許容される最大限の範囲において、Twitterエンティティは、明示または黙示を問わず、市場性、特定目的に対する適合性、権利非侵害についていかなる保証および条件付けもしないものとします。Twitterエンティティは、(i) 本サービスまたはコンテンツの完全性、正確性、利用可能性、適時性、安全性または信頼性、(ii) 本サービスまたはコンテンツへのアクセスまたは利用に起因するユーザーのコンピュータシステムへの損害、データの消失その他の損害、(iii) 本サービスにより維持されているコンテンツその他の通信の削除または保存もしくは送信の失敗、および (iv) 本サービスがユーザーの要求を満たすかどうか、また、中断されることなく、安全に、もしくはエラーなく利用できるかどうかについて、いかなる表明保証もせず、一切責任を負わないものとします。Twitterエンティティからまたは本サービスを通じて得られるアドバイスや通知は、口頭であると書面を問わず、本規約において明記されないいかなる保証または表明を行うものでもありません。</p>
+
+  </div>
+
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h4 class="cr03__headline  twtr-color--black-neutral  twtr-type  ">責任の制限</h4>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p><b>EUまたは欧州経済領域&#xff08;EEA&#xff09;以外の国に居住しているユーザーの場合</b>、ユーザーは、<b></b>適用法令の下で許容される最大限の範囲において、Twitterエンティティが、(i) 本サービスへのアクセスもしくは本サービスの利用または当該アクセスもしくは利用ができないこと、(ii) 本サービスにおける第三者の行為またはコンテンツ&#xff08;他の利用者または第三者による名誉毀損、侮辱または違法行為を含みますがこれらに限りません&#xff09;、あるいは(iii) 本サービスにより得られるコンテンツ、または(iv) ユーザーの通信もしくはコンテンツに対する不正アクセス、不正利用もしくは改変により生じた、いかなる間接損害、付随損害、特別損害、結果損害もしくは懲罰的損害、逸失利益もしくは逸失収益&#xff08;直接的に発生したか間接的に発生したかを問いません&#xff09;、データ、利用状況、営業権の損失その他の無形損害についても責任を負わないことに同意します。  いかなる場合においても、Twitterエンティティの責任は、総額で、100USドルまたはユーザーが過去6か月間に請求の原因となったサービスに対してTwitterに支払った金額のいずれか大きい金額を超えることはないものとします。本項に定める責任の制限は、保証責任、契約責任、法定責任、不法行為責任&#xff08;過失責任を含みます&#xff09;その他のいかなる責任法理に基づくものかにかかわらず、Twitterエンティティが当該損害の可能性について通知を受けていたか否かにかかわらず、また、本規約に定める救済措置がその本質的目的を達成できない場合であっても、適用されるものとします。</p>
+<p><b>EUまたは欧州経済領域&#xff08;EEA&#xff09;に居住するユーザーの場合</b>、本サービスを利用することにより、ユーザーは、Twitter、その親会社、関連会社や役員、取締役、従業員、代理人、パートナーおよびライセンサーの責任がユーザーの居住国において許容される最大限の範囲まで限定されることに同意するものとします。 </p>
+
+  </div>
+
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--group      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="p20-scroll-anchor">
+
+
+
+<section class="p20  " id="intTerms-update-Chapter6">&nbsp;</section>
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h3 class="cr03__headline  twtr-color--blue-dark  twtr-type  ">6.一般条件</h3>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>本規約は、随時改定される場合があります。改定は溯って適用されることはありません。また、ユーザーと当社の関係を定めた本規約の最新版は常に<a href="https://twitter.com/ja/tos" rel="nofollow">twitter.com/tos</a>でご覧になることができます。新たな機能に対処する変更または法的な理由により行われる変更を除き、当社はユーザーに対し、本規約の当事者の権利義務に影響を及ぼす本規約の変更を行う場合はその発効の30日前に、ユーザーのアカウントに関連するメールアドレス宛にサービス通知またはメール等を通じて通知します。ユーザーは、本規約への改定が有効となって以降に本サービスへのアクセスまたは本サービスの利用を継続することによって、改定後の本規約に拘束されることに同意したものとみなされます。</p>
+<p><b>EUまたは欧州経済領域&#xff08;EEA&#xff09;以外の国に居住するユーザーの場合</b>、本規約およびユーザーとTwitterの間に発生する紛争には、準拠法の選択に関する規定を除き、カリフォルニア州法が適用されます。 本規約または本サービスに係るあらゆる紛争は、アメリカ合衆国カリフォルニア州サンフランシスコ郡に所在する連邦裁判所または州裁判所に専属的に提起されるものとし、ユーザーは、人的管轄権に同意し、法廷地の不都合についての抗弁を放棄するものとします。</p>
+<p>ユーザーがアメリカ合衆国の連邦政府、州政府、地方政府機関で、本サービスを公的な立場で利用しており、前項の準拠法、管轄および裁判地に関する条項を受け入れることが法的にできない場合には、当該条項はユーザーには適用されません。このようなアメリカ合衆国の連邦政府機関のために、本規約と本規約に関連する活動には、&#xff08;準拠法の選択に関する規定を除き&#xff09;アメリカ合衆国の法律が適用され、連邦法が存在しないまたは連邦法の下で許容される範囲においては、&#xff08;準拠法の選択に関する規定を除き&#xff09;カリフォルニア州法が適用されます。<br />
+</p>
+<p>本規約のいずれかの規定が無効あるいは法的強制力がないと判断された場合、その規定は必要最小限の範囲で制限されるかまたは失効しますが、本規約中のその他の規定は引き続き完全な効力と効果を維持するものとします。Twitterが本規約のいずれかの権利または規定を行使しない場合にも、これをもってその権利または規定が放棄されたとはみなされません。</p>
+<p><b>EUまたは欧州経済領域&#xff08;EEA&#xff09;以外の場所に居住するユーザーの場合</b>には、本規約は、ユーザーと1355 Market Street Suite 900 San Francisco, CA 94103 United Statesに所在するTwitter, Inc.の間で締結される契約です。本規約についてのご質問は、<a href="https://help.twitter.com/forms" rel="nofollow">当社</a>&#xff08;<a href="https://help.twitter.com/forms" rel="nofollow">https://help.twitter.com/forms</a>&#xff09;にご連絡ください。 </p>
+<p><b>EUまたは欧州経済領域&#xff08;EEA&#xff09;に居住するユーザーの場合</b>には、本規約は、ユーザーとOne Cumberland Place, Fenian Street, Dublin 2, D02 AX07 Irelandに登記上の事務所を有するアイルランド法人であるTwitter International Companyの間で締結される契約です。 本規約についてのご質問は、<a href="https://help.twitter.com/forms" rel="nofollow">当社</a>&#xff08;<a href="https://help.twitter.com/forms" rel="nofollow">https://help.twitter.com/forms</a>&#xff09;にご連絡ください。 </p>
+<p><b>発効日&#xff1a;</b> 2020年1月1日</p>
+<p><a href="/ja/tos/previous" rel="nofollow">以前の規約のアーカイブ</a></p>
+
+  </div>
+
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+  </div>
+</div>
+</div>
+
+
+
+  </div>
+</div>
+</div>
+
+
+    
+    
+    
+
+
+</main>
+
+      <footer>
+  
+
+<footer class="u02">
+  <div class="u02__wrapper  twtr-container  twtr-gutter  twtr-color-bg--blue-dark">
+    <div class="u02__row">
+      <div class="twtr-grid  twtr-grid__col">
+        <div class="js-accordion  u02__column">
+          
+          <h4 class="u02__column__parent  twtr-type--bold-14  twtr-color--white-neutral  is-opaque">
+            Twitterプラットフォーム
+            <span class="u02__icon  twtr-color-fill--blue-extra-light  twtr-hidden--md  twtr-hidden--lg  twtr-hidden--xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="9.5" viewbox="0 0 17 9.5" class="twtr-icon--sm"> 
+ <path d="M16.707.293c-.39-.39-1.023-.39-1.414 0L8.5 7.086 1.707.293c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414l7.5 7.5c.195.195.45.293.707.293s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.023 0-1.414z" /> 
+</svg>
+            </span>
+          </h4>
+          
+          <ul class="u02__column__list">
+            <li class="u02__link-item">
+              <a href="https://twitter.com/" title="Twitter.com" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Twitter.com
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://status.twitterstat.us/" title="障害情報" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 障害情報
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://help.twitter.com/ja/resources/accessibility" title="アクセシビリティ" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 アクセシビリティ
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://publish.twitter.com" title="ツイートを埋め込む;" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 ツイートを埋め込む;
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://privacy.twitter.com/ja" title="プライバシーセンター" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 プライバシーセンター
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://transparency.twitter.com/ja.html" title="透明性センター" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 透明性センター
+              </a>
+            </li>
+          </ul>
+        </div>
+      
+        <div class="js-accordion  u02__column">
+          
+          <h4 class="u02__column__parent  twtr-type--bold-14  twtr-color--white-neutral  is-opaque">
+            X Corp.
+            <span class="u02__icon  twtr-color-fill--blue-extra-light  twtr-hidden--md  twtr-hidden--lg  twtr-hidden--xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="9.5" viewbox="0 0 17 9.5" class="twtr-icon--sm"> 
+ <path d="M16.707.293c-.39-.39-1.023-.39-1.414 0L8.5 7.086 1.707.293c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414l7.5 7.5c.195.195.45.293.707.293s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.023 0-1.414z" /> 
+</svg>
+            </span>
+          </h4>
+          
+          <ul class="u02__column__list">
+            <li class="u02__link-item">
+              <a href="https://about.twitter.com/en/who-we-are/our-company" title="会社について" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 会社について
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://about.twitter.com/en/who-we-are/twitter-for-good" title="Twitter for Good" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Twitter for Good
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://blog.twitter.com/" title="Twitterニュース" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Twitterニュース
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://about.twitter.com/en/who-we-are/brand-toolkit" title="ブランドツールキット" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 ブランドツールキット
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://careers.twitter.com/" title="採用情報" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 採用情報
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://investor.twitterinc.com/" title="投資家の皆さま" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 投資家の皆さま
+              </a>
+            </li>
+          </ul>
+        </div>
+      
+        <div class="js-accordion  u02__column">
+          
+          <h4 class="u02__column__parent  twtr-type--bold-14  twtr-color--white-neutral  is-opaque">
+            ヘルプ
+            <span class="u02__icon  twtr-color-fill--blue-extra-light  twtr-hidden--md  twtr-hidden--lg  twtr-hidden--xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="9.5" viewbox="0 0 17 9.5" class="twtr-icon--sm"> 
+ <path d="M16.707.293c-.39-.39-1.023-.39-1.414 0L8.5 7.086 1.707.293c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414l7.5 7.5c.195.195.45.293.707.293s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.023 0-1.414z" /> 
+</svg>
+            </span>
+          </h4>
+          
+          <ul class="u02__column__list">
+            <li class="u02__link-item">
+              <a href="https://help.twitter.com/ja" title="ヘルプセンター" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 ヘルプセンター
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://help.twitter.com/ja/using-twitter" title="Twitter活用法" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Twitter活用法
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://create.twitter.com/" title=" Twitterクリエイター" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                  Twitterクリエイター
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://business.twitter.com/ja/help.html" title="広告ヘルプセンター" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 広告ヘルプセンター
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://help.twitter.com/ja/managing-your-account" title="アカウントの管理" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 アカウントの管理
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://preferencecenter.twitter.com/" title="メール設定" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 メール設定
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://help.twitter.com/ja/rules-and-policies" title="ルールとポリシー" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 ルールとポリシー
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://help.twitter.com/ja/contact-us" title="お問い合わせ" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 お問い合わせ
+              </a>
+            </li>
+          </ul>
+        </div>
+      
+        <div class="js-accordion  u02__column">
+          
+          <h4 class="u02__column__parent  twtr-type--bold-14  twtr-color--white-neutral  is-opaque">
+            開発者向け参考資料
+            <span class="u02__icon  twtr-color-fill--blue-extra-light  twtr-hidden--md  twtr-hidden--lg  twtr-hidden--xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="9.5" viewbox="0 0 17 9.5" class="twtr-icon--sm"> 
+ <path d="M16.707.293c-.39-.39-1.023-.39-1.414 0L8.5 7.086 1.707.293c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414l7.5 7.5c.195.195.45.293.707.293s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.023 0-1.414z" /> 
+</svg>
+            </span>
+          </h4>
+          
+          <ul class="u02__column__list">
+            <li class="u02__link-item">
+              <a href="https://developer.twitter.com/en" title="開発者ホーム" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 開発者ホーム
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://developer.twitter.com/en/docs" title="ドキュメンテーション" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 ドキュメンテーション
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://twittercommunity.com/" title="フォーラム" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 フォーラム
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://developer.twitter.com/en/community" title="コミュニティ" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 コミュニティ
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://blog.twitter.com/developer/" title="開発者ブログ" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 開発者ブログ
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://blog.twitter.com/engineering/en_us.html" title="エンジニアリングブログ" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 エンジニアリングブログ
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://developer.twitter.com/ja/more/developer-terms" title="開発者利用規約" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 開発者利用規約
+              </a>
+            </li>
+          </ul>
+        </div>
+      
+        <div class="js-accordion  u02__column">
+          
+          <h4 class="u02__column__parent  twtr-type--bold-14  twtr-color--white-neutral  is-opaque">
+            企業向け参考資料
+            <span class="u02__icon  twtr-color-fill--blue-extra-light  twtr-hidden--md  twtr-hidden--lg  twtr-hidden--xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="9.5" viewbox="0 0 17 9.5" class="twtr-icon--sm"> 
+ <path d="M16.707.293c-.39-.39-1.023-.39-1.414 0L8.5 7.086 1.707.293c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414l7.5 7.5c.195.195.45.293.707.293s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.023 0-1.414z" /> 
+</svg>
+            </span>
+          </h4>
+          
+          <ul class="u02__column__list">
+            <li class="u02__link-item">
+              <a href="https://business.twitter.com/ja/advertising.html" title="広告" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 広告
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://business.twitter.com/ja" title="Twitterのビジネス活用" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Twitterのビジネス活用
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://business.twitter.com/ja/resources.html" title="参考資料とガイド" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 参考資料とガイド
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://marketing.twitter.com/ja" title="Twitterマーケティング" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Twitterマーケティング
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://marketing.twitter.com/ja/solutions/agency-certification-program" title="Twitter広告認定代理店" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Twitter広告認定代理店
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://marketing.twitter.com/ja/success-stories" title="ブランド活用事例" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 ブランド活用事例
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://www.twitterflightschool.com/student/catalog?locale=ja" title="Twitter Flight School" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Twitter Flight School
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="u02__row">
+      <div class="twtr-grid  twtr-grid__col">
+        <div class="u02__column  u02__column--bottom">
+          <span class="u02__column-footnote  twtr-type--roman-14  twtr-color--white-neutral  is-opaque">
+            &copy; 2023 X Corp.
+          </span>
+        </div>
+
+        
+          <div class="u02__column  u02__column--bottom">
+            <a href="https://help.twitter.com/ja/rules-and-policies/twitter-cookies" title="Cookie" target="_blank" class="u02__column-footnote  twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+              Cookie
+            </a>
+          </div>
+        
+          <div class="u02__column  u02__column--bottom">
+            <a href="https://twitter.com/ja/privacy" title="プライバシー" target="_blank" class="u02__column-footnote  twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+              プライバシー
+            </a>
+          </div>
+        
+          <div class="u02__column  u02__column--bottom">
+            <a href="https://twitter.com/ja/tos" title="利用規約" target="_blank" class="u02__column-footnote  twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+              利用規約
+            </a>
+          </div>
+        
+
+        <div class="u02__column  u02__column--bottom">
+          
+
+
+<div class="u03">
+  <a class="u03__current-region  js-open  twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover" href="/ja/tos/previous/version_14">
+    日本語
+    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="9.5" viewbox="0 0 17 9.5" class="twtr-icon--sm  twtr-color-fill--white-neutral  has-hover"> 
+ <path d="M16.707.293c-.39-.39-1.023-.39-1.414 0L8.5 7.086 1.707.293c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414l7.5 7.5c.195.195.45.293.707.293s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.023 0-1.414z" /> 
+</svg>
+  </a>
+
+  <div class="twtr-container">
+    <div class="u03__modal  twtr-container  twtr-color-bg--blue-extra-dark">
+      <a href="/content/twitter-com/legal/ja.html" class="u03__brand">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" class="u03__brand-icon twtr-icon--base  twtr-color-fill--white-neutral"> 
+ <path opacity="0" d="M0 0h24v24H0z" /> 
+ <path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z" /> 
+</svg>
+        <span class="u03__site-name  twtr-type--bold-16  twtr-color--white-neutral">Japanese</span>
+      </a>
+      <div class="u03__close-button  js-close">
+        <span class="twtr-hidden--xs  twtr-hidden--sm"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="72" viewbox="0 0 46 72" class="twtr-icon--lg  twtr-color-fill--white-neutral  has-hover">
+ <path d="M27.243 36l14.879-14.879a2.998 2.998 0 0 0 0-4.242 2.998 2.998 0 0 0-4.242 0L23 31.758 8.122 16.879a2.998 2.998 0 0 0-4.242 0 2.998 2.998 0 0 0 0 4.242L18.758 36 3.879 50.879A2.998 2.998 0 0 0 6.001 56a2.99 2.99 0 0 0 2.121-.879L23 40.242l14.879 14.879A2.991 2.991 0 0 0 40 56a2.998 2.998 0 0 0 2.121-5.121L27.243 36z" />
+</svg></span>
+        <span class="twtr-hidden--md  twtr-hidden--lg  twtr-hidden--xl"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="72" viewbox="0 0 46 72" class="twtr-icon--lg  twtr-color-fill--white-neutral  has-hover">
+ <path d="M27.243 36l14.879-14.879a2.998 2.998 0 0 0 0-4.242 2.998 2.998 0 0 0-4.242 0L23 31.758 8.122 16.879a2.998 2.998 0 0 0-4.242 0 2.998 2.998 0 0 0 0 4.242L18.758 36 3.879 50.879A2.998 2.998 0 0 0 6.001 56a2.99 2.99 0 0 0 2.121-.879L23 40.242l14.879 14.879A2.991 2.991 0 0 0 40 56a2.998 2.998 0 0 0 2.121-5.121L27.243 36z" />
+</svg></span>
+      </div>
+      <div class="u03__region-list-container">
+        <ul class="u03__region-list" data-choose-text="地域を選択" data-back-text="戻る">
+          <li class="u03__region-list-item">
+            <a href="/en/tos/previous/version_14" class="twtr-color--white-neutral  twtr-type--bold-24  has-hover">
+              英語
+            </a>
+          </li>
+        
+          <li class="u03__region-list-item">
+            <a href="/es/tos/previous/version_14" class="twtr-color--white-neutral  twtr-type--bold-24  has-hover">
+              スペイン語 / Español
+            </a>
+          </li>
+        
+          <li class="u03__region-list-item">
+            <a href="/fr/tos/previous/version_14" class="twtr-color--white-neutral  twtr-type--bold-24  has-hover">
+              フランス語 / Français
+            </a>
+          </li>
+        
+          <li class="u03__region-list-item">
+            <a href="/de/tos/previous/version_14" class="twtr-color--white-neutral  twtr-type--bold-24  has-hover">
+              ドイツ語
+            </a>
+          </li>
+        
+          <li class="u03__region-list-item">
+            <a href="/it/tos/previous/version_14" class="twtr-color--white-neutral  twtr-type--bold-24  has-hover">
+              イタリア語
+            </a>
+          </li>
+        
+          <li class="u03__region-list-item">
+            <a href="/ja/tos/previous/version_14" class="twtr-color--blue-light  twtr-type--bold-24  has-hover">
+              日本語
+            </a>
+          </li>
+        
+          <li class="u03__region-list-item">
+            <a href="/ko/tos/previous/version_14" class="twtr-color--white-neutral  twtr-type--bold-24  has-hover">
+              韓国語 / 한국어
+            </a>
+          </li>
+        
+          <li class="u03__region-list-item">
+            <a href="/pt/tos/previous/version_14" class="twtr-color--white-neutral  twtr-type--bold-24  has-hover">
+              ポルトガル語 / Português
+            </a>
+          </li>
+        
+          <li class="u03__region-list-item">
+            <a href="/ru/tos/previous/version_14" class="twtr-color--white-neutral  twtr-type--bold-24  has-hover">
+              ロシア語 / Русский
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</footer>
+
+      
+
+
+
+<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
+
+<script type="text/javascript" src="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/js/app.js.twhash.a.f.4a29bc0688c76c090ab0aa187da8b750.js"></script>
+<script type="text/javascript" src="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/js/core.js.twhash.a.f.2a8b9cb440dff966a495d8e07d7e4410.js" async></script>
+<script type="text/javascript" src="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/js/content.js.twhash.a.f.89e6f461909a754c1cee9cd3de8286f5.js" async></script>
+<script type="text/javascript" src="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/js/form.js.twhash.a.f.9cf073168fe8be6343e35c743677c945.js" async></script>
+<script type="text/javascript" src="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/js/universal.js.twhash.a.f.a046ee57490f9330aef63f006feddcef.js" async></script>
+<script type="text/javascript" src="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/js/templates.js.twhash.a.f.8b49f61f34c85289e5ea8694304cf3a3.js" async></script>
+<script type="text/javascript" src="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/js/privacy.js.twhash.a.f.e59d8094a7c26ee3a29a077314390d0d.js" async></script>
+
+
+
+
+  <div id="u12" class="u12-data-protection-notice">
+
+    
+    
+
+    
+    
+
+  </div>
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.cms-twdigitalassets.com/etc/designs/common-twitter/clientlib-u12-data-protection-notice.min.twhash.a.cl.e5f41c96ebe26adc278fe501d69fdebf.css" type="text/css">
+<script src="https://cdn.cms-twdigitalassets.com/etc/designs/common-twitter/clientlib-promise-polyfill.min.twhash.a.cl.678c3c47bfcf62393184734a7204fcdf.js"></script>
+<script src="https://cdn.cms-twdigitalassets.com/etc/designs/common-twitter/clientlib-twtr-profile-adapter.min.twhash.a.cl.2f6a2e41ae41c33aba9f8a7dcf876eb6.js"></script>
+<script src="https://cdn.cms-twdigitalassets.com/etc/designs/common-twitter/clientlib-u12-data-protection-notice.min.twhash.a.cl.dd36791d0d028510f49c89c6d8b44746.js"></script>
+
+
+
+
+
+
+  </body>
+</html>

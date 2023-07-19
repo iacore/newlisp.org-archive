@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>benchmarks/methcall.newlisp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'># method call  - benchmark</font>
+<font color='#555555'>#</font>
+<font color='#555555'># this is almost identical to objinst.lsp</font>
+<font color='#555555'># but here method call is measured instead of</font>
+<font color='#555555'># object creation / instantiation</font>
+
+<font color='#555555'># define class Toggle</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>context</font> 'Toggle<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>init start_state<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'bool start_state<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>value<font color='#AA0000'>)</font>
+	bool<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>activate<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'bool <font color='#AA0000'>(</font><font color='#0000AA'>not</font> bool<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>context</font> 'MAIN<font color='#AA0000'>)</font>
+
+<font color='#555555'># subclass Toggle to NthToggle and overwrite methods</font>
+ 
+<font color='#AA0000'>(</font><font color='#0000AA'>new</font> Toggle 'NthToggle<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>context</font> NthToggle<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>init start_state max_counter<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'bool start_state<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'count_max max_counter<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'counter <font color='#998800'>0</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>activate<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>inc</font> 'counter<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>>=</font> counter count_max<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'bool <font color='#AA0000'>(</font><font color='#0000AA'>not</font> bool<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'counter <font color='#998800'>0</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> 
+                counter <font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>context</font> 'MAIN<font color='#AA0000'>)</font>
+
+<font color='#555555'># get n from command line</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'n <font color='#AA0000'>(</font><font color='#0000AA'>integer</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>new</font> Toggle 'toggle<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>toggle:init <font color='#0000AA'>true</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>dotimes</font> <font color='#AA0000'>(</font>x n<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font>toggle:activate<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'val toggle:value<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font>toggle:value<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"true"</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"false"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>new</font> NthToggle 'ntoggle<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>ntoggle:init <font color='#0000AA'>true</font> <font color='#998800'>3</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>dotimes</font> <font color='#AA0000'>(</font>x n<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font>ntoggle:activate<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'val ntoggle:value<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font>ntoggle:value<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"true"</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"false"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

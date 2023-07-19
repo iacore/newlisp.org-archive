@@ -1,0 +1,540 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+
+
+<head>
+  <title>newLISP  - FAQ</title>
+  <META name="verify-v1" content="uI5QBi0dvEoNnrT+Vrm63toHH4Ep1y6BBR61veuiWKU=" />
+  <META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.cgi" />
+  <meta name="description"`
+      content="newLISP is a general purpose scripting language for developing web applications and programs in general in the domains of artificial intelligence (AI), statistics and machine learning.">
+  <meta name="keywords"
+      content="lisp,scheme,programming,scripting language,ai,artificial intelligence,statistics,machine learning,distributed and parallel processing,gpl">
+  <META name="verify-v1" content="uI5QBi0dvEoNnrT+Vrm63toHH4Ep1y6BBR61veuiWKU=" />
+  <style type="text/css" media="screen">
+<!--
+ 
+ /* style for top title portion of site */
+
+ .title {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 20px;
+   font-weight: 200;
+   margin: 0 10%;
+   margin-bottom: 3px;
+   color: #888;
+  background-color: #FFFFFF;
+ }
+
+ /* link behaviour in title box */
+ .title a {
+   background-color: transparent;
+   text-decoration: none;
+   color: #eee;
+   text-decoration: none;
+ }
+
+ .title a:hover {
+   color: #fff;
+   text-decoration: underline;
+   background-color: transparent;
+ }
+
+ /* the name on top of each page (except the Home page) */
+
+ .pagename {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 18px;
+   margin-bottom: 20px;
+ }
+
+ /* style of content box where all 
+   user text lives 
+ */
+ .content {
+   margin: 0 10%;
+   max-width: 900px;
+   padding: 10px;
+  background-color: #FFFFFF;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+ .content a {
+   background-color: transparent;
+   text-decoration: none;
+   color: #25a;
+ }
+
+ .content a:hover {
+   padding: 0px;
+   color: #FFF;
+   text-decoration: none;
+   background-color: #888;
+ }
+
+ .content a:visited {
+
+ }
+
+
+ /* style for menu on top */
+ .menu {   
+   margin-left: 0px;
+   margin-right: 0px;
+   padding: 1px;
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+   font-size: 16px;
+   line-height: 16px;
+   color: #FFF;
+   background-color: #369;
+ }
+
+ /* links in menu */
+ .menu a {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 0px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+ .menu a:hover {
+   color: #fff;
+   border-bottom: 0px;
+   padding: 0px;
+   background-color: #888;
+   text-decoration: none;
+ }
+
+ .menu a:visited {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+ .menu-bottom {   
+   margin: 0 10%;
+   max-width: 880px;
+   margin-top: 10px;
+   padding: 1px;
+   font-family: Verdanan, Arial, Helvetica, sans-serif;
+   font-size: 15px;
+   background-color: #369;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+ /* links in menu-bottom */
+ .menu-bottom a {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+ .menu-bottom a:hover {
+   color: #fff;
+   border-bottom: 0px;
+   padding: 1px;
+   background-color: #888;
+   text-decoration: none;
+ }
+
+ .menu-bottom a:visited {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+ /* the bottom bar between content box and menu */
+ .bottombar {
+   font-size: 4px;
+   margin: 0 10%;
+   padding: 10px;
+   padding-top: 2px;
+   padding-bottom: 6px;
+  background-color: #FFFFFF;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+ }
+
+
+ /* where the copyright notice is */
+ .footer {
+   text-align: center;
+   margin: 0 10%;
+   max-width: 880px;
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 10px;
+   line-height: 12px;
+ }
+
+
+ /* style for whole site except overwritten
+     by enclosed tags
+ */
+ body {
+   font-family: Geneva, Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 16px;
+   line-height: 20px;
+   color: #606060;
+ }
+
+
+ /* style for == title == */
+ h1 {
+   font-family: Helvetica;
+   font-size: 32px;
+   color: #369;
+   font-weight: 100;
+ }
+
+ /* style for === title === */
+ h2 {
+   font-family: Helvetica;
+   font-size: 30px;
+   font-weight: 100;
+   color: #369;
+ }
+
+ /* style for ==== title ==== */
+ h3 {
+   font-size: 20px;
+   font-weight: 100;
+   color: #369;
+   margin-top: 20px;
+   padding: 0px;
+ }
+
+ /* style for ===== text =====  used for blog title */
+ h4 {
+   font-size: 18px;
+   font-weight: 100;
+   color: #777;
+   margin: 0px;
+   padding: 0px;
+}
+
+ /* style for ====== text ======  used for comment title */
+ h5 {
+   font-size: 12px;
+   font-weight: normal;
+   color: #a22;
+   margin: 3px;
+   padding: 0px;
+ }
+
+ /* for <small> tag */
+ small {
+   font-size: 10px;
+ }
+
+
+ /* for the bold tag */
+ b {
+  color: 999;
+ }
+
+ /* for <big> tag, will not work on Netscape v.4 */
+ big {
+ }
+
+ /* for <p> tag */
+ p {
+   margin-left: 40px;
+   margin-right: 40px;
+ }
+
+ /* for <table> tag, these are used when displating the files,changes,referencrs tables */
+ table {
+   border-width: 1px;
+   border-style: solid;
+   border-color: #ccc;
+   background-color: #ccc;
+ }
+
+ /* for table tags <tr> <th> <td> */
+ tr, th, td {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 12px;
+   background-color: #eee;
+ }
+
+ /* for quick table tags with [,] 
+     use these (not <table><tr><td>)
+     when doing layout with tables
+ */
+ table.quick {
+   border-width: 1px;
+   border-style: solid;
+   border-color: #ccc;
+   background-color: #ccc;
+ }
+
+
+ /* for quick table tags with: || 
+ */
+  td.quick {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 11px;
+   background-color: #eef;
+   padding: 5px;
+ }
+
+ 
+ /* links in general, if not overwritten in other divs
+ a:hover {
+   text-decoration: none;
+   background-color: #transparent;
+ }
+
+ /* for  spec */
+ img {
+
+ }
+
+ /* line separator */
+ hr {
+   margin-top: 10px;
+   border: 0px;
+   border-top: 1px #ddd solid;
+ } 
+
+ /* style of the text edit area and text 
+    entry for search and passwords 
+ */
+ .textarea {
+   font-family: courier, helvetica, verdana,arial,sans-serif;
+   left-margin: 20px;
+   font-size: 12px;
+   background-color: #eee;
+}
+
+ /* buttons for save and search */
+ .button {
+ }
+
+ /* example for custom style in  or  */
+ .mybox { border: 1px #ccc dashed; }
+
+ /* other custom styles used */
+
+ .smallred { font-size: 10px; font-weight: normal; color: #a22; }
+
+ .mediumred { font-size: 12px; font-weight: normal; color: #a22; }
+
+-->
+
+-->
+</style>
+</head>
+
+<body bgcolor="#AAAAAA">
+
+<!-- content -->
+<div class="content">
+<center> <div class="title">puts the fun <a href="index.cgi"><img src="images/newLISP-icon-86.jpg" alt="newLISP button" order="0" border="0"/></a>  back in Lisp</div><div class="menu"><a href="index.cgi?Home">Home</a>  &#183; <a href="index.cgi?FAQ">About</a>  &#183; <a href="index.cgi?Downloads">Downloads</a>  &#183; <a href="index.cgi?Documentation">Docs</a>  &#183; <a href="modules/"> Modules</a>  &#183; <a href="index.cgi?Code_Contributions">Links</a>  &#183; <a href="index.cgi?Tips_and_Tricks">Tips&amp;Tricks</a>  &#183; <a href="index.cgi?Libraries">C-Libs</a>  &#183; <a href="index.cgi?Applications">Apps</a>  &#183; <a href="index.cgi?Art">Art</a>  &#183; <a href="http://newlispfanclub.com">Forum</a>  </div></center>
+<br>
+<h2> About newLISP </h2>
+<ol><br>
+<li> What is newLISP and what can I do with it?<br>
+<li> Why newLISP, why not one of the other standard LISPs? <br>
+<li> How do I study newLISP?<br>
+<li> How does newLISP compare in speed?<br>
+<li> Does newLISP have matrices?<br>
+<li> Does newLISP have hash tables?<br>
+<li> Does newLISP have automatic memory management?<br>
+<li> Can newLISP pass data objects by reference?<br>
+<li> How does variable scoping work in newLISP?<br>
+<li> Does newLISP do multiprocessing?<br>
+<li> Can I use newLISP for distributed computing tasks?<br>
+<li> How about object-oriented programming? <br>
+<li> How about packages and modules?<br>
+<li> What are some differences between newLISP and other LISPs?<br>
+<li> Does newLISP run on  XYZ operating system?<br>
+<li> Can newLISP handle the special characters of my country and language?<br>
+<li> Is implicit indexing not breaking LISP syntax rules?<br>
+<li> Can newLISP be embedded in other programs? <br>
+<li> Can I keep my newLISP scripts closed although newLISP is licensed GPL?<br>
+<li> Where do I file bug reports?<br>
+<tt></tt><br>
+</ol>
+<br>
+<h3>1. What is newLISP and what can I do with it?</h3>
+newLISP is a LISP-like scripting language for doing things you typically do with scripting languages: programming for the internet, system administration, text processing, gluing other programs together, etc. newLISP is a scripting LISP for people who are fascinated by LISP's beauty and power of expression, but who need it stripped down to easy-to-learn essentials.<br>
+<br>
+<h3>2. What makes newLISP so special, why 'new'?</h3>
+LISP is an old language born, grown, and standardized in times very different from today, times when programming was for highly educated people who engineered programs. newLISP is LISP reborn as a scripting language: pragmatic and casual, simple to learn without requiring you to know advanced computer science concepts. Like any good scripting language, newLISP is quick to get into and gets the job done without fuss.<br>
+<br>
+Related: <a href="http://www.cse.wustl.edu/~loui/praiseieee.html">In Praise of Scripting: Real Programming Pragmatics</a>  <br>
+<br>
+newLISP has a very fast startup time, is small on resources like disk space and memory and has a deep, practical API with functions for networking, statistics, machine learning, regular expressions, multiprocessing and distributed computing built right into it, not added as a second thought in external modules.<br>
+<br>
+<h3>3. How do I study newLISP?</h3>
+At least in the beginning, you mainly study newLISP using it. If you understand this: <br>
+<br>
+<tt>(+&nbsp;1&nbsp;2&nbsp;3)&nbsp;&nbsp;&nbsp;;&nbsp;computes&nbsp;the&nbsp;sum&nbsp;of&nbsp;1,2,3&nbsp;=&gt;&nbsp;6&nbsp;</tt><br>
+<br>
+and this: <br>
+<br>
+<tt>(define&nbsp;(double&nbsp;x)&nbsp;(+&nbsp;x&nbsp;x))&nbsp;;&nbsp;defines&nbsp;a&nbsp;function&nbsp;</tt><br>
+<br>
+<tt>(double&nbsp;123)&nbsp;&nbsp;&nbsp;;&nbsp;computes&nbsp;the&nbsp;double&nbsp;of&nbsp;123&nbsp;=&gt;&nbsp;246&nbsp;</tt><br>
+<br>
+then you have learned enough to start programming in newLISP. There are a few more concepts like <i>anonymous functions</i>, <i>applying functions</i>, <i>namespaces</i> (<i>contexts</i>), and <i>implicit indexing</i>. You will pick up those while using newLISP.<br>
+<br>
+Books about Common LISP or Scheme, two different, older standards of LISP, teach you concepts, you don't need to know for learning newLISP. Many times newLISP expresses things differently from traditional LISPs, and in ways more applicable to today's programming tasks and on a higher level closer to the problem at hand.<br>
+<br>
+Learn to solve problems the newLISP way! For a deeper understanding of newLISP, read the <i>Users Manual</i> section of the <a href="downloads/newlisp_manual.html">newLISP manual</a>, with less theory and more examples. Make a pass through the reference part of the manual to get an impression of the depth and breadth of the built-in API.<br>
+<br>
+For serious working with newLISP read <a href="downloads/CodePatterns.html">Code Patterns</a>  with more tips and code pieces. A good beginners <a href="http://en.wikibooks.org/wiki/Introduction_to_newLISP">Introduction to newLISP</a>  and video tutorials can be found on the <a href="index.cgi?Documentation">documentation page</a>.<br>
+<br>
+Many functions in newLISP have an easy to understand <i>surface</i> but are much more powerful when using the special options of that function. The depth of the newLISP programming API is not based on the quantity of functions, but rather based on multiple syntax forms and options of a specific function.<br>
+<br>
+Start to write your first program now. Look at the small program snippets throughout the manual and on this web site. If you have questions, go to a discussion group hosted <a href="http://newlispfanclub.com">here</a>  and ask. <br>
+<br>
+<h3>4. How does newLISP compare in speed?</h3>
+It compares well to popular scripting tools like Perl or Python, not only in general computing speed but even better when it comes to startup time and memory/disk footprint. Have a look at some <a href="benchmarks/">benchmarks</a>.<br>
+<br>
+Many functions for which other languages require the inclusion of external modules are already built into newLISP. Networking functions and mathematical methods like FFT (Fast Fourier Analysis) or Bayesian machine learning functions are lightning fast in newLISP. They are built-in functions and do not require any external modules. Despite of this, newLISP is smaller than other scripting languages.<br>
+<br>
+<h3>5. Does newLISP have arrays?</h3>
+Yes, it does. For applications with random access in large lists, access can be made faster using newLISP arrays. <br>
+<br>
+<h3>6. Does newLISP have hash tables?</h3>
+newLISP uses <a href="http://en.wikipedia.org/wiki/Red_black_trees">red-black binary trees</a>  for associative memory access when maintaining namespaces, dictionaries and for hash like key-value access.<br>
+<br>
+<h3>7. Does newLISP have automatic memory management?</h3>
+Yes, it does. But it is not the typical <i>garbage collecting</i> process you find in other interactive languages. Just like traditional garbage collecting languages, newLISP recycles unused memory. However, newLISP does it in a new, much more efficient way. newLISP's memory management is synchronous with no sudden pauses in processing observed in languages with old-style garbage collection. newLISP's <a href="MemoryManagement.html">unique automatic memory management</a>  is one of the reasons for newLISP's speed, small size, and efficient memory usage.<br>
+<br>
+<h3>8. Can newLISP pass data objects by reference?</h3>
+All built-in functions pass lists and strings by reference in and out. To pass by reference into user-defined functions, lists and strings can be wrapped into namespaces. Read more about this topic here <a href="downloads/newlisp_manual.html#pass_big">Passing data by reference</a>. Since 10.2, FOOP passes the target object by reference too.<br>
+<br>
+<h3>9. How does variable scoping work in newLISP?</h3>
+newLISP is dynamically scoped inside lexically separated <i>contexts</i> or <i>namespaces</i>. Namespaces have very little overhead and millions of them can exist. Contexts in newLISP allow <a href="index.cgi?page=Closures">lexical enclosure</a>  of more than one lambda function and data object. Contexts can be used to write lexically scoped functions with memory, software modules and objects. This avoids the pitfalls of dynamic scoping and helps structuring bigger programs.<br>
+<br>
+<h3>10. Does newLISP do multiprocessing?</h3>
+Linux/UNIX versions of newLISP programs can fork and spawn existing process. Windows versions can start independent child processes. Semaphores are used to synchronize processes, and shared memory can be used for communications between processes. <br>
+<br>
+On macOS and Linux and other Unix the <a href="http://supertech.csail.mit.edu/cilk/">Cilk</a>  API is built in for easy launching and synchronizing multiple processes, transparently without worrying about semaphores, locks etc.. An asynchronous <i>actor</i> messaging API is available to communicate between processes.<br>
+<br>
+<h3>11. Can I use newLISP for distributed computing tasks?</h3>
+Some of today's larger applications run distributed across multiple computers, dividing their complex tasks between multiple nodes on a network. newLISP can be run as a server for evaluating commands sent by other newLISP clients connected to it. A <tt>net-eval</tt> directive encapsulates all network handling required to communicate with other computers on the network, distribute code and computing tasks, and collect results in a blocking or event-driven fashion. newLISP can also act as a web server handling HTTP requests including CGI. <br>
+<br>
+<h3>12. How about object-oriented programming?</h3>
+newLISP offers a new way of <em>Functional Object Oriented Programming</em> called FOOP. It uses namespaces to collect all methods for an object class and uses normal s-expressions to represent objects. For more details on this new way of object oriented programming in newLISP see the the training video series "Towards FOOP" in the <a href="index.cgi?Documentation">documentation</a>  section and the chapter <a href="downloads/newlisp_manual.html#foop">Functional object-oriented programming</a>  in the Users Manual. Since v. 10.2 FOOP objects are mutable.<br>
+<br>
+<h3>13. Is it usable for big projects, teams?</h3>
+newLISP uses namespaces for building packages and modules. <a href="modules">Modules</a>  exist for database access to MySQL, PostgreSQL and SQLite databases, as well as ODBC. Additional modules support FTP, POP3, SMTP and REST internet protocols. Because newLISP namespaces are lexically closed, newLISP lets programmers treat modules like black boxes. This is suitable for teams of programmers working on large applications.<br>
+<br>
+newLISP can also call functions in shared C libraries on Linux/UNIX and Windows operating systems to expand its functionality. <br>
+<br>
+Modules can be documented using the <a href="newLISPdoc.html">newLISPdoc</a>  automatic documentation system.<br>
+<br>
+<h3>14. What are some differences between newLISP and other LISPs?</h3>
+newLISP's differences from other LISPs include: the working of lambda expressions; the existence of namespaces (or contexts); parameter passing; and of course, the newLISP API (function repertoire). Overall, newLISP's new ways of LISP programming make it faster, smaller, and easier to understand and learn. For a more detailed discussion, see <a href="index.cgi?page=Differences_to_Other_LISPs">Differences to Other LISPs</a>. <br>
+<br>
+<h3>15. Does newLISP run on XYZ operating system?</h3>
+It probably does. newLISP has a minimum of dependencies; it only uses standard C libraries to compile. If your system has GNU tools such as the GCC compiler and the make utility, then newLISP should compile and link right away using one of the makefiles in its source distribution. <br>
+<br>
+newLISP is built using one of several makefiles, each written for a specific platform. There are no complex make scripts. The makefiles are short and easy to change and adapt if your platform or configuration is not included already. <br>
+<br>
+<h3>16. Can newLISP handle the special characters of my country and language?</h3>
+In most parts of the Western world, you will only need to set your locale using the newLISP function <tt>set-locale</tt>.  <br>
+<br>
+More than half of the countries in the world use a <i>decimal comma</i> instead of a decimal point. newLISP will correctly read and write decimal commas when switched to the correct locale. <br>
+<br>
+Most alphabets in the Western hemisphere fit into 256-place character code tables, and each character needs only one 8-bit byte to be encoded. If the written language of your country requires <i>multibyte</i> characters to encode it, then you need the newLISP version with UTF-8 support enabled. Makefiles for Windows and Linux are included to compile UTF-8 versions of newLISP. In the UTF-8 version, many character-handling functions are able to handle multibyte characters. See the localization and UTF-8 chapter in the manual for details.<br>
+<br>
+<h3>17. Is implicit indexing not breaking LISP syntax rules?</h3>
+On the contrary, implicit indexing is a logical extension of the LISP syntax. When <a href="ExpressionEvaluation.html">evaluating s-expressions</a>, the first element is applied as a function to the rest elements in the expression serving as function arguments. Implicit indexing is merely looking at members of number, string and list data types as special indexing operators when in the first position of an s-expression.<br>
+<br>
+<h3>18. Can newLISP be embedded in other programs?</h3>
+newLISP can be compiled as a UNIX shared library or Windows DLL (dynamic link library). As a result, the shared library versions of newLISP can be used inside other programs that are able to import shared library functions. Other ways to integrate your application with newLISP include I/O pipes and network ports. <br>
+<br>
+On Win32 systems, newLISP has been used inside MS Excel, MS Visual Basic, and the NeoBook GUI application builder. On UNIX, newLISP has been used inside the GNumeric spreadsheet. On macOS, newLISP has been used as an extension language for the BBEdit editor by having newLISP communicate with BBEdit via standard I/O pipes. The Java based Guiserver and the older Tcl/Tk frontend for newLISP are examples of newLISP integration via network ports.<br>
+<br>
+<h3>19. Can I keep my newLISP scripts closed although newLISP is licensed GPL?</h3>
+Yes, you can. The <a href="http://www.gnu.org/licenses/gpl-faq.html#IfInterpreterIsGPL">gnu.org FAQ for the GPL</a>  explains this. As long as your scripts do not use other 3rd party GPL'ed software in the form of imported libraries or loaded modules, your newLISP scripts don't need to be GPL licensed. Most modules on the newLISP website are unlicensed and don't import other libraries. If they do, consult the licenses of those 3rd party libraries.<br>
+<br>
+newLISP allows you to distribute a binary of the interpreter together with closed source. When using newLISP in your software always mention the newLISP website in your documentation as a place where source code for newLISP is available.<br>
+<br>
+<h3>20. Where do I file bug reports?</h3>
+Most bug reports result from not reading the documentation or thinking that newLISP works like Common Lisp or Scheme. Questions, comments and bug reports are best posted to the <a href="http://newlispfanclub.com">Forum</a>, where they are read by many others - giving them the opportunity to comment or give advice. The forum also allows posting private messages.<br>
+<br>
+<br>
+
+</div>
+
+<!-- end content -->
+
+<!-- comments -->
+
+<!-- end comments -->
+<!-- the menu -->
+
+<!-- the menu end -->
+
+<!-- copyright -->
+  <div class="footer" align="center">
+  <br>
+Copyright &copy; 2021, Lutz Mueller. All rights reserved.<br>
+ 
+  <a href="http://www.newlisp.net/">Site</a> powered by <a href="http://newlisp.net">newLISP</a> wiki v4.6
+<!--
+  in 7ms
+-->
+<br>
+  </div>
+<!-- end copyright -->
+
+<!-- <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1098066-1";
+urchinTracker();
+</script> -->
+
+</body>
+</html>
+

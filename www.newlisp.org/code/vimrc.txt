@@ -1,0 +1,46 @@
+" This .vimrc file should be placed in your home directory
+" The Terminal app supports (at least) 16 colors
+" So you can have the eight dark colors and the eight light colors
+" the plain colors, using these settings, are the same as the light ones
+" NOTE: You will need to replace ^[ with a raw Escape character, which you
+" can type by typing Ctrl-V and then (after releaseing Ctrl-V) the Escape key.
+
+if has("terminfo")
+  set t_Co=16
+  set t_AB=[%?%p1%{8}%<%t%p1%{40}%+%e%p1%{92}%+%;%dm
+  set t_AF=[%?%p1%{8}%<%t%p1%{30}%+%e%p1%{82}%+%;%dm
+else
+  set t_Co=16
+  set t_Sf=[3%dm
+  set t_Sb=[4%dm
+endif
+
+syntax on
+set encoding=utf-8
+set tabstop=4
+set ruler
+set showmatch
+set vb t_vb=
+
+set expandtab
+set smarttab
+set shiftwidth=4
+set softtabstop=4
+
+"use :retab to expand tabs to spaces in current buffer
+
+"set cul
+"hi CursorLine term=none cterm=none ctermbg=7
+
+" these 2 lines are only required if newlisp.vim is not in $VIMDIR/syntax/lisp.vim
+au BufRead,BufNewFile *.lsp set filetype=newlisp
+au! Syntax newlisp source /Users/lutz/etc/newlisp.vim
+
+" put the following to make newlisp.vim syntax file behave like Vim 6 on 7
+" let g:newlisp_compat = 1 
+
+" X executes the current file with newLISP
+:nmap X :! newlisp % <CR>
+" S set syntax to newLISP on files w/o or non-lsp extension
+:nmap S :set syntax=newlisp <CR>
+

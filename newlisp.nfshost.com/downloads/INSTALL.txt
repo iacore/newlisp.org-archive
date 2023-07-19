@@ -1,0 +1,53 @@
+Install instructions
+--------------------
+
+Installed files should go into an existing executable path or a new 
+path can be created.
+ 
+To run newLISP only one of the following executables is required:
+
+On Windows:
+
+    Win64/newlisp.exe
+or
+    WIN64-UTF8/newlisp.exe
+
+On macOS:
+
+    macOS-UTF8/newlisp
+
+newLISP can be compiled for other operating systems. Makefiles for Windows
+MacOS, Linux, BSDs and other platfirms can be found in the source distribution:
+    newlisp-10.7.5.tgz
+
+For more imnformation about making and installing newLISP see the file:
+    newlisp-10.7.5/doc/INSTALL   
+in the sourcie distribtion.
+
+For loadable modules see:
+    http://www.newlisp.org/modules/ 
+
+Documentation for the module files is generated using:
+    http://www.newlisp.org/downloads/newLISPdoc.html
+
+
+Editor support
+--------------
+
+For support for VI, Emacs and other editors on the 'Links' page here:
+    http://www.newlisp.org/index.cgi?Code_Contributions
+
+
+Environment variable NEWLISPDIR the initialization file init.lsp
+----------------------------------------------------------------
+
+The newLISP program startup can be controlled the environment vaiable 
+NEWLISPDIR and the startup file init.lsp.
+
+See in the main manual here:
+    http://www.newlisp.org/downloads/newlisp_manual.html#startup
+
+
+                           ...
+
+

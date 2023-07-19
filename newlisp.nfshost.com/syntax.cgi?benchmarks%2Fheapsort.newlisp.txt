@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>benchmarks/heapsort.newlisp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'># heapsort - benchmark</font>
+<font color='#555555'>#</font>
+<font color='#555555'># note, that newLISP has fast built-in sort and random algorithms</font>
+<font color='#555555'># not used in this - same way - benchmark</font>
+<font color='#555555'>#</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'IM <font color='#998800'>139968</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'IA <font color='#998800'>3877</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'IC <font color='#998800'>29573</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'LAST <font color='#998800'>42</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>gen_random maximum<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'LAST <font color='#AA0000'>(</font><font color='#0000AA'>mod</font> <font color='#AA0000'>(</font><font color='#0000AA'>add</font> <font color='#AA0000'>(</font><font color='#0000AA'>mul</font> LAST IA<font color='#AA0000'>)</font> IC<font color='#AA0000'>)</font> IM<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>div</font> <font color='#AA0000'>(</font><font color='#0000AA'>mul</font> maximum LAST<font color='#AA0000'>)</font> IM<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>heapsort n ra<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'rra <font color='#998800'>0</font> 'i <font color='#998800'>0</font> 'j <font color='#998800'>0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'l <font color='#AA0000'>(</font><font color='#0000AA'>+</font> <font color='#AA0000'>(</font><font color='#0000AA'>>></font> n <font color='#998800'>1</font><font color='#AA0000'>)</font> <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'ir n<font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>while</font> <font color='#AA0000'>(</font><font color='#0000AA'>not</font> done<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>></font> l <font color='#998800'>1</font><font color='#AA0000'>)</font> 
+			<font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+				<font color='#AA0000'>(</font><font color='#0000AA'>dec</font> 'l<font color='#AA0000'>)</font>
+				<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'rra <font color='#AA0000'>(</font>ra l<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+				<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'rra <font color='#AA0000'>(</font>ra ir<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+				<font color='#AA0000'>(</font>nth-set ir ra <font color='#AA0000'>(</font>ra <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+				<font color='#AA0000'>(</font><font color='#0000AA'>dec</font> 'ir<font color='#AA0000'>)</font>
+				<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> ir <font color='#998800'>1</font><font color='#AA0000'>)</font>
+					<font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+						<font color='#AA0000'>(</font>nth-set <font color='#AA0000'>(</font>ra <font color='#998800'>1</font><font color='#AA0000'>)</font> rra<font color='#AA0000'>)</font>
+						<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'done <font color='#0000AA'>true</font><font color='#AA0000'>)</font>
+						<font color='#555555'>; return</font>
+						ra<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'i l<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'j <font color='#AA0000'>(</font><font color='#0000AA'><<</font> l <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>not</font> done<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>begin</font> 
+			<font color='#AA0000'>(</font><font color='#0000AA'>while</font> <font color='#AA0000'>(</font><font color='#0000AA'><=</font> j ir<font color='#AA0000'>)</font>
+				<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>and</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> j ir<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> <font color='#AA0000'>(</font>ra j<font color='#AA0000'>)</font> <font color='#AA0000'>(</font>ra <font color='#AA0000'>(</font><font color='#0000AA'>+</font> j <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+					<font color='#AA0000'>(</font><font color='#0000AA'>inc</font> ' j<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+				<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> rra <font color='#AA0000'>(</font>ra j<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+					<font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+						<font color='#AA0000'>(</font>nth-set <font color='#AA0000'>(</font>ra i<font color='#AA0000'>)</font> <font color='#AA0000'>(</font>ra j<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+						<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'i j<font color='#AA0000'>)</font>
+						<font color='#AA0000'>(</font><font color='#0000AA'>inc</font> 'j i<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+					<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'j <font color='#AA0000'>(</font><font color='#0000AA'>+</font> ir <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+			<font color='#AA0000'>(</font>nth-set <font color='#AA0000'>(</font>ra i<font color='#AA0000'>)</font> rra<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>)</font> ra<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'N <font color='#AA0000'>(</font><font color='#0000AA'>integer</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'ary <font color='#AA0000'>(</font><font color='#0000AA'>array</font> <font color='#AA0000'>(</font><font color='#0000AA'>+</font> N <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>for</font> <font color='#AA0000'>(</font>i <font color='#998800'>1</font> N<font color='#AA0000'>)</font> <font color='#AA0000'>(</font>nth-set <font color='#AA0000'>(</font>ary i<font color='#AA0000'>)</font> <font color='#AA0000'>(</font>gen_random <font color='#998800'>1.0</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'ary <font color='#AA0000'>(</font>heapsort N ary<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"%.10f"</font> <font color='#AA0000'>(</font>ary N<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>;; eof</font>
+
+			
+		
+			
+			
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

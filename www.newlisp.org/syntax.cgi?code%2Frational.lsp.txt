@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>code/rational.lsp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#AA0000'>(</font><font color='#0000AA'>context</font> 'Q<font color='#AA0000'>)</font>
+
+<font color='#555555'>;; rational library functions written by Eddie Rucker September 24, 2004</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; Updated on November 30, 2004. The relations were not working properly</font>
+<font color='#555555'>;; major code cleanup</font>
+<font color='#555555'>;; Updated on December 7th, 2006. Now uses built-in 'gcd' introduced in 9.0</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; This library has no warranty of any kind</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; include the library by adding (load "rational.lsp") before use</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; rational numbers can have the form</font>
+<font color='#555555'>;; a        :: integer</font>
+<font color='#555555'>;; '(a)     :: integer</font>
+<font color='#555555'>;; '(a b)   :: a = numerator, b = denominator</font>
+<font color='#555555'>;; '(a b c) :: mixed number a = whole part, b = numerator, c = denominator</font>
+<font color='#555555'>;; </font>
+<font color='#555555'>;; rational numbers must NOT be quoted</font>
+<font color='#555555'>;; example</font>
+<font color='#555555'>;; (Q:+ 1 '(-1 2) '(1 1 2)) => 2</font>
+<font color='#555555'>;; (Q:+ '(1 2) '(1 3)) => (5 6)</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; operators</font>
+<font color='#555555'>;; Q:+  :: add rationals - multiple arguments</font>
+<font color='#555555'>;; Q:-  :: subtract rationals - multiple arguments</font>
+<font color='#555555'>;; Q:*  :: multiply rationals - multiple arguments</font>
+<font color='#555555'>;; Q:/  :: divide rationals - multiple arguments</font>
+<font color='#555555'>;; Q:neg :: take the opposite of a rational - single argument</font>
+<font color='#555555'>;; Q:abs :: take the absolute value of a rational - single argument</font>
+<font color='#555555'>;; Q:recip :: take the reciprical of a rational - single argument</font>
+<font color='#555555'>;; Q:min :: return the smallest rational value - multiple arguments</font>
+<font color='#555555'>;; Q:max :: return the largest rational value - multiple arguments</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; relations</font>
+<font color='#555555'>;; Q:=  :: compare rationals for equality (multiple arguments)</font>
+<font color='#555555'>;; Q:!=  :: not equals with multiple arguments</font>
+<font color='#555555'>;; Q:<  :: less than with multiple arguments</font>
+<font color='#555555'>;; Q:>  :: greater than with multiple arguments</font>
+<font color='#555555'>;; Q:<=  :: less than or equal to with multiple arguments</font>
+<font color='#555555'>;; Q:>=  :: greater than or equal to with multiple arguments</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>frac-form a b<font color='#AA0000'>)</font>
+  <font color='#555555'>;; fix negatives so that -a/-b => a/b, a/-b => -a/b</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>if</font> 
+    <font color='#AA0000'>(</font><font color='#0000AA'>=</font> a <font color='#998800'>0</font><font color='#AA0000'>)</font>  '<font color='#AA0000'>(</font><font color='#998800'>0</font> <font color='#998800'>1</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>=</font> b <font color='#998800'>0</font><font color='#AA0000'>)</font>  <font color='#AA0000'>(</font><font color='#0000AA'>throw</font> <font color='#008800'>"rational-number-error"</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>and</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> a <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> b <font color='#998800'>0</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>  <font color='#AA0000'>(</font><font color='#0000AA'>list</font> <font color='#AA0000'>(</font>MAIN:abs a<font color='#AA0000'>)</font> <font color='#AA0000'>(</font>MAIN:abs b<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>and</font> <font color='#AA0000'>(</font><font color='#0000AA'>>=</font> a <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> b <font color='#998800'>0</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>  <font color='#AA0000'>(</font><font color='#0000AA'>list</font> <font color='#AA0000'>(</font>MAIN:abs a<font color='#AA0000'>)</font> <font color='#AA0000'>(</font>MAIN:abs b<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>list</font> a b<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>improper A<font color='#AA0000'>)</font>
+  <font color='#555555'>;; convert a -> a/1 and  a b/c -> (c*a+b)/c</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>apply</font> frac-form
+	 <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>integer?</font> A<font color='#AA0000'>)</font>
+	     <font color='#AA0000'>(</font><font color='#0000AA'>list</font> A <font color='#998800'>1</font><font color='#AA0000'>)</font>
+	   <font color='#AA0000'>(</font><font color='#0000AA'>case</font> <font color='#AA0000'>(</font><font color='#0000AA'>length</font> A<font color='#AA0000'>)</font>
+	     <font color='#AA0000'>(</font><font color='#998800'>1</font> <font color='#AA0000'>(</font><font color='#0000AA'>list</font> <font color='#AA0000'>(</font><font color='#0000AA'>first</font> A<font color='#AA0000'>)</font> <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	     <font color='#AA0000'>(</font><font color='#998800'>2</font> A<font color='#AA0000'>)</font>
+	     <font color='#AA0000'>(</font><font color='#998800'>3</font> <font color='#AA0000'>(</font><font color='#0000AA'>list</font> <font color='#AA0000'>(</font><font color='#0000AA'>+</font> <font color='#AA0000'>(</font><font color='#0000AA'>nth</font> <font color='#998800'>1</font> A<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>*</font> <font color='#AA0000'>(</font><font color='#0000AA'>first</font> A<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> A<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> A<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	     <font color='#AA0000'>(</font><font color='#0000AA'>throw</font> <font color='#008800'>"rational-number-error"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>reduce-frac A<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>letn</font> <font color='#AA0000'>(</font>a <font color='#AA0000'>(</font><font color='#0000AA'>first</font> A<font color='#AA0000'>)</font> b <font color='#AA0000'>(</font><font color='#0000AA'>last</font> A<font color='#AA0000'>)</font> dd <font color='#AA0000'>(</font><font color='#0000AA'>gcd</font> <font color='#AA0000'>(</font>MAIN:abs a<font color='#AA0000'>)</font> b<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> dd b<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>/</font> a dd<font color='#AA0000'>)</font>
+      <font color='#AA0000'>(</font><font color='#0000AA'>list</font> <font color='#AA0000'>(</font><font color='#0000AA'>/</font> a dd<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>/</font> b dd<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>neg_ A<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>list</font> <font color='#AA0000'>(</font><font color='#0000AA'>-</font> <font color='#998800'>0</font> <font color='#AA0000'>(</font><font color='#0000AA'>first</font> A<font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> A<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>add_ A B<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>let</font> <font color='#AA0000'>(</font>n0 <font color='#AA0000'>(</font><font color='#0000AA'>first</font> A<font color='#AA0000'>)</font> d0 <font color='#AA0000'>(</font><font color='#0000AA'>last</font> A<font color='#AA0000'>)</font> n1 <font color='#AA0000'>(</font><font color='#0000AA'>first</font> B<font color='#AA0000'>)</font> d1 <font color='#AA0000'>(</font><font color='#0000AA'>last</font> B<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>list</font> <font color='#AA0000'>(</font><font color='#0000AA'>+</font> <font color='#AA0000'>(</font><font color='#0000AA'>*</font> n0 d1<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>*</font> n1 d0<font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>*</font> d0 d1<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>sub_ A B<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font>add_ A <font color='#AA0000'>(</font>neg_ B<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>mul_ A B<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>let</font> <font color='#AA0000'>(</font>n0 <font color='#AA0000'>(</font><font color='#0000AA'>first</font> A<font color='#AA0000'>)</font> d0 <font color='#AA0000'>(</font><font color='#0000AA'>last</font> A<font color='#AA0000'>)</font> n1 <font color='#AA0000'>(</font><font color='#0000AA'>first</font> B<font color='#AA0000'>)</font> d1 <font color='#AA0000'>(</font><font color='#0000AA'>last</font> B<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>list</font> <font color='#AA0000'>(</font><font color='#0000AA'>*</font> n0 n1<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>*</font> d0 d1<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>recip_ A<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>list</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> A<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>first</font> A<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>div_ A B<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font>mul_ A <font color='#AA0000'>(</font>recip_ B<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>min_ A B<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> <font color='#AA0000'>(</font><font color='#0000AA'>*</font> <font color='#AA0000'>(</font><font color='#0000AA'>first</font> A<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> B<font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>*</font> <font color='#AA0000'>(</font><font color='#0000AA'>first</font> B<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> A<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>  A  B<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>max_ A B<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>></font> <font color='#AA0000'>(</font><font color='#0000AA'>*</font> <font color='#AA0000'>(</font><font color='#0000AA'>first</font> A<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> B<font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>*</font> <font color='#AA0000'>(</font><font color='#0000AA'>first</font> B<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> A<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>  A  B<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>bop sm vals<font color='#AA0000'>)</font>
+  <font color='#555555'>;; binary operator</font>
+  <font color='#AA0000'>(</font>reduce-frac <font color='#AA0000'>(</font><font color='#0000AA'>apply</font> sm <font color='#AA0000'>(</font><font color='#0000AA'>map</font> improper vals<font color='#AA0000'>)</font> <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>uop sm val<font color='#AA0000'>)</font>
+  <font color='#555555'>;; unary operator</font>
+  <font color='#AA0000'>(</font>reduce-frac <font color='#AA0000'>(</font>sm <font color='#AA0000'>(</font>improper val<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>rel_ sm a b L tf<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>if</font> 
+    <font color='#AA0000'>(</font><font color='#0000AA'>=</font> tf <font color='#0000AA'>nil</font><font color='#AA0000'>)</font> <font color='#0000AA'>nil</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>=</font> L '<font color='#AA0000'>(</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> tf
+    <font color='#AA0000'>(</font><font color='#0000AA'>let</font> <font color='#AA0000'>(</font>n <font color='#AA0000'>(</font><font color='#0000AA'>first</font> <font color='#AA0000'>(</font><font color='#0000AA'>first</font> L<font color='#AA0000'>)</font><font color='#AA0000'>)</font> d <font color='#AA0000'>(</font><font color='#0000AA'>last</font> <font color='#AA0000'>(</font><font color='#0000AA'>first</font> L<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+      <font color='#AA0000'>(</font>rel_ sm n d <font color='#AA0000'>(</font><font color='#0000AA'>rest</font> L<font color='#AA0000'>)</font> <font color='#AA0000'>(</font>sm <font color='#AA0000'>(</font><font color='#0000AA'>*</font> a d<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>*</font> b n<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>rel sm vals<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>let</font> <font color='#AA0000'>(</font>L <font color='#AA0000'>(</font><font color='#0000AA'>map</font> improper vals<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font>rel_ sm <font color='#AA0000'>(</font><font color='#0000AA'>first</font> <font color='#AA0000'>(</font><font color='#0000AA'>first</font> L<font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> <font color='#AA0000'>(</font><font color='#0000AA'>first</font> L<font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>rest</font> L<font color='#AA0000'>)</font> <font color='#0000AA'>true</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>;; functions for use in  Q</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'Q:+ <font color='#AA0000'>(</font>lambda-macro <font color='#AA0000'>(</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>bop add_ <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>eval</font> <font color='#AA0000'>(</font><font color='#0000AA'>args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'Q:- <font color='#AA0000'>(</font>lambda-macro <font color='#AA0000'>(</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>bop sub_ <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>eval</font> <font color='#AA0000'>(</font><font color='#0000AA'>args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'Q:* <font color='#AA0000'>(</font>lambda-macro <font color='#AA0000'>(</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>bop mul_ <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>eval</font> <font color='#AA0000'>(</font><font color='#0000AA'>args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'Q:/ <font color='#AA0000'>(</font>lambda-macro <font color='#AA0000'>(</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>bop div_ <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>eval</font> <font color='#AA0000'>(</font><font color='#0000AA'>args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'Q:min <font color='#AA0000'>(</font>lambda-macro <font color='#AA0000'>(</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>bop min_ <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>eval</font> <font color='#AA0000'>(</font><font color='#0000AA'>args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'Q:max <font color='#AA0000'>(</font>lambda-macro <font color='#AA0000'>(</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>bop max_ <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>eval</font> <font color='#AA0000'>(</font><font color='#0000AA'>args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'Q:= <font color='#AA0000'>(</font>lambda-macro <font color='#AA0000'>(</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>rel MAIN:= <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>eval</font> <font color='#AA0000'>(</font><font color='#0000AA'>args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'Q:!= <font color='#AA0000'>(</font>lambda-macro <font color='#AA0000'>(</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>not</font> <font color='#AA0000'>(</font>rel MAIN:= <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>eval</font> <font color='#AA0000'>(</font><font color='#0000AA'>args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'Q:< <font color='#AA0000'>(</font>lambda-macro <font color='#AA0000'>(</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>rel MAIN:< <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>eval</font> <font color='#AA0000'>(</font><font color='#0000AA'>args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'Q:> <font color='#AA0000'>(</font>lambda-macro <font color='#AA0000'>(</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>rel MAIN:> <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>eval</font> <font color='#AA0000'>(</font><font color='#0000AA'>args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'Q:<= <font color='#AA0000'>(</font>lambda-macro <font color='#AA0000'>(</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>rel MAIN:<= <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>eval</font> <font color='#AA0000'>(</font><font color='#0000AA'>args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'Q:>= <font color='#AA0000'>(</font>lambda-macro <font color='#AA0000'>(</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>rel MAIN:>= <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>eval</font> <font color='#AA0000'>(</font><font color='#0000AA'>args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'Q:abs <font color='#AA0000'>(</font>fn <font color='#AA0000'>(</font>A<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>list</font> <font color='#AA0000'>(</font>MAIN:abs <font color='#AA0000'>(</font><font color='#0000AA'>first</font> A<font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>MAIN:abs <font color='#AA0000'>(</font><font color='#0000AA'>last</font> A<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'Q:neg <font color='#AA0000'>(</font>fn <font color='#AA0000'>(</font>A<font color='#AA0000'>)</font> <font color='#AA0000'>(</font>uop neg_ A<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'Q:recip <font color='#AA0000'>(</font>fn <font color='#AA0000'>(</font>A<font color='#AA0000'>)</font> <font color='#AA0000'>(</font>uop recip_ A<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>context</font> 'MAIN<font color='#AA0000'>)</font>
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

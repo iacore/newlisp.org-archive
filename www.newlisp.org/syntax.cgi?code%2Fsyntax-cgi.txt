@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>code/syntax-cgi.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'># - syntax.cgi - this utility formats a newLISP source file as an HTML </font>
+<font color='#555555'># file with syntax highlighting</font>
+<font color='#555555'>#</font>
+<font color='#555555'># comment following line out when not using as CGI utilty</font>
+<font color='#555555'># for CGI files to convert which are local must end with .txt</font>
+
+<font color='#555555'># v.1.7 - switch for using as commandline or cgi utility</font>
+<font color='#555555'># v.1.9 - fixed highlighting problem with escaped quotes</font>
+<font color='#555555'># v.2.0 - fixed \r\n translation</font>
+<font color='#555555'># v.2.1 - more compatible CGI</font>
+<font color='#555555'># v.2.3 - changed syntax for write-line</font>
+<font color='#555555'># v.2.4 - added handling of < ? ... > XML tag</font>
+<font color='#555555'># v.2.5 - generate more compliant HTML 4.01 transitional</font>
+<font color='#555555'># v.2.6 - handle number scientific format with e</font>
+<font color='#555555'># v.2.7 - improved keyword regex</font>
+<font color='#555555'># v.2.8 - scientific format with E</font>
+<font color='#555555'># v.2.9 - support for newLISPdoc tag color</font>
+<font color='#555555'># v.3.0 - correctly highlight &amp; and ^ keywords</font>
+<font color='#555555'># v.3.1 - change additional 'nil' arg in 'starts-with' to 1</font>
+<font color='#555555'># v.3.2 - replace 'name' with 'term' and make compatible with older versions</font>
+<font color='#555555'># v.3.3 - added utf-8 meta tag in header</font>
+<font color='#555555'># v.3.4 - fontsize 150% for iPad or iPhone</font>
+<font color='#555555'>#</font>
+<font color='#555555'># formats newLISP source files with syntax highlighting in HTML</font>
+<font color='#555555'>#</font>
+<font color='#555555'># use on the command line or as cgi file together with a webserver</font>
+<font color='#555555'># </font>
+<font color='#555555'># EXAMPLE command line (set 'cgi-use nil):</font>
+<font color='#555555'>#</font>
+<font color='#555555'>#    ./syntaxi.cgi mysource.lsp > mysource.lsp.html</font>
+<font color='#555555'>#</font>
+<font color='#555555'># formats mysorce.lsp and redirects output to a new file mysource.lsp.html</font>
+<font color='#555555'>#</font>
+<font color='#555555'># EXAMPLE webserver CGI (tested on Apache) local files must end in txt for security</font>
+<font color='#555555'>#</font>
+<font color='#555555'>#    http://www.mysite.com/syntax.cgi?mysource.lsp.txt</font>
+<font color='#555555'>#</font>
+<font color='#555555'># returns mysorce.lsp HTML formatted to the requesting client (browser)</font>
+<font color='#555555'>#</font>
+<font color='#555555'># EXAMPLE webserver CGI with other site URL</font>
+<font color='#555555'>#</font>
+<font color='#555555'>#    http://www.mysite.com/syntax.cgi?http://othersite/afile.lsp</font>
+<font color='#555555'>#</font>
+<font color='#555555'># displays afile.lsp formateed from other site</font>
+<font color='#555555'>#</font>
+<font color='#555555'># the following situations are not handled correctly:</font>
+<font color='#555555'>#    - nested curly braces for strings like {abd{def}ghi}</font>
+<font color='#555555'>#    - multiline quoted strings, use &#091;text] &#091;/text] instead</font>
+<font color='#555555'>#    - multiline braced strings, use &#091;text] &#091;/text] instead</font>
+<font color='#555555'>#    - comments starting with # but not starting at beginning of line</font>
+<font color='#555555'>#      use ; as comment starter when comment appears after code</font>
+
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> cgi-use <font color='#0000AA'>true</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; make compatible with versions prior to 10.1.11</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> <font color='#AA0000'>(</font><font color='#0000AA'>sys-info</font> <font color='#998800'>-2</font><font color='#AA0000'>)</font> <font color='#998800'>10111</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>constant</font> <font color='#AA0000'>(</font><font color='#0000AA'>global</font> 'term<font color='#AA0000'>)</font> name<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>when</font> cgi-use 
+	<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"Content-Type: text/html&#092;r&#092;n&#092;r&#092;n"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'iPad <font color='#AA0000'>(</font><font color='#0000AA'>find</font> <font color='#008800'>"iPad"</font> <font color='#AA0000'>(</font><font color='#0000AA'>env</font> <font color='#008800'>"HTTP_USER_AGENT"</font><font color='#AA0000'>)</font> <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'iPhone <font color='#AA0000'>(</font><font color='#0000AA'>find</font> <font color='#008800'>"iPhone"</font> <font color='#AA0000'>(</font><font color='#0000AA'>env</font> <font color='#008800'>"HTTP_USER_AGENT"</font><font color='#AA0000'>)</font> <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+		
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> keyword-color <font color='#008800'>"#0000AA"</font><font color='#AA0000'>)</font>      <font color='#555555'>; newLISP keywords</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> tag-color <font color='#008800'>"#308080"</font><font color='#AA0000'>)</font>          <font color='#555555'>; newLISPdoc tags</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> string-color <font color='#008800'>"#008800"</font><font color='#AA0000'>)</font>       <font color='#555555'>; single line quoted and braced strings</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> long-string-color <font color='#008800'>"#008800"</font><font color='#AA0000'>)</font>  <font color='#555555'>; multiline for &#091;text], &#091;/text] tags</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> paren-color <font color='#008800'>"#AA0000"</font><font color='#AA0000'>)</font>        <font color='#555555'>; parenthesis</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> comment-color <font color='#008800'>"#555555"</font><font color='#AA0000'>)</font>      <font color='#555555'>; comments</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> number-color <font color='#008800'>"#665500"</font><font color='#AA0000'>)</font>       <font color='#555555'>; numbers</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> function-name-color <font color='#008800'>"#000088"</font><font color='#AA0000'>)</font>    <font color='#555555'>; not implemented yet for func in (define (func x y z) ...)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'keywords <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>term</font> <font color='#AA0000'>(</font><font color='#0000AA'>filter</font> <font color='#AA0000'>(</font>fn <font color='#AA0000'>(</font>x<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>primitive?</font> <font color='#AA0000'>(</font><font color='#0000AA'>eval</font> x<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>sort</font> <font color='#AA0000'>(</font><font color='#0000AA'>symbols</font><font color='#AA0000'>)</font> <font color='#0000AA'>></font> <font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>push</font> <font color='#008800'>"nil"</font> keywords<font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>push</font> <font color='#008800'>"true"</font> keywords<font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'keyword-regex <font color='#AA0000'>(</font><font color='#0000AA'>join</font> keywords <font color='#008800'>"|"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&amp;"</font> keyword-regex <font color='#008800'>"&amp;amp&amp;"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"?"</font> keyword-regex <font color='#008800'>"&#092;&#092;?"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"^"</font> keyword-regex <font color='#008800'>"&#092;&#092;^"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"$"</font> keyword-regex <font color='#008800'>"&#092;&#092;$"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"!"</font> keyword-regex <font color='#008800'>"&#092;&#092;!"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"+"</font> keyword-regex <font color='#008800'>"&#092;&#092;+"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"*"</font> keyword-regex <font color='#008800'>"&#092;&#092;*"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"||"</font> keyword-regex <font color='#008800'>"|&#092;&#092;|"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'keyword-regex <font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>{(\G|\s+|\(|\))(}</font> keyword-regex <font color='#008800'>{)(\s+|\(|\))}</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'file <font color='#AA0000'>(</font><font color='#0000AA'>if</font> cgi-use 
+	<font color='#AA0000'>(</font><font color='#0000AA'>or</font> <font color='#AA0000'>(</font><font color='#0000AA'>read-line</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>env</font> <font color='#008800'>"QUERY_STRING"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'title file<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>when</font> cgi-use
+    <font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'>and</font> <font color='#AA0000'>(</font><font color='#0000AA'>not</font> <font color='#AA0000'>(</font><font color='#0000AA'>starts-with</font> file <font color='#008800'>"http://"</font> <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>not</font> <font color='#AA0000'>(</font><font color='#0000AA'>ends-with</font> file <font color='#008800'>".txt"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"&lt;h3&gt;File not allowed for viewing: "</font> file <font color='#008800'>"&lt;/h3&gt;"</font><font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+
+<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>starts-with</font> file <font color='#008800'>"http://"</font> <font color='#998800'>1</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'file <font color='#AA0000'>(</font><font color='#0000AA'>get-url</font> file <font color='#998800'>10000</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'file <font color='#AA0000'>(</font><font color='#0000AA'>read-file</font> file <font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>unless</font> file
+    <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"&lt;h3&gt;Cannot find file&lt;/h3&gt;"</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>clean-comment str<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&lt;font color='#......'>}</font> str <font color='#008800'>""</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&lt;/font&gt;}</font> str <font color='#008800'>""</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&#091;text]}</font> str <font color='#008800'>"&amp;#091&amp;text]"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&#091;/text]}</font> str <font color='#008800'>"&amp;#091&amp;/text]"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>format-quoted-string str<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&lt;font color='#......'>}</font> str <font color='#008800'>""</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&lt;/font&gt;}</font> str <font color='#008800'>""</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&#059;"</font> str <font color='#008800'>"&amp;#059&amp;"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&#123;"</font> str <font color='#008800'>"&amp;#123&amp;"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&#125;"</font> str <font color='#008800'>"&amp;#125&amp;"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{\}</font> str <font color='#008800'>"&amp;#092&amp;"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&#091;text]}</font> str <font color='#008800'>"&amp;#091&amp;text]"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&#091;/text]}</font> str <font color='#008800'>"&amp;#091&amp;/text]"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>{&lt;font color='%s'>%s&lt;/font&gt;}</font> string-color str<font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>format-braced-string str<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&lt;font color='#......'>}</font> str <font color='#008800'>""</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&lt;/font&gt;}</font> str <font color='#008800'>""</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&#059;"</font> str <font color='#008800'>"&amp;#059&amp;"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&#034;}</font> str <font color='#008800'>"&amp;#034&amp;"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&#091;text]}</font> str <font color='#008800'>"&amp;#091&amp;text]"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&#091;/text]}</font> str <font color='#008800'>"&amp;#091&amp;/text]"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>{&lt;font color='%s'>%s&lt;/font&gt;}</font> string-color str<font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>format-tagged-string str<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&lt;font color='#......'>}</font> str <font color='#008800'>""</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&lt;/font&gt;}</font> str <font color='#008800'>""</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&#059;"</font> str <font color='#008800'>"&amp;#059&amp;"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>{&lt;font color='%s'>%s&lt;/font&gt;}</font> string-color str<font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#555555'>; replace special HTML characters</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&#092;r&#092;n"</font> file <font color='#008800'>"&#092;n"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&amp;"</font> file <font color='#008800'>"&amp;amp&amp;"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"<(&#092;&#092;w)"</font> file <font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>"&amp;lt&amp;"</font> $1<font color='#AA0000'>)</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"(&#092;&#092;w)>"</font> file <font color='#AA0000'>(</font><font color='#0000AA'>append</font> $1 <font color='#008800'>"&amp;gt&amp;"</font><font color='#AA0000'>)</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"/&gt;"</font> file <font color='#008800'>"/&amp;gt&amp;"</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&lt;/"</font> file <font color='#008800'>"&amp;lt&amp;/"</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&lt;!"</font> file <font color='#008800'>"&amp;lt&amp;!"</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"<&#092;&#092;?"</font> file <font color='#008800'>"&amp;lt&amp;?"</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+<font color='#555555'>; replace escaped quotes</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font>  <font color='#008800'>"&#092;092&#092;034"</font>  file <font color='#008800'>"&amp;#092&amp;&amp;#034&amp;"</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; color keywords</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> keyword-regex file <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>{%s&lt;font color='%s'>%s&lt;/font&gt;%s}</font> $1 keyword-color $2 $3<font color='#AA0000'>)</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+<font color='#555555'>;(replace keyword-regex file (println "->" $0 "<-&lt;br&gt;") 0)</font>
+<font color='#555555'>;(exit)</font>
+
+<font color='#555555'>; color numbers</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font>  
+<font color='#555555'>;   <-- lead --><---- hex ---->|<- oct ->|<------- decimal ----- and ----- scientific --></font>
+	<font color='#008800'>{(\s+|\(|\))(0x[0-9a-fA-F]+|[+-]?0\d+|([+-]?(0|[1-9]\d*)(\.\d*)?|\.\d+)([eE][+-]?\d+)?)}</font> file 
+         <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>{%s&lt;font color='%s'>%s&lt;/font&gt;}</font> $1 number-color $2<font color='#AA0000'>)</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+
+
+<font color='#555555'>; color parens</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"("</font> file <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>{&lt;font color='%s'>(&lt;/font&gt;}</font> paren-color<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>")"</font> file <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>{&lt;font color='%s'>)&lt;/font&gt;}</font> paren-color<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; color braced strings</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&#123;.*?&#125;"</font> file <font color='#AA0000'>(</font>format-braced-string $0<font color='#AA0000'>)</font> <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#555555'>; no multiline string</font>
+<font color='#555555'>; color quoted strings</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&#034;.*?&#034;}</font> file <font color='#AA0000'>(</font>format-quoted-string $0<font color='#AA0000'>)</font> <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#555555'>; no multiline strings</font>
+
+<font color='#555555'>; color ;  comments</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&#059;.*"</font> file <font color='#AA0000'>(</font>clean-comment $0<font color='#AA0000'>)</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&#059;.*"</font> file <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>{&lt;font color='%s'>%s&lt;/font&gt;}</font> comment-color $0<font color='#AA0000'>)</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"(&#059;&#059;.*)(@.*)(&#092;&#092;s.*&#092;n)"</font> file <font color='#AA0000'>(</font><font color='#0000AA'>append</font> $1 <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>{&lt;font color='%s'>%s&lt;/font&gt;}</font> tag-color $2<font color='#AA0000'>)</font> $3<font color='#AA0000'>)</font> <font color='#998800'>512</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; color # comments</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'buff <font color='#008800'>""</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>dolist</font> <font color='#AA0000'>(</font>lne <font color='#AA0000'>(</font><font color='#0000AA'>parse</font> file <font color='#008800'>"&#092;n"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"^&#092;&#092;s*#.*"</font> lne  <font color='#AA0000'>(</font>clean-comment $0<font color='#AA0000'>)</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"^&#092;&#092;s*#.*"</font> lne <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>{&lt;font color='%s'>%s&lt;/font&gt;}</font> comment-color $0<font color='#AA0000'>)</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> <font color='#AA0000'>(</font><font color='#0000AA'>sys-info</font> <font color='#998800'>-2</font><font color='#AA0000'>)</font> <font color='#998800'>9909</font><font color='#AA0000'>)</font> 
+		<font color='#AA0000'>(</font><font color='#0000AA'>write-line</font> lne buff<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>write-line</font> buff lne<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'file buff<font color='#AA0000'>)</font>
+
+<font color='#555555'>; color tagged strings</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{\[text\].*?\[/text\]}</font> file <font color='#AA0000'>(</font>format-tagged-string $0<font color='#AA0000'>)</font> <font color='#998800'>4</font><font color='#AA0000'>)</font> <font color='#555555'>; handles multiline strings</font>
+
+<font color='#555555'>; xlate back special characters</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&amp;amp&amp;"</font> file <font color='#008800'>"&amp;amp&#059;"</font><font color='#AA0000'>)</font>   <font color='#555555'>; ampersand</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&amp;lt&amp;"</font> file <font color='#008800'>"&amp;lt&#059;"</font><font color='#AA0000'>)</font>     <font color='#555555'>; less</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&amp;gt&amp;"</font> file <font color='#008800'>"&amp;gt&#059;"</font><font color='#AA0000'>)</font>     <font color='#555555'>; greater</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&amp;#034&amp;}</font> file <font color='#008800'>"&amp;#034&#059;"</font><font color='#AA0000'>)</font> <font color='#555555'>; quotes</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&amp;#059&amp;}</font> file <font color='#008800'>"&amp;#059&#059;"</font><font color='#AA0000'>)</font> <font color='#555555'>; semicolon</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&amp;#123&amp;}</font> file <font color='#008800'>"&amp;#123&#059;"</font><font color='#AA0000'>)</font> <font color='#555555'>; left curly brace</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&amp;#125&amp;}</font> file <font color='#008800'>"&amp;#125&#059;"</font><font color='#AA0000'>)</font> <font color='#555555'>; right curly brace</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&amp;#091&amp;}</font> file <font color='#008800'>"&amp;#091&#059;"</font><font color='#AA0000'>)</font> <font color='#555555'>; left bracket</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>{&amp;#092&amp;}</font> file <font color='#008800'>"&amp;#092&#059;"</font><font color='#AA0000'>)</font> <font color='#555555'>; back slash</font>
+
+<font color='#555555'>; add pre and post tags</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>append</font> 
+	<font color='#008800'>{&lt;!DOCTYPE HTML PUBLIC &#034;4.01 Transitional&#034;>}</font>
+	<font color='#008800'>"&lt;html&gt;&lt;head&gt;&lt;title&gt;"</font> title <font color='#008800'>"&lt;/title&gt;&#092;n"</font>
+	<font color='#008800'>{&lt;meta http-equiv=&#034;Content-Type&#034; content=&#034;text/html&#059; charset=utf-8&#034; /&gt;}</font>
+	<font color='#008800'>{&lt;style type=&#034;text/css&#034;>}</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>or</font> iPad iPhone<font color='#AA0000'>)</font>
+		<font color='#008800'>{pre {font-size: 150%}</font>}
+		<font color='#008800'>{pre {font-size: 100%}</font>} <font color='#AA0000'>)</font>
+	<font color='#008800'>"&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&#092;n&lt;pre&gt;&#092;n"</font> 
+	file <font color='#008800'>"&#092;n&lt;/pre&gt;"</font> 
+<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>{&lt;center&gt;&lt;font face='Arial' size='-2' color='#444444'>}</font>
+         <font color='#008800'>{syntax highlighting with &lt;a href=&#034;http://newlisp.org&#034;>newLISP&lt;/a&gt;&amp;nbsp&#059;}</font>
+         <font color='#008800'>{and &lt;a href=&#034;http://newlisp.org/syntax.cgi?code/syntax-cgi.txt&#034;>syntax.cgi&lt;/a&gt;}</font>
+         <font color='#008800'>{&lt;/font&gt;&lt;/center&gt;}</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>{&lt;/body&gt;&lt;/html&gt;}</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>;; eof</font>
+
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

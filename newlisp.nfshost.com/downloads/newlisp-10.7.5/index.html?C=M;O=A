@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /downloads/newlisp-10.7.5</title>
+ </head>
+ <body>
+<h1>Index of /downloads/newlisp-10.7.5</h1>
+<pre><img src="/icons/blank.gif" alt="Icon "> <a href="?C=N;O=A">Name</a>                    <a href="?C=M;O=D">Last modified</a>      <a href="?C=S;O=A">Size</a>  <a href="?C=D;O=A">Description</a><hr><img src="/icons/back.gif" alt="[PARENTDIR]"> <a href="/downloads/">Parent Directory</a>                             -   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="Makefile">Makefile</a>                2019-05-12 16:44  9.9K  
+<img src="/icons/hand.right.gif" alt="[   ]"> <a href="README">README</a>                  2019-05-12 16:44  3.6K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="configure">configure</a>               2019-05-12 16:44  4.0K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="configure-alt">configure-alt</a>           2019-05-12 16:44   18K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="make-win-everything.bat">make-win-everything.bat</a> 2019-05-12 16:44  474   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_aixILP32_utf8_gcc">makefile_aixILP32_ut..&gt;</a> 2019-05-12 16:44  783   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_aixLP64_utf8_gcc">makefile_aixLP64_utf..&gt;</a> 2019-05-12 16:44  794   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_aixLP64_utf8_xlc">makefile_aixLP64_utf..&gt;</a> 2019-05-12 16:44  746   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_aix_utf8_gcc">makefile_aix_utf8_gcc</a>   2019-05-12 16:44  761   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_aix_utf8_xlc">makefile_aix_utf8_xlc</a>   2019-05-12 16:44  711   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_amal_darwin_utf8_ffi">makefile_amal_darwin..&gt;</a> 2019-05-12 16:44  881   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_bsd">makefile_bsd</a>            2019-05-12 16:44  744   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_bsdLP64">makefile_bsdLP64</a>        2019-05-12 16:44  772   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_bsdLP64_utf8">makefile_bsdLP64_utf8</a>   2019-05-12 16:44  803   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_bsdLP64_utf8_ffi">makefile_bsdLP64_utf..&gt;</a> 2019-05-12 16:44  872   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_bsdLP64_utf8_lib">makefile_bsdLP64_utf..&gt;</a> 2019-05-12 16:44  564   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_bsd_lib">makefile_bsd_lib</a>        2019-05-12 16:44  495   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_bsd_utf8">makefile_bsd_utf8</a>       2019-05-12 16:44  729   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_bsd_utf8_ffi">makefile_bsd_utf8_ffi</a>   2019-05-12 16:44  881   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_bsd_utf8_lib">makefile_bsd_utf8_lib</a>   2019-05-12 16:44  535   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_cygwin">makefile_cygwin</a>         2019-05-12 16:44  1.3K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_cygwinLP64">makefile_cygwinLP64</a>     2019-05-12 16:44  1.3K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_darwin">makefile_darwin</a>         2019-05-12 16:44  509   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_darwinLP64">makefile_darwinLP64</a>     2019-05-12 16:44  635   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_darwinLP64_utf8">makefile_darwinLP64_..&gt;</a> 2019-05-12 16:44  561   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_darwinLP64_utf8_ffi">makefile_darwinLP64_..&gt;</a> 2019-05-12 16:44  588   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_darwinLP64_utf8_lib">makefile_darwinLP64_..&gt;</a> 2019-05-12 16:44  588   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_darwin_universal_utf8_compat">makefile_darwin_univ..&gt;</a> 2019-05-12 16:44  1.8K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_darwin_utf8">makefile_darwin_utf8</a>    2019-05-12 16:44  548   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_darwin_utf8_ffi">makefile_darwin_utf8..&gt;</a> 2019-05-12 16:44  576   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_darwin_utf8_leopardIntel">makefile_darwin_utf8..&gt;</a> 2019-05-12 16:44  912   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_darwin_utf8_leopardIntel_ffi">makefile_darwin_utf8..&gt;</a> 2019-05-12 16:44  936   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_darwin_utf8_leopardPPC">makefile_darwin_utf8..&gt;</a> 2019-05-12 16:44  1.1K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_darwin_utf8_leopardPPC_ffi">makefile_darwin_utf8..&gt;</a> 2019-05-12 16:44  1.1K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_darwin_utf8_lib">makefile_darwin_utf8..&gt;</a> 2019-05-12 16:44  572   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_emscripten_wasm_utf8">makefile_emscripten_..&gt;</a> 2019-05-12 16:44  1.5K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_kfreebsdLP64_utf8">makefile_kfreebsdLP6..&gt;</a> 2019-05-12 16:44  813   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_kfreebsdLP64_utf8_ffi">makefile_kfreebsdLP6..&gt;</a> 2019-05-12 16:44  865   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_kfreebsd_utf8">makefile_kfreebsd_utf8</a>  2019-05-12 16:44  760   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_linux">makefile_linux</a>          2019-05-12 16:44  819   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_linuxLP64">makefile_linuxLP64</a>      2019-05-12 16:44  876   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_linuxLP64_ffi">makefile_linuxLP64_ffi</a>  2019-05-12 16:44  940   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_linuxLP64_lib">makefile_linuxLP64_lib</a>  2019-05-12 16:44  662   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_linuxLP64_redhat_utf8_ffi">makefile_linuxLP64_r..&gt;</a> 2019-05-12 16:44  792   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_linuxLP64_utf8">makefile_linuxLP64_utf8</a> 2019-05-12 16:44  912   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_linuxLP64_utf8_ffi">makefile_linuxLP64_u..&gt;</a> 2019-05-12 16:44  1.0K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_linux_ffi">makefile_linux_ffi</a>      2019-05-12 16:44  884   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_linux_lib">makefile_linux_lib</a>      2019-05-12 16:44  612   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_linux_lib_utf8">makefile_linux_lib_utf8</a> 2019-05-12 16:44  642   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_linux_maemo_utf8">makefile_linux_maemo..&gt;</a> 2019-05-12 16:44  903   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_linux_openwrt">makefile_linux_openwrt</a>  2019-05-12 16:44  909   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_linux_redhat_utf8_ffi">makefile_linux_redha..&gt;</a> 2019-05-12 16:44  708   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_linux_utf8">makefile_linux_utf8</a>     2019-05-12 16:44  861   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_linux_utf8_ffi">makefile_linux_utf8_ffi</a> 2019-05-12 16:44  924   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_mingw">makefile_mingw</a>          2019-05-12 16:44  467   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_mingw64">makefile_mingw64</a>        2019-05-12 16:44  496   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_mingw64_ffi">makefile_mingw64_ffi</a>    2019-05-12 16:44  516   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_mingw64_utf8">makefile_mingw64_utf8</a>   2019-05-12 16:44  533   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_mingw64_utf8_ffi">makefile_mingw64_utf..&gt;</a> 2019-05-12 16:44  551   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_mingw64dll">makefile_mingw64dll</a>     2019-05-12 16:44  630   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_mingw64dll_ffi">makefile_mingw64dll_ffi</a> 2019-05-12 16:44  639   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_mingw64dll_utf8">makefile_mingw64dll_..&gt;</a> 2019-05-12 16:44  665   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_mingw64dll_utf8_ffi">makefile_mingw64dll_..&gt;</a> 2019-05-12 16:44  685   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_mingw_ffi">makefile_mingw_ffi</a>      2019-05-12 16:44  492   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_mingw_utf8">makefile_mingw_utf8</a>     2019-05-12 16:44  517   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_mingw_utf8_ffi">makefile_mingw_utf8_ffi</a> 2019-05-12 16:44  537   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_mingwdll">makefile_mingwdll</a>       2019-05-12 16:44  599   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_mingwdll_ffi">makefile_mingwdll_ffi</a>   2019-05-12 16:44  627   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_mingwdll_utf8">makefile_mingwdll_utf8</a>  2019-05-12 16:44  626   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_mingwdll_utf8_ffi">makefile_mingwdll_ut..&gt;</a> 2019-05-12 16:44  676   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_netbsd">makefile_netbsd</a>         2019-05-12 16:44  654   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_netbsd_utf8">makefile_netbsd_utf8</a>    2019-05-12 16:44  718   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_opensolaris">makefile_opensolaris</a>    2019-05-12 16:44  659   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_original_install">makefile_original_in..&gt;</a> 2019-05-12 16:44  6.7K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_os2">makefile_os2</a>            2019-05-12 16:44  659   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_raspberrypi">makefile_raspberrypi</a>    2019-05-12 16:44  881   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_raspberrypi_utf8">makefile_raspberrypi..&gt;</a> 2019-05-12 16:44  930   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_sunos">makefile_sunos</a>          2019-05-12 16:44  543   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_sunosLP64">makefile_sunosLP64</a>      2019-05-12 16:44  546   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_sunosLP64_utf8">makefile_sunosLP64_utf8</a> 2019-05-12 16:44  571   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_sunos_utf8">makefile_sunos_utf8</a>     2019-05-12 16:44  615   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="makefile_tru64">makefile_tru64</a>          2019-05-12 16:44  709   
+<img src="/icons/text.gif" alt="[TXT]"> <a href="newlisp.c">newlisp.c</a>               2019-05-12 16:44  177K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="newlisp.h">newlisp.h</a>               2019-05-12 16:44   18K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="nl-debug.c">nl-debug.c</a>              2019-05-12 16:44  9.1K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="nl-filesys.c">nl-filesys.c</a>            2019-05-12 16:44   70K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="nl-import.c">nl-import.c</a>             2019-05-12 16:44   34K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="nl-list.c">nl-list.c</a>               2019-05-12 16:44   46K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="nl-liststr.c">nl-liststr.c</a>            2019-05-12 16:44   39K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="nl-math.c">nl-math.c</a>               2019-05-12 16:44   99K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="nl-matrix.c">nl-matrix.c</a>             2019-05-12 16:44   23K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="nl-sock.c">nl-sock.c</a>               2019-05-12 16:44   58K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="nl-string.c">nl-string.c</a>             2019-05-12 16:44   58K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="nl-symbol.c">nl-symbol.c</a>             2019-05-12 16:44   21K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="nl-utf8.c">nl-utf8.c</a>               2019-05-12 16:44  7.2K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="nl-web.c">nl-web.c</a>                2019-05-12 16:44   36K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="nl-xml-json.c">nl-xml-json.c</a>           2019-05-12 16:44   23K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="pcre-chartables.c">pcre-chartables.c</a>       2019-05-12 16:44  6.9K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="pcre-config.h">pcre-config.h</a>           2019-05-12 16:44  4.6K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="pcre-internal.h">pcre-internal.h</a>         2019-05-12 16:44   32K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="pcre.c">pcre.c</a>                  2019-05-12 16:44  276K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="pcre.h">pcre.h</a>                  2019-05-12 16:44  9.3K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="primes.h">primes.h</a>                2019-05-12 16:44   13K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="protos.h">protos.h</a>                2019-05-12 16:44   28K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="qa-comma">qa-comma</a>                2019-05-12 16:44   97K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="qa-dot">qa-dot</a>                  2019-05-12 16:44   99K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="unix-lib.c">unix-lib.c</a>              2019-05-12 16:44  4.1K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="win-dll.c">win-dll.c</a>               2019-05-12 16:44  4.8K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="win-dll.def">win-dll.def</a>             2019-05-12 16:44  165   
+<img src="/icons/text.gif" alt="[TXT]"> <a href="win-ffi.h">win-ffi.h</a>               2019-05-12 16:44   15K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="win-path.c">win-path.c</a>              2019-05-12 16:44  8.7K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="win-util.c">win-util.c</a>              2019-05-12 16:44  6.6K  
+<img src="/icons/text.gif" alt="[TXT]"> <a href="win64-dll.def">win64-dll.def</a>           2019-05-12 16:44  150   
+<img src="/icons/folder.gif" alt="[DIR]"> <a href="doc/">doc/</a>                    2020-08-26 15:30    -   
+<img src="/icons/folder.gif" alt="[DIR]"> <a href="examples/">examples/</a>               2020-08-26 16:43    -   
+<img src="/icons/folder.gif" alt="[DIR]"> <a href="modules/">modules/</a>                2020-08-26 16:43    -   
+<img src="/icons/folder.gif" alt="[DIR]"> <a href="newlisp-js/">newlisp-js/</a>             2020-08-26 16:44    -   
+<img src="/icons/folder.gif" alt="[DIR]"> <a href="qa-specific-tests/">qa-specific-tests/</a>      2020-08-26 16:44    -   
+<img src="/icons/folder.gif" alt="[DIR]"> <a href="util/">util/</a>                   2020-08-26 16:45    -   
+<hr></pre>
+</body></html>

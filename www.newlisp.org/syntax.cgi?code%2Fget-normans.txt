@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>code/get-normans.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+<font color='#555555'>#</font>
+<font color='#555555'># get all of Norman's utilities at once</font>
+<font color='#555555'># upated 2011-07-13 to new place and format on Norman's site</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'page <font color='#AA0000'>(</font><font color='#0000AA'>get-url</font> <font color='#008800'>"http://newlisp.digidep.net/scripts/"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'files <font color='#AA0000'>(</font><font color='#0000AA'>find-all</font> <font color='#008800'>{href=&#034;(.*\.lsp)&#034;}</font> page $1<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>dolist</font> <font color='#AA0000'>(</font>file files<font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>write-file</font> file <font color='#AA0000'>(</font><font color='#0000AA'>get-url</font> <font color='#AA0000'>(</font><font color='#0000AA'>string</font> <font color='#008800'>"http://newlisp.digidep.net/scripts/"</font> file<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"->"</font> file<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>benchmarks/sieve.newlisp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'># sieve - benchmark</font>
+<font color='#555555'># requires newLISP v. 7.5.2 or later</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'NUM <font color='#AA0000'>(</font><font color='#0000AA'>integer</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>dotimes</font> <font color='#AA0000'>(</font>p NUM<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'flags <font color='#AA0000'>(</font><font color='#0000AA'>array</font> <font color='#998800'>8193</font> '<font color='#AA0000'>(</font><font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'cnt <font color='#998800'>0</font><font color='#AA0000'>)</font>
+
+		<font color='#AA0000'>(</font><font color='#0000AA'>for</font> <font color='#AA0000'>(</font>i <font color='#998800'>2</font> <font color='#998800'>8192</font><font color='#AA0000'>)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> <font color='#AA0000'>(</font><font color='#0000AA'>nth</font> i flags<font color='#AA0000'>)</font> <font color='#998800'>1</font><font color='#AA0000'>)</font>
+				<font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+					<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'k <font color='#AA0000'>(</font><font color='#0000AA'>+</font> i i<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+					<font color='#AA0000'>(</font><font color='#0000AA'>while</font> <font color='#AA0000'>(</font><font color='#0000AA'><=</font> k <font color='#998800'>8192</font><font color='#AA0000'>)</font>
+						<font color='#AA0000'>(</font>nth-set k flags <font color='#998800'>0</font><font color='#AA0000'>)</font>
+						<font color='#AA0000'>(</font><font color='#0000AA'>inc</font> 'k i<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+					<font color='#AA0000'>(</font><font color='#0000AA'>inc</font> 'cnt<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+				
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"Count: "</font> cnt<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

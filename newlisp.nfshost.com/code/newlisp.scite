@@ -1,0 +1,185 @@
+# Define SciTE settings for Newlisp files.
+view.whitespace=1
+whitespace.fore=#00FF00
+view.indentation.whitespace=1
+view.indentation.guides=0
+view.indentation.examine=3
+highlight.indentation.guides=0
+split.vertical=0
+indent.size=1
+
+# Right edge
+edge.column=64
+edge.mode=1
+edge.colour=#00FF00
+
+# Sizes and visibility in edit pane
+line.margin.visible=1
+line.margin.width=4
+margin.width=16
+fold.margin.width=16
+fold.margin.colour=#007F00
+fold.margin.highlight.colour=#007F00
+
+# caret 
+caret.fore=#FF0000
+caret.width=3
+caret.period=500
+
+selection.back=#007F00
+
+file.patterns.lisp=*.lsp;*.lisp
+filter.lisp=LISP (lsp lisp)|$(file.patterns.lisp)|
+
+lexer.$(file.patterns.lisp)=lisp
+
+# Lisp build in functions
+keywords.$(file.patterns.lisp)= $ \
+$ ! != $ $0 $1 $10 $11 $12 $13 $14 $15 $2 $3 $4 $5 $6 $7 $8 $9 \
+$args $idx $it $main-args % & * + - / : < << <= = > >= >> ? @ \
+class MAIN NaN? Tree abort abs acos acosh add address amb and \
+append append-file apply args array array-list array? asin asinh \
+assoc atan atan2 atanh atom? base64-dec base64-enc bayes-query \
+bayes-train begin beta betai bind binomial bits callback case \
+catch ceil change-dir char chop clean close command-event cond \
+cons constant context context? copy copy-file cos cosh count \
+cpymem crc32 crit-chi2 crit-z current-line curry date date-value \
+debug dec def-new default define define-macro delete delete-file \
+delete-url destroy det device difference directory directory? div \
+do-until do-while doargs dolist dostring dotimes dotree dump dup \
+empty? encrypt ends-with env erf error-event error-number error-text \
+eval eval-string exec exists exit exp expand explode factor fft \
+file-info file? filter find find-all first flat float float? floor \
+flt for for-all format fv gammai gammaln gcd get-char get-float \
+get-int get-long get-string get-url global global? if if-not ifft \
+import inc index int integer integer? intersect invert irr join \
+lambda? last legal? length let letex letn list list? load local \
+log lookup lower-case macro? main-args make-dir map mat match max \
+member min mod mul multiply name net-accept net-close net-connect \
+net-error net-eval net-interface net-listen net-local net-lookup \
+net-peek net-peer net-receive net-receive-from net-receive-udp \
+net-select net-send net-send-to net-send-udp net-service net-sessions \
+new nil nil? normal not now nper npv nth null? number? open or \
+ostype pack parse pipe pmt pop pop-assoc post-url pow pretty-print \
+primitive? print println prob-chi2 prob-z process prompt-event \
+protected? push put-url pv quote quote? rand random randomize \
+read-buffer read-char read-expr read-file read-key read-line \
+real-path ref ref-all regex regex-comp remove-dir rename-file \
+replace reset rest reverse rotate round save search seed seek \
+select semaphore sequence series set set-locale set-ref set-ref-all \
+setf setq sgn share signal silent sin sinh sleep slice sort source \
+spawn sqrt starts-with string string? sub swap sym symbol? symbols \
+sync sys-error sys-info tan tanh throw throw-error time time-of-day \
+timer title-case trace trace-highlight transpose trim true true? \
+unify unique unless unpack until upper-case uuid when while \
+write-buffer write-char write-file write-line xml-error xml-parse \
+xml-type-tags zero? | ~ \
+
+word.chars.lisp=$(chars.alpha)$(chars.numeric)_-<>.#+@$%^&=*!?`§
+word.characters.$(file.patterns.lisp)=$(word.chars.lisp)
+
+comment.block.lisp=;
+comment.box.start.lisp=;
+comment.box.middle.lisp=;
+comment.box.end.lisp=;
+comment.stream.start.lisp=;111
+comment.stream.end.lisp=;222
+
+# White space
+style.lisp.0=fore:#00FF00,back:#000000,size:13
+
+# Line Comment
+style.lisp.1=fore:#FFFFFF,back:#000000,size:13
+
+# Number
+style.lisp.2=fore:#7F7FFF,back:#000000,size:13
+
+# Keyword
+style.lisp.3=fore:#FFCF00,back:#000000,size:13
+
+# Unknown
+style.lisp.4=back:#FFFFFF
+
+# Quoted identifier
+style.lisp.5=fore:#FF0000,back:#000000,underlined
+
+# String
+style.lisp.6=fore:#7FFFFF,back:#000000
+
+# End of line where string is not closed
+style.lisp.7=back:#FFFFFF,back:#000000
+
+# Unknown
+style.lisp.8=back:#FFFFFF,back:#000000
+
+# Identifiers
+style.lisp.9=fore:#00FF00,back:#000000
+
+# Operators
+style.lisp.10=fore:#FF7FFF,back:#000000
+
+# -- syntax
+style.lisp.11=back:#FFFFFF
+
+# Undefined or unknown styles
+style.lisp.12=back:#00FF00
+style.lisp.13=back:#FFFF00
+style.lisp.14=back:#FFFF00
+style.lisp.15=back:#FFFF00
+style.lisp.16=back:#FFFF00
+style.lisp.17=back:#FFFF00
+style.lisp.18=back:#FFFF00
+style.lisp.19=back:#FFFF00
+style.lisp.20=back:#FFFF00
+style.lisp.21=back:#FFFF00
+style.lisp.22=back:#FFFF00
+style.lisp.23=back:#FFFF00
+style.lisp.24=back:#FFFF00
+style.lisp.25=back:#FFFF00
+style.lisp.26=back:#FFFF00
+style.lisp.27=back:#FFFF00
+style.lisp.28=back:#FFFF00
+style.lisp.29=back:#FFFF00
+style.lisp.30=back:#FFFF00
+style.lisp.31=back:#FFFF00
+
+# Default
+style.lisp.32=size:13,fore:#FF0000,back:#000000
+
+# Line number
+style.lisp.33=back:#00FF00,fore:#000000,size:13
+
+# Brace highlight
+style.lisp.34=back:#007f00,fore:#FFFF00,size:13
+
+# Brace incomplete highlight
+style.lisp.35=back:#7f0000,fore:#FFFF00,size:13,
+
+# Control characters
+style.lisp.36=,back:#000000;fore:#FF00FF,size:13,
+
+# Indentation guides
+style.lisp.37=fore:#00FF00,back:#00FF00,size:13,
+
+# Braces are only matched in operator style
+# braces.lisp.style=10
+
+# TOOLS
+command.go.$(file.patterns.lisp)=cmd /K "newlisp -c -s 400000 $(FilePath)"
+command.go.subsystem.$(file.patterns.lisp)=2
+
+command.name.0.$(file.patterns.lisp)=Go (Output Box)
+command.0.$(file.patterns.lisp)=cmd /K "newlisp -c $(FilePath)"
+command.subsystem.0.$(file.patterns.lisp)=0
+
+command.name.1.$(file.patterns.lisp)=Newlisp REPL (Command Window)
+command.1.$(file.patterns.lisp)=cmd /K "newlisp"
+command.subsystem.1.$(file.patterns.lisp)=2
+
+command.name.2.$(file.patterns.lisp)=Newlisp REPL (Output)
+command.2.$(file.patterns.lisp)=cmd /K "newlisp"
+command.subsystem.2.$(file.patterns.lisp)=0
+
+command.help.$(file.patterns.lisp)="C:/Program Files (x86)/newlisp/manual_frame.html"
+command.help.subsystem.$(file.patterns.lisp)=2
+

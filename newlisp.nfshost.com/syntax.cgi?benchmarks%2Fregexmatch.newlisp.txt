@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>benchmarks/regexmatch.newlisp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'>;; regexmatch - benchmark</font>
+
+<font color='#555555'>;; get phone data from stdin</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>while</font> <font color='#AA0000'>(</font><font color='#0000AA'>read-line</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>push</font> <font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#AA0000'>(</font><font color='#0000AA'>current-line</font><font color='#AA0000'>)</font> <font color='#008800'>"&#092;n"</font><font color='#AA0000'>)</font> phones<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>reverse</font> phones<font color='#AA0000'>)</font>
+
+<font color='#555555'>;; patterns</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'pattern <font color='#AA0000'>(</font><font color='#0000AA'>append</font>
+    <font color='#008800'>{(?:^|[^\d\(])}</font>		<font color='#555555'>; must be preceeded by non-digit</font>
+    <font color='#008800'>{(\()?}</font>				<font color='#555555'>; match 1: possible initial left paren</font>
+    <font color='#008800'>{(\d\d\d)}</font>			<font color='#555555'>; match 2: area code is 3 digits</font>
+    <font color='#008800'>{(?(1)\))}</font>			<font color='#555555'>; if match1 then match right paren</font>
+    <font color='#008800'>{[ ]}</font>				<font color='#555555'>; area code followed by one space</font>
+    <font color='#008800'>{(\d\d\d)}</font>			<font color='#555555'>; match 3: prefix of 3 digits</font>
+    <font color='#008800'>{[ -]}</font>			      <font color='#555555'>; separator is either space or dash</font>
+    <font color='#008800'>{(\d\d\d\d)}</font>			<font color='#555555'>; match 4: last 4 digits</font>
+    <font color='#008800'>{\D}</font>				<font color='#555555'>; must be followed by a non-digit</font>
+<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>;; get N</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'N <font color='#AA0000'>(</font><font color='#0000AA'>integer</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'cnt <font color='#998800'>0</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>dotimes</font> <font color='#AA0000'>(</font>i N<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>dolist</font> <font color='#AA0000'>(</font>phone phones<font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>regex</font> pattern phone<font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> i <font color='#998800'>0</font><font color='#AA0000'>)</font>
+          <font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+            <font color='#AA0000'>(</font><font color='#0000AA'>inc</font> 'cnt<font color='#AA0000'>)</font>
+            <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>string</font> cnt <font color='#008800'>": ("</font> $2 <font color='#008800'>") "</font> $3 <font color='#008800'>"-"</font> $4<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>;; eof</font>
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

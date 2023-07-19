@@ -1,0 +1,1904 @@
+<!doctype html>
+<html lang="it" prefix="og: http://ogp.me/ns#" data-behavior="i18n" class="js-no-scroll">
+
+  <head>
+    <meta charset="utf-8"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Twitter Termini di Servizio</title>
+<meta name="description"/>
+<link rel="canonical" href="https://twitter.com/it/tos/previous/version_13"/>
+
+
+
+<meta property="og:url" content="https://twitter.com/it/tos/previous/version_13"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="Twitter Termini di Servizio"/>
+
+<meta property="og:image" content="/content/dam/legal-twitter/privacy-policy-2022/Twitter-terms-of-service-share.jpg.twimg.768.jpg"/>
+<meta name="keywords"/>
+
+
+<meta name="twitter:card" content="summary"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="twitter:widgets:new-embed-design" content="on"/>
+<meta name="twitter:widgets:csp" content="on"/>
+
+<link href="https://abs.twimg.com/favicons/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+
+
+<script type="application/json" id="analytics-settings">{&quot;google&quot;:{&quot;accounts&quot;:[],&quot;options&quot;:{&quot;displayAdvertisingFeatures&quot;:false}},&quot;scribe&quot;:{&quot;scribeSectionWithImpression&quot;:false},&quot;trackingPixel&quot;:{},&quot;bing&quot;:{}}</script>
+
+    
+
+<link rel="preconnect" href="https://twitter.com"/>
+
+<link rel="dns-prefetch" href="//syndication.twitter.com"/>
+<link rel="dns-prefetch" href="//fonts.twitter.com"/>
+<link rel="dns-prefetch" href="//platform.twitter.com"/>
+<link rel="dns-prefetch" href="//cdn.cms-twdigitalassets.com"/>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/css/main.css.twhash.a.f.f3a8a2f5503e9e16d20c53f79647e7d0.css" media="screen" type="text/css"/>
+
+<link rel="stylesheet" href="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/css/print.css.twhash.a.f.a1ddadfc5c50e9e986f7b8872a6b28a3.css" media="print" type="text/css"/>
+
+
+
+<script type="text/javascript" src="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/js/common.js.twhash.a.f.1844c17326b60941bebeb7d8f1d882dc.js"></script>
+
+
+
+  </head>
+  <body class="
+        twtr-theme--blue
+        twtr-shade--dark
+        page single-page
+        
+        twtr-color-bg--light-gray-neutral
+        js-no-scroll
+      " data-analytics-page="twitter" data-analytics-section="it" data-analytics-component="tos/previous/version_13" data-analytics-element="page">
+      
+      
+<main class="twtr-container  twtr-color-bg--white-neutral">
+  
+
+
+
+
+    
+    
+    <div class="p01-single-page-site-header">
+
+
+
+
+
+<div class="p01">
+  <div class="p01__item  twtr-container  twtr-color-bg--blue-dark">
+    <div class="p01__nav-bar  twtr-grid">
+      <div class="p01__brand">
+        <span class="p01__brand-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" class="twtr-icon--base  twtr-color-fill--white-neutral"> 
+ <path opacity="0" d="M0 0h24v24H0z" /> 
+ <path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z" /> 
+</svg></span>
+        <span class="p01__brand-name  twtr-type--bold-16  twtr-color--white-neutral">
+          Twitter Termini di Servizio
+        </span>
+      </div>
+      <div class="p01__menu-container">
+        <ul class="p01__menu">
+          <li class="p01__menu-item  p01__menu-item-download-pdf">
+            <a class="p01__item-link  p01__item-link--downlaod  twtr-type--bold-14  twtr-color--white-neutral  has-hover" target="_blank" rel="noopener" href="https://cdn.cms-twdigitalassets.com/content/dam/legal-twitter/site-assets/privacy-policy-new/Privacy-Policy-Terms-of-Service_Italian.pdf">Scarica PDF</a>
+          </li>
+          <li class="p01__menu-item  p01__menu-item-hamburger  has-menu  js-toggle-menu">
+            <div role="button" class="p01__menu-toggle  js-toggle-nav  is-collapsed  twtr-color--white-neutral" data-target=".p01__menu--site">
+              <span class="p01__menu-toggle-text  visuallyhidden" data-open-message="Open menu" data-close-message="Close menu">
+                
+              </span>
+              <div class="p01__menu-toggle-icon">
+                <span class="p01__menu-toggle-icon-bar"></span>
+                <span class="p01__menu-toggle-icon-bar"></span>
+                <span class="p01__menu-toggle-icon-bar"></span>
+                <span class="p01__menu-toggle-icon-bar"></span>
+              </div>
+            </div>
+            <div class="p01__dropdown-container  twtr-container">
+              <div class="twtr-grid  twtr-gutter">
+                <ul class="p01__dropdown  twtr-type--bold-18  twtr-color--white-neutral">
+                  
+                  <li class="p01__dropdown-item  p01__dropdown-item--pdf">
+                    <a href="https://cdn.cms-twdigitalassets.com/content/dam/legal-twitter/site-assets/privacy-policy-new/Privacy-Policy-Terms-of-Service_Italian.pdf" class="p01__dropdown-item-link  has-hover  twtr-type--bold-18  twtr-color--white-neutral">
+                      Scarica PDF
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="p02-statement-masthead">
+
+
+
+
+
+<div class="p02  twtr-component-space--xl">
+  <div class="p02__item">
+    <div class="p02__wrapper  p02__wrapper--top  p02__min-height--short  twtr-gutter  twtr-color-bg--blue-dark">
+      <div class="p02__copy-content">
+        <h1 class="p02__headline  twtr-grid__col-md-12  twtr-color--white-neutral   twtr-type">Twitter Termini di servizio</h1>
+        
+      </div>
+    </div>
+    <p style="display: none;">goglobalwithtwitterbanner</p>
+    
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01  twtr-gutter  cr01--section      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--black-neutral)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-3">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+
+        </div>
+      </div>
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-9">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--block      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    has-inner-border" style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--group      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>Il Consenso dell’utente di Twitter comprende i presenti <a href="https://twitter.com/it/tos#current" rel="nofollow">Termini di servizio</a>, la nostra <a href="https://twitter.com/privacy" rel="nofollow">Informativa sulla Privacy</a>, le <a href="https://help.twitter.com/it/rules-and-policies#twitter-rules" rel="nofollow">Regole e norme di Twitter </a>e tutte le politiche integrate, <b>se risiedi in Unione Europea o al di fuori degli Stati Uniti</b>.</p>
+<p><b>Se risiedi negli Stati Uniti</b>, il Consenso dell’utente di Twitter comprende i presenti <a href="https://twitter.com/it/tos" rel="nofollow">Termini di servizio</a>, la nostra <a href="https://twitter.com/privacy" rel="nofollow">Informativa sulla Privacy</a>, le <a href="https://help.twitter.com/it/rules-and-policies#twitter-rules" rel="nofollow">Regole e norme di Twitter</a> e tutte le politiche integrate.</p>
+
+  </div>
+
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="p22-chapters-container">
+
+
+<div class="p22  ">
+  <div class="p22__item">
+    
+
+
+
+
+    
+    
+    <div class="p20-scroll-anchor">
+
+
+
+<section class="p20  " id="current">&nbsp;</section>
+</div>
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01  twtr-gutter  cr01--section      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--black-neutral)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-3">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01  twtr-gutter  cr01--section      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--black-neutral)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+        </div>
+      </div>
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-9">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--block      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    has-inner-border" style="--theme-color: var(--black-neutral)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--group      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <h3>Twitter Termini di servizio</h3>
+<h5>se risiedi al di fuori degli Stati Uniti</h5>
+
+  </div>
+
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>I presenti Termini di servizio (&#34;<b>Termini</b>&#34;) disciplinano l&#39;accesso e l&#39;utilizzo dei nostri servizi, inclusi i nostri vari siti Web, SMS, API, email di notifica, applicazioni, pulsanti, widget, annunci, servizi commerciali e <a href="https://help.twitter.com/it/rules-and-policies/twitter-services-and-corporate-affiliates" rel="nofollow">altri servizi da noi gestiti</a> (<a href="https://help.twitter.com/it/rules-and-policies/twitter-services-and-corporate-affiliates" rel="nofollow">https://help.twitter.com/it/rules-and-policies/twitter-services-and-corporate-affiliates</a>) che fanno riferimento ai presenti Termini (congiuntamente, i &#34;<b>Servizi</b>&#34;), e di qualsivoglia informazione, messaggio, collegamento, immagine, foto, video o altri documenti o configurazioni di documenti caricati, scaricati o che appaiono in Servizi (chiamati congiuntamente &#34;<b>Contenuti/Contenuto</b>&#34;). Utilizzando i Servizi, accetti di essere vincolato dai presenti Termini.</p>
+
+  </div>
+
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="p23-chapter">
+
+
+<div class="p23" data-chapter="">
+  <div class="p23__item">
+    
+
+
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01  twtr-gutter  cr01--section      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--black-neutral)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--block    has-no-padding-top  twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-3">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="p05-chapter-navigation">
+
+
+
+
+
+<div class="p05">
+  <div class="p05__item  twtr-container">
+    <div class="p05__list-wrapper  p05__wrapper-desktop">
+      <ul class="p05__list">
+        <li class="p05__list-item  twtr-color--blue-dark">
+          <a href="#intTerms-update-Chapter1" data-target-id="intTerms-update-Chapter1" class="p05__link  twtr-type--bold-16  twtr-color--blue-dark  has-hover">1. Chi può utilizzare i Servizi</a>
+        </li>
+      
+        <li class="p05__list-item  twtr-color--blue-dark">
+          <a href="#intTerms-update-Chapter2" data-target-id="intTerms-update-Chapter2" class="p05__link  twtr-type--bold-16  twtr-color--blue-dark  has-hover">2. Privacy</a>
+        </li>
+      
+        <li class="p05__list-item  twtr-color--blue-dark">
+          <a href="#intTerms-update-Chapter3" data-target-id="intTerms-update-Chapter3" class="p05__link  twtr-type--bold-16  twtr-color--blue-dark  has-hover">3. Contenuto dei Servizi</a>
+        </li>
+      
+        <li class="p05__list-item  twtr-color--blue-dark">
+          <a href="#intTerms-update-Chapter4" data-target-id="intTerms-update-Chapter4" class="p05__link  twtr-type--bold-16  twtr-color--blue-dark  has-hover">4. Utilizzo dei Servizi</a>
+        </li>
+      
+        <li class="p05__list-item  twtr-color--blue-dark">
+          <a href="#intTerms-update-Chapter5" data-target-id="intTerms-update-Chapter5" class="p05__link  twtr-type--bold-16  twtr-color--blue-dark  has-hover">5. Limitazioni di responsabilità</a>
+        </li>
+      
+        <li class="p05__list-item  twtr-color--blue-dark">
+          <a href="#intTerms-update-Chapter6" data-target-id="intTerms-update-Chapter6" class="p05__link  twtr-type--bold-16  twtr-color--blue-dark  has-hover">6. In generale</a>
+        </li>
+      </ul>
+    </div>
+    <div class="p05__wrapper  p05__wrapper-mobile">
+      <div class="p05__title-wrapper">
+        <div class="p05__title-content">
+          <span class="p05__title  twtr-type--bold-16  twtr-color--blue-dark">&nbsp;</span>
+          <div class="p05__icon--arrow-down">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path id="bounds" opacity="0" d="M0 0h24v24H0z"/>
+    <path d="M20.207 7.043c-.39-.39-1.023-.39-1.414 0L12 13.836 5.207 7.043c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414l7.5 7.5c.195.195.45.293.707.293s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.023 0-1.414z"/>
+</svg>
+
+          </div>
+        </div>
+      </div>
+      <div class="p05__dropdown-content  is-closed">
+        <ul class="p05__dropdown-list  twtr-gutter">
+          <li class="p05__dropdown-list-item  twtr-type--bold-16  twtr-color--blue-dark" data-target-id="1. Chi può utilizzare i Servizi" data-val="#intTerms-update-Chapter1">
+            <!-- 1. Chi può utilizzare i Servizi -->
+            <a href="#intTerms-update-Chapter1" data-target-id="intTerms-update-Chapter1" class="p05__dropdown-link  twtr-type--bold-16  twtr-color--blue-dark">1. Chi può utilizzare i Servizi</a>
+          </li>
+        
+          <li class="p05__dropdown-list-item  twtr-type--bold-16  twtr-color--blue-dark" data-target-id="2. Privacy" data-val="#intTerms-update-Chapter2">
+            <!-- 2. Privacy -->
+            <a href="#intTerms-update-Chapter2" data-target-id="intTerms-update-Chapter2" class="p05__dropdown-link  twtr-type--bold-16  twtr-color--blue-dark">2. Privacy</a>
+          </li>
+        
+          <li class="p05__dropdown-list-item  twtr-type--bold-16  twtr-color--blue-dark" data-target-id="3. Contenuto dei Servizi" data-val="#intTerms-update-Chapter3">
+            <!-- 3. Contenuto dei Servizi -->
+            <a href="#intTerms-update-Chapter3" data-target-id="intTerms-update-Chapter3" class="p05__dropdown-link  twtr-type--bold-16  twtr-color--blue-dark">3. Contenuto dei Servizi</a>
+          </li>
+        
+          <li class="p05__dropdown-list-item  twtr-type--bold-16  twtr-color--blue-dark" data-target-id="4. Utilizzo dei Servizi" data-val="#intTerms-update-Chapter4">
+            <!-- 4. Utilizzo dei Servizi -->
+            <a href="#intTerms-update-Chapter4" data-target-id="intTerms-update-Chapter4" class="p05__dropdown-link  twtr-type--bold-16  twtr-color--blue-dark">4. Utilizzo dei Servizi</a>
+          </li>
+        
+          <li class="p05__dropdown-list-item  twtr-type--bold-16  twtr-color--blue-dark" data-target-id="5. Limitazioni di responsabilità" data-val="#intTerms-update-Chapter5">
+            <!-- 5. Limitazioni di responsabilità -->
+            <a href="#intTerms-update-Chapter5" data-target-id="intTerms-update-Chapter5" class="p05__dropdown-link  twtr-type--bold-16  twtr-color--blue-dark">5. Limitazioni di responsabilità</a>
+          </li>
+        
+          <li class="p05__dropdown-list-item  twtr-type--bold-16  twtr-color--blue-dark" data-target-id="6. In generale" data-val="#intTerms-update-Chapter6">
+            <!-- 6. In generale -->
+            <a href="#intTerms-update-Chapter6" data-target-id="intTerms-update-Chapter6" class="p05__dropdown-link  twtr-type--bold-16  twtr-color--blue-dark">6. In generale</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+        </div>
+      </div>
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-9">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--group      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="p20-scroll-anchor">
+
+
+
+<section class="p20  " id="intTerms-update-Chapter1">&nbsp;</section>
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h3 class="cr03__headline  twtr-color--blue-dark  twtr-type  ">1. Chi può utilizzare i Servizi</h3>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>Puoi utilizzare i Servizi solo se accetti di stipulare un contratto vincolante con Twitter e se non sei una persona a cui è vietato ricevere i servizi secondo le leggi della giurisdizione applicabile. Ad ogni modo, devi avere almeno 13 anni di età, o nel caso di Periscope 16 anni di età per utilizzare i Servizi. Se accetti i presenti Termini e utilizzi i Servizi per conto di una società, organizzazione, governo o un altro ente giuridico, dichiari e garantisci di essere autorizzato a farlo e di avere l&#39;autorità per vincolare tale persona giuridica ai presenti Termini, nel qual caso i vocaboli &#34;tu&#34;, &#34;te&#34;, &#34;tuo&#34;, &#34;tuoi&#34; qui utilizzati si intendono riferiti a tale persona giuridica.</p>
+
+  </div>
+
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--group      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="p20-scroll-anchor">
+
+
+
+<section class="p20  " id="intTerms-update-Chapter2">&nbsp;</section>
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h3 class="cr03__headline  twtr-color--blue-dark  twtr-type  ">2. Privacy</h3>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>La nostra <a href="https://twitter.com/privacy" rel="nofollow">Informativa sulla Privacy</a> (<a href="https://twitter.com/privacy" rel="nofollow">https://www.twitter.com/privacy</a>) descrive come gestiamo le informazioni che ci fornisci quando utilizzi i nostri Servizi. Utilizzando i Servizi acconsenti alla raccolta e all&#39;uso (come previsto dall&#39;Informativa sulla Privacy) di tali informazioni, compreso il loro trasferimento negli Stati Uniti, Irlanda e/o altri paesi per essere archiviate, trattate e utilizzate da parte di Twitter e dei suoi affiliati.</p>
+
+  </div>
+
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--group      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="p20-scroll-anchor">
+
+
+
+<section class="p20  " id="intTerms-update-Chapter3">&nbsp;</section>
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h3 class="cr03__headline  twtr-color--blue-dark  twtr-type  ">3. Contenuto dei Servizi</h3>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>Sei responsabile dell&#39;utilizzo dei Servizi e dei Contenuti che fornisci, compreso il rispetto delle leggi applicabili, delle norme e dei regolamenti. Devi fornire solo Contenuti che ritieni di poter condividere con altri.</p>
+<p>Qualsiasi utilizzo o affidamento relativo ai Contenuti o documenti pubblicati tramite i Servizi o ottenuti attraverso i Servizi avviene a tuo rischio. Noi non approviamo, sosteniamo, affermiamo o garantiamo la completezza, la veridicità, l&#39;accuratezza o l&#39;affidabilità dei Contenuti o comunicazioni pubblicate tramite i Servizi né le opinioni espresse attraverso i Servizi. Tu sei consapevole che utilizzando i Servizi potrai essere esposto a Contenuti che potrebbero essere offensivi, dannosi, imprecisi o inappropriati oppure, in alcuni casi, a messaggi che sono stati interpretati erroneamente o in modo ingannevole. La responsabilità relativa ai Contenuti ricade esclusivamente sulla persona che li ha creati. Noi non possiamo monitorare o controllare i Contenuti pubblicati tramite i Servizi e non ne siamo responsabili.</p>
+<p>Ci riserviamo il diritto di rimuovere il Contenuto che violi il Consenso dell’utente, tra cui, a titolo meramente esemplificativo ma non esaustivo, violazioni del diritto di autore e del marchio, sostituzione di persona, condotta illecita o molestia. Informazioni in merito a politiche specifiche e al processo di segnalazione o impugnazione di violazioni sono reperibili nel nostro Centro Assistenza (<a href="https://help.twitter.com/it/rules-and-policies/twitter-report-violation#specific-violations" rel="nofollow">https://help.twitter.com/it/rules-and-policies/twitter-report-violation#specific-violations</a> e <a href="https://help.twitter.com/it/managing-your-account/suspended-twitter-accounts" rel="nofollow">https://help.twitter.com/it/managing-your-account/suspended-twitter-accounts</a>).</p>
+<p>Se ritieni che il tuo Contenuto sia stato copiato in modo da costituire una violazione del diritto di autore, puoi effettuare una segnalazione servendoti del nostro Modulo di segnalazione del diritto di autore (<a href="https://help.twitter.com/forms/dmca" rel="nofollow">https://help.twitter.com/forms/dmca</a>) o contattando il nostro responsabile referente designato per il diritto di autore all’indirizzo seguente :</p>
+<p>Twitter, Inc.<br />
+Attn: Copyright Agent<br />
+1355 Market Street, Suite 900<br />
+San Francisco, CA 94103<br />
+Segnalazioni: <a href="https://help.twitter.com/forms/dmca" rel="nofollow">https://help.twitter.com/forms/dmca</a><br />
+Email: <a href="mailto:copyright&#64;twitter.com" rel="nofollow">copyright&#64;twitter.com</a><br />
+(per i contenuti su Twitter)</p>
+<p>Twitter, Inc.<br />
+Attn: Copyright Agent - Periscope<br />
+1355 Market Street, Suite 900<br />
+San Francisco, CA 94103<br />
+Segnalazioni: <a href="https://help.twitter.com/forms/dmca" rel="nofollow">https://help.twitter.com/forms/dmca</a><br />
+Email: <a href="mailto:copyright&#64;pscp.tv" rel="nofollow">copyright&#64;pscp.tv</a><br />
+(per i contenuti su Periscope)</p>
+
+  </div>
+
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h1 class="cr03__headline  twtr-color--black-neutral  twtr-type  ">I tuoi diritti e la concessione di diritti relativi ai Contenuti</h1>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>Ti riservi tutti i diritti relativi a tutti i Contenuti che invii, pubblichi o visualizzi su o attraverso i Servizi. Ciò che è tuo, è tuo: possiedi i tuoi Contenuti (e i tuoi video, foto e audio incorporati sono considerati parte dei Contenuti).</p>
+<p>Inviando, pubblicando o visualizzando i Contenuti su o attraverso i Servizi, ci concedi una licenza mondiale, non esclusiva, priva di royalty (con diritto di sub-licenziare), di usare, copiare, riprodurre, trattare, adattare, modificare, pubblicare, trasmettere, visualizzare e distribuire tali Contenuti in qualsiasi tipo di supporto o sistemi di distribuzione (noti o sviluppati in futuro). Questa licenza ci autorizza a mettere i tuoi Contenuti a disposizione del resto del mondo e permettere ad altri di fare lo stesso. Con questa licenza acconsenti a Twitter di fornire, promuovere e migliorare i Servizi e di mettere i Contenuti, attraverso i Servizi, a disposizione di altre società, organizzazioni o persone per la trasmissione, distribuzione, promozione o pubblicazione di tali Contenuti su altri supporti e servizi, soggetti ai nostri termini e condizioni per l&#39;utilizzo dei Contenuti stessi. Tali utilizzi aggiuntivi da parte di Twitter, o di altre aziende, organizzazioni o individui, potrebbero essere effettuati senza alcun corrispettivo nei tuoi confronti, in relazione ai Contenuti che tu inoltri, posti, trasmetti, o altrimenti rendi disponibile tramite i Servizi.</p>
+<p>Twitter dispone di una serie di regole in continua evoluzione relativamente a come i partner dell&#39;ecosistema possono interagire con i tuoi Contenuti sui Servizi. Tali regole esistono al fine di consentire un ecosistema aperto che tiene in considerazione i tuoi diritti. Sei consapevole che potremmo modificare o adattare i tuoi Contenuti nel momento in cui vengono distribuiti, diffusi, pubblicati o trasmessi da noi e i nostri partner e/o effettuare modifiche ai tuoi Contenuti in modo da adattarli a differenti supporti.</p>
+<p>Dichiari e garantisci di possedere, o di aver ottenuto, tutti i diritti, le licenze, i consensi, le autorizzazioni, i poteri e/o l&#39;autorità necessaria per disporre dei diritti qui concessi per qualsiasi Contenuto che invii, pubblichi o esponi su o tramite i Servizi. Riconosci che tale Contenuto non ricomprende materiale coperto da copyright o altri diritti di proprietà, salvo tu disponga delle autorizzazioni necessarie o qualora tu sia legalmente autorizzato a pubblicare il materiale e a cedere a Twitter la licenza sopra descritta.</p>
+
+  </div>
+
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--group      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="p20-scroll-anchor">
+
+
+
+<section class="p20  " id="intTerms-update-Chapter4">&nbsp;</section>
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h3 class="cr03__headline  twtr-color--blue-dark  twtr-type  ">4. Utilizzo dei Servizi</h3>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>Consulta le <a href="https://help.twitter.com/it/rules-and-policies#twitter-rules" rel="nofollow">Regole e norme di Twitter,</a> (e, per Periscope, <a href="https://www.pscp.tv/content" rel="nofollow">Le Linee Guida della Community di Periscope</a> su <a href="https://www.pscp.tv/content" rel="nofollow">https://www.pscp.tv/content</a>), che sono parte del Consenso dell&#39;Utente e delineano cosa è vietato sui Servizi. Tu puoi utilizzare i Servizi solo in conformità a questi Termini e a tutte le leggi, norme e regolamenti applicabili.</p>
+<p>I nostri Servizi evolvono costantemente. Come tali, i Servizi potrebbero occasionalmente essere modificati, a nostra discrezione. Potremmo interrompere (permanentemente o temporaneamente) la fornitura dei Servizi o di qualsivoglia funzionalità all&#39;interno dei Servizi in tuo favore o agli utenti in generale. Manteniamo il diritto di creare, a nostra esclusiva discrezione e in qualsiasi momento, limiti all&#39;utilizzo e all&#39;archiviazione. Potremmo inoltre, rimuovere o rifiutare di pubblicare i Contenuti sui Servizi, sospendere, risolvere e recuperare username, senza alcuna responsabilità nei tuoi confronti.</p>
+<p>Considerando il fatto che Twitter ti concede l&#39;accesso e l&#39;utilizzo ai Servizi, accetti che Twitter e i suoi fornitori e partner terzi potrebbero collocare pubblicità sui Servizi o in connessione con la visualizzazione dei Contenuti o informazioni dai Servizi forniti sia da te che da altri. Inoltre accetti di non abusare dei nostri Servizi, ad esempio, interferendo con loro o accedendovi utilizzando un metodo diverso dall&#39;interfaccia e dalle istruzioni che forniamo. Non ti è consentito nulla di quanto segue durante l&#39;accesso o l&#39;utilizzo dei Servizi: (i) accedere, manomettere, o utilizzare aree non pubbliche dei Servizi, sistemi di computer di Twitter, o sistemi di forniture tecniche dei fornitori di Twitter; (ii) sondare, scansionare, o testare la vulnerabilità di qualsivoglia sistema o network o violare o forzare qualsiasi misura di sicurezza o autenticazione; (iii) accedere, cercare o tentare di accedere o cercare i Servizi tramite qualsivoglia strumento (automatico o altro) che non sia tramite le nostre attuali interfacce disponibili e fornite da Twitter (NOTA: entrare nei Servizi è permesso se eseguito in conformità alle disposizioni del file robots.txt, tuttavia, recuperare dati dai Servizi senza previo consenso di Twitter è espressamente vietato); (iv) falsificare l&#39;intestazione del pacchetto TCP/IP o qualsivoglia parte delle informazioni dell&#39;intestazione in qualsivoglia email o post, o in qualsivoglia utilizzo dei Servizi per inviare informazioni alterate, ingannevoli o di falsa identificazione della fonte; o (v) interferire con, o interrompere (o tentare), l&#39;accesso di qualsivoglia utente, host o network, incluso, senza limitazione alcuna, inviare un virus, sovraccaricare, invadere, inviare posta indesiderata, fare mailbombing ai Servizi, o attraverso lo scripting della creazione di Contenuti in maniera tale da interferire con o creare un carico eccessivo sui Servizi. Inoltre ci riserviamo il diritto di accedere, leggere, preservare e divulgare qualsiasi informazione qualora avessimo ragione di credere che sia necessario (i) osservare qualsivoglia legge applicabile, regolamento, procedura legale o richiesta governativa, (ii) applicare i Termini, inclusa l&#39;investigazione di potenziali violazioni, (iii) individuare, prevenire o altrimenti gestire frodi, o problemi di sicurezza o tecnici, (iv) rispondere alle richieste di supporto dell&#39;utente, o (v) proteggere i diritti, proprietà o sicurezza di Twitter, i suoi utenti e il pubblico. Twitter non divulga informazioni di identificazione personale a terze parti se non in conformità con la nostra Informativa sulla Privacy.</p>
+<p>Se utilizzi funzionalità dello sviluppatore dei Servizi, incluso, ma non limitatamente a <a href="https://dev.twitter.com/web/overview" rel="nofollow">Twitter per siti Web</a> (<a href="https://dev.twitter.com/web/overview" rel="nofollow">https://dev.twitter.com/web/overview</a>), <a href="https://dev.twitter.com/cards/overview" rel="nofollow">Twitter Card</a> (<a href="https://dev.twitter.com/cards/overview" rel="nofollow">https://dev.twitter.com/cards/overview</a>), <a href="https://dev.twitter.com/streaming/public" rel="nofollow">API pubblico</a> (<a href="https://dev.twitter.com/streaming/public" rel="nofollow">https://dev.twitter.com/streaming/public</a>), o <a href="https://dev.twitter.com/web/sign-in" rel="nofollow">Accesso a Twitter</a> (<a href="https://dev.twitter.com/web/sign-in" rel="nofollow">https://dev.twitter.com/web/sign-in</a>), acconsenti al nostro <a href="https://dev.twitter.com/overview/terms/agreement" rel="nofollow">Contratto di Sviluppatore</a> (<a href="https://dev.twitter.com/overview/terms/agreement" rel="nofollow">https://dev.twitter.com/overview/terms/agreement</a>) e <a href="https://dev.twitter.com/overview/terms/policy" rel="nofollow">Informativa dello Sviluppatore</a> (<a href="https://dev.twitter.com/overview/terms/policy" rel="nofollow">https://dev.twitter.com/overview/terms/policy</a>). Se intendi riprodurre, modificare, creare opere derivate, distribuire, vendere, trasferire, visualizzare pubblicamente, eseguire pubblicamente, trasmettere o altrimenti utilizzare i Servizi o i Contenuti sui Servizi, devi utilizzare le interfacce e le istruzioni, ad eccezione di quanto consentito tramite i Servizi Twitter, i presenti Termini, o i termini forniti su <a href="https://dev.twitter.com/" rel="nofollow">dev.twitter.com</a>.</p>
+<p>Se utilizzi funzionalità per la pubblicità dei Servizi, devi acconsentire al nostro <a href="https://ads.twitter.com/terms" rel="nofollow">Contratto Master dei Servizi di Twitter</a> (<a href="https://ads.twitter.com/terms" rel="nofollow">https://ads.twitter.com/terms</a>).</p>
+<p>Se utilizzi Super Hearts, Coins o Stars su Periscope, accetti i nostri <a href="https://legal.twitter.com/en/periscope/super/terms.html" rel="nofollow">Termini di Super Hearts</a> (<a href="https://legal.twitter.com/periscope/super/terms.html" rel="nofollow">https://legal.twitter.com/periscope/super/terms.html</a>).</p>
+
+  </div>
+
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h1 class="cr03__headline  twtr-color--black-neutral  twtr-type  ">Il tuo account</h1>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>Potrebbe essere necessario creare un account per utilizzare alcuni dei nostri Servizi. Sei responsabile della salvaguardia del tuo account, pertanto utilizza una password sicura e limita l&#39;uso di questo account. Non possiamo essere e non saremo responsabili per eventuali perdite o danni derivanti dal mancato rispetto di quanto sopra.</p>
+<p>Puoi controllare la maggior parte delle comunicazioni provenienti dai Servizi. Potremmo aver bisogno di fornirti alcune comunicazioni, come ad esempio annunci di servizio e messaggi amministrativi. Queste comunicazioni sono considerate parte dei Servizi e del tuo account, e potresti non avere facoltà di decidere di non riceverle. Se hai aggiunto il numero di telefono al tuo account e successivamente lo modifichi o disattivi, devi aggiornare le tue informazioni dell&#39;account per impedirci di comunicare con chiunque acquisisca il tuo vecchio numero.</p>
+
+  </div>
+
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h1 class="cr03__headline  twtr-color--black-neutral  twtr-type  ">La tua licenza per l&#39;utilizzo dei Servizi</h1>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>Twitter ti fornisce una licenza personale, mondiale, priva di royalty, non cedibile e non esclusiva per utilizzare il software fornito a te come parte dei Servizi. Questa licenza ha il solo scopo di abilitarti all&#39;utilizzo e al godimento del vantaggi dei Servizi forniti da Twitter, nelle forme consentite dai presenti Termini.</p>
+<p>I Servizi sono protetti da copyright, marchi e altre leggi sia degli Stati Uniti che di altri paesi. Nulla nei Termini ti concede il diritto di utilizzare il nome di Twitter o uno qualsiasi dei suoi marchi, loghi, nomi di dominio e altre caratteristiche dei segni distintivi del marchio di Twitter. Tutti i diritti, titoli e interessi nei, e relativamente ai Servizi (esclusi i contenuti forniti dagli utenti) sono e rimarranno di esclusiva proprietà di Twitter e dei suoi licenziatari. Qualsivoglia feedback, commento o suggerimento si possa fornire relativamente a Twitter, o ai Servizi è interamente volontario e saremo nella piena facoltà di utilizzare tali feedback, commenti o suggerimenti, qualora riteniamo siano adeguati e senza alcun obbligo nei tuoi confronti.</p>
+
+  </div>
+
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h1 class="cr03__headline  twtr-color--black-neutral  twtr-type  ">Risoluzione dei presenti Termini</h1>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>Puoi revocare il tuo consenso in favore di Twitter in qualsiasi momento disattivando il tuo account e sospendendo l&#39;utilizzo dei Servizi. Visita <a href="https://help.twitter.com/it/managing-your-account/how-to-deactivate-twitter-account" rel="nofollow">https://help.twitter.com/it/managing-your-account/how-to-deactivate-twitter-account</a> (e per Periscope, <a href="https://help.pscp.tv/customer/portal/articles/2460220" rel="nofollow">https://help.pscp.tv/customer/portal/articles/2460220</a>) per istruzioni in merito alla disattivazione del tuo account e l&#39;Informativa sulla Privacy per maggiori informazioni relative a ciò che accade alle tue informazioni.</p>
+<p>Possiamo sospendere o risolvere il tuo account o cessare la fornitura dei Servizi in tutto o in parte, in qualsiasi momento e per qualsivoglia motivo, o senza alcun motivo, incluso, ma non limitatamente a, il caso in cui ritenessimo ragionevolmente che: (i) hai violato i presenti Termini o <a href="https://help.twitter.com/it/rules-and-policies#twitter-rules" rel="nofollow">le Regole e norme di Twitter</a> o <a href="https://www.pscp.tv/content" rel="nofollow">le linee Guida della Community di Periscope </a>, (ii) rappresenti per noi un rischio o una possibile esposizione di carattere legale; (iii) il tuo account deve essere rimosso a causa di condotta illecita; (iv) il tuo account deve essere rimosso a causa di inattività prolungata; o (v) la fornitura dei Servizi in tuo favore non sia più commercialmente fattibile. Faremo ogni ragionevole sforzo per informarti tramite l’indirizzo email associato al tuo account o la prossima volta che tenti l’accesso al tuo account, a seconda delle circostanze. In tutti questi casi, i Termini si risolveranno, inclusi, senza limitazione alcuna, la licenza di utilizzo dei Servizi, salvo che per le seguenti sezioni che continueranno ad essere applicate: II, III, V e VI. Se ritieni che il tuo account sia stato eliminato per sbaglio, puoi presentare un reclamo seguendo le istruzioni reperibili nel nostro <a href="https://help.twitter.com/forms/general?subtopic&#61;suspended" rel="nofollow">Centro Assistenza</a> (<a href="https://help.twitter.com/forms/general?subtopic&#61;suspended" rel="nofollow">https://help.twitter.com/forms/general?subtopic&#61;suspended</a>).</p>
+
+  </div>
+
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--group      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="p20-scroll-anchor">
+
+
+
+<section class="p20  " id="intTerms-update-Chapter5">&nbsp;</section>
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h3 class="cr03__headline  twtr-color--blue-dark  twtr-type  ">5. Limitazioni di responsabilità</h3>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>Utilizzando i Servizi, accetti che la responsabilità di Twitter, delle sue capogruppo, affiliati, società collegate, funzionari, dirigenti, dipendenti, agenti, rappresentanti, partner e licenziatari, rientri nei limiti previsti dal tuo paese di residenza.</p>
+
+  </div>
+
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr01-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr01    cr01--group      twtr-color-bg--white-neutral      ">
+  <div class="cr01__item  twtr-grid    " style="--theme-color: var(--blue-dark)">
+    
+      <div class="twtr-grid__col  twtr-grid__col-md-12">
+        <div class="cr01__wrapper  ">
+          
+
+
+
+
+    
+    
+    <div class="p20-scroll-anchor">
+
+
+
+<section class="p20  " id="intTerms-update-Chapter6">&nbsp;</section>
+</div>
+
+
+    
+    
+    <div class="cr03-headline">
+
+
+
+
+
+
+
+
+<div class="cr03">
+  <div class="cr03__item">
+    <div class="cr03__copy">
+      
+      <h3 class="cr03__headline  twtr-color--blue-dark  twtr-type  ">6. In generale</h3>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+    
+    
+    <div class="cr02-copy twtr-rte twtr-component-space--md">
+
+
+
+  <div class="twtr-color--black-neutral">
+    <p>I presenti Termini potranno essere modificati di volta in volta. Tali modifiche non saranno retroattive, e la versione più recente dei Termini, che potrà essere reperita su <a href="https://twitter.com/it/tos" rel="nofollow">twitter.com/tos</a>, disciplinerà il nostro rapporto con te. Le modifiche ai Termini che non riguardano nuove funzioni o che non vengono apportate per motivi legali e che influiscano sui diritti od obblighi di qualsiasi parte interessata dagli stessi, ti verranno notificate 30 giorni prima della loro entrata in vigore, per esempio tramite notifica di servizio o via e-mail all’indirizzo associato al tuo account.</p>
+<p>Nel caso in cui qualsiasi disposizione di questi Termini sia ritenuta invalida o inapplicabile, tale disposizione sarà limitata o eliminata nella misura minima consentita, e le restanti disposizioni dei presenti Termini rimarranno in vigore a tutti gli effetti. La mancata applicazione da parte di Twitter di qualsiasi diritto o disposizione dei presenti Termini non potrà essere interpretata come una rinuncia a tale diritto o disposizione.</p>
+<p>I presenti Termini rappresentano un accordo tra te e Twitter International Company, una società di diritto irlandese con sede legale presso The Academy, 42 Pearse Street, Dublino 2, Irlanda. Per eventuali domande in merito ai presenti Termini, contatta <a href="https://help.twitter.com/forms" rel="nofollow">noi</a>.</p>
+<p><b>In vigore da:</b> 25 maggio 2018</p>
+<p><a href="https://twitter.com/it/tos/previous" rel="nofollow">Archivio dei Termini precedenti</a></p>
+
+  </div>
+
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+  </div>
+</div>
+</div>
+
+
+
+  </div>
+</div>
+</div>
+
+
+    
+    
+    
+
+
+</main>
+
+      <footer>
+  
+
+<footer class="u02">
+  <div class="u02__wrapper  twtr-container  twtr-gutter  twtr-color-bg--blue-dark">
+    <div class="u02__row">
+      <div class="twtr-grid  twtr-grid__col">
+        <div class="js-accordion  u02__column">
+          
+          <h4 class="u02__column__parent  twtr-type--bold-14  twtr-color--white-neutral  is-opaque">
+            Piattaforma Twitter
+            <span class="u02__icon  twtr-color-fill--blue-extra-light  twtr-hidden--md  twtr-hidden--lg  twtr-hidden--xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="9.5" viewbox="0 0 17 9.5" class="twtr-icon--sm"> 
+ <path d="M16.707.293c-.39-.39-1.023-.39-1.414 0L8.5 7.086 1.707.293c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414l7.5 7.5c.195.195.45.293.707.293s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.023 0-1.414z" /> 
+</svg>
+            </span>
+          </h4>
+          
+          <ul class="u02__column__list">
+            <li class="u02__link-item">
+              <a href="https://twitter.com/" title="Twitter.com" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Twitter.com
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://status.twitterstat.us/" title="Status" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Status
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://help.twitter.com/it/resources/accessibility" title="Accessibilità" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Accessibilità
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://publish.twitter.com" title="Incorpora un Tweet" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Incorpora un Tweet
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://privacy.twitter.com/it" title="Centro per la Privacy" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Centro per la Privacy
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://transparency.twitter.com/" title="Transparency Center" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Transparency Center
+              </a>
+            </li>
+          </ul>
+        </div>
+      
+        <div class="js-accordion  u02__column">
+          
+          <h4 class="u02__column__parent  twtr-type--bold-14  twtr-color--white-neutral  is-opaque">
+            X Corp.
+            <span class="u02__icon  twtr-color-fill--blue-extra-light  twtr-hidden--md  twtr-hidden--lg  twtr-hidden--xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="9.5" viewbox="0 0 17 9.5" class="twtr-icon--sm"> 
+ <path d="M16.707.293c-.39-.39-1.023-.39-1.414 0L8.5 7.086 1.707.293c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414l7.5 7.5c.195.195.45.293.707.293s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.023 0-1.414z" /> 
+</svg>
+            </span>
+          </h4>
+          
+          <ul class="u02__column__list">
+            <li class="u02__link-item">
+              <a href="https://about.twitter.com/en/who-we-are/our-company" title="Informazioni sull&#39;azienda" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Informazioni sull&#39;azienda
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://about.twitter.com/en/who-we-are/twitter-for-good" title="Twitter for Good" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Twitter for Good
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://blog.twitter.com/" title="Notizie dall&#39;azienda" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Notizie dall&#39;azienda
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://about.twitter.com/en/who-we-are/brand-toolkit" title="Risorse del marchio" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Risorse del marchio
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://careers.twitter.com/" title="Opportunità di lavoro e stage" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Opportunità di lavoro e stage
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://investor.twitterinc.com/" title="Investitori" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Investitori
+              </a>
+            </li>
+          </ul>
+        </div>
+      
+        <div class="js-accordion  u02__column">
+          
+          <h4 class="u02__column__parent  twtr-type--bold-14  twtr-color--white-neutral  is-opaque">
+            Assistenza
+            <span class="u02__icon  twtr-color-fill--blue-extra-light  twtr-hidden--md  twtr-hidden--lg  twtr-hidden--xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="9.5" viewbox="0 0 17 9.5" class="twtr-icon--sm"> 
+ <path d="M16.707.293c-.39-.39-1.023-.39-1.414 0L8.5 7.086 1.707.293c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414l7.5 7.5c.195.195.45.293.707.293s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.023 0-1.414z" /> 
+</svg>
+            </span>
+          </h4>
+          
+          <ul class="u02__column__list">
+            <li class="u02__link-item">
+              <a href="https://help.twitter.com/it" title="Centro assistenza" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Centro assistenza
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://help.twitter.com/it/using-twitter" title="Utilizzo di Twitter" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Utilizzo di Twitter
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://create.twitter.com/" title=" Twitter per creator" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                  Twitter per creator
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://business.twitter.com/en/help.html" title="Ads Help Center" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Ads Help Center
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://help.twitter.com/it/managing-your-account" title="Gestione dell&#39;account" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Gestione dell&#39;account
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://preferencecenter.twitter.com/" title="Preferenze email" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Preferenze email
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://help.twitter.com/it/rules-and-policies" title="Regole e norme" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Regole e norme
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://help.twitter.com/it/contact-us" title="Contattaci" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Contattaci
+              </a>
+            </li>
+          </ul>
+        </div>
+      
+        <div class="js-accordion  u02__column">
+          
+          <h4 class="u02__column__parent  twtr-type--bold-14  twtr-color--white-neutral  is-opaque">
+            Risorse per sviluppatori
+            <span class="u02__icon  twtr-color-fill--blue-extra-light  twtr-hidden--md  twtr-hidden--lg  twtr-hidden--xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="9.5" viewbox="0 0 17 9.5" class="twtr-icon--sm"> 
+ <path d="M16.707.293c-.39-.39-1.023-.39-1.414 0L8.5 7.086 1.707.293c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414l7.5 7.5c.195.195.45.293.707.293s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.023 0-1.414z" /> 
+</svg>
+            </span>
+          </h4>
+          
+          <ul class="u02__column__list">
+            <li class="u02__link-item">
+              <a href="https://developer.twitter.com/en" title="Home Developer" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Home Developer
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://developer.twitter.com/en/docs" title="Documentazione" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Documentazione
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://twittercommunity.com/" title="Forum" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Forum
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://developer.twitter.com/en/community" title="Community" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Community
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://blog.twitter.com/developer/" title="Blog Developer" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Blog Developer
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://blog.twitter.com/engineering/en_us.html" title="Blog Engineering" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Blog Engineering
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://developer.twitter.com/en/more/developer-terms" title="Condizioni per gli sviluppatori" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Condizioni per gli sviluppatori
+              </a>
+            </li>
+          </ul>
+        </div>
+      
+        <div class="js-accordion  u02__column">
+          
+          <h4 class="u02__column__parent  twtr-type--bold-14  twtr-color--white-neutral  is-opaque">
+            Risorse per le aziende
+            <span class="u02__icon  twtr-color-fill--blue-extra-light  twtr-hidden--md  twtr-hidden--lg  twtr-hidden--xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="9.5" viewbox="0 0 17 9.5" class="twtr-icon--sm"> 
+ <path d="M16.707.293c-.39-.39-1.023-.39-1.414 0L8.5 7.086 1.707.293c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414l7.5 7.5c.195.195.45.293.707.293s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.023 0-1.414z" /> 
+</svg>
+            </span>
+          </h4>
+          
+          <ul class="u02__column__list">
+            <li class="u02__link-item">
+              <a href="https://business.twitter.com/en/advertising.html" title="Pubblicità" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Pubblicità
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://business.twitter.com/" title="Twitter per le aziende" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Twitter per le aziende
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://business.twitter.com/en/resources.html" title="Risorse e guide" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Risorse e guide
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://marketing.twitter.com/" title="Twitter per marketer" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Twitter per marketer
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://marketing.twitter.com/en/insights" title="Approfondimenti di marketing" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Approfondimenti di marketing
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://marketing.twitter.com/en/success-stories" title="Ispirazione per i marchi" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Ispirazione per i marchi
+              </a>
+            </li>
+          
+            <li class="u02__link-item">
+              <a href="https://www.twitterflightschool.com/sl/382652bc" title="Twitter Flight School" target="_blank" class="twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+                 Twitter Flight School
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="u02__row">
+      <div class="twtr-grid  twtr-grid__col">
+        <div class="u02__column  u02__column--bottom">
+          <span class="u02__column-footnote  twtr-type--roman-14  twtr-color--white-neutral  is-opaque">
+            &copy; 2023 X Corp.
+          </span>
+        </div>
+
+        
+          <div class="u02__column  u02__column--bottom">
+            <a href="https://help.twitter.com/it/rules-and-policies/twitter-cookies" title="Cookie" target="_blank" class="u02__column-footnote  twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+              Cookie
+            </a>
+          </div>
+        
+          <div class="u02__column  u02__column--bottom">
+            <a href="https://twitter.com/privacy" title="Privacy" target="_blank" class="u02__column-footnote  twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+              Privacy
+            </a>
+          </div>
+        
+          <div class="u02__column  u02__column--bottom">
+            <a href="https://twitter.com/tos" title="Termini e condizioni" target="_blank" class="u02__column-footnote  twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover">
+              Termini e condizioni
+            </a>
+          </div>
+        
+
+        <div class="u02__column  u02__column--bottom">
+          
+
+
+<div class="u03">
+  <a class="u03__current-region  js-open  twtr-type--roman-14  twtr-color--white-neutral  is-opaque  has-hover" href="/it/tos/previous/version_13">
+    Italiano
+    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="9.5" viewbox="0 0 17 9.5" class="twtr-icon--sm  twtr-color-fill--white-neutral  has-hover"> 
+ <path d="M16.707.293c-.39-.39-1.023-.39-1.414 0L8.5 7.086 1.707.293c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414l7.5 7.5c.195.195.45.293.707.293s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.023 0-1.414z" /> 
+</svg>
+  </a>
+
+  <div class="twtr-container">
+    <div class="u03__modal  twtr-container  twtr-color-bg--blue-extra-dark">
+      <a href="/content/twitter-com/legal/it.html" class="u03__brand">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" class="u03__brand-icon twtr-icon--base  twtr-color-fill--white-neutral"> 
+ <path opacity="0" d="M0 0h24v24H0z" /> 
+ <path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z" /> 
+</svg>
+        <span class="u03__site-name  twtr-type--bold-16  twtr-color--white-neutral">Italian</span>
+      </a>
+      <div class="u03__close-button  js-close">
+        <span class="twtr-hidden--xs  twtr-hidden--sm"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="72" viewbox="0 0 46 72" class="twtr-icon--lg  twtr-color-fill--white-neutral  has-hover">
+ <path d="M27.243 36l14.879-14.879a2.998 2.998 0 0 0 0-4.242 2.998 2.998 0 0 0-4.242 0L23 31.758 8.122 16.879a2.998 2.998 0 0 0-4.242 0 2.998 2.998 0 0 0 0 4.242L18.758 36 3.879 50.879A2.998 2.998 0 0 0 6.001 56a2.99 2.99 0 0 0 2.121-.879L23 40.242l14.879 14.879A2.991 2.991 0 0 0 40 56a2.998 2.998 0 0 0 2.121-5.121L27.243 36z" />
+</svg></span>
+        <span class="twtr-hidden--md  twtr-hidden--lg  twtr-hidden--xl"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="72" viewbox="0 0 46 72" class="twtr-icon--lg  twtr-color-fill--white-neutral  has-hover">
+ <path d="M27.243 36l14.879-14.879a2.998 2.998 0 0 0 0-4.242 2.998 2.998 0 0 0-4.242 0L23 31.758 8.122 16.879a2.998 2.998 0 0 0-4.242 0 2.998 2.998 0 0 0 0 4.242L18.758 36 3.879 50.879A2.998 2.998 0 0 0 6.001 56a2.99 2.99 0 0 0 2.121-.879L23 40.242l14.879 14.879A2.991 2.991 0 0 0 40 56a2.998 2.998 0 0 0 2.121-5.121L27.243 36z" />
+</svg></span>
+      </div>
+      <div class="u03__region-list-container">
+        <ul class="u03__region-list" data-choose-text="Scegli un&#39;area geografica" data-back-text="Indietro">
+          <li class="u03__region-list-item">
+            <a href="/en/tos/previous/version_13" class="twtr-color--white-neutral  twtr-type--bold-24  has-hover">
+              Inglese
+            </a>
+          </li>
+        
+          <li class="u03__region-list-item">
+            <a href="/es/tos/previous/version_13" class="twtr-color--white-neutral  twtr-type--bold-24  has-hover">
+              Spagnolo
+            </a>
+          </li>
+        
+          <li class="u03__region-list-item">
+            <a href="/fr/tos/previous/version_13" class="twtr-color--white-neutral  twtr-type--bold-24  has-hover">
+              Francese
+            </a>
+          </li>
+        
+          <li class="u03__region-list-item">
+            <a href="/de/tos/previous/version_13" class="twtr-color--white-neutral  twtr-type--bold-24  has-hover">
+              Tedesco
+            </a>
+          </li>
+        
+          <li class="u03__region-list-item">
+            <a href="/it/tos/previous/version_13" class="twtr-color--blue-light  twtr-type--bold-24  has-hover">
+              Italiano
+            </a>
+          </li>
+        
+          <li class="u03__region-list-item">
+            <a href="/ja/tos/previous/version_13" class="twtr-color--white-neutral  twtr-type--bold-24  has-hover">
+              Giapponese
+            </a>
+          </li>
+        
+          <li class="u03__region-list-item">
+            <a href="/ko/tos/previous/version_13" class="twtr-color--white-neutral  twtr-type--bold-24  has-hover">
+              Coreano
+            </a>
+          </li>
+        
+          <li class="u03__region-list-item">
+            <a href="/pt/tos/previous/version_13" class="twtr-color--white-neutral  twtr-type--bold-24  has-hover">
+              Portoghese
+            </a>
+          </li>
+        
+          <li class="u03__region-list-item">
+            <a href="/ru/tos/previous/version_13" class="twtr-color--white-neutral  twtr-type--bold-24  has-hover">
+              Russo
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</footer>
+
+      
+
+
+
+<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
+
+<script type="text/javascript" src="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/js/app.js.twhash.a.f.4a29bc0688c76c090ab0aa187da8b750.js"></script>
+<script type="text/javascript" src="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/js/core.js.twhash.a.f.2a8b9cb440dff966a495d8e07d7e4410.js" async></script>
+<script type="text/javascript" src="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/js/content.js.twhash.a.f.89e6f461909a754c1cee9cd3de8286f5.js" async></script>
+<script type="text/javascript" src="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/js/form.js.twhash.a.f.9cf073168fe8be6343e35c743677c945.js" async></script>
+<script type="text/javascript" src="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/js/universal.js.twhash.a.f.a046ee57490f9330aef63f006feddcef.js" async></script>
+<script type="text/javascript" src="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/js/templates.js.twhash.a.f.8b49f61f34c85289e5ea8694304cf3a3.js" async></script>
+<script type="text/javascript" src="https://cdn.cms-twdigitalassets.com/etc/designs/info-twitter/public/js/privacy.js.twhash.a.f.e59d8094a7c26ee3a29a077314390d0d.js" async></script>
+
+
+
+
+  <div id="u12" class="u12-data-protection-notice">
+
+    
+    
+
+    
+    
+
+  </div>
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.cms-twdigitalassets.com/etc/designs/common-twitter/clientlib-u12-data-protection-notice.min.twhash.a.cl.e5f41c96ebe26adc278fe501d69fdebf.css" type="text/css">
+<script src="https://cdn.cms-twdigitalassets.com/etc/designs/common-twitter/clientlib-promise-polyfill.min.twhash.a.cl.678c3c47bfcf62393184734a7204fcdf.js"></script>
+<script src="https://cdn.cms-twdigitalassets.com/etc/designs/common-twitter/clientlib-twtr-profile-adapter.min.twhash.a.cl.2f6a2e41ae41c33aba9f8a7dcf876eb6.js"></script>
+<script src="https://cdn.cms-twdigitalassets.com/etc/designs/common-twitter/clientlib-u12-data-protection-notice.min.twhash.a.cl.dd36791d0d028510f49c89c6d8b44746.js"></script>
+
+
+
+
+
+
+  </body>
+</html>

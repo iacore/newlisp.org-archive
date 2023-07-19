@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>code/scan.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/env newlisp</font>
+
+
+<font color='#555555'>; scan - v.1.1 port scanner in newLISP</font>
+<font color='#555555'>; much faster on Mac OSX, LINUX and other UNIX than on Windows</font>
+<font color='#555555'>; as on UNIX net-connect can return on failure before the timeout</font>
+<font color='#555555'>; has exspired. On Windows net-connect will wait out the timeout</font>
+<font color='#555555'>; if it cannot connect.</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; Example:</font>
+<font color='#555555'>;</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> <font color='#AA0000'>(</font><font color='#0000AA'>sys-info</font> <font color='#998800'>-2</font><font color='#AA0000'>)</font> <font color='#998800'>10204</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"newLISP v.10.2.4 or later is required"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'host <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>unless</font> host <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>[text]
+- newLISP scan v1.1, a simple portscanner
+
+USAGE: scan &lt;host-ip-or-name&gt; [&lt;timeout-msec&gt; [&lt;from-port&gt; [&lt;to-port&gt;]]]
+
+EXAMPLES:
+   scan localhost 200 1 1024
+   scan example.com
+   scan 192.168.1.92 300 20
+
+Default for &lt;timeout-msec&gt; is 1000 milli seconds
+Defaults for &lt;from-port&gt; and &lt;to-port&gt; are 1 to 1024
+[/text]</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'timeout <font color='#AA0000'>(</font><font color='#0000AA'>or</font> <font color='#AA0000'>(</font><font color='#0000AA'>int</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>3</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#998800'>1000</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'from-port <font color='#AA0000'>(</font><font color='#0000AA'>or</font> <font color='#AA0000'>(</font><font color='#0000AA'>int</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>4</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'to-port <font color='#AA0000'>(</font><font color='#0000AA'>or</font> <font color='#AA0000'>(</font><font color='#0000AA'>int</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>5</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#998800'>1024</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"scanning: "</font> host<font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>for</font> <font color='#AA0000'>(</font>port from-port to-port<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'socket <font color='#AA0000'>(</font><font color='#0000AA'>net-connect</font> host port timeout<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"open port: "</font> port <font color='#008800'>" "</font> <font color='#AA0000'>(</font><font color='#0000AA'>or</font> <font color='#AA0000'>(</font><font color='#0000AA'>net-service</font> port <font color='#008800'>"tcp"</font><font color='#AA0000'>)</font> <font color='#008800'>""</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>net-close</font> socket<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>print</font> port <font color='#008800'>"&#092;r"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>println</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>;; eof</font>
+
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

@@ -1,0 +1,208 @@
+#header { background: #feb; }
+#fundraiser img#banner-small { display: none; }
+
+#fundraiser
+{
+  background: #c7e8fc;
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+}
+
+#fundraiser a[href]:hover { background: none; }
+#fundraiser a { text-decoration: none; }
+
+.progress-bar
+{
+  background: #c76215;
+  background:
+   repeating-linear-gradient(-50deg, #c76215, #c76215 5px, #900 5px, #900 10px),
+   #c76215;
+
+  position: absolute;
+  min-width: 40px;
+  top: 0;
+  left: 0;
+
+  height: 18px;
+  line-height: 18px;
+}
+
+.percentage
+{
+  color: white;
+  position: absolute;
+  right: -2em;
+}
+.percentage img { position: relative; bottom: 4px; }
+
+#fundraiser a img
+{
+  position: absolute;
+  left: 0;
+  bottom: 15px;
+  width: 1200;
+  height: 135px;
+}
+
+.message p.headline, #fundraiser p.button
+{
+  float: right;
+  text-align: center;
+  font-weight: bold;
+}
+#fundraiser p.button { width: 30%; }
+#fundraiser .message p.headline
+{
+  margin-top: 0.1em;
+  line-height: 1.13em;
+  width: 60%;
+  margin-bottom: 0.5em;
+  font-size: .8em;
+}
+#fundraiser .message p.headline a { color: black; }
+
+#fundraiser .button a, #fundraiser .button a[href]:hover
+{
+  color: white;
+  background: #63b029;
+}
+
+#fundraiser .button a
+{
+  border-radius: 1em;
+  -moz-border-radius: 1em;
+  -khtml-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  -opera-border-radius: 1em;
+}
+
+.message
+{
+  max-height: 132px;
+  padding-right: 4em;
+  padding-left: .7em;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.message p
+{
+  position: relative;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.message p.button
+{
+  margin-right: 8%;
+  margin-top: 0;
+  font-size: 1em;
+}
+
+.progresswidget
+{
+  position: absolute;
+  bottom: 0;
+  padding-right: 0;
+  padding-left: 0;
+  height: 18px;
+  width: 100%;
+  font-family: monospace;
+}
+
+.progress
+{
+  font-weight: bold;
+  height: 18px;
+  background: #900;
+}
+
+.goal
+{
+  color: white;
+  position: absolute;
+  padding: 0 .1em;
+  padding-top: .1em;
+  right: .5em;
+}
+
+@media (max-width:320px)
+{
+  /* We don't need to display a banner at this size! */
+  #fundraiser { display: none; }
+}
+
+@media (max-width:683px)
+{
+  #fundraiser img#banner-long { display: none; }
+  #fundraiser img#banner-small
+  {
+    display: inline;
+    width: 680px;
+  }
+  #fundraiser .message p.headline, #fundraiser p.button { float: none; }
+  #fundraiser .message p.headline
+  {
+    margin-left: 70%;
+    width: 50%;
+  }
+  .message p.button
+  {
+    margin-left: 75%;
+    font-size: 1em;
+  }
+}
+
+@media (min-width:320px)
+{
+  #fundraiser .message p.headline { font-size: .9em; }
+  .message p.button
+  {
+    font-size: .9em;
+    width: 40%;
+  }
+}
+
+@media (min-width:435px)
+{
+  #fundraiser .message p.headline
+  {
+    font-size: 1em;
+    margin-left: 50%;
+    width: 60%;
+  }
+  .message p.button { font-size: 1.1em; }
+}
+
+@media (min-width:520px)
+{
+  #fundraiser .message p.headline { font-size: 1.1em; }
+  .message p.button { font-size: 1.2em; }
+}
+
+@media (min-width: 684px)
+{
+  #fundraiser p
+  {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  #fundraiser .message p.headline
+  {
+    font-size: 1.3em;
+    width: 55%;
+  }
+  .message p.button { font-size: 1.4em; }
+}
+@media (min-width: 940px)
+{
+  #fundraiser .message p.headline
+  {
+    font-size: 1.35em;
+    margin-bottom: .7em;
+  }
+  .message p.button { font-size: 1.45em; }
+}

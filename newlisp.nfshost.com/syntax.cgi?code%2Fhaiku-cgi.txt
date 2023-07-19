@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>code/haiku-cgi.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"Content-type: text/html&#092;n&#092;n"</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;html&gt;&lt;head&gt;&lt;title&gt;Random Haiku&lt;/title&gt;"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;/HEAD&gt;"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;BODY&gt;"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;table border=0 cellpadding=0 cellspacing=0 width=600&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;"</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>{&lt;font face='verdana' size=&#034;2&#034;>}</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;blockquote&gt;&lt;p&gt;&lt;p&gt;RANDOM HAIKU&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;"</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>seed</font> <font color='#AA0000'>(</font><font color='#0000AA'>time-of-day</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'adjs '<font color='#AA0000'>(</font> <font color='#008800'>"autumn"</font> <font color='#008800'>"hidden"</font> <font color='#008800'>"bitter"</font> <font color='#008800'>"misty"</font> <font color='#008800'>"silent"</font>
+	<font color='#008800'>"empty"</font> <font color='#008800'>"dry"</font> <font color='#008800'>"dark"</font> <font color='#008800'>"summer"</font> <font color='#008800'>"icy"</font>
+	<font color='#008800'>"delicate"</font> <font color='#008800'>"quiet"</font> <font color='#008800'>"white"</font> <font color='#008800'>"cool"</font> <font color='#008800'>"spring"</font>
+	<font color='#008800'>"winter"</font> <font color='#008800'>"patient"</font> <font color='#008800'>"twilight"</font> <font color='#008800'>"dawn"</font> <font color='#008800'>"crimson"</font>
+	<font color='#008800'>"wispy"</font> <font color='#008800'>"weathered"</font> <font color='#008800'>"blue"</font> <font color='#008800'>"billowing"</font> <font color='#008800'>"broken"</font>
+	<font color='#008800'>"cold"</font> <font color='#008800'>"damp"</font> <font color='#008800'>"falling"</font> <font color='#008800'>"frosty"</font> <font color='#008800'>"green"</font>
+	<font color='#008800'>"long"</font> <font color='#008800'>"late"</font> <font color='#008800'>"lingering"</font> <font color='#008800'>"bold"</font> <font color='#008800'>"little"</font>
+	<font color='#008800'>"morning"</font> <font color='#008800'>"muddy"</font> <font color='#008800'>"old"</font> <font color='#008800'>"red"</font> <font color='#008800'>"rough"</font>
+	<font color='#008800'>"still"</font> <font color='#008800'>"small"</font> <font color='#008800'>"sparkling"</font> <font color='#008800'>"throbbing"</font> <font color='#008800'>"shy"</font>
+	<font color='#008800'>"wandering"</font> <font color='#008800'>"withered"</font> <font color='#008800'>"wild"</font> <font color='#008800'>"black"</font> <font color='#008800'>"young"</font>
+	<font color='#008800'>"holy"</font> <font color='#008800'>"solitary"</font> <font color='#008800'>"fragrant"</font> <font color='#008800'>"aged"</font> <font color='#008800'>"snowy"</font>
+	<font color='#008800'>"proud"</font> <font color='#008800'>"floral"</font> <font color='#008800'>"restless"</font> <font color='#008800'>"divine"</font> <font color='#008800'>"polished"</font>
+	<font color='#008800'>"ancient"</font> <font color='#008800'>"purple"</font> <font color='#008800'>"lively"</font> <font color='#008800'>"nameless"</font> <font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'nouns '<font color='#AA0000'>(</font> <font color='#008800'>"waterfall"</font> <font color='#008800'>"river"</font> <font color='#008800'>"breeze"</font> <font color='#008800'>"moon"</font> <font color='#008800'>"rain"</font>
+	<font color='#008800'>"wind"</font> <font color='#008800'>"sea"</font> <font color='#008800'>"morning"</font> <font color='#008800'>"snow"</font> <font color='#008800'>"lake"</font>
+	<font color='#008800'>"sunset"</font> <font color='#008800'>"pine"</font> <font color='#008800'>"shadow"</font> <font color='#008800'>"leaf"</font> <font color='#008800'>"dawn"</font>
+	<font color='#008800'>"glitter"</font> <font color='#008800'>"forest"</font> <font color='#008800'>"hill"</font> <font color='#008800'>"cloud"</font> <font color='#008800'>"meadow"</font>
+	<font color='#008800'>"sun"</font> <font color='#008800'>"glade"</font> <font color='#008800'>"bird"</font> <font color='#008800'>"brook"</font> <font color='#008800'>"butterfly"</font>
+	<font color='#008800'>"bush"</font> <font color='#008800'>"dew"</font> <font color='#008800'>"dust"</font> <font color='#008800'>"field"</font> <font color='#008800'>"fire"</font>
+	<font color='#008800'>"flower"</font> <font color='#008800'>"firefly"</font> <font color='#008800'>"feather"</font> <font color='#008800'>"grass"</font> <font color='#008800'>"haze"</font>
+	<font color='#008800'>"mountain"</font> <font color='#008800'>"night"</font> <font color='#008800'>"pond"</font> <font color='#008800'>"darkness"</font> <font color='#008800'>"snowflake"</font>
+	<font color='#008800'>"silence"</font> <font color='#008800'>"sound"</font> <font color='#008800'>"sky"</font> <font color='#008800'>"shape"</font> <font color='#008800'>"surf"</font>
+	<font color='#008800'>"thunder"</font> <font color='#008800'>"violet"</font> <font color='#008800'>"water"</font> <font color='#008800'>"wildflower"</font> <font color='#008800'>"wave"</font>
+	<font color='#008800'>"water"</font> <font color='#008800'>"resonance"</font> <font color='#008800'>"sun"</font> <font color='#008800'>"wood"</font> <font color='#008800'>"dream"</font>
+	<font color='#008800'>"cherry"</font> <font color='#008800'>"tree"</font> <font color='#008800'>"fog"</font> <font color='#008800'>"frost"</font> <font color='#008800'>"voice"</font>
+	<font color='#008800'>"paper"</font> <font color='#008800'>"frog"</font> <font color='#008800'>"smoke"</font> <font color='#008800'>"star"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'verbs '<font color='#AA0000'>(</font> <font color='#008800'>"shakes"</font> <font color='#008800'>"drifts"</font> <font color='#008800'>"has stopped"</font> <font color='#008800'>"struggles"</font> <font color='#008800'>"hears"</font>
+	<font color='#008800'>"has passed"</font> <font color='#008800'>"sleeps"</font> <font color='#008800'>"creeps"</font> <font color='#008800'>"flutters"</font> <font color='#008800'>"fades"</font>
+	<font color='#008800'>"is falling"</font> <font color='#008800'>"trickles"</font> <font color='#008800'>"murmurs"</font> <font color='#008800'>"warms"</font> <font color='#008800'>"hides"</font>
+	<font color='#008800'>"jumps"</font> <font color='#008800'>"is dreaming"</font> <font color='#008800'>"sleeps"</font> <font color='#008800'>"falls"</font> <font color='#008800'>"wanders"</font>
+	<font color='#008800'>"waits"</font> <font color='#008800'>"has risen"</font> <font color='#008800'>"stands"</font> <font color='#008800'>"dying"</font> <font color='#008800'>"is drawing"</font>
+	<font color='#008800'>"singing"</font> <font color='#008800'>"rises"</font> <font color='#008800'>"paints"</font> <font color='#008800'>"capturing"</font> <font color='#008800'>"flying"</font>
+	<font color='#008800'>"lies"</font> <font color='#008800'>"picked up"</font> <font color='#008800'>"gathers in"</font> <font color='#008800'>"invites"</font> <font color='#008800'>"separates"</font>
+	<font color='#008800'>"eats"</font> <font color='#008800'>"plants"</font> <font color='#008800'>"digs into"</font> <font color='#008800'>"has fallen"</font> <font color='#008800'>"weeping"</font>
+	<font color='#008800'>"facing"</font> <font color='#008800'>"mourns"</font> <font color='#008800'>"tastes"</font> <font color='#008800'>"breaking"</font> <font color='#008800'>"shaking"</font>
+	<font color='#008800'>"walks"</font> <font color='#008800'>"builds"</font> <font color='#008800'>"reveals"</font> <font color='#008800'>"piercing"</font> <font color='#008800'>"craves"</font>
+	<font color='#008800'>"departing"</font> <font color='#008800'>"opens"</font> <font color='#008800'>"falling"</font> <font color='#008800'>"confronts"</font> <font color='#008800'>"keeps"</font>
+	<font color='#008800'>"breaking"</font> <font color='#008800'>"is floating"</font> <font color='#008800'>"settles"</font> <font color='#008800'>"reaches"</font> <font color='#008800'>"illuminates"</font>
+	<font color='#008800'>"closes"</font> <font color='#008800'>"leaves"</font> <font color='#008800'>"explodes"</font> <font color='#008800'>"drawing"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'preps '<font color='#AA0000'>(</font> <font color='#008800'>"on"</font> <font color='#008800'>"beside"</font> <font color='#008800'>"in"</font> <font color='#008800'>"beneath"</font> <font color='#008800'>"of"</font> <font color='#008800'>"above"</font> <font color='#008800'>"under"</font> <font color='#008800'>"by"</font>
+	<font color='#008800'>"over"</font> <font color='#008800'>"against"</font> <font color='#008800'>"near"</font> <font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>get-word word-list<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'word-list-size <font color='#AA0000'>(</font><font color='#0000AA'>length</font> word-list<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'word-list-index <font color='#AA0000'>(</font><font color='#0000AA'>rand</font> word-list-size<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'selected-word <font color='#AA0000'>(</font><font color='#0000AA'>nth</font> word-list-index word-list<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>" "</font> selected-word <font color='#008800'>" "</font> <font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>get-adjective<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-word adjs<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>get-noun<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-word nouns<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>get-verb<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-word verbs<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>get-prep<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-word preps<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>style-one<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-adjective<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-noun<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;br&gt;&#092;n"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-noun<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-verb<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-prep<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-noun<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;br&gt;&#092;n"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-adjective<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-adjective<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-noun<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;br&gt;&#092;n"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>style-two<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-adjective<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-noun<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-verb<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;br&gt;&#092;n"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-adjective<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-adjective<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-noun<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;br&gt;&#092;n"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-verb<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-adjective<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-noun<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;br&gt;&#092;n"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>style-three<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-adjective<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-adjective<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-noun<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;br&gt;&#092;n"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-prep<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-adjective<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-noun<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;br&gt;&#092;n"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-noun<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-verb<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;br&gt;&#092;n"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>style-four<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-noun<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-prep<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-noun<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;br&gt;&#092;n"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-adjective<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-noun<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-prep<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-noun<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;br&gt;&#092;n"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-adjective<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>get-noun<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;br&gt;&#092;n"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>print-haiku<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'which <font color='#AA0000'>(</font><font color='#0000AA'>rand</font> <font color='#998800'>4</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> which <font color='#998800'>0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>style-one<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> which <font color='#998800'>1</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>style-two<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> which <font color='#998800'>2</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>style-three<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> which <font color='#998800'>3</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>style-four<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font>print-haiku<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;p&gt;&lt;/p&gt;"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;font size=1&gt;"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>{&lt;p&gt;You can click &lt;a href=&#034;haiku.cgi&#034;>HERE&lt;/a&gt; to see a new poem.}</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>print</font> "&lt;p&gt; Haiku generated in the style of Matsuo Basho, the Japanese poet of the <font color='#998800'>17</font>th century.&lt;br&gt;
+This haiku program originally written in pygmy &lt;b&gt;FORTH&lt;/b&gt; by Kent Peterson.&lt;br&gt;Translated into &lt;b&gt;lisp&lt;/b&gt;."<font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&lt;/blockquote&gt; &lt;/table&gt; &lt;/font&gt; &lt;/body&gt;&#092;n&lt;/html&gt;&#092;n"</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>benchmarks/wc.newlisp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'># count benchmark</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'lc <font color='#998800'>0</font> 'wc <font color='#998800'>0</font> 'cc <font color='#998800'>0</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>while</font> <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'line <font color='#AA0000'>(</font><font color='#0000AA'>read-line</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>inc</font> 'lc<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>inc</font> 'wc <font color='#AA0000'>(</font><font color='#0000AA'>length</font> <font color='#AA0000'>(</font><font color='#0000AA'>parse</font> <font color='#AA0000'>(</font><font color='#0000AA'>trim</font> line<font color='#AA0000'>)</font> <font color='#008800'>"&#092;&#092;s+"</font> <font color='#998800'>0</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>inc</font> 'cc <font color='#AA0000'>(</font><font color='#0000AA'>+</font> <font color='#AA0000'>(</font><font color='#0000AA'>length</font> line<font color='#AA0000'>)</font> <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#555555'>;; add back the line feed</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>println</font> lc <font color='#008800'>" "</font> wc <font color='#008800'>" "</font> cc<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

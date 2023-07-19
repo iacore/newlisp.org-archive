@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>code/Numerical.lsp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>;; Numerical.lsp </font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; A collection of functions for factoring, primality testing and a</font>
+<font color='#555555'>;; function to construct powersets</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; Author: John DeSanto, john<font color='#308080'>@johndesanto.com</font></font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;;</font>
+
+
+<font color='#555555'>;; function: powerset</font>
+<font color='#555555'>;; Return the power set of a list</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>powerset x<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>empty?</font> x<font color='#AA0000'>)</font>
+      <font color='#AA0000'>(</font><font color='#0000AA'>list</font> '<font color='#AA0000'>(</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+      <font color='#AA0000'>(</font><font color='#0000AA'>let</font> <font color='#AA0000'>(</font> <font color='#AA0000'>(</font>element <font color='#AA0000'>(</font><font color='#0000AA'>first</font> x<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+             <font color='#AA0000'>(</font>p <font color='#AA0000'>(</font>powerset <font color='#AA0000'>(</font><font color='#0000AA'>rest</font> x<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#AA0000'>(</font>fn <font color='#AA0000'>(</font>subset<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>cons</font> element subset<font color='#AA0000'>)</font><font color='#AA0000'>)</font> p<font color='#AA0000'>)</font> p<font color='#AA0000'>)</font> <font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+
+<font color='#555555'>;; function: factor-group</font>
+<font color='#555555'>;; A different factoring algorithm uses "factor" but groups the results</font>
+<font color='#555555'>;; e.g. (factor-group 45) --> ((3 2) (5 1))</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>factor-group num<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>let</font> <font color='#AA0000'>(</font>factorlist <font color='#AA0000'>(</font><font color='#0000AA'>factor</font> num<font color='#AA0000'>)</font> factorlist-grouped '<font color='#AA0000'>(</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>dolist</font> <font color='#AA0000'>(</font>y <font color='#AA0000'>(</font><font color='#0000AA'>unique</font> factorlist<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+       <font color='#AA0000'>(</font><font color='#0000AA'>push</font> <font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#AA0000'>(</font><font color='#0000AA'>list</font> y<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>count</font> <font color='#AA0000'>(</font><font color='#0000AA'>list</font> y<font color='#AA0000'>)</font> factorlist<font color='#AA0000'>)</font><font color='#AA0000'>)</font> factorlist-grouped <font color='#998800'>-1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+    factorlist-grouped<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+
+<font color='#555555'>;; function: isprime?</font>
+<font color='#555555'>;; This is the slow but sure method to determining if a number is prime.</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>isprime? n<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font>divides? <font color='#998800'>2</font> n<font color='#AA0000'>)</font>
+      <font color='#0000AA'>nil</font>
+      <font color='#AA0000'>(</font><font color='#0000AA'>=</font> <font color='#998800'>1</font> <font color='#AA0000'>(</font><font color='#0000AA'>length</font> <font color='#AA0000'>(</font><font color='#0000AA'>factor</font> n<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+
+<font color='#555555'>;; function: divides?</font>
+<font color='#555555'>;; Sometimes written "small | large"</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>divides? small large<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>=</font> <font color='#998800'>0</font> <font color='#AA0000'>(</font><font color='#0000AA'>mod</font> large small<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+
+<font color='#555555'>;; function: nextprime</font>
+<font color='#555555'>;;  </font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>nextprime n<font color='#AA0000'>)</font> 
+  <font color='#AA0000'>(</font><font color='#0000AA'>do-until</font> <font color='#AA0000'>(</font>isprime? n<font color='#AA0000'>)</font> 
+    <font color='#AA0000'>(</font><font color='#0000AA'>inc</font> n<font color='#AA0000'>)</font><font color='#AA0000'>)</font> 
+    n<font color='#AA0000'>)</font>
+
+
+<font color='#555555'>;; function: nextprime2 </font>
+<font color='#555555'>;; Marginally faster.  Doesn't test even numbers, but the extra conditional</font>
+<font color='#555555'>;; slows it down.</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>nextprime2 n<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>inc</font> n<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font>divides? <font color='#998800'>2</font> n<font color='#AA0000'>)</font>
+      <font color='#AA0000'>(</font>nextprime2 n<font color='#AA0000'>)</font>
+      <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font>isprime? n<font color='#AA0000'>)</font> n <font color='#AA0000'>(</font>nextprime2 <font color='#AA0000'>(</font><font color='#0000AA'>inc</font> n<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+
+<font color='#555555'>;; function: isprime?-v2 (incomplete)</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; Another primality checker.  This may be faster if the function is sent a list of known primes.</font>
+<font color='#555555'>;; For very large primes, perhaps even those larger than can be represented as integers, it is </font>
+<font color='#555555'>;; common practice to test the prime by dividing by the first 10000 or so primes.  This routine</font>
+<font color='#555555'>;; could also be improved by replacing "factor" with an algorithm that is optimized for larger</font>
+<font color='#555555'>;; numbers.</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>isprime?-v2 n known_primes<font color='#AA0000'>)</font>
+   <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>find</font> <font color='#998800'>0</font> <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>mod</font> <font color='#AA0000'>(</font><font color='#0000AA'>series</font> n <font color='#998800'>1</font> <font color='#AA0000'>(</font><font color='#0000AA'>length</font> known_primes<font color='#AA0000'>)</font><font color='#AA0000'>)</font> known_primes<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+       <font color='#0000AA'>nil</font>
+       <font color='#AA0000'>(</font><font color='#0000AA'>=</font> <font color='#998800'>1</font> <font color='#AA0000'>(</font><font color='#0000AA'>length</font> <font color='#AA0000'>(</font><font color='#0000AA'>factor</font> n<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+
+
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

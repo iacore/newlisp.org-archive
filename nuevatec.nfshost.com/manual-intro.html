@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta name="description" content="LISP  new www.newlisp.org newLISP focuses on the core components of LISP: newLISP , and lambda expressions. lists , symbols Lists ‘() An empty list ‘(3) A list with one integer ‘(“Hello” “Goodbye”) A list with two strings ‘(“Hello” 2 you) A list with a string, an integer, and a symbol ‘((a b c) (1 2 3)) A list with two lists Symbols (set ‘txt “Hello!”) A symbol can hold a value ⇒  txt A symbol evaluates to its contents “Hello!” An unset symbol evaluates to nil ⇒  boogieman nil (set ‘opt1 true ‘opt2 nil) true and nil are symbols true evaluates to true (boolean true) ⇒  true true nil evaluates to nil (boolean false) ⇒  nil nil Lambda Expressions A lambda expression evaluates to itself. ⇒  (set ‘f (lambda (n) (+ n n))) (lambda (n) (+ n n)) fn can be used in place of lambda (set ‘f (lambda (n) (+ n n))) fn can be used in place of lambda (set ‘f (fn (n) (+ n n)))  The lambda keyword is not a symbol. (n) &gt; &gt; &gt; (length (lambda (n) (+ n n))) 2 (first (lambda (n) (+ n n))) It’s a designator of a special type of list: the lambda list.  Lambda expressions can be used (2 4 6) &gt; &gt; &gt; (apply (lambda (n) (+ n n)) ‘(123)) 246 (map (lambda (n) (+ n n)) ‘(1 2 3)) as anonymous functions.  A lambda expression can be set to a symbol 246 &gt; &gt; &gt; (set ‘double (lambda (n) (+ n n))) (lambda (n) (+ n n)) (double 123) , which can then be used as a function.  A shorter way of doing the same thing 246 &gt; &gt; &gt; (define (double n) (+ n n)) (lambda (n) (+ n n)) (double 123) To these,  newLISP adds: Lists Symbols Lambda Expressions , and  dynamic &amp; lexical scoping. arrays , implicit indexing Arrays Arrays enable fast element access (useful for large lists)  An array is created with the array function. (1 2 3 4 5) &gt; &gt; &gt; (array 5) (nil nil nil nil nil) (array 5 (sequence 1 5)) A list can be supplied as a contents initializer.   (1 2 1 2 1 2 1 2 1 2) &gt; (array 10 ‘(1 2)) There are many functions that work on arrays append array array-list array? det invert last mat multiply nth rest setf slice transpose first appends arrays append array array-list array? det invert last mat multiply nth rest setf slice transpose creates and initializes an array converts an array into a list checks if expression is an array returns the determinant of a matrix returns the first row of an array first returns the inversion of a matrix performs scalar operations on matrices returns the last row of an array multiplies two matrices returns an element of an array returns all but the first row of an array sets the contents of a symbol, list, array or string returns a slice of an array transposes a matrix Implicit Indexing Implicit indexing can be used on strings , lists , and arrays Implicit indexing for nth  a &gt; &gt; &gt; (set ‘lst ‘(a b c (d e) (f g))) (a b c (d e) (f g)) (lst 0) (d e) &gt; (lst 3) e &gt; (lst 3 1) (f g) &gt; (lst -1) “L” ⇒  (“newLISP” 3) And strings Implicit indexing for rest and slice  (b c d e f g) &gt; &gt; &gt; (set ‘lst ‘(a b c d e f g)) (a b c d e f g) (1 lst) (c d e) &gt; (2 3 lst) (e f) &gt; (-3 2 lst)  Strings, too! “bcdefg” &gt; &gt; &gt; (set ‘str “abcdefg”) “abcdefg” (1 str) “cde” &gt; (2 3 str) “ef” &gt; (-3 2 str) Implicit indexing for setf  1 &gt; &gt; &gt; (set ‘lst ‘(a b c (d e (f g) h i) j k)) (a b c (d e (f g) h i) j k) (setf (lst 0) 1) (1 2 3 4) &gt; (setf (lst 3 2) ‘(1 2 3 4)) 2 &gt; (set ‘i 3 ‘j 2 ‘k 2) 99 &gt; (setf (lst i j k) 99) (1 b c (d e (1 2 99 4) h i) j k) &gt; lst Dynamic &amp; Lexical Scoping   Dynamic scoping is used inside contexts  Lexical scoping is used outside contexts  newLISP takes advantage of both at once   (lambda () (print &quot;X=&quot; x &quot; Y=&quot; y &quot; Z= &quot; z &quot;\n&quot;)) &gt; &gt; &gt; (define (add-three x y z) (print-vars) (+ x y z)) (lambda (x y z) (print-vars) (+ x y z)) (define (print-vars) (print “X=” x “ Y=” y “ Z=” z “\n”)) 6 &gt; (set ‘x 4 ‘y 5 ‘z 6) X=4 Y=5 Z=6 &gt; (print-vars) (add-three 70 80 90) 6 X=70 Y=80 Z=90 &gt; 240 X=4 Y=5 Z=6 &gt; (print-vars) 6 Dynamic scoping in action Lexical scoping is implemented using separate namespaces called contexts. Lists Symbols Lambda Expressions Arrays Implicit Indexing Dynamic &amp; Lexical Scoping The result is an easier-to-learn LISP Smaller than most Scheme implementations 350+ built-in functions about 200k in size · As fast or faster than other popular scripting languages loads quickly highly portable · Puts the fun back in LISP :-) LISP  new Puts the fun back in LISP  Puts the fun back in LISP (exit) video by Michael Michaels  based on text and examples taken from the newLISP Users Manual and Reference"/>
+    <title></title>
+    <script type="text/javascript" language="javascript">
+//      <![CDATA[
+            var images = new Array (51);
+            images[0] = "manual-intro_files/manual-intro.001.png";
+            images[1] = "manual-intro_files/manual-intro.002.png";
+            images[2] = "manual-intro_files/manual-intro.003.png";
+            images[3] = "manual-intro_files/manual-intro.004.png";
+            images[4] = "manual-intro_files/manual-intro.005.png";
+            images[5] = "manual-intro_files/manual-intro.006.png";
+            images[6] = "manual-intro_files/manual-intro.007.png";
+            images[7] = "manual-intro_files/manual-intro.008.png";
+            images[8] = "manual-intro_files/manual-intro.009.png";
+            images[9] = "manual-intro_files/manual-intro.010.png";
+            images[10] = "manual-intro_files/manual-intro.011.png";
+            images[11] = "manual-intro_files/manual-intro.012.png";
+            images[12] = "manual-intro_files/manual-intro.013.png";
+            images[13] = "manual-intro_files/manual-intro.014.png";
+            images[14] = "manual-intro_files/manual-intro.015.png";
+            images[15] = "manual-intro_files/manual-intro.016.png";
+            images[16] = "manual-intro_files/manual-intro.017.png";
+            images[17] = "manual-intro_files/manual-intro.018.png";
+            images[18] = "manual-intro_files/manual-intro.019.png";
+            images[19] = "manual-intro_files/manual-intro.020.png";
+            images[20] = "manual-intro_files/manual-intro.021.png";
+            images[21] = "manual-intro_files/manual-intro.022.png";
+            images[22] = "manual-intro_files/manual-intro.023.png";
+            images[23] = "manual-intro_files/manual-intro.024.png";
+            images[24] = "manual-intro_files/manual-intro.025.png";
+            images[25] = "manual-intro_files/manual-intro.026.png";
+            images[26] = "manual-intro_files/manual-intro.027.png";
+            images[27] = "manual-intro_files/manual-intro.028.png";
+            images[28] = "manual-intro_files/manual-intro.029.png";
+            images[29] = "manual-intro_files/manual-intro.030.png";
+            images[30] = "manual-intro_files/manual-intro.031.png";
+            images[31] = "manual-intro_files/manual-intro.032.png";
+            images[32] = "manual-intro_files/manual-intro.033.png";
+            images[33] = "manual-intro_files/manual-intro.034.png";
+            images[34] = "manual-intro_files/manual-intro.035.png";
+            images[35] = "manual-intro_files/manual-intro.036.png";
+            images[36] = "manual-intro_files/manual-intro.037.png";
+            images[37] = "manual-intro_files/manual-intro.038.png";
+            images[38] = "manual-intro_files/manual-intro.039.png";
+            images[39] = "manual-intro_files/manual-intro.040.png";
+            images[40] = "manual-intro_files/manual-intro.041.png";
+            images[41] = "manual-intro_files/manual-intro.042.png";
+            images[42] = "manual-intro_files/manual-intro.043.png";
+            images[43] = "manual-intro_files/manual-intro.044.png";
+            images[44] = "manual-intro_files/manual-intro.045.png";
+            images[45] = "manual-intro_files/manual-intro.046.png";
+            images[46] = "manual-intro_files/manual-intro.047.png";
+            images[47] = "manual-intro_files/manual-intro.048.png";
+            images[48] = "manual-intro_files/manual-intro.049.png";
+            images[49] = "manual-intro_files/manual-intro.050.png";
+            images[50] = "manual-intro_files/manual-intro.051.png";
+            var index = 0;
+            function WindowLoaded(evt)
+            {
+                document.body.onselectstart = function () { return false; };
+            }
+            function Step(i)
+            {
+                GoTo(index + i)
+            }
+            function GoTo(newIndex)
+            {
+                if(newIndex >= 0 && newIndex < images.length)
+                {
+                    index = newIndex;
+                    document.Slideshow.src = images[index];
+                }
+            }
+//      ]]>
+    </script>
+</head>
+<body bgcolor="black" onload='WindowLoaded(event);'>
+    <p align="center">
+        <br/>
+        <br/>
+        <img name="Slideshow" alt="" src="manual-intro_files/manual-intro.001.png" onclick="Step(1)"/>
+        <br/>
+        <br/>
+        <input type="image" src="manual-intro_files/home.png" onclick="GoTo(0)"/>
+        &nbsp;&nbsp;&nbsp;
+        <input type="image" src="manual-intro_files/prev.png" onclick="Step(-1)"/>
+        <input type="image" src="manual-intro_files/next.png" onclick="Step(1)"/>
+    </p>
+</body>
+</html>

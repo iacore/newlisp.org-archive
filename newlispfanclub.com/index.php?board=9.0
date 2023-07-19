@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://newlispfanclub.com/Themes/default/css/minified_1451dd7350b47b84179bda6f75e6c43d.css?smf213_1668469015">
+	<style>
+	img.avatar { max-width: 65px !important; max-height: 65px !important; }
+	
+	</style>
+	<script>
+		var smf_theme_url = "https://newlispfanclub.com/Themes/default";
+		var smf_default_theme_url = "https://newlispfanclub.com/Themes/default";
+		var smf_images_url = "https://newlispfanclub.com/Themes/default/images";
+		var smf_smileys_url = "https://newlispfanclub.com/Smileys";
+		var smf_smiley_sets = "default,aaron,akyhne,fugue,alienine";
+		var smf_smiley_sets_default = "default";
+		var smf_avatars_url = "https://newlispfanclub.com/avatars";
+		var smf_scripturl = "https://newlispfanclub.com/index.php";
+		var smf_iso_case_folding = false;
+		var smf_charset = "UTF-8";
+		var smf_session_id = "820175742d334db2a0ec2d714db371a1";
+		var smf_session_var = "ace096301";
+		var smf_member_id = 0;
+		var ajax_notification_text = 'Loading...';
+		var help_popup_heading_text = 'A little lost? Let me explain:';
+		var banned_text = 'Sorry Guest, you are banned from using this forum!';
+		var smf_txt_expand = 'Expand';
+		var smf_txt_shrink = 'Shrink';
+		var smf_quote_expand = false;
+		var allow_xhjr_credentials = false;
+	</script>
+	<script src="https://newlispfanclub.com/Themes/default/scripts/jquery-3.6.0.min.js"></script>
+	<script src="https://newlispfanclub.com/Themes/default/scripts/minified_8b9f80655746eab1a7d92ab5341ca5b1.js?smf213_1668469015"></script>
+	<script>
+	var smf_you_sure ='Are you sure you want to do this?';
+	</script>
+	<title>newLISP and the O.S.</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:site_name" content="newLISP Fan Club">
+	<meta property="og:title" content="newLISP and the O.S.">
+	<meta property="og:url" content="https://newlispfanclub.com/index.php?board=9.0">
+	<meta property="og:description" content="Machine-specific discussion
+Unix, Linux, OS X, OS/2, Windows, ..?">
+	<meta name="description" content="Machine-specific discussion
+Unix, Linux, OS X, OS/2, Windows, ..?">
+	<meta name="theme-color" content="#557EA0">
+	<link rel="canonical" href="https://newlispfanclub.com/index.php?board=9.0">
+	<link rel="help" href="https://newlispfanclub.com/index.php?action=help">
+	<link rel="contents" href="https://newlispfanclub.com/index.php">
+	<link rel="search" href="https://newlispfanclub.com/index.php?action=search">
+	<link rel="alternate" type="application/rss+xml" title="newLISP Fan Club - RSS" href="https://newlispfanclub.com/index.php?action=.xml;type=rss2;board=9">
+	<link rel="alternate" type="application/atom+xml" title="newLISP Fan Club - Atom" href="https://newlispfanclub.com/index.php?action=.xml;type=atom;board=9">
+	<link rel="next" href="https://newlispfanclub.com/index.php?board=9.20">
+	<link rel="index" href="https://newlispfanclub.com/index.php?board=9.0">
+</head>
+<body id="smf" class="action_messageindex board_9">
+<div id="footerfix">
+	<div id="top_section">
+		<div class="inner_wrap">
+			<ul class="floatleft" id="top_info">
+				<li class="welcome">
+					Welcome to <strong>newLISP Fan Club</strong>.
+				</li>
+				<li class="button_login">
+					<a href="https://newlispfanclub.com/index.php?action=login" class="open" onclick="return reqOverlayDiv(this.href, 'Log in', 'login');">
+						<span class="main_icons login"></span>
+						<span class="textmenu">Log in</span>
+					</a>
+				</li>
+				<li class="button_signup">
+					<a href="https://newlispfanclub.com/index.php?action=signup" class="open">
+						<span class="main_icons regcenter"></span>
+						<span class="textmenu">Sign up</span>
+					</a>
+				</li>
+			</ul>
+			<form id="search_form" class="floatright" action="https://newlispfanclub.com/index.php?action=search2" method="post" accept-charset="UTF-8">
+				<input type="search" name="search" value="">&nbsp;
+				<select name="search_selection">
+					<option value="all">Entire forum </option>
+					<option value="board" selected>This board</option>
+				</select>
+				<input type="hidden" name="sd_brd" value="9">
+				<input type="submit" name="search2" value="Search" class="button">
+				<input type="hidden" name="advanced" value="0">
+			</form>
+		</div><!-- .inner_wrap -->
+	</div><!-- #top_section -->
+	<div id="header">
+		<h1 class="forumtitle">
+			<a id="top" href="https://newlispfanclub.com/index.php">newLISP Fan Club</a>
+		</h1>
+		<img id="smflogo" src="https://newlispfanclub.com/Themes/default/images/smflogo.svg" alt="Simple Machines Forum" title="Simple Machines Forum">
+	</div>
+	<div id="wrapper">
+		<div id="upper_section">
+			<div id="inner_section">
+				<div id="inner_wrap" class="hide_720">
+					<div class="user">
+						<time datetime="2023-07-19T00:52:14Z">July 18, 2023, 05:52:14 PM</time>
+					</div>
+					<div class="news">
+						<h2>News: </h2>
+						<p><a href="https://newlispfanclub.com/index.php?topic=5248.0" class="bbc_link" target="_blank" rel="noopener">Welcome to the new forums!</a></p>
+					</div>
+				</div>
+				<a class="mobile_user_menu">
+					<span class="menu_icon"></span>
+					<span class="text_menu">Main Menu</span>
+				</a>
+				<div id="main_menu">
+					<div id="mobile_user_menu" class="popup_container">
+						<div class="popup_window description">
+							<div class="popup_heading">Main Menu
+								<a href="javascript:void(0);" class="main_icons hide_popup"></a>
+							</div>
+							
+					<ul class="dropmenu menu_nav">
+						<li class="button_home">
+							<a class="active" href="https://newlispfanclub.com/index.php">
+								<span class="main_icons home"></span><span class="textmenu">Home</span>
+							</a>
+						</li>
+						<li class="button_search">
+							<a href="https://newlispfanclub.com/index.php?action=search">
+								<span class="main_icons search"></span><span class="textmenu">Search</span>
+							</a>
+						</li>
+					</ul><!-- .menu_nav -->
+						</div>
+					</div>
+				</div>
+				<div class="navigate_section">
+					<ul>
+						<li>
+							<a href="https://newlispfanclub.com/index.php"><span>newLISP Fan Club</span></a>
+						</li>
+						<li>
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php#c1"><span>Forum</span></a>
+						</li>
+						<li class="last">
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php?board=9.0"><span>newLISP and the O.S.</span></a>
+						</li>
+					</ul>
+				</div><!-- .navigate_section -->
+			</div><!-- #inner_section -->
+		</div><!-- #upper_section -->
+		<div id="content_section">
+			<div id="main_content_section"><div id="display_head" class="information">
+			<h2 class="display_title">newLISP and the O.S.</h2>
+			<p><t>Machine-specific discussion<br/><br>Unix, Linux, OS X, OS/2, Windows, ..?</t></p>
+		</div>
+	<div class="pagesection">
+		 
+		<div class="pagelinks floatleft">
+			<a href="#bot" class="button">Go Down</a>
+			<span class="pages">Pages</span><span class="current_page">1</span> <a class="nav_page" href="https://newlispfanclub.com/index.php?board=9.20">2</a> <a class="nav_page" href="https://newlispfanclub.com/index.php?board=9.40">3</a> <span class="expand_pages" onclick="expandPages(this, '&lt;a class=&quot;nav_page&quot; href=&quot;' + smf_scripturl + '?board=9.%1$d&quot;&gt;%2$s&lt;/a&gt; ', 60, 380, 20);"> ... </span><a class="nav_page" href="https://newlispfanclub.com/index.php?board=9.380">20</a> <a class="nav_page" href="https://newlispfanclub.com/index.php?board=9.20"><span class="main_icons next_page"></span></a> 
+		</div>
+		
+	</div>
+		<div id="messageindex">
+			<div class="title_bar" id="topic_header">
+				<div class="board_icon"></div>
+				<div class="info"><a href="https://newlispfanclub.com/index.php?board=9.0;sort=subject">Subject</a> / <a href="https://newlispfanclub.com/index.php?board=9.0;sort=starter">Started by</a></div>
+				<div class="board_stats centertext"><a href="https://newlispfanclub.com/index.php?board=9.0;sort=replies">Replies</a> / <a href="https://newlispfanclub.com/index.php?board=9.0;sort=views">Views</a></div>
+				<div class="lastpost"><a href="https://newlispfanclub.com/index.php?board=9.0;sort=last_post">Last post<span class="main_icons sort_down"></span></a></div>
+			</div><!-- #topic_header -->
+			<div id="topic_container">
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_25182"><a href="https://newlispfanclub.com/index.php?topic=5226.0">SQL: To get a count result, use the SET operator.</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=1490" title="View the profile of Mobo01" class="preview">Mobo01</a>
+							</p>
+							
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 0<br>Views: 318</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=5226.0#msg25182">November 08, 2022, 11:20:51 PM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=1490">Mobo01</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_23613"><a href="https://newlispfanclub.com/index.php?topic=4798.0">I/O error</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=1147" title="View the profile of Darth_Severus" class="preview">Darth_Severus</a>
+							</p>
+							
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 4<br>Views: 5,716</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=4798.0#msg25160">June 30, 2022, 07:25:54 PM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=1367">ValentiMr</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_22937"><a href="https://newlispfanclub.com/index.php?topic=4667.0">mingw64 build patch</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=489" title="View the profile of kosh" class="preview">kosh</a>
+							</p>
+							<span id="pages22937" class="topic_pages"><span class="pages">Pages</span><a class="nav_page" href="https://newlispfanclub.com/index.php?topic=4667.0">1</a> <a class="nav_page" href="https://newlispfanclub.com/index.php?topic=4667.15">2</a> </span>
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 22<br>Views: 18,091</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=4667.15#msg25154">June 29, 2022, 04:33:18 PM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=1367">ValentiMr</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_18609"><a href="https://newlispfanclub.com/index.php?topic=3708.0">Benchmarking newLISP</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=153" title="View the profile of cormullion" class="preview">cormullion</a>
+							</p>
+							<span id="pages18609" class="topic_pages"><span class="pages">Pages</span><a class="nav_page" href="https://newlispfanclub.com/index.php?topic=3708.0">1</a> <a class="nav_page" href="https://newlispfanclub.com/index.php?topic=3708.15">2</a> </span>
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 28<br>Views: 24,846</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=3708.15#msg25069">December 17, 2021, 06:43:01 AM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=38">newdep</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_24174"><a href="https://newlispfanclub.com/index.php?topic=4924.0">Not start on Win10</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=1252" title="View the profile of First_Spectr" class="preview">First_Spectr</a>
+							</p>
+							
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 13<br>Views: 10,979</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=4924.0#msg25066">December 14, 2021, 01:11:44 PM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=1454">pda</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_25049"><a href="https://newlispfanclub.com/index.php?topic=5175.0">pretty-print line length</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=1467" title="View the profile of sjain59" class="preview">sjain59</a>
+							</p>
+							
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 0<br>Views: 1,607</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=5175.0#msg25049">September 11, 2021, 08:51:36 PM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=1467">sjain59</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_18059"><a href="https://newlispfanclub.com/index.php?topic=3584.0">HOWTO - Hiding the console on Windows</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=347" title="View the profile of m35" class="preview">m35</a>
+							</p>
+							
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 1<br>Views: 3,808</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=3584.0#msg24971">November 24, 2020, 11:58:26 PM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=1262">lyl</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_24953"><a href="https://newlispfanclub.com/index.php?topic=5146.0">fun with pledge()</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by Kirill
+							</p>
+							
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 2<br>Views: 2,935</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=5146.0#msg24955">October 08, 2020, 01:06:34 AM</a><br>by Kirill</p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_24930"><a href="https://newlispfanclub.com/index.php?topic=5139.0">peek for WINDOWS</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=1238" title="View the profile of IVShilov" class="preview">IVShilov</a>
+							</p>
+							
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 0<br>Views: 3,946</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=5139.0#msg24930">September 07, 2020, 10:05:35 AM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=1238">IVShilov</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_24519"><a href="https://newlispfanclub.com/index.php?topic=5003.0">Compile script to .exe with attached files</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=1262" title="View the profile of lyl" class="preview">lyl</a>
+							</p>
+							
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 8<br>Views: 8,753</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=5003.0#msg24827">September 30, 2019, 02:40:13 PM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=1281">ClaudeM</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_971"><a href="https://newlispfanclub.com/index.php?topic=153.0">hpwNLAutoItDll released</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=4" title="View the profile of HPW" class="preview">HPW</a>
+							</p>
+							
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 7<br>Views: 8,023</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=153.0#msg24626">July 31, 2019, 10:31:58 PM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=4">HPW</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_24510"><a href="https://newlispfanclub.com/index.php?topic=5001.0">How to run a dos command in win7 console by newlisp</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=1262" title="View the profile of lyl" class="preview">lyl</a>
+							</p>
+							
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 2<br>Views: 2,740</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=5001.0#msg24512">May 04, 2019, 07:35:00 AM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=1262">lyl</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_24477"><a href="https://newlispfanclub.com/index.php?topic=4991.0">How to stop newlisp in daemon mode</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=362" title="View the profile of dukester" class="preview">dukester</a>
+							</p>
+							
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 2<br>Views: 4,417</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=4991.0#msg24479">April 05, 2019, 10:06:02 PM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=362">dukester</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_24438"><a href="https://newlispfanclub.com/index.php?topic=4989.0">Newlisp-Apache-CGI Issues Again</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=362" title="View the profile of dukester" class="preview">dukester</a>
+							</p>
+							<span id="pages24438" class="topic_pages"><span class="pages">Pages</span><a class="nav_page" href="https://newlispfanclub.com/index.php?topic=4989.0">1</a> <a class="nav_page" href="https://newlispfanclub.com/index.php?topic=4989.15">2</a> </span>
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 29<br>Views: 16,450</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=4989.15#msg24476">April 03, 2019, 03:42:12 PM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=362">dukester</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_24233"><a href="https://newlispfanclub.com/index.php?topic=4940.0">Encoding surrealism in WIN10: UTF-8-NEWLISP in CMD.EXE</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=1238" title="View the profile of IVShilov" class="preview">IVShilov</a>
+							</p>
+							
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 3<br>Views: 5,234</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=4940.0#msg24440">March 26, 2019, 01:44:12 PM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=1238">IVShilov</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_24410"><a href="https://newlispfanclub.com/index.php?topic=4986.0">Build newLISP for win10 64bit</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=732" title="View the profile of cameyo" class="preview">cameyo</a>
+							</p>
+							
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 9<br>Views: 6,639</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=4986.0#msg24422">February 20, 2019, 08:42:52 AM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=732">cameyo</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_17958"><a href="https://newlispfanclub.com/index.php?topic=3537.0">(directory) in Windows and UTF8</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=494" title="View the profile of Fritz" class="preview">Fritz</a>
+							</p>
+							
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 6<br>Views: 6,060</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=3537.0#msg24416">February 17, 2019, 05:03:26 PM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=1134">ralph.ronnquist</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_24405"><a href="https://newlispfanclub.com/index.php?topic=4983.0">Windows 10 ANSI color</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=732" title="View the profile of cameyo" class="preview">cameyo</a>
+							</p>
+							
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 0<br>Views: 4,542</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=4983.0#msg24405">February 07, 2019, 03:22:02 AM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=732">cameyo</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_24367"><a href="https://newlispfanclub.com/index.php?topic=4976.0">Installing on Cygwin</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=1275" title="View the profile of dmos" class="preview">dmos</a>
+							</p>
+							
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 1<br>Views: 2,821</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=4976.0#msg24368">December 18, 2018, 07:24:44 AM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=489">kosh</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+				<div class="windowbg">
+					<div class="board_icon">
+						<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+						
+					</div>
+					<div class="info info_block">
+						<div >
+							<div class="icons floatright">
+							</div>
+							<div class="message_index_title">
+								
+								<span class="preview" title="">
+									<span id="msg_22624"><a href="https://newlispfanclub.com/index.php?topic=4590.0">Calling OBJC runtime from newlisp</a></span>
+								</span>
+							</div>
+							<p class="floatleft">
+								Started by <a href="https://newlispfanclub.com/index.php?action=profile;u=1039" title="View the profile of fdb" class="preview">fdb</a>
+							</p>
+							<span id="pages22624" class="topic_pages"><span class="pages">Pages</span><a class="nav_page" href="https://newlispfanclub.com/index.php?topic=4590.0">1</a> <a class="nav_page" href="https://newlispfanclub.com/index.php?topic=4590.15">2</a> </span>
+						</div><!-- #topic_[first_post][id] -->
+					</div><!-- .info -->
+					<div class="board_stats centertext">
+						<p>Replies: 19<br>Views: 17,577</p>
+					</div>
+					<div class="lastpost">
+						<p><a href="https://newlispfanclub.com/index.php?topic=4590.15#msg24287">August 27, 2018, 01:42:58 PM</a><br>by <a href="https://newlispfanclub.com/index.php?action=profile;u=1039">fdb</a></p>
+					</div>
+				</div><!-- $topic[css_class] -->
+			</div><!-- #topic_container -->
+		</div><!-- #messageindex -->
+	<div class="pagesection">
+		
+		 
+		<div class="pagelinks floatleft">
+			<a href="#main_content_section" class="button" id="bot">Go Up</a>
+			<span class="pages">Pages</span><span class="current_page">1</span> <a class="nav_page" href="https://newlispfanclub.com/index.php?board=9.20">2</a> <a class="nav_page" href="https://newlispfanclub.com/index.php?board=9.40">3</a> <span class="expand_pages" onclick="expandPages(this, '&lt;a class=&quot;nav_page&quot; href=&quot;' + smf_scripturl + '?board=9.%1$d&quot;&gt;%2$s&lt;/a&gt; ', 60, 380, 20);"> ... </span><a class="nav_page" href="https://newlispfanclub.com/index.php?board=9.380">20</a> <a class="nav_page" href="https://newlispfanclub.com/index.php?board=9.20"><span class="main_icons next_page"></span></a> 
+		</div>
+	</div>
+				<div class="navigate_section">
+					<ul>
+						<li>
+							<a href="https://newlispfanclub.com/index.php"><span>newLISP Fan Club</span></a>
+						</li>
+						<li>
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php#c1"><span>Forum</span></a>
+						</li>
+						<li class="last">
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php?board=9.0"><span>newLISP and the O.S.</span></a>
+						</li>
+					</ul>
+				</div><!-- .navigate_section -->
+	<script>
+		var oQuickModifyTopic = new QuickModifyTopic({
+			aHidePrefixes: Array("lockicon", "stickyicon", "pages", "newicon"),
+			bMouseOnDiv: false,
+		});
+	</script>
+	<div class="tborder" id="topic_icons">
+		<div class="information">
+			<p id="message_index_jump_to"></p>
+			<p class="floatleft">
+				<span class="main_icons poll"></span> Poll<br>
+				<span class="main_icons move"></span> Moved Topic<br>
+			</p>
+			<p>
+				<span class="main_icons lock"></span> Locked Topic<br>
+				<span class="main_icons sticky"></span> Sticky Topic<br>
+				<span class="main_icons watch"></span> Topic you are watching<br>
+			</p>
+			<script>
+				if (typeof(window.XMLHttpRequest) != "undefined")
+					aJumpTo[aJumpTo.length] = new JumpTo({
+						sContainerId: "message_index_jump_to",
+						sJumpToTemplate: "<label class=\"smalltext jump_to\" for=\"%select_id%\">Jump to<" + "/label> %dropdown_list%",
+						iCurBoardId: 9,
+						iCurBoardChildLevel: 0,
+						sCurBoardName: "newLISP and the O.S.",
+						sBoardChildLevelIndicator: "==",
+						sBoardPrefix: "=> ",
+						sCatSeparator: "-----------------------------",
+						sCatPrefix: "",
+						sGoButtonLabel: "Go"
+					});
+			</script>
+		</div><!-- .information -->
+	</div><!-- #topic_icons -->
+	<div id="mobile_action" class="popup_container">
+		<div class="popup_window description">
+			<div class="popup_heading">User actions
+				<a href="javascript:void(0);" class="main_icons hide_popup"></a>
+			</div>
+			
+		</div>
+	</div><!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://m.okturtles.org/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '6']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="https://m.okturtles.org/matomo.php?idsite=6&rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+			</div><!-- #main_content_section -->
+		</div><!-- #content_section -->
+	</div><!-- #wrapper -->
+</div><!-- #footerfix -->
+	<div id="footer">
+		<div class="inner_wrap">
+		<ul>
+			<li class="floatright"><a href="https://newlispfanclub.com/index.php?action=help">Help</a> | <a href="https://newlispfanclub.com/index.php?action=agreement">Terms and Rules</a> | <a href="#top_section">Go Up &#9650;</a></li>
+			<li class="copyright"><a href="https://newlispfanclub.com/index.php?action=credits" title="License" target="_blank" rel="noopener">SMF 2.1.3 &copy; 2022</a>, <a href="https://www.simplemachines.org" title="Simple Machines" target="_blank" rel="noopener">Simple Machines</a></li>
+		</ul>
+		</div>
+	</div><!-- #footer -->
+<script>
+window.addEventListener("DOMContentLoaded", function() {
+	function triggerCron()
+	{
+		$.get('https://newlispfanclub.com' + "/cron.php?ts=1689727920");
+	}
+	window.setTimeout(triggerCron, 1);
+});
+</script>
+</body>
+</html>

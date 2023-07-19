@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://newlispfanclub.com/Themes/default/css/minified_8611ac371ac9acf73a59230185a95d14.css?smf213_1668469015">
+	<style>.main_icons.sfs::before { background: url(https://newlispfanclub.com/Themes/default/images/admin/sfs.webp) no-repeat; background-size: contain;}
+	
+	img.avatar { max-width: 65px !important; max-height: 65px !important; }
+	
+	</style>
+	<script>
+		var smf_theme_url = "https://newlispfanclub.com/Themes/default";
+		var smf_default_theme_url = "https://newlispfanclub.com/Themes/default";
+		var smf_images_url = "https://newlispfanclub.com/Themes/default/images";
+		var smf_smileys_url = "https://newlispfanclub.com/Smileys";
+		var smf_smiley_sets = "default,aaron,akyhne,fugue,alienine";
+		var smf_smiley_sets_default = "default";
+		var smf_avatars_url = "https://newlispfanclub.com/avatars";
+		var smf_scripturl = "https://newlispfanclub.com/index.php";
+		var smf_iso_case_folding = false;
+		var smf_charset = "UTF-8";
+		var smf_session_id = "820175742d334db2a0ec2d714db371a1";
+		var smf_session_var = "ace096301";
+		var smf_member_id = 0;
+		var ajax_notification_text = 'Loading...';
+		var help_popup_heading_text = 'A little lost? Let me explain:';
+		var banned_text = 'Sorry Guest, you are banned from using this forum!';
+		var smf_txt_expand = 'Expand';
+		var smf_txt_shrink = 'Shrink';
+		var smf_quote_expand = false;
+		var allow_xhjr_credentials = false;
+	</script>
+	<script src="https://newlispfanclub.com/Themes/default/scripts/jquery-3.6.0.min.js"></script>
+	<script src="https://newlispfanclub.com/Themes/default/scripts/jquery.sceditor.bbcode.min.js?smf213_1668469015"></script>
+	<script src="https://newlispfanclub.com/Themes/default/scripts/minified_6a5c83f7686bf1653f27f8dabdf2fd19.js?smf213_1668469015"></script>
+	<script src="https://newlispfanclub.com/Themes/default/scripts/minified_d7b6b28cb77ef943ed25bf5e475439dc.js?smf213_1668469015" defer></script>
+	<script>
+		var smf_smileys_url = 'https://newlispfanclub.com/Smileys/default';
+		var bbc_quote_from = 'Quote from';
+		var bbc_quote = 'Quote';
+		var bbc_search_on = 'on';
+	var smf_you_sure ='Are you sure you want to do this?';
+	</script>
+	<title>SQL: To get a count result, use the SET operator.</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:site_name" content="newLISP Fan Club">
+	<meta property="og:title" content="SQL: To get a count result, use the SET operator.">
+	<meta property="og:url" content="https://newlispfanclub.com/index.php?topic=5226.0">
+	<meta property="og:description" content="SQL: To get a count result, use the SET operator.">
+	<meta name="description" content="SQL: To get a count result, use the SET operator.">
+	<meta name="theme-color" content="#557EA0">
+	<meta name="robots" content="noindex">
+	<link rel="canonical" href="https://newlispfanclub.com/index.php?topic=5226.0">
+	<link rel="help" href="https://newlispfanclub.com/index.php?action=help">
+	<link rel="contents" href="https://newlispfanclub.com/index.php">
+	<link rel="search" href="https://newlispfanclub.com/index.php?action=search">
+	<link rel="alternate" type="application/rss+xml" title="newLISP Fan Club - RSS" href="https://newlispfanclub.com/index.php?action=.xml;type=rss2;board=9">
+	<link rel="alternate" type="application/atom+xml" title="newLISP Fan Club - Atom" href="https://newlispfanclub.com/index.php?action=.xml;type=atom;board=9">
+	<link rel="index" href="https://newlispfanclub.com/index.php?board=9.0">
+</head>
+<body id="smf" class="action_messageindex board_9">
+<div id="footerfix">
+	<div id="top_section">
+		<div class="inner_wrap">
+			<ul class="floatleft" id="top_info">
+				<li class="welcome">
+					Welcome to <strong>newLISP Fan Club</strong>.
+				</li>
+				<li class="button_login">
+					<a href="https://newlispfanclub.com/index.php?action=login" class="open" onclick="return reqOverlayDiv(this.href, 'Log in', 'login');">
+						<span class="main_icons login"></span>
+						<span class="textmenu">Log in</span>
+					</a>
+				</li>
+				<li class="button_signup">
+					<a href="https://newlispfanclub.com/index.php?action=signup" class="open">
+						<span class="main_icons regcenter"></span>
+						<span class="textmenu">Sign up</span>
+					</a>
+				</li>
+			</ul>
+			<form id="search_form" class="floatright" action="https://newlispfanclub.com/index.php?action=search2" method="post" accept-charset="UTF-8">
+				<input type="search" name="search" value="">&nbsp;
+				<select name="search_selection">
+					<option value="all">Entire forum </option>
+					<option value="topic" selected>This topic</option>
+					<option value="board">This board</option>
+				</select>
+				<input type="hidden" name="sd_topic" value="5226">
+				<input type="submit" name="search2" value="Search" class="button">
+				<input type="hidden" name="advanced" value="0">
+			</form>
+		</div><!-- .inner_wrap -->
+	</div><!-- #top_section -->
+	<div id="header">
+		<h1 class="forumtitle">
+			<a id="top" href="https://newlispfanclub.com/index.php">newLISP Fan Club</a>
+		</h1>
+		<img id="smflogo" src="https://newlispfanclub.com/Themes/default/images/smflogo.svg" alt="Simple Machines Forum" title="Simple Machines Forum">
+	</div>
+	<div id="wrapper">
+		<div id="upper_section">
+			<div id="inner_section">
+				<div id="inner_wrap" class="hide_720">
+					<div class="user">
+						<time datetime="2023-07-19T00:52:15Z">July 18, 2023, 05:52:15 PM</time>
+					</div>
+					<div class="news">
+						<h2>News: </h2>
+						<p><a href="https://newlispfanclub.com/index.php?topic=5248.0" class="bbc_link" target="_blank" rel="noopener">Welcome to the new forums!</a></p>
+					</div>
+				</div>
+				<a class="mobile_user_menu">
+					<span class="menu_icon"></span>
+					<span class="text_menu">Main Menu</span>
+				</a>
+				<div id="main_menu">
+					<div id="mobile_user_menu" class="popup_container">
+						<div class="popup_window description">
+							<div class="popup_heading">Main Menu
+								<a href="javascript:void(0);" class="main_icons hide_popup"></a>
+							</div>
+							
+					<ul class="dropmenu menu_nav">
+						<li class="button_home">
+							<a class="active" href="https://newlispfanclub.com/index.php">
+								<span class="main_icons home"></span><span class="textmenu">Home</span>
+							</a>
+						</li>
+						<li class="button_search">
+							<a href="https://newlispfanclub.com/index.php?action=search">
+								<span class="main_icons search"></span><span class="textmenu">Search</span>
+							</a>
+						</li>
+					</ul><!-- .menu_nav -->
+						</div>
+					</div>
+				</div>
+				<div class="navigate_section">
+					<ul>
+						<li>
+							<a href="https://newlispfanclub.com/index.php"><span>newLISP Fan Club</span></a>
+						</li>
+						<li>
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php#c1"><span>Forum</span></a>
+						</li>
+						<li>
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php?board=9.0"><span>newLISP and the O.S.</span></a>
+						</li>
+						<li class="last">
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php?topic=5226.0"><span>SQL: To get a count result, use the SET operator.</span></a>
+						</li>
+					</ul>
+				</div><!-- .navigate_section -->
+			</div><!-- #inner_section -->
+		</div><!-- #upper_section -->
+		<div id="content_section">
+			<div id="main_content_section">
+		<div id="display_head" class="information">
+			<h2 class="display_title">
+				<span id="top_subject">SQL: To get a count result, use the SET operator.</span>
+			</h2>
+			<p>Started by Mobo01, November 08, 2022, 11:20:51 PM</p>
+			<span class="nextlinks floatright"><a href="https://newlispfanclub.com/index.php?topic=5226.0;prev_next=prev#new">Previous topic</a> - <a href="https://newlispfanclub.com/index.php?topic=5226.0;prev_next=next#new">Next topic</a></span>
+		</div><!-- #display_head -->
+		<a id="new"></a>
+		<div class="pagesection top">
+			
+		<div class="buttonlist floatright">
+			
+				<a class="button button_strip_print" href="https://newlispfanclub.com/index.php?action=printpage;topic=5226.0"  rel="nofollow">Print</a>
+		</div>
+			 
+			<div class="pagelinks floatleft">
+				<a href="#bot" class="button">Go Down</a>
+				<span class="pages">Pages</span><span class="current_page">1</span> 
+			</div>
+		<div class="mobile_buttons floatright">
+			<a class="button mobile_act">User actions</a>
+			
+		</div>
+		</div>
+		<div id="forumposts">
+			<form action="https://newlispfanclub.com/index.php?action=quickmod2;topic=5226.0" method="post" accept-charset="UTF-8" name="quickModForm" id="quickModForm" onsubmit="return oQuickModify.bInEditMode ? oQuickModify.modifySave('820175742d334db2a0ec2d714db371a1', 'ace096301') : false">
+				<div class="windowbg" id="msg25182">
+					
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://newlispfanclub.com/index.php?action=profile;u=1490" title="View the profile of Mobo01">Mobo01</a>
+							</h4>
+							<ul class="user_info">
+								<li class="avatar">
+									<a href="https://newlispfanclub.com/index.php?action=profile;u=1490"><img class="avatar" src="https://newlispfanclub.com/avatars/default.png" alt=""></a>
+								</li>
+								<li class="icons"><img src="https://newlispfanclub.com/Themes/default/images/membericons/icon.png" alt="*"></li>
+								<li class="postgroup">Newbie</li>
+								<li class="postcount">Posts: 4</li>
+								<li class="profile">
+									<ol class="profile_icons">
+									</ol>
+								</li><!-- .profile -->
+								<li class="poster_ip">Logged</li>
+							</ul>
+						</div><!-- .poster -->
+						<div class="postarea">
+							<div class="keyinfo">
+								<div id="subject_25182" class="subject_title subject_hidden">
+									<a href="https://newlispfanclub.com/index.php?msg=25182" rel="nofollow">SQL: To get a count result, use the SET operator.</a>
+								</div>
+								
+								<div class="postinfo">
+									<span class="messageicon"  style="position: absolute; z-index: -1;">
+										<img src="https://newlispfanclub.com/Themes/default/images/post/xx.png" alt="">
+									</span>
+									<a href="https://newlispfanclub.com/index.php?msg=25182" rel="nofollow" title="SQL: To get a count result, use the SET operator." class="smalltext">November 08, 2022, 11:20:51 PM</a>
+									<span class="spacer"></span>
+									<span class="smalltext modified floatright mvisible" id="modified_25182"><span class="lastedit">Last Edit</span>: December 31, 1969, 04:00:00 PM by Guest
+									</span>
+								</div>
+								<div id="msg_25182_quick_mod"></div>
+							</div><!-- .keyinfo -->
+							<div class="post">
+								<div class="inner" data-msgid="25182" id="msg_25182">
+									<r>In SQL Developer, I'm attempting to acquire a count result by using the SET operator.<br/><br>I need to determine how many instances of "attribute1" exist in "table name1" but not in "table name2."<br/><br>Essentially, I want the same result as the following query, but with a SET operator.<br><CODE><s><div class="codeheader"><span class="code floatleft">Code</span> <a class="codeoperation smf_select_text">Select</a> <a class="codeoperation smf_expand_code hidden" data-shrink-txt="Shrink" data-expand-txt="Expand">Expand</a></div><code class="bbc_code"></s>[code]SELECT count(distinct &lt;attribute1&gt;)<br>FROM &lt;table_name1&gt;<br>WHERE &lt;attribute1&gt; IS NOT (SELECT &lt;attribute1&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;FROM &lt;table_name2&gt;);<e></code></e></CODE>[/code]<br/><br>I've looked through many Oracle <URL url="<a href="https://docs.oracle.com/cd/B19306_01/server.102/b14200/operators005.htm" class="bbc_link" target="_blank" rel="noopener">https://docs.oracle.com/cd/B19306_01/server.102/b14200/operators005.htm</a>"><s><a href="//https" class="bbc_link" target="_blank" rel="noopener"></s>manuals<e></a></e></URL> and other internet <URL url="<a href="https://www.scaler.com/topics/sql/set-operators-in-sql/" class="bbc_link" target="_blank" rel="noopener">https://www.scaler.com/topics/sql/set-operators-in-sql/</a>"><s><a href="//https" class="bbc_link" target="_blank" rel="noopener"></s>directories<e></a></e></URL> but haven't found satisfactory answers; could somebody kindly assist me?</r>
+								</div>
+							</div><!-- .post -->
+							<div class="under_message">
+							</div><!-- .under_message -->
+						</div><!-- .postarea -->
+						<div class="moderatorbar">
+						</div><!-- .moderatorbar -->
+					</div><!-- .post_wrapper -->
+				</div><!-- $message[css_class] -->
+				<hr class="post_separator">
+			</form>
+		</div><!-- #forumposts -->
+		<div class="pagesection">
+			
+		<div class="buttonlist floatright">
+			
+				<a class="button button_strip_print" href="https://newlispfanclub.com/index.php?action=printpage;topic=5226.0"  rel="nofollow">Print</a>
+		</div>
+			 
+			<div class="pagelinks floatleft">
+				<a href="#main_content_section" class="button" id="bot">Go Up</a>
+				<span class="pages">Pages</span><span class="current_page">1</span> 
+			</div>
+		<div class="mobile_buttons floatright">
+			<a class="button mobile_act">User actions</a>
+			
+		</div>
+		</div>
+				<div class="navigate_section">
+					<ul>
+						<li>
+							<a href="https://newlispfanclub.com/index.php"><span>newLISP Fan Club</span></a>
+						</li>
+						<li>
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php#c1"><span>Forum</span></a>
+						</li>
+						<li>
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php?board=9.0"><span>newLISP and the O.S.</span></a>
+						</li>
+						<li class="last">
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php?topic=5226.0"><span>SQL: To get a count result, use the SET operator.</span></a>
+						</li>
+					</ul>
+				</div><!-- .navigate_section -->
+		<div id="moderationbuttons">
+			
+		</div>
+		<div id="display_jump_to"></div>
+		<div id="mobile_action" class="popup_container">
+			<div class="popup_window description">
+				<div class="popup_heading">
+					User actions
+					<a href="javascript:void(0);" class="main_icons hide_popup"></a>
+				</div>
+				
+		<div class="buttonlist">
+			
+				<a class="button button_strip_print" href="https://newlispfanclub.com/index.php?action=printpage;topic=5226.0"  rel="nofollow">Print</a>
+		</div>
+			</div>
+		</div>
+		<script>
+			if ('XMLHttpRequest' in window)
+			{
+				var oQuickModify = new QuickModify({
+					sScriptUrl: smf_scripturl,
+					sClassName: 'quick_edit',
+					bShowModify: true,
+					iTopicId: 5226,
+					sTemplateBodyEdit: '\n\t\t\t\t\t\t<div id="quick_edit_body_container">\n\t\t\t\t\t\t\t<div id="error_box" class="error"><' + '/div>\n\t\t\t\t\t\t\t<textarea class="editor" name="message" rows="12" tabindex="1">%body%<' + '/textarea><br>\n\t\t\t\t\t\t\t<input type="hidden" name="ace096301" value="820175742d334db2a0ec2d714db371a1">\n\t\t\t\t\t\t\t<input type="hidden" name="topic" value="5226">\n\t\t\t\t\t\t\t<input type="hidden" name="msg" value="%msg_id%">\n\t\t\t\t\t\t\t<div class="righttext quickModifyMargin">\n\t\t\t\t\t\t\t\t<input type="submit" name="post" value="Save" tabindex="2" onclick="return oQuickModify.modifySave(\'820175742d334db2a0ec2d714db371a1\', \'ace096301\');" accesskey="s" class="button"> <input type="submit" name="cancel" value="Cancel" tabindex="3" onclick="return oQuickModify.modifyCancel();" class="button">\n\t\t\t\t\t\t\t<' + '/div>\n\t\t\t\t\t\t<' + '/div>',
+					sTemplateSubjectEdit: '<input type="text" name="subject" value="%subject%" size="80" maxlength="80" tabindex="4">',
+					sTemplateBodyNormal: '%body%',
+					sTemplateSubjectNormal: '<a hr'+'ef="' + smf_scripturl + '?topic=5226.msg%msg_id%#msg%msg_id%" rel="nofollow">%subject%<' + '/a>',
+					sTemplateTopSubject: '%subject%',
+					sTemplateReasonEdit: 'Reason for editing: <input type="text" name="modify_reason" value="%modify_reason%" size="80" maxlength="80" tabindex="5" class="quickModifyMargin">',
+					sTemplateReasonNormal: '%modify_text',
+					sErrorBorderStyle: '1px solid red'
+				});
+
+				aJumpTo[aJumpTo.length] = new JumpTo({
+					sContainerId: "display_jump_to",
+					sJumpToTemplate: "<label class=\"smalltext jump_to\" for=\"%select_id%\">Jump to<" + "/label> %dropdown_list%",
+					iCurBoardId: 9,
+					iCurBoardChildLevel: 0,
+					sCurBoardName: "newLISP and the O.S.",
+					sBoardChildLevelIndicator: "==",
+					sBoardPrefix: "=> ",
+					sCatSeparator: "-----------------------------",
+					sCatPrefix: "",
+					sGoButtonLabel: "Go"
+				});
+
+				aIconLists[aIconLists.length] = new IconList({
+					sBackReference: "aIconLists[" + aIconLists.length + "]",
+					sIconIdPrefix: "msg_icon_",
+					sScriptUrl: smf_scripturl,
+					bShowModify: true,
+					iBoardId: 9,
+					iTopicId: 5226,
+					sSessionId: smf_session_id,
+					sSessionVar: smf_session_var,
+					sLabelIconList: "Message icon",
+					sBoxBackground: "transparent",
+					sBoxBackgroundHover: "#ffffff",
+					iBoxBorderWidthHover: 1,
+					sBoxBorderColorHover: "#adadad" ,
+					sContainerBackground: "#ffffff",
+					sContainerBorder: "1px solid #adadad",
+					sItemBorder: "1px solid #ffffff",
+					sItemBorderHover: "1px dotted gray",
+					sItemBackground: "transparent",
+					sItemBackgroundHover: "#e0e0f0"
+				});
+			}
+		</script><!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://m.okturtles.org/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '6']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="https://m.okturtles.org/matomo.php?idsite=6&rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+			</div><!-- #main_content_section -->
+		</div><!-- #content_section -->
+	</div><!-- #wrapper -->
+</div><!-- #footerfix -->
+	<div id="footer">
+		<div class="inner_wrap">
+		<ul>
+			<li class="floatright"><a href="https://newlispfanclub.com/index.php?action=help">Help</a> | <a href="https://newlispfanclub.com/index.php?action=agreement">Terms and Rules</a> | <a href="#top_section">Go Up &#9650;</a></li>
+			<li class="copyright"><a href="https://newlispfanclub.com/index.php?action=credits" title="License" target="_blank" rel="noopener">SMF 2.1.3 &copy; 2022</a>, <a href="https://www.simplemachines.org" title="Simple Machines" target="_blank" rel="noopener">Simple Machines</a></li>
+		</ul>
+		</div>
+	</div><!-- #footer -->
+<script>
+window.addEventListener("DOMContentLoaded", function() {
+	function triggerCron()
+	{
+		$.get('https://newlispfanclub.com' + "/cron.php?ts=1689727935");
+	}
+	window.setTimeout(triggerCron, 1);
+		$.sceditor.locale["en"] = {
+			"Width (optional):": "Width (optional):",
+			"Height (optional):": "Height (optional):",
+			"Insert": "Insert",
+			"Description (optional):": "Description (optional)",
+			"Rows:": "Rows:",
+			"Cols:": "Cols:",
+			"URL:": "URL:",
+			"E-mail:": "E-mail:",
+			"Video URL:": "Video URL:",
+			"More": "More",
+			"Close": "Close",
+			dateFormat: "month/day/year"
+		};
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>benchmarks/wordfreq.newlisp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'>; create a context/namespace to hold words</font>
+
+<font color='#555555'>; since version 8.8 newLISP has a built in function</font>
+<font color='#555555'>; bayes-query, which will do the counting in just</font>
+<font color='#555555'>; one statement and much faster</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>context</font> 'wc<font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>context</font> MAIN<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+<font color='#555555'>;;	(HASH:make 'wc)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>while</font> <font color='#AA0000'>(</font><font color='#0000AA'>read-line</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'data <font color='#AA0000'>(</font><font color='#0000AA'>parse</font> <font color='#AA0000'>(</font><font color='#0000AA'>lower-case</font> <font color='#AA0000'>(</font><font color='#0000AA'>current-line</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#008800'>"[^a-z]+"</font> <font color='#998800'>0</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>dolist</font> <font color='#AA0000'>(</font>w data<font color='#AA0000'>)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'result <font color='#AA0000'>(</font><font color='#0000AA'>eval</font> <font color='#AA0000'>(</font>symbol <font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>"_"</font> w<font color='#AA0000'>)</font> wc<font color='#AA0000'>)</font> <font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+				<font color='#AA0000'>(</font><font color='#0000AA'>set</font> <font color='#AA0000'>(</font>symbol <font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>"_"</font> w<font color='#AA0000'>)</font> wc<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>+</font> result <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+				<font color='#AA0000'>(</font><font color='#0000AA'>set</font> <font color='#AA0000'>(</font>symbol <font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>"_"</font> w<font color='#AA0000'>)</font> wc<font color='#AA0000'>)</font> <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>dolist</font> <font color='#AA0000'>(</font>w <font color='#AA0000'>(</font><font color='#0000AA'>symbols</font> wc<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'wrd <font color='#AA0000'>(</font>name w<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>and</font> <font color='#AA0000'>(</font><font color='#0000AA'>starts-with</font> wrd <font color='#008800'>"_"</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>!=</font> <font color='#008800'>"_"</font> wrd<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>push</font> <font color='#AA0000'>(</font><font color='#0000AA'>list</font> <font color='#AA0000'>(</font><font color='#0000AA'>eval</font> w<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>slice</font> wrd <font color='#998800'>1</font><font color='#AA0000'>)</font> <font color='#AA0000'>)</font> words<font color='#AA0000'>)</font> <font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>dolist</font> <font color='#AA0000'>(</font>w <font color='#AA0000'>(</font><font color='#0000AA'>reverse</font> <font color='#AA0000'>(</font><font color='#0000AA'>sort</font> words<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"%7d %s"</font> <font color='#AA0000'>(</font><font color='#0000AA'>first</font> w<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> w<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+
+<font color='#555555'>;; eof</font>
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

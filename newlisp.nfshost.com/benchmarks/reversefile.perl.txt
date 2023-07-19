@@ -1,0 +1,6 @@
+#!/usr/bin/perl
+# $Id: reversefile.perl,v 1.4 2001/05/14 01:03:20 doug Exp $
+# http://www.bagley.org/~doug/shootout/
+
+undef($/);
+print join("\n", reverse split(/\n/, <STDIN>)),"\n";

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>benchmarks/random.newlisp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'># random - benchmark</font>
+<font color='#555555'>#</font>
+<font color='#555555'># note, that newLISP has various fast built-in random </font>
+<font color='#555555'># functions which are not used here</font>
+<font color='#555555'>#</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'IM <font color='#998800'>139968</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'IA <font color='#998800'>3877</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'IC <font color='#998800'>29573</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'LAST <font color='#998800'>42</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>gen_random maximum<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'LAST <font color='#AA0000'>(</font><font color='#0000AA'>mod</font> <font color='#AA0000'>(</font><font color='#0000AA'>add</font> <font color='#AA0000'>(</font><font color='#0000AA'>mul</font> LAST IA<font color='#AA0000'>)</font> IC<font color='#AA0000'>)</font> IM<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>div</font> <font color='#AA0000'>(</font><font color='#0000AA'>mul</font> maximum LAST<font color='#AA0000'>)</font> IM<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'N <font color='#AA0000'>(</font><font color='#0000AA'>integer</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>dotimes</font> <font color='#AA0000'>(</font>i <font color='#AA0000'>(</font><font color='#0000AA'>-</font> N <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>gen_random <font color='#998800'>100.0</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"%.9f"</font> <font color='#AA0000'>(</font>gen_random <font color='#998800'>100.0</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#AA0000'>)</font>
+	
+<font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+	
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

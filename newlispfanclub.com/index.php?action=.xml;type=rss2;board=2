@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xml:lang="en-US" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>newLISP newS - newLISP Fan Club</title>
+		<link>https://newlispfanclub.com/index.php?board=2.0</link>
+		<description>Live information from newLISP Fan Club</description>
+		<image>
+			<url>https://newlispfanclub.com/favicon.ico</url>
+			<title>newLISP newS - newLISP Fan Club</title>
+			<link>https://newlispfanclub.com/index.php?board=2.0</link>
+		</image>
+		<copyright>© 2023 newLISP Fan Club</copyright>
+		<language>en-US</language>
+		<atom:link rel="self" type="application/rss+xml" href="https://newlispfanclub.com/index.php?action=.xml;type=rss2;board=2" />
+		<item>
+			<title>Re: newLISP Github?</title>
+			<link>https://newlispfanclub.com/index.php?topic=5252.msg25240#msg25240</link>
+			<description>I heard back from him, he seems to be feeling unwell and is not able to work on newLISP.</description>
+			<category>newLISP newS</category>
+			<comments>https://newlispfanclub.com/index.php?action=post;topic=5252.0</comments>
+			<pubDate>Fri, 26 May 2023 16:20:56 GMT</pubDate>
+			<guid isPermaLink="false">tag:newlispfanclub.com,2023-05-26:msg=25240</guid>
+		</item>
+		<item>
+			<title>Re: newLISP Github?</title>
+			<link>https://newlispfanclub.com/index.php?topic=5252.msg25239#msg25239</link>
+			<description><![CDATA[Anyone hear from Lutz?<br>I hope someone continues the development of newlisp.<br>To attract new users I think it would be useful to be able to download compiled versions of the latest 10.7.6 release for the major operating systems.<br>cameyo<br>p.s. sorry for the...]]></description>
+			<category>newLISP newS</category>
+			<comments>https://newlispfanclub.com/index.php?action=post;topic=5252.0</comments>
+			<pubDate>Fri, 26 May 2023 16:07:07 GMT</pubDate>
+			<guid isPermaLink="false">tag:newlispfanclub.com,2023-05-26:msg=25239</guid>
+		</item>
+		<item>
+			<title>newLISP Github?</title>
+			<link>https://newlispfanclub.com/index.php?topic=5252.msg25238#msg25238</link>
+			<description><![CDATA[I noticed that there&#39;s an empty newlisp organization on Github: <a href="https://github.com/newlisp" class="bbc_link" target="_blank" rel="noopener">https://github.com/newlisp</a><br><br>Anyone know whose this is?<br><br>It seems like a good idea to get the source up and running on Github, and maybe now is a good time for someone in the community to ste...]]></description>
+			<category>newLISP newS</category>
+			<comments>https://newlispfanclub.com/index.php?action=post;topic=5252.0</comments>
+			<pubDate>Fri, 26 May 2023 01:27:23 GMT</pubDate>
+			<guid isPermaLink="false">tag:newlispfanclub.com,2023-05-26:msg=25238</guid>
+		</item>
+		<item>
+			<title>Re: sending emails to @gmail.com</title>
+			<link>https://newlispfanclub.com/index.php?topic=5249.msg25236#msg25236</link>
+			<description><![CDATA[That&#39;s great news!&nbsp; <img src="https://newlispfanclub.com/Smileys/default/cheesy.gif" alt="&#58;D" title="Cheesy" class="smiley"> ]]></description>
+			<category>newLISP newS</category>
+			<comments>https://newlispfanclub.com/index.php?action=post;topic=5249.0</comments>
+			<pubDate>Tue, 23 May 2023 20:35:08 GMT</pubDate>
+			<guid isPermaLink="false">tag:newlispfanclub.com,2023-05-23:msg=25236</guid>
+		</item>
+		<item>
+			<title>Re: sending emails to @gmail.com</title>
+			<link>https://newlispfanclub.com/index.php?topic=5249.msg25235#msg25235</link>
+			<description><![CDATA[Au contraire <img src="https://newlispfanclub.com/Smileys/default/grin.gif" alt=";D" title="Grin" class="smiley"> I, at <a href="//gmail.com" class="bbc_link" target="_blank" rel="noopener">gmail.com</a>, got the notification email from this forum today. Which is great. Something got improved ...]]></description>
+			<category>newLISP newS</category>
+			<comments>https://newlispfanclub.com/index.php?action=post;topic=5249.0</comments>
+			<pubDate>Tue, 23 May 2023 20:23:05 GMT</pubDate>
+			<guid isPermaLink="false">tag:newlispfanclub.com,2023-05-23:msg=25235</guid>
+		</item>
+	</channel>
+</rss>

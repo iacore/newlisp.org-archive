@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>benchmarks/moments.newlisp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'>;; moments - benchmark</font>
+
+
+<font color='#555555'>;; read file filter empty lines</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>while</font> <font color='#AA0000'>(</font><font color='#0000AA'>read-line</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>push</font> <font color='#AA0000'>(</font><font color='#0000AA'>float</font> <font color='#AA0000'>(</font><font color='#0000AA'>current-line</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> nums<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'nums <font color='#AA0000'>(</font><font color='#0000AA'>reverse</font> <font color='#AA0000'>(</font><font color='#0000AA'>filter</font> <font color='#0000AA'>float?</font> nums<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'n <font color='#AA0000'>(</font><font color='#0000AA'>length</font> nums<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+
+  <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'sum <font color='#AA0000'>(</font><font color='#0000AA'>apply</font> <font color='#0000AA'>add</font> nums<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'mean <font color='#AA0000'>(</font><font color='#0000AA'>div</font> sum n<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+  <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'avg-dev <font color='#998800'>0</font> 'std-dev <font color='#998800'>0</font> 'var <font color='#998800'>0</font> 'skew <font color='#998800'>0</font> 'kurtosis <font color='#998800'>0</font><font color='#AA0000'>)</font>
+
+  <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'dev <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>sub</font> nums <font color='#AA0000'>(</font><font color='#0000AA'>dup</font> mean n<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'avg-dev <font color='#AA0000'>(</font><font color='#0000AA'>div</font> <font color='#AA0000'>(</font><font color='#0000AA'>apply</font> <font color='#0000AA'>add</font> <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>abs</font> dev<font color='#AA0000'>)</font><font color='#AA0000'>)</font> n<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'var <font color='#AA0000'>(</font><font color='#0000AA'>div</font> <font color='#AA0000'>(</font><font color='#0000AA'>apply</font> <font color='#0000AA'>add</font> <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>mul</font> dev dev<font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>-</font> n <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'skew <font color='#AA0000'>(</font><font color='#0000AA'>apply</font> <font color='#0000AA'>add</font> <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>mul</font> dev dev dev<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'kurtosis <font color='#AA0000'>(</font><font color='#0000AA'>apply</font> <font color='#0000AA'>add</font> <font color='#AA0000'>(</font><font color='#0000AA'>map</font>  <font color='#0000AA'>mul</font> dev dev dev dev<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+  <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'std-dev <font color='#AA0000'>(</font><font color='#0000AA'>sqrt</font> var<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+  <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>></font> var <font color='#998800'>0.0</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'skew <font color='#AA0000'>(</font><font color='#0000AA'>div</font> skew <font color='#AA0000'>(</font><font color='#0000AA'>mul</font> n var std-dev<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'kurtosis <font color='#AA0000'>(</font><font color='#0000AA'>sub</font> <font color='#AA0000'>(</font><font color='#0000AA'>div</font> kurtosis <font color='#AA0000'>(</font><font color='#0000AA'>mul</font> n var var<font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#998800'>3.0</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+  <font color='#AA0000'>(</font><font color='#0000AA'>sort</font> nums<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'mid <font color='#AA0000'>(</font><font color='#0000AA'>/</font> n <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+  <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> <font color='#998800'>0</font> <font color='#AA0000'>(</font><font color='#0000AA'>%</font> n <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'median <font color='#AA0000'>(</font><font color='#0000AA'>div</font> <font color='#AA0000'>(</font><font color='#0000AA'>add</font> <font color='#AA0000'>(</font>nums mid<font color='#AA0000'>)</font> <font color='#AA0000'>(</font>nums <font color='#AA0000'>(</font><font color='#0000AA'>-</font> mid <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'median <font color='#AA0000'>(</font>nums mid<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+  <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"n:                  %d"</font> n<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"median:             %f"</font> median<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"mean:               %f"</font> mean<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"average_deviation:  %f"</font> avg-dev<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"standard_deviation: %f"</font> std-dev<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"variance:           %f"</font> var<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"skew:               %f"</font> skew<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"kurtosis:           %f"</font> kurtosis<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+
+<font color='#555555'>;; eof</font>
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

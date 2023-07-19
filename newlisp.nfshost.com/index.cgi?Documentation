@@ -1,0 +1,490 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+
+
+<head>
+  <title>newLISP  - Documentation</title>
+  <META name="verify-v1" content="uI5QBi0dvEoNnrT+Vrm63toHH4Ep1y6BBR61veuiWKU=" />
+  <META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.cgi" />
+  <meta name="description"`
+      content="newLISP is a general purpose scripting language for developing web applications and programs in general in the domains of artificial intelligence (AI), statistics and machine learning.">
+  <meta name="keywords"
+      content="lisp,scheme,programming,scripting language,ai,artificial intelligence,statistics,machine learning,distributed and parallel processing,gpl">
+  <META name="verify-v1" content="uI5QBi0dvEoNnrT+Vrm63toHH4Ep1y6BBR61veuiWKU=" />
+  <style type="text/css" media="screen">
+<!--
+ 
+ /* style for top title portion of site */
+
+ .title {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 20px;
+   font-weight: 200;
+   margin: 0 10%;
+   margin-bottom: 3px;
+   color: #888;
+  background-color: #FFFFFF;
+ }
+
+ /* link behaviour in title box */
+ .title a {
+   background-color: transparent;
+   text-decoration: none;
+   color: #eee;
+   text-decoration: none;
+ }
+
+ .title a:hover {
+   color: #fff;
+   text-decoration: underline;
+   background-color: transparent;
+ }
+
+ /* the name on top of each page (except the Home page) */
+
+ .pagename {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 18px;
+   margin-bottom: 20px;
+ }
+
+ /* style of content box where all 
+   user text lives 
+ */
+ .content {
+   margin: 0 10%;
+   max-width: 900px;
+   padding: 10px;
+  background-color: #FFFFFF;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+ .content a {
+   background-color: transparent;
+   text-decoration: none;
+   color: #25a;
+ }
+
+ .content a:hover {
+   padding: 0px;
+   color: #FFF;
+   text-decoration: none;
+   background-color: #888;
+ }
+
+ .content a:visited {
+
+ }
+
+
+ /* style for menu on top */
+ .menu {   
+   margin-left: 0px;
+   margin-right: 0px;
+   padding: 1px;
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+   font-size: 16px;
+   line-height: 16px;
+   color: #FFF;
+   background-color: #369;
+ }
+
+ /* links in menu */
+ .menu a {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 0px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+ .menu a:hover {
+   color: #fff;
+   border-bottom: 0px;
+   padding: 0px;
+   background-color: #888;
+   text-decoration: none;
+ }
+
+ .menu a:visited {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+ .menu-bottom {   
+   margin: 0 10%;
+   max-width: 880px;
+   margin-top: 10px;
+   padding: 1px;
+   font-family: Verdanan, Arial, Helvetica, sans-serif;
+   font-size: 15px;
+   background-color: #369;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+ /* links in menu-bottom */
+ .menu-bottom a {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+ .menu-bottom a:hover {
+   color: #fff;
+   border-bottom: 0px;
+   padding: 1px;
+   background-color: #888;
+   text-decoration: none;
+ }
+
+ .menu-bottom a:visited {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+ /* the bottom bar between content box and menu */
+ .bottombar {
+   font-size: 4px;
+   margin: 0 10%;
+   padding: 10px;
+   padding-top: 2px;
+   padding-bottom: 6px;
+  background-color: #FFFFFF;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+ }
+
+
+ /* where the copyright notice is */
+ .footer {
+   text-align: center;
+   margin: 0 10%;
+   max-width: 880px;
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 10px;
+   line-height: 12px;
+ }
+
+
+ /* style for whole site except overwritten
+     by enclosed tags
+ */
+ body {
+   font-family: Geneva, Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 16px;
+   line-height: 20px;
+   color: #606060;
+ }
+
+
+ /* style for == title == */
+ h1 {
+   font-family: Helvetica;
+   font-size: 32px;
+   color: #369;
+   font-weight: 100;
+ }
+
+ /* style for === title === */
+ h2 {
+   font-family: Helvetica;
+   font-size: 30px;
+   font-weight: 100;
+   color: #369;
+ }
+
+ /* style for ==== title ==== */
+ h3 {
+   font-size: 20px;
+   font-weight: 100;
+   color: #369;
+   margin-top: 20px;
+   padding: 0px;
+ }
+
+ /* style for ===== text =====  used for blog title */
+ h4 {
+   font-size: 18px;
+   font-weight: 100;
+   color: #777;
+   margin: 0px;
+   padding: 0px;
+}
+
+ /* style for ====== text ======  used for comment title */
+ h5 {
+   font-size: 12px;
+   font-weight: normal;
+   color: #a22;
+   margin: 3px;
+   padding: 0px;
+ }
+
+ /* for <small> tag */
+ small {
+   font-size: 10px;
+ }
+
+
+ /* for the bold tag */
+ b {
+  color: 999;
+ }
+
+ /* for <big> tag, will not work on Netscape v.4 */
+ big {
+ }
+
+ /* for <p> tag */
+ p {
+   margin-left: 40px;
+   margin-right: 40px;
+ }
+
+ /* for <table> tag, these are used when displating the files,changes,referencrs tables */
+ table {
+   border-width: 1px;
+   border-style: solid;
+   border-color: #ccc;
+   background-color: #ccc;
+ }
+
+ /* for table tags <tr> <th> <td> */
+ tr, th, td {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 12px;
+   background-color: #eee;
+ }
+
+ /* for quick table tags with [,] 
+     use these (not <table><tr><td>)
+     when doing layout with tables
+ */
+ table.quick {
+   border-width: 1px;
+   border-style: solid;
+   border-color: #ccc;
+   background-color: #ccc;
+ }
+
+
+ /* for quick table tags with: || 
+ */
+  td.quick {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 11px;
+   background-color: #eef;
+   padding: 5px;
+ }
+
+ 
+ /* links in general, if not overwritten in other divs
+ a:hover {
+   text-decoration: none;
+   background-color: #transparent;
+ }
+
+ /* for  spec */
+ img {
+
+ }
+
+ /* line separator */
+ hr {
+   margin-top: 10px;
+   border: 0px;
+   border-top: 1px #ddd solid;
+ } 
+
+ /* style of the text edit area and text 
+    entry for search and passwords 
+ */
+ .textarea {
+   font-family: courier, helvetica, verdana,arial,sans-serif;
+   left-margin: 20px;
+   font-size: 12px;
+   background-color: #eee;
+}
+
+ /* buttons for save and search */
+ .button {
+ }
+
+ /* example for custom style in  or  */
+ .mybox { border: 1px #ccc dashed; }
+
+ /* other custom styles used */
+
+ .smallred { font-size: 10px; font-weight: normal; color: #a22; }
+
+ .mediumred { font-size: 12px; font-weight: normal; color: #a22; }
+
+-->
+
+-->
+</style>
+</head>
+
+<body bgcolor="#AAAAAA">
+
+<!-- content -->
+<div class="content">
+<center> <div class="title">puts the fun <a href="index.cgi"><img src="images/newLISP-icon-86.jpg" alt="newLISP button" order="0" border="0"/></a>  back in Lisp</div><div class="menu"><a href="index.cgi?Home">Home</a>  &#183; <a href="index.cgi?FAQ">About</a>  &#183; <a href="index.cgi?Downloads">Downloads</a>  &#183; <a href="index.cgi?Documentation">Docs</a>  &#183; <a href="modules/"> Modules</a>  &#183; <a href="index.cgi?Code_Contributions">Links</a>  &#183; <a href="index.cgi?Tips_and_Tricks">Tips&amp;Tricks</a>  &#183; <a href="index.cgi?Libraries">C-Libs</a>  &#183; <a href="index.cgi?Applications">Apps</a>  &#183; <a href="index.cgi?Art">Art</a>  &#183; <a href="http://newlispfanclub.com">Forum</a>  </div></center>
+<br>
+<h2> Documentation </h2>
+<h3> Main documentation and man pages </h3>
+<ul><li>newLISP Manual and Reference in <a href="downloads/newlisp_manual.html">HTML</a>  format, no frames.<br>
+newLISP Manual and Reference in <a href="downloads/manual_frame.html">HTML</a>  format, with index frame. </li>
+<br>
+<li>newLISP-GS guiserver <a href="guiserver/">GUI functions</a>. Here in <a href="guiserver/guiserver_frame.html">framed format</a> </li>
+<br>
+<li><a href="downloads/CodePatterns.html">Code Patterns in newLISP</a>  frequently used coding patterns in newLISP.</li>
+<br>
+<li><a href="modules/">Modules</a>  are documented using the <a href="downloads/newLISPdoc.html">newLISPdoc</a>  automatic documentation system.</li>
+<br>
+<li>UNIX man page for command line parameters - <a href="newlisp-man.txt">newlisp(1)</a> </li>
+<br>
+<li>UNIX man page for newLISPdoc - <a href="newlispdoc-man.txt">newlispdoc(1)</a> </li>
+<br>
+<li>Release Notes <a href="downloads/newLISP-10.7.5-Release.html">10.7.5</a> </li>
+<br>
+<li>For building, testing and installing see <a href="downloads/INSTALL.txt">INSTALL</a>.</li>
+<br>
+<li>Frequently asked questions about newLISP are answered on the <a href="index.cgi?page=FAQ">FAQ</a>  page.</li>
+<br>
+<li>PCRE Regular Expressions <a href="downloads/pcrepattern.html">man page</a>  and as <a href="http://pcre.org/pcre.txt">pure text</a>  from <a href="http://pcre.org">http://pcre.org</a> </li>
+</ul>
+<h3> Tutorials, introductions and translations </h3>
+<ul><li><a href="http://en.wikibooks.org/wiki/Introduction_to_newLISP">Introduction to newLISP</a>  on WikiBooks.</li>
+<br>
+<li><a href="newlisp_manual-jp.html">newLISP ユーザー マニュアルとリファレンス</a>  is a translation of the Users Manual and Function Reference into Japanese by <i>Johu</i> from <a href="http://johu02.spaces.live.com/?_c11_BlogPart_BlogPart=blogview&_c=BlogPart&partqs=cat%3dLISP">short story または 晴耕雨読な日々</a>  . Also available <a href="manual_frame-jp.html">with index frame</a>.</li>  <br>
+<li>Code Patterns <a href="CodePatterns-jp.html">translated to Japanese</a>  by <i>Johu</i>.</li>
+<br>
+<li>Code Patterns<a href="CodePatterns-cn.html"> 代码模式  translated to Chinese</a>  by <i>Winger</i> from <a href="http://my.opera.com/freewinger/blog/">天国之翼</a>.</li>
+<br>
+<li>GS Guiserver GUI functions <a href="guiserver-jp/">translated to Japanese</a>  by <i>Johu</i>.</li>
+<br>
+</ul>
+<h3> Videos </h3>
+Thanks to <i>Michael Michaels</i> from <a href="http://neglook.com">neglOOk</a>  for the following instructional movies:<br>
+<ul><li><a href="http://nuevatec.nfshost.com/manual-intro.mov">newLISP Introduction</a>: Learn the core elements of newLISP (10 min) or as a <a href="http://nuevatec.nfshost.com/manual-intro.html">Slideshow</a>  (51 slides).</li>
+<br>
+<li><a href="http://nuevatec.nfshost.com/what-the-foop-H264.mov">What The FOOP?</a>: Introduction into FOOP (Functional Object Oriented Programming), also covers the changes in v.10.2. </li>
+<br>
+<li><a href="http://nuevatec.nfshost.com/gc.mov">gc - Counting words at Google</a>: Experience how a small commandline utility for Google counts is written (6 min). The <a href="syntax.cgi?code/gc.txt">source</a>.</li>
+<br>
+<li><a href="http://nuevatec.nfshost.com/contexts.mov">Contexts</a>: Learn how to use namespaces in newLISP (12 min).</li>
+</ul>
+<h3> Shell Games - Videos </h3>
+<i>Michael Michaels</i> from <a href="http://neglook.com">neglOOk</a>  produced this series of eduactional quickies. Each one of them shows an important aspect or pattern of newLISP programming (m:ss) :<br>
+<ul><li><a href="http://nuevatec.nfshost.com/ShellGames/1-shell-games-number-generators.mov">Number generators</a>  (2:46)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/2-shell-games-pushing-and-popping-lists.mov">Pushing and popping lists</a>  (2:39)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/3-shell-games-packaging-data-with-contexts.mov">Packaging data with contexts</a>  (2:06)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/4-shell-games-implicit-indexing.mov">Implicit indexing</a>  (8:29)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/5-shell-games-selecting-more-than-one-element.mov">Selecting more than one element</a>  (2:43)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/6-shell-games-passing-by-reference.mov">Passing data by reference</a>  (2:56)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/7-shell-games-appending-strings.mov">Appending strings</a>  (3:47)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/8-shell-games-manipulating-functions-after-definition.mov">Manipulating functions after definition</a>  (3:16)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/9-shell-games-make-destructive-function-non-destructive.mov">Make destructive functions non-destructive</a>  (2:32)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/10-shell-games-format.mov">The <tt>format</tt> function</a>  (5:37)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/11-shell-games-exists.mov">The <tt>exists</tt> function</a>  (2:37)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/12-shell-games-for-all.mov">The <tt>for-all</tt> function</a>  (1:39)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/13-shell-games-loops.mov">Loops</a>  (7:00)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/14-shell-games-reading-and-writing-files.mov">Reading and writing files</a>  (3:54)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/15-shell-games-clean-and-filter.mov">Clean and filter</a>  (3:28)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/16-shell-games-expand.mov">Expand</a>  (5:29)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/17-shell-games-reverse-and-rotate.mov">Reverse and rotate</a>  (3:54)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/18-shell-games-starts-with-and-ends-with.mov">Starts with, ends with</a>  (4:30)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/19-shell-games-structuring-applications.mov">Structuring applications</a>  (3:20)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/20-shell-games-local-symbols.mov">Local symbols</a>  (5:00)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/21-shell-games-memoization.mov">Memoization</a>  (2:54)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/22-shell-games-upper-lower-and-title-case.mov">Upper, lower, title -case</a>  (1:49)</li>
+<li><a href="http://nuevatec.nfshost.com/ShellGames/23-shell-games-sort.mov">Sort</a>  (3:36)</li>
+</ul>
+Also available at the original site: <a href="http://www.neglook.com/?Shell_Games">http://www.neglook.com/?Shell_Games</a>
+<h3> newLISP internals </h3>
+<ul><li><a href="MemoryManagement.html">Automatic Memory Management in newLISP</a> </li>
+<br>
+<li><a href="ExpressionEvaluation.html">Expression evaluation, Implicit Indexing, Contexts and Default Functors in the newLISP Scripting Language</a> </li>
+</ul>  <br>
+<tt></tt><br>
+<a href="http://www.gnu.org/copyleft/copyleft.html"><img src="copyleft.png" alt="copyleft" order="0" border="0"/></a> &nbsp; &nbsp;&nbsp;&nbsp;<a href="http://www.ffii.org"><img src="ffii.gif" alt="no sw patents" order="0" border="0"/></a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://eff.org"><img src="EFF-logo-trans.png" alt="EFF" order="0" border="0"/></a>
+
+</div>
+
+<!-- end content -->
+
+<!-- comments -->
+
+<!-- end comments -->
+<!-- the menu -->
+
+<!-- the menu end -->
+
+<!-- copyright -->
+  <div class="footer" align="center">
+  <br>
+Copyright &copy; 2021, Lutz Mueller. All rights reserved.<br>
+ 
+  <a href="http://www.newlisp.net/">Site</a> powered by <a href="http://newlisp.net">newLISP</a> wiki v4.6
+<!--
+  in 6ms
+-->
+<br>
+  </div>
+<!-- end copyright -->
+
+<!-- <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1098066-1";
+urchinTracker();
+</script> -->
+
+</body>
+</html>
+

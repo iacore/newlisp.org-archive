@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>benchmarks/matrix.newlisp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'># matrix - benchmark</font>
+
+<font color='#555555'># since version 9.0 mtarix finctions can also be used on array types,</font>
+<font color='#555555'># additionally to lists.</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'size <font color='#998800'>30</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>mkmatrix rows cols<font color='#AA0000'>)</font>
+ 	<font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#AA0000'>(</font>fn <font color='#AA0000'>(</font>i<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>sequence</font> <font color='#AA0000'>(</font><font color='#0000AA'>+</font> <font color='#AA0000'>(</font><font color='#0000AA'>*</font> i cols<font color='#AA0000'>)</font> <font color='#998800'>1</font><font color='#AA0000'>)</font>  <font color='#AA0000'>(</font><font color='#0000AA'>+</font> <font color='#AA0000'>(</font><font color='#0000AA'>*</font> i cols<font color='#AA0000'>)</font> cols<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>sequence</font> <font color='#998800'>0</font> <font color='#AA0000'>(</font><font color='#0000AA'>-</font> rows <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+ 	
+ 
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>main n<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'm1 <font color='#AA0000'>(</font>mkmatrix size size<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'm2 m1<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>dotimes</font> <font color='#AA0000'>(</font>i n<font color='#AA0000'>)</font> 
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'm3 <font color='#AA0000'>(</font><font color='#0000AA'>multiply</font> m1 m2<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font>m3 <font color='#998800'>0</font> <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#008800'>" "</font> <font color='#AA0000'>(</font>m3 <font color='#998800'>2</font> <font color='#998800'>3</font><font color='#AA0000'>)</font> <font color='#008800'>" "</font> <font color='#AA0000'>(</font>m3 <font color='#998800'>3</font> <font color='#998800'>2</font><font color='#AA0000'>)</font> <font color='#008800'>" "</font> <font color='#AA0000'>(</font>m3 <font color='#998800'>4</font> <font color='#998800'>4</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'n <font color='#AA0000'>(</font><font color='#0000AA'>integer</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	
+<font color='#AA0000'>(</font>main n<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+ 	
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

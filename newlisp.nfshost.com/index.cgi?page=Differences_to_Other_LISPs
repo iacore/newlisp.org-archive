@@ -1,0 +1,628 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+
+
+<head>
+  <title>newLISP  - Differences to Other LISPs</title>
+  <META name="verify-v1" content="uI5QBi0dvEoNnrT+Vrm63toHH4Ep1y6BBR61veuiWKU=" />
+  <META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.cgi" />
+  <meta name="description"`
+      content="newLISP is a general purpose scripting language for developing web applications and programs in general in the domains of artificial intelligence (AI), statistics and machine learning.">
+  <meta name="keywords"
+      content="lisp,scheme,programming,scripting language,ai,artificial intelligence,statistics,machine learning,distributed and parallel processing,gpl">
+  <META name="verify-v1" content="uI5QBi0dvEoNnrT+Vrm63toHH4Ep1y6BBR61veuiWKU=" />
+  <style type="text/css" media="screen">
+<!--
+ 
+ /* style for top title portion of site */
+
+ .title {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 20px;
+   font-weight: 200;
+   margin: 0 10%;
+   margin-bottom: 3px;
+   color: #888;
+  background-color: #FFFFFF;
+ }
+
+ /* link behaviour in title box */
+ .title a {
+   background-color: transparent;
+   text-decoration: none;
+   color: #eee;
+   text-decoration: none;
+ }
+
+ .title a:hover {
+   color: #fff;
+   text-decoration: underline;
+   background-color: transparent;
+ }
+
+ /* the name on top of each page (except the Home page) */
+
+ .pagename {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 18px;
+   margin-bottom: 20px;
+ }
+
+ /* style of content box where all 
+   user text lives 
+ */
+ .content {
+   margin: 0 10%;
+   max-width: 900px;
+   padding: 10px;
+  background-color: #FFFFFF;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+ .content a {
+   background-color: transparent;
+   text-decoration: none;
+   color: #25a;
+ }
+
+ .content a:hover {
+   padding: 0px;
+   color: #FFF;
+   text-decoration: none;
+   background-color: #888;
+ }
+
+ .content a:visited {
+
+ }
+
+
+ /* style for menu on top */
+ .menu {   
+   margin-left: 0px;
+   margin-right: 0px;
+   padding: 1px;
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+   font-size: 16px;
+   line-height: 16px;
+   color: #FFF;
+   background-color: #369;
+ }
+
+ /* links in menu */
+ .menu a {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 0px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+ .menu a:hover {
+   color: #fff;
+   border-bottom: 0px;
+   padding: 0px;
+   background-color: #888;
+   text-decoration: none;
+ }
+
+ .menu a:visited {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+ .menu-bottom {   
+   margin: 0 10%;
+   max-width: 880px;
+   margin-top: 10px;
+   padding: 1px;
+   font-family: Verdanan, Arial, Helvetica, sans-serif;
+   font-size: 15px;
+   background-color: #369;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+ /* links in menu-bottom */
+ .menu-bottom a {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+ .menu-bottom a:hover {
+   color: #fff;
+   border-bottom: 0px;
+   padding: 1px;
+   background-color: #888;
+   text-decoration: none;
+ }
+
+ .menu-bottom a:visited {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+ /* the bottom bar between content box and menu */
+ .bottombar {
+   font-size: 4px;
+   margin: 0 10%;
+   padding: 10px;
+   padding-top: 2px;
+   padding-bottom: 6px;
+  background-color: #FFFFFF;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+ }
+
+
+ /* where the copyright notice is */
+ .footer {
+   text-align: center;
+   margin: 0 10%;
+   max-width: 880px;
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 10px;
+   line-height: 12px;
+ }
+
+
+ /* style for whole site except overwritten
+     by enclosed tags
+ */
+ body {
+   font-family: Geneva, Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 16px;
+   line-height: 20px;
+   color: #606060;
+ }
+
+
+ /* style for == title == */
+ h1 {
+   font-family: Helvetica;
+   font-size: 32px;
+   color: #369;
+   font-weight: 100;
+ }
+
+ /* style for === title === */
+ h2 {
+   font-family: Helvetica;
+   font-size: 30px;
+   font-weight: 100;
+   color: #369;
+ }
+
+ /* style for ==== title ==== */
+ h3 {
+   font-size: 20px;
+   font-weight: 100;
+   color: #369;
+   margin-top: 20px;
+   padding: 0px;
+ }
+
+ /* style for ===== text =====  used for blog title */
+ h4 {
+   font-size: 18px;
+   font-weight: 100;
+   color: #777;
+   margin: 0px;
+   padding: 0px;
+}
+
+ /* style for ====== text ======  used for comment title */
+ h5 {
+   font-size: 12px;
+   font-weight: normal;
+   color: #a22;
+   margin: 3px;
+   padding: 0px;
+ }
+
+ /* for <small> tag */
+ small {
+   font-size: 10px;
+ }
+
+
+ /* for the bold tag */
+ b {
+  color: 999;
+ }
+
+ /* for <big> tag, will not work on Netscape v.4 */
+ big {
+ }
+
+ /* for <p> tag */
+ p {
+   margin-left: 40px;
+   margin-right: 40px;
+ }
+
+ /* for <table> tag, these are used when displating the files,changes,referencrs tables */
+ table {
+   border-width: 1px;
+   border-style: solid;
+   border-color: #ccc;
+   background-color: #ccc;
+ }
+
+ /* for table tags <tr> <th> <td> */
+ tr, th, td {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 12px;
+   background-color: #eee;
+ }
+
+ /* for quick table tags with [,] 
+     use these (not <table><tr><td>)
+     when doing layout with tables
+ */
+ table.quick {
+   border-width: 1px;
+   border-style: solid;
+   border-color: #ccc;
+   background-color: #ccc;
+ }
+
+
+ /* for quick table tags with: || 
+ */
+  td.quick {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 11px;
+   background-color: #eef;
+   padding: 5px;
+ }
+
+ 
+ /* links in general, if not overwritten in other divs
+ a:hover {
+   text-decoration: none;
+   background-color: #transparent;
+ }
+
+ /* for  spec */
+ img {
+
+ }
+
+ /* line separator */
+ hr {
+   margin-top: 10px;
+   border: 0px;
+   border-top: 1px #ddd solid;
+ } 
+
+ /* style of the text edit area and text 
+    entry for search and passwords 
+ */
+ .textarea {
+   font-family: courier, helvetica, verdana,arial,sans-serif;
+   left-margin: 20px;
+   font-size: 12px;
+   background-color: #eee;
+}
+
+ /* buttons for save and search */
+ .button {
+ }
+
+ /* example for custom style in  or  */
+ .mybox { border: 1px #ccc dashed; }
+
+ /* other custom styles used */
+
+ .smallred { font-size: 10px; font-weight: normal; color: #a22; }
+
+ .mediumred { font-size: 12px; font-weight: normal; color: #a22; }
+
+-->
+
+-->
+</style>
+</head>
+
+<body bgcolor="#AAAAAA">
+
+<!-- content -->
+<div class="content">
+<center> <div class="title">puts the fun <a href="index.cgi"><img src="images/newLISP-icon-86.jpg" alt="newLISP button" order="0" border="0"/></a>  back in Lisp</div><div class="menu"><a href="index.cgi?Home">Home</a>  &#183; <a href="index.cgi?FAQ">About</a>  &#183; <a href="index.cgi?Downloads">Downloads</a>  &#183; <a href="index.cgi?Documentation">Docs</a>  &#183; <a href="modules/"> Modules</a>  &#183; <a href="index.cgi?Code_Contributions">Links</a>  &#183; <a href="index.cgi?Tips_and_Tricks">Tips&amp;Tricks</a>  &#183; <a href="index.cgi?Libraries">C-Libs</a>  &#183; <a href="index.cgi?Applications">Apps</a>  &#183; <a href="index.cgi?Art">Art</a>  &#183; <a href="http://newlispfanclub.com">Forum</a>  </div></center>
+<br>
+<h2> Comparison to Common Lisp and Scheme </h2>
+<br>
+This page clarifies some differences between newLISP and Common Lisp and Scheme. Read the <a href="index.cgi?FAQ">About</a>  page to find out more about newLISP's unique approach to LISP.<br>
+<br>
+The purpose of this comparison is not to point out that one language is better than the other. Different styles of programming appeal to different personalities. Each approach has different strengths and weaknesses. The notion that there could be designed a single, all-purpose language is naive. The author of newLISP uses 'C' and Java concurrently with newLISP. Others use a different set of tools tailored to the character of their projects and style of programming. <br>
+<br>
+newLISP's aesthetic, casual and flexible style has attracted not only the traditional computer programmer but many people from other professions. Many contributions to the design of newLISP come from people who are not primarily programmers. For many, newLISP is not only a programming language but also a tool for modeling and organizing creative thought.<br>
+<br>
+<h3> Scripting language versus compiled language </h3>
+newLISP is a scripting language designed not to be compiled but to be fully dynamic and introspective. Many of the differences to other LISPs result from this distinction.<br>
+<br>
+Both approaches have their place in modern computing. For a discussion of this subject see here:<br>
+<br>
+<a href="code/InPraiseOfScripting.pdf">In Praise of Scripting:  Real Programming Pragmatism</a>.<br>
+<br>
+For more about history, critique and other aspects of Lisp see <a href="index.cgi?page=Links">here</a>.<br>
+<br>
+<h3> Openness and Transparency </h3>
+newLISP is completely open. There are no hidden states. All language and data objects are first class. Although newLISP initially compiles program source into an internal s-expression-tree made of LISP-cells, everything can be serialized back to human readable text all the time. This includes the symbol environments in contexts (name-spaces) and lambda expressions. This openness eases interactive working and debugging and eases the understanding of the language. newLISP programs are fully self-reflective and can inspect and modify itself at all times.<br>
+<br>
+newLISP is network aware regarding file resources in a transparent way. In most instances where files are used, URLs can be used instead. Files can be read, written and appended, programs can be loaded or saved using the same code for local or network access. This facilitates writing distributed applications.<br>
+<br>
+<h3> Function application as in Scheme </h3>
+Unlike Common Lisp, newLISP and Scheme evaluate the operator part of an expression before applying the operator to its arguments.<br>
+<br>
+<h3> Lambda expressions </h3>
+In newLISP, <i>lambda</i> expressions are constants evaluating to themselves. They are a subtype of the list data type, a first-class data object that can be manipulated like any other list. In Common Lisp and Scheme, lambda expressions, when evaluated, return a special <i>function</i> data type forming a lexical closure after binding its free variables to the current environment.<br>
+<br>
+In newLISP, binding of free variables in lambda expressions takes place during application of the lambda expression without creating a closure.<br>
+<br>
+Lambda expressions in newLISP can be treated as data all the time, even after being bound in a function definition:<br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;(define&nbsp;(foo&nbsp;x)&nbsp;(+&nbsp;x&nbsp;x))&nbsp;=&gt;&nbsp;(lambda&nbsp;(x)&nbsp;(+&nbsp;x&nbsp;x))</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;(last&nbsp;foo)&nbsp;=&gt;&nbsp;(+&nbsp;x&nbsp;x)</tt><br>
+<br>
+Other LISPs use lambda closures to create functions with state. Maintaining state is a precondition for a programming language to allow object-oriented programming. In newLISP, lexically closed contexts (namespaces) can be used to write state-full functions. Like lambda expressions, contexts in newLISP are first-class objects. Contexts can be created and destroyed during runtime, passed as parameters, and referred to by symbols.<br>
+<br>
+See the page: <a href="index.cgi?Closures">Closures and Contexts</a>  for a comparison of Scheme closures and newLISP contexts and see also the definition of <a href="index.cgi?def-static">def-static</a>.<br>
+<br>
+<h3> One symbol space </h3>
+In newLISP and Scheme, variables, primitives, and user-defined functions share the same symbol space. In Common Lisp, function symbols and variable symbols each use a dedicated name space. This is why Common Lisp function symbols sometimes must be prefixed with the sharp quote #'. Symbols in newLISP are case-sensitive.<br>
+<br>
+<h3> Dynamic scoping inside isolated namespaces </h3>
+newLISP is sometimes criticized for using dynamic scoping and <em>fexprs</em>. These critics overlook that newLISP's namespace contexts shield function symbols from the traditional disadvantages of dynamic scoping and fexprs.<br>
+<br>
+In newLISP, all variables are dynamically scoped by default. However, by defining a function in its own context, static/lexical scoping can be achieved. Parameter names used in <i>fexprs</i> are pushed with their value on a stack upon function entry and are restored upon function return. In newLISP, several functions and data can share a namespace. By enclosing functions in their own namespace, a lexical closure- like mechanism is achieved. Common Lisp and Scheme are lexically scoped by default and use lambda expressions as the closure mechanism. Common Lisp also offers <i>special variables</i> for dynamic scoping.<br>
+<br>
+The problems of free variables in dynamic scoping can be avoided. In the rare cases when free variables must be used, you can partition code into namespace modules for easier control over free variables. You can then exploit the advantages of dynamic scoping. With dynamic scoping inside lexically-closed namespaces, newLISP combines the best of both scoping worlds.<br>
+<br>
+newLISP has no <i>funarg</i> problem because it follows a simple rule: variables always show the binding of their current environment. When expressions with local variables are entered, newLISP saves the current variable state on a stack and restores it on exit of that expression. In newLISP, not only are function parameters and variables declared with <tt>let</tt> expressions local, loop variables in all looping expressions are local too. <br>
+<br>
+<h3> The lisp cell and <tt>cons</tt> </h3>
+In Common Lisp and Scheme, the <i>cdr</i> part of the lisp cell can be used to contain another LISP object, in which case we have a <i>dotted pair</i>. In newLISP, there are no dotted pairs. Instead, each newLISP cell contains one object and a pointer to another object if the cell is part of a list. As a result, <tt>cons</tt> behaves differently in newLISP than in other LISPs.<br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;;;&nbsp;Common&nbsp;Lisp&nbsp;and&nbsp;Scheme</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(cons&nbsp;'a&nbsp;'b)&nbsp;=&gt;&nbsp;(a&nbsp;.&nbsp;b)&nbsp;&nbsp;&nbsp;;&nbsp;a&nbsp;dotted&nbsp;pair</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;[a&nbsp;|&nbsp;b]</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;;;&nbsp;newLISP</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(cons&nbsp;'a&nbsp;'b)&nbsp;=&gt;&nbsp;(a&nbsp;b)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;a&nbsp;list</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;[&nbsp;]</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;[a]&nbsp;-&gt;&nbsp;[b]</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;;;&nbsp;LISP&nbsp;cells&nbsp;in&nbsp;newLISP</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(+&nbsp;2&nbsp;3&nbsp;(*&nbsp;4&nbsp;3))</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;[&nbsp;]</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;\</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;[+]&nbsp;-&gt;&nbsp;[2]&nbsp;-&gt;&nbsp;[3]&nbsp;-&gt;&nbsp;[&nbsp;]</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[*]&nbsp;-&gt;&nbsp;[4]&nbsp;-&gt;&nbsp;[3]&nbsp;</tt><br>
+<br>
+<br>
+<h3> Function arguments are optional </h3>
+In newLISP, all arguments to a user-defined function are optional.  Unassigned argument variables will assume the value <tt>nil</tt> inside the function.<br>
+<tt></tt><br>
+<h3> Implicit symbol creation </h3>
+Logically, there are no unbound or non-existing symbols in newLISP.  Any unbound or non-existing symbol is created and bound to <tt>nil</tt> in the current namespace when it is first seen by newLISP.<br>
+<br>
+<h3> <tt>nil</tt> and <tt>true</tt> are Boolean constants </h3>
+<tt>nil</tt> and <tt>true</tt> are Boolean constants in newLISP. In Common Lisp, <tt>nil</tt> has an additional role as a list terminator:<br>
+<tt></tt><br>
+<tt>&nbsp;&nbsp;&nbsp;;;&nbsp;newLISP</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(cons&nbsp;'x&nbsp;nil)&nbsp;=&gt;&nbsp;(x&nbsp;nil)</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;;;&nbsp;Scheme</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(cons&nbsp;'x&nbsp;#f)&nbsp;&nbsp;=&gt;&nbsp;(x&nbsp;.&nbsp;#f)</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;;;&nbsp;Common&nbsp;Lisp</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(cons&nbsp;'x&nbsp;nil)&nbsp;=&gt;&nbsp;(x)</tt><br>
+<tt></tt><br>
+Scheme has the two Boolean constants <tt>#t</tt> and <tt>#f</tt> for true and false.<br>
+<br>
+In newLISP <tt>first</tt> and in Scheme <tt>car</tt> will throw and error when used on and empty list. Common Lisp <tt>car</tt> will return <tt>nil</tt> in that case:<br>
+<br>
+<tt>&nbsp;;;&nbsp;newLISP</tt><br>
+<tt>&nbsp;(first&nbsp;'())&nbsp;=&gt;&nbsp;error</tt><br>
+<tt>&nbsp;</tt><br>
+<tt>&nbsp;;;&nbsp;Scheme</tt><br>
+<tt>&nbsp;(car&nbsp;'())&nbsp;=&gt;&nbsp;error</tt><br>
+<br>
+<tt>&nbsp;;;&nbsp;Common&nbsp;Lisp</tt><br>
+<tt>&nbsp;(car&nbsp;'())&nbsp;=&gt;&nbsp;nil</tt><br>
+<br>
+<h3> One Reference Only (ORO) memory management </h3>
+In newLISP, every object is only referenced once (ORO), with the exception of symbols and contexts. newLISP's ORO rule allows automatic, stack-based, <i>on the go</i> memory management, without the problems of traditional garbage collection algorithms used in other scripting languages. newLISP's ORO memory management is faster and uses less resources.<br>
+<tt></tt><br>
+newLISP passes parameters by value-copy and stores intermediate results on a <i>result stack</i>. The memory created for intermediate results gets recycled after function return. Like traditional garbage collection, ORO memory management frees the programer from dealing with memory allocation and reallocation.<br>
+<br>
+To avoid copying data objects when passing by value-copy, they can be enclosed in <i>context</i> objects and passed by reference. The following code snippet shows reference passing using a namespace  <i>default functor</i>:<br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;(define&nbsp;(modify&nbsp;data&nbsp;value)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(push&nbsp;value&nbsp;data))</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;(set&nbsp;'reflist:reflist&nbsp;'(b&nbsp;c&nbsp;d&nbsp;e&nbsp;f&nbsp;g))</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;(modify&nbsp;reflist&nbsp;'a)&nbsp;;&nbsp;passed&nbsp;by&nbsp;reference</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;reflist:reflist&nbsp;=&gt;&nbsp;(a&nbsp;b&nbsp;c&nbsp;d&nbsp;e&nbsp;f&nbsp;g)</tt><br>
+<br>
+newLISP's automatic memory management is fully transparent to the programmer but faster and lighter on resource requirements when compared to classic garbage collection algorithms. Because ORO memory management is synchronous, newLISP code has constant and repeatable execution time. Programming languages using traditional garbage collection display sudden delays and pauses.<br>
+<br>
+The combination of newLISP's value-copy passing style and unique memory management make it the fastest interactive (non-compiled) LISP available and one of the fastest scripting languages available in general. As shown above, reference style passing is available, too. For built-in functions reference passing is the default.<br>
+<br>
+As a by-product of newLISP's ORO memory management, only the equal sign <tt>=</tt> is required to test for equality. Common Lisp requires <tt>eq, eql, equal, equalp, =, string=, string-equal, char=</tt>, and <tt>char-eq</tt> for equality tests of expressions, data types, identical objects, and referenced objects.<br>
+<br>
+<h3> Fexpr macros and rewrite macros </h3>
+In newLISP, <i>special forms</i> are created using <i>fexprs</i> defined with <tt>define-macro</tt>. Common Lisp macros use template expansion and compilation to create special forms. Special forms don't evaluate their arguments or evaluate only under special conditions. In newLISP, fexprs are still called macros because they serve a similar purpose to macros in other LISP dialects: they allow the definition of special forms.<br>
+<br>
+Fexpr's created with <tt>define-macro</tt> completely control when arguments are evaluated. As a result, newLISP macros can work like built-in special forms:<br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;(define-macro&nbsp;(my-setq&nbsp;x&nbsp;y)&nbsp;(set&nbsp;x&nbsp;(eval&nbsp;y)))&nbsp;</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;;;&nbsp;as&nbsp;hygienic&nbsp;macro&nbsp;avoiding&nbsp;variable&nbsp;capture&nbsp;</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;(define-macro&nbsp;(my-setq)&nbsp;(set&nbsp;(args&nbsp;0)&nbsp;(eval&nbsp;(args&nbsp;1))))</tt><br>
+<br>
+newLISP can initiate variable expansion explicitly using <tt>expand</tt> and <tt>letex</tt>:<br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;(define&nbsp;(raise-to&nbsp;power)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(expand&nbsp;(fn&nbsp;(base)&nbsp;(pow&nbsp;base&nbsp;power))&nbsp;'power))</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;(define&nbsp;square&nbsp;(raise-to&nbsp;2))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(define&nbsp;cube&nbsp;(raise-to&nbsp;3))</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;(square&nbsp;5)&nbsp;=&gt;&nbsp;25</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(cube&nbsp;5)&nbsp;&nbsp;&nbsp;=&gt;&nbsp;125</tt><br>
+<br>
+Variable expansion can be used to capture the state of free variables. See an application of this here: <a href="index.cgi?Y_Function">The Why of Y in newLISP</a>. newLISP frequently combines <tt>define-macro</tt> and template expansion using <tt>expand</tt> or <tt>letex</tt>.<br>
+<br>
+<i>Variable capture</i> in fexprs in newLISP can be avoided by either enclosing them in a namespace, or by using the args function to retrieve passed parameters, i.e. <tt>(args 0)</tt> for the first <tt>(args 1)</tt> for the second and so forth. Either way, the resulting fexpr's are completely <i>hygienic</i> with no danger of variable capture.<br>
+<br>
+In version 10.1.6, newLISP introduced rewrite-expansion macros in a loadable module. Since version 10.6.0, the same functionality is available with a built-in, native <tt>macro</tt> function working the same way:<br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;;&nbsp;register&nbsp;a&nbsp;macro&nbsp;template</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;(macro&nbsp;(cube&nbsp;X)&nbsp;(pow&nbsp;X&nbsp;3))</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;;&nbsp;during&nbsp;code&nbsp;loading&nbsp;the&nbsp;macros&nbsp;are&nbsp;expanded.</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(cube&nbsp;3)&nbsp;=&gt;&nbsp;27&nbsp;</tt><br>
+<br>
+<br>
+The macros expansion facility hooks between source reading/translation and the evaluation process. In the example every occurrence of <tt>(cube n)</tt> would be translated into <tt>(pow n 3)</tt>. This way the overhead of <i>fexprs</i> is avoided. <br>
+<tt>&nbsp;&nbsp;&nbsp;</tt><br>
+<h3> Impicit Indexing </h3>
+newLISP features <i>implicit indexing</i>. This is a logical extension of LISP evaluation rules overloading lists, strings or numbers with the indexing functionality available from built-in list and string functions like <tt>nth</tt>, <tt>rest</tt> or <tt>slice</tt>, i.e.:<br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;(set&nbsp;'myList&nbsp;'(a&nbsp;b&nbsp;c&nbsp;(d&nbsp;e)&nbsp;f&nbsp;g))</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;;&nbsp;using&nbsp;nth</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(nth&nbsp;2&nbsp;myList)&nbsp;=&gt;&nbsp;c</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;;&nbsp;with&nbsp;address&nbsp;vector</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(nth&nbsp;'(3&nbsp;1)&nbsp;myList)&nbsp;=&gt;&nbsp;e</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(nth&nbsp;'(3&nbsp;0)&nbsp;myList)&nbsp;=&gt;&nbsp;d</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;;&nbsp;using&nbsp;implicit&nbsp;indexing</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(myList&nbsp;2)&nbsp;=&gt;&nbsp;c</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(myList&nbsp;3&nbsp;1)&nbsp;=&gt;&nbsp;e</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(myList&nbsp;-3&nbsp;0)&nbsp;=&gt;&nbsp;d</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;;&nbsp;with&nbsp;address&nbsp;vector</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(set&nbsp;'v&nbsp;'(3&nbsp;1))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(myList&nbsp;v)&nbsp;=&gt;&nbsp;e</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;;&nbsp;implicit&nbsp;rest,&nbsp;slice</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(1&nbsp;myList)&nbsp;=&gt;&nbsp;(b&nbsp;c&nbsp;(d&nbsp;e)&nbsp;f&nbsp;g)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(-3&nbsp;myList)&nbsp;=&gt;&nbsp;((d&nbsp;e)&nbsp;f&nbsp;g)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(1&nbsp;2&nbsp;myList)&nbsp;=&gt;&nbsp;(b&nbsp;c)</tt><br>
+<br>
+Using implicit indexing is optional. In many instances it increases speed and readability.<br>
+<br>
+<br>
+<h3> Links </h3>
+<a href="MemoryManagement.html">Automatic Memory Management in newLISP</a>
+<tt></tt><br>
+<br>
+<a href="ExpressionEvaluation.html">Expression evaluation, Implicit Indexing, Contexts and Default Functors in the newLISP Scripting Language</a>
+<br>
+<br>
+<a href="index.cgi?Closures">Closures and Contexts in newLISP</a>
+<br>
+<br>
+<a href="index.cgi?Y_Function">The Why of Y in newLISP</a>
+<br>
+<br>
+<a href="index.cgi?page=Links">History, Critique and Aesthetic Aspects of Lisp</a>  several links, several authors<br>
+<br>
+<a href="http://www.stanford.edu/~ouster/cgi-bin/papers/scripting.pdf"> Scripting: Higher Level Programming for the 21st Century</a>  <em>John K. Ousterhout</em><br>
+<br>
+<a href="code/InPraiseOfScripting.pdf">In Praise of Scripting: Real Programming Pragmatics</a>  <em>Ronald P. Loui</em><br>
+<br>
+<a href="http://www.donlucio.org">About the newLISP the author</a>  <em>Lutz Mueller</em>.<br>
+
+</div>
+
+<!-- end content -->
+
+<!-- comments -->
+
+<!-- end comments -->
+<!-- the menu -->
+
+<!-- the menu end -->
+
+<!-- copyright -->
+  <div class="footer" align="center">
+  <br>
+Copyright &copy; 2021, Lutz Mueller. All rights reserved.<br>
+ 
+  <a href="http://www.newlisp.net/">Site</a> powered by <a href="http://newlisp.net">newLISP</a> wiki v4.6
+<!--
+  in 8ms
+-->
+<br>
+  </div>
+<!-- end copyright -->
+
+<!-- <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1098066-1";
+urchinTracker();
+</script> -->
+
+</body>
+</html>
+

@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>code/opengl-demo-lsp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/env newlisp </font>
+<font color='#555555'># OpenGL and GLUT demo - opengl-demo.lsp</font>
+<font color='#555555'># using simple import and callback API</font>
+<font color='#555555'># tested on Windows and OS X (Intel) 32-bit only!</font>
+
+<font color='#555555'># version 1.2, July 2009 - make drawObject working with motion</font>
+
+<font color='#555555'># this version runs only on 32-bit newLISP and libraries</font>
+<font color='#555555'># for 64-bit newlisp use http://www.newlisp.org/downloads/OpenGL/opengl-demo-ffi-lsp.txt, </font>
+<font color='#555555'># which runs both 32/64 versions of newLISP. For this extended ffi version newLISP 10.4.0 </font>
+<font color='#555555'># or later is required. The extended ffi interface is present in all binary distributions </font>
+<font color='#555555'># (Windows, OSX, Ubuntu)</font>
+
+<font color='#555555'># WIn32</font>
+<font color='#555555'># opengl32.dll - should be already on you WindowsXP installation or at www.opengl.org  </font>
+<font color='#555555'># glut32.dll -  available here: http://www.opengl.org/resources/libraries/glut/</font>
+<font color='#555555'># Note! on Windows 7 glut32.dll should be installed c:/Windows/SysWOW64/ not system32</font>
+<font color='#555555'># </font>
+<font color='#555555'># Linux/UNIX - not tested</font>
+<font color='#555555'># libGLU.so - should be on your Linux/UNIX installation or at www.opengl.org</font>
+<font color='#555555'># glut-3.7.so - already on your system or at:</font>
+<font color='#555555'>#     http://www.opengl.org/resources/libraries/glut/</font>
+<font color='#555555'>#</font>
+<font color='#555555'># Mac OS X - works well on Intel based Mac OS X, will not work on PPC</font>
+<font color='#555555'># nothing needs to be installed on Mac OX X 10.4 and later</font>
+<font color='#555555'># libGL.dylib - in /System/Library/Frameworks/OpenGL.Framework</font>
+<font color='#555555'># GLUT - in /System/Library/Frameworks/GLUT.Framework</font>
+<font color='#555555'>#</font>
+<font color='#555555'># for a complete function reference for OpenGL look here:</font>
+<font color='#555555'>#     http://www.opengl.org/documentation/</font>
+<font color='#555555'>#</font>
+<font color='#555555'># for descriptions and refence to GLU see here:</font>
+<font color='#555555'>#     http://www.opengl.org/resources/libraries/glut/</font>
+<font color='#555555'>#</font>
+<font color='#555555'># Calling patterns for OpenGL functions:</font>
+<font color='#555555'># Functions are described in the manual with the following types:</font>
+<font color='#555555'>#</font>
+<font color='#555555'># All the following integer types are passed as is or with (int ...):</font>
+<font color='#555555'># GLenum GLboolean GLbitfield GLbyte GLshort GLint GLsizei GLubyte GLushort GLuint</font>
+<font color='#555555'># and types ending in: 3b, si, 3s</font>
+<font color='#555555'>#</font>
+<font color='#555555'># The following double float types are passed as is or with (float ...):</font>
+<font color='#555555'># GLdouble GLclampd</font>
+<font color='#555555'># and types ending in: 3d</font>
+<font color='#555555'>#</font>
+<font color='#555555'># The following small float types are must with (flt ...) conversion:</font>
+<font color='#555555'># GLfloat GLclampf</font>
+<font color='#555555'># and all types ending 3f:</font>
+<font color='#555555'># </font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> <font color='#998800'>256</font> <font color='#AA0000'>(</font><font color='#0000AA'>&amp;</font> <font color='#998800'>256</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> <font color='#AA0000'>(</font><font color='#0000AA'>sys-info</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#555555'>; if it is 64 bit version</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"This file can run only on the 32-bit version of newLISP"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"Use opengl-demo-ffi.lsp, which runs on both, 32-bit and 64-bit"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>if</font> 
+  <font color='#AA0000'>(</font><font color='#0000AA'>=</font> ostype <font color='#008800'>"OSX"</font><font color='#AA0000'>)</font> <font color='#555555'>;; drawings will be visible only on x86 based OS X</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'GL_LIB <font color='#008800'>"/System/Library/Frameworks/OpenGL.Framework/Libraries/libGL.dylib"</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'GLUT_LIB <font color='#008800'>"/System/Library/Frameworks/GLUT.Framework/GLUT"</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>find</font> ostype '<font color='#AA0000'>(</font><font color='#008800'>"Windows"</font>, <font color='#008800'>"Cygwin"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'GL_LIB <font color='#008800'>"opengl32.dll"</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'GLUT_LIB <font color='#008800'>"glut32.dll"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>=</font> ostype <font color='#008800'>"Linux"</font><font color='#AA0000'>)</font> <font color='#555555'>;; not tested</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'GL_LIB <font color='#008800'>"libGL.so"</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'GLUT_LIB <font color='#008800'>"libglut.so"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GL_LIB <font color='#008800'>"glClear"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GL_LIB <font color='#008800'>"glClearColor"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GL_LIB <font color='#008800'>"glEnable"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GL_LIB <font color='#008800'>"glHint"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GL_LIB <font color='#008800'>"glColor3d"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GL_LIB <font color='#008800'>"glBegin"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GL_LIB <font color='#008800'>"glEnd"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GL_LIB <font color='#008800'>"glVertex3d"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GL_LIB <font color='#008800'>"glFlush"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GL_LIB <font color='#008800'>"glFinish"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GL_LIB <font color='#008800'>"glRotated"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GL_LIB <font color='#008800'>"glLineWidth"</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutInit"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutDisplayFunc"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutInitWindowSize"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutInitDisplayMode"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutInitWindowPosition"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutDisplayFunc"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutKeyboardFunc"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutMouseFunc"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutJoystickFunc"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutMotionFunc"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutIdleFunc"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutCreateWindow"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutCreateSubWindow"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutMainLoop"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutSwapBuffers"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutPostRedisplay"</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutSolidCube"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutSolidTeapot"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutWireCube"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> GLUT_LIB <font color='#008800'>"glutWireTeapot"</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'GL_COLOR_BUFFER_BIT <font color='#998800'>0x00004000</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'GL_TRIANGLES <font color='#998800'>0x0004</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'GL_BLEND <font color='#998800'>0x0BE2</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'GL_LINE_SMOOTH <font color='#998800'>0x0B20</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'GL_DONT_CARE <font color='#998800'>0x1100</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'GL_LINE_SMOOTH_HINT <font color='#998800'>0x0C52</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'GLUT_DOUBLE <font color='#998800'>0x0002</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'GLUT_SINGLE <font color='#998800'>0x0000</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'GLUT_RGB <font color='#998800'>0x0000</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'GLUT_RGBA <font color='#998800'>0x0000</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'argc <font color='#998800'>0</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'argv1 <font color='#008800'>""</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'argv <font color='#AA0000'>(</font><font color='#0000AA'>pack</font> <font color='#008800'>"lu"</font> argv1<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'rotx <font color='#998800'>0.0</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'roty <font color='#998800'>0.0</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'PI <font color='#AA0000'>(</font><font color='#0000AA'>mul</font> <font color='#AA0000'>(</font><font color='#0000AA'>acos</font> <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>draw<font color='#AA0000'>)</font> 
+	<font color='#AA0000'>(</font>glClear GL_COLOR_BUFFER_BIT <font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>glRotated rotx <font color='#998800'>0.0</font> <font color='#998800'>1.0</font> <font color='#998800'>0.0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>glRotated roty <font color='#998800'>1.0</font> <font color='#998800'>0.0</font> <font color='#998800'>0.0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>glutWireTeapot <font color='#998800'>0.5</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>glutSwapBuffers<font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>drawObject<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>glClear GL_COLOR_BUFFER_BIT <font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>glColor3d <font color='#998800'>1.0</font> <font color='#998800'>0.85</font> <font color='#998800'>0.35</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>glRotated rotx <font color='#998800'>0.0</font> <font color='#998800'>1.0</font> <font color='#998800'>0.0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>glRotated roty <font color='#998800'>1.0</font> <font color='#998800'>0.0</font> <font color='#998800'>0.0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>glBegin GL_TRIANGLES<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>glVertex3d <font color='#998800'>0.0</font> <font color='#998800'>0.6</font> <font color='#998800'>0.0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>glVertex3d <font color='#998800'>-0.2</font> <font color='#998800'>-0.3</font> <font color='#998800'>0.0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>glVertex3d <font color='#998800'>0.2</font> <font color='#998800'>-0.3</font> <font color='#998800'>0.0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>glEnd<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>glutSwapBuffers<font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>rotation<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'rotx <font color='#AA0000'>(</font><font color='#0000AA'>mod</font> <font color='#AA0000'>(</font><font color='#0000AA'>sub</font> rotx <font color='#998800'>.01</font><font color='#AA0000'>)</font> PI<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'roty <font color='#AA0000'>(</font><font color='#0000AA'>mod</font> <font color='#AA0000'>(</font><font color='#0000AA'>sub</font> roty <font color='#998800'>.012</font><font color='#AA0000'>)</font> PI<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>sleep</font> <font color='#998800'>10</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>glutPostRedisplay<font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>keyboard key x y<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> <font color='#AA0000'>(</font><font color='#0000AA'>&amp;</font> key <font color='#998800'>0xFF</font><font color='#AA0000'>)</font> <font color='#998800'>27</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#555555'>; 0xFF mask necessary in Windows</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"key:"</font> <font color='#AA0000'>(</font><font color='#0000AA'>&amp;</font> key <font color='#998800'>0xFF</font><font color='#AA0000'>)</font> <font color='#008800'>" x:"</font> x  <font color='#008800'>" y:"</font> y<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>mouse button state x y<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> state <font color='#998800'>0</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font>glutIdleFunc <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#555555'>; auto-motion off on button press</font>
+		<font color='#AA0000'>(</font>glutIdleFunc <font color='#AA0000'>(</font><font color='#0000AA'>callback</font> <font color='#998800'>4</font> 'rotation<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#555555'>; auto-motion on</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"mouse button: "</font> button <font color='#008800'>" state:"</font> state <font color='#008800'>" x:"</font> x <font color='#008800'>" y:"</font> y<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>joystick button x y z<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"joystick button: "</font> button <font color='#008800'>" x: "</font> x <font color='#008800'>" y: "</font> y <font color='#008800'>" z: "</font> z<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>motion x y<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'rotx <font color='#AA0000'>(</font><font color='#0000AA'>mul</font> <font color='#AA0000'>(</font><font color='#0000AA'>div</font> <font color='#998800'>200</font> x<font color='#AA0000'>)</font> PI<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'roty <font color='#AA0000'>(</font><font color='#0000AA'>mul</font> <font color='#AA0000'>(</font><font color='#0000AA'>div</font> <font color='#998800'>150</font> y<font color='#AA0000'>)</font> PI<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>glutPostRedisplay<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"x:"</font> x  <font color='#008800'>" y:"</font> y<font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>reset</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font>glutInit <font color='#AA0000'>(</font><font color='#0000AA'>address</font> argc<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>address</font> argv<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font>glutInitDisplayMode <font color='#AA0000'>(</font><font color='#0000AA'>|</font> GLUT_RGB GLUT_DOUBLE <font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font>glutInitWindowSize <font color='#998800'>800</font> <font color='#998800'>600</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font>glutInitWindowPosition <font color='#998800'>80</font> <font color='#998800'>80</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'id <font color='#AA0000'>(</font>glutCreateWindow <font color='#008800'>"OpenGL and newLISP - drag mouse - ESC to exit"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font>glClearColor <font color='#AA0000'>(</font><font color='#0000AA'>flt</font> <font color='#998800'>0.5</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>flt</font> <font color='#998800'>0.3</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>flt</font> <font color='#998800'>0.3</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>flt</font> <font color='#998800'>0.0</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font>glColor3d <font color='#998800'>1.0</font> <font color='#998800'>0.85</font> <font color='#998800'>0.35</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font>glutDisplayFunc <font color='#AA0000'>(</font><font color='#0000AA'>callback</font> <font color='#998800'>0</font> 'draw<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#555555'>;(glutDisplayFunc (callback 0 'drawObject))</font>
+<font color='#AA0000'>(</font>glutKeyboardFunc <font color='#AA0000'>(</font><font color='#0000AA'>callback</font> <font color='#998800'>1</font> 'keyboard<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font>glutMouseFunc <font color='#AA0000'>(</font><font color='#0000AA'>callback</font> <font color='#998800'>2</font> 'mouse<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font>glutMotionFunc <font color='#AA0000'>(</font><font color='#0000AA'>callback</font> <font color='#998800'>3</font> 'motion<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font>glutIdleFunc <font color='#AA0000'>(</font><font color='#0000AA'>callback</font> <font color='#998800'>4</font> 'rotation<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font>glutJoystickFunc <font color='#AA0000'>(</font><font color='#0000AA'>callback</font> <font color='#998800'>5</font> 'joystick<font color='#AA0000'>)</font> <font color='#998800'>50</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font>glutMainLoop<font color='#AA0000'>)</font>
+
+<font color='#555555'>;; eof</font>
+
+<font color='#555555'>;(glEnable GL_BLEND)</font>
+<font color='#555555'>;(glEnable GL_LINE_SMOOTH) ; turn on antialiasing</font>
+<font color='#555555'>;(glHint GL_LINE_SMOOTH_HINT GL_DONT_CARE)</font>
+<font color='#555555'>;(glLineWidth 3)</font>
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

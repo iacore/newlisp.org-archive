@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "HTML 4.01 Transitional">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>jedit-newlisp-mode-generator.lsp</title>
+
+<link rel="stylesheet" type="text/css" href="newlispdoc.css" />
+</head>
+
+<body style="margin: 20px;" text="#111111" bgcolor="#FFFFFF" 
+			link="#376590" vlink="#551A8B" alink="#ffAA28">
+<blockquote>
+<center><h1>jedit-newlisp-mode-generator.lsp</h1></center>
+<p><a href="index.html">Module index</a></p>
+<a href="jedit-newlisp-mode-generator.lsp.src.html">source</a><br/><br/><h2>Module:&nbsp;     jedit-mode-generator</h2><p>jEdit newLISP mode generator</p>
+<b>Author: </b>     m35, Lutz<br/>
+<b>Location: </b><a href="   http://www.newlisp.org/index.cgi?Code_Contributions">   http://www.newlisp.org/index.cgi?Code_Contributions</a><br/>
+<b>Version: </b>0.42 - generates jEdit 4.2 compatable syntax<br/>
+<b>Version: </b>0.43 - added type 2 in sym-to-xml for 9.4.5 and after, L.M. Nov 2008<br/>
+<b>Version: </b>0.50 - generates jEdit 4.3 compatable syntax, added newlispdoc and deprecated symbols, m35 Nov 2008<br/>
+<b>Version: </b>0.51 - general code and newlispdoc improvements, added platform specific symbols, m35 Dec 2008<br/>
+<b>Version: </b>0.52 - added missing '@link' and fixed digit regex, m35 Dec 2008<br/>
+<b>Version: </b>0.53 - Fixed digit regex more, m35 Dec 2008<br/>
+<br/><br/>
+ Written for newLISP v10, newlispdoc 2.0, and jEdit 4.3pre15
+<br/><br/>
+ Generates the xml for a jEdit newLISP edit mode.
+ All default primitives and symbols found in the MAIN context will be
+ added as keywords.
+<br/><br/>
+ Copy the file created with this program to your jEdit "modes" sub-directory
+ in your jEdit settings directory.
+<br/><br/>
+ Your modes directory is:
+<br/><br/>
+ On Windows<br> <tt>%USERPROFILE%\.jedit\modes\</tt>
+<br/><br/>
+ On Linux and Mac<br> <tt>~/.jedit/modes/</tt>
+<br/><br/>
+ Be sure to also include a line in your "catalog" file, also found in your
+ modes sub-directory. e.g.
+ <pre>
+ &lt;MODE NAME="newlisp" FILE="<em>generated file</em>" FILE_NAME_GLOB="*.lsp" FIRST_LINE_GLOB="#!/*newlisp*"/&gt;
+ </pre>
+ There are a number of ways you can customize jEdit's syntax highlighting.
+ For more information, see your jEdit documentation about writing edit modes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br/><br/><center>- &part; -</center><br/>
+<center><font face='Arial' size='-2' color='#444444'>
+generated with <a href="http://newlisp.org">newLISP</a>&nbsp;
+and <a href="http://newlisp.org/newLISPdoc.html">newLISPdoc</a>
+</font></center>
+</blockquote>
+</body>
+</html>

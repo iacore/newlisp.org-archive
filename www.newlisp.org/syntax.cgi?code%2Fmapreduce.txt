@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>code/mapreduce.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/local/bin/newlisp</font>
+
+<font color='#555555'>; mapreduce - requires newLISP v.10.x - L.M. March 2007</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; v.1.22 tested w/o changes on 10.3.3 (updated doc and utput)</font>
+<font color='#555555'>; v.1.23 tested on 10.7.4 (updated newlisp executable path)</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; MapReduce - example for distributed computing using a map-reduce style</font>
+<font color='#555555'>; algorithm implemented in newLISP using the function 'bayes-train'</font>
+<font color='#555555'>; for word counting and 'net-eval' for mapping the word counting task</font>
+<font color='#555555'>; onto different nodes in a cluster. 'bayes-train' is normally used in</font>
+<font color='#555555'>; conjunction with 'bayes-query' for calculating Bayesian probabilities</font>
+<font color='#555555'>; of token sequences to occur in multiple data sets, but it can also be </font>
+<font color='#555555'>; used as a fast token counting function for individual data sets.</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; See also from Google Labs: </font>
+<font color='#555555'>;   http://labs.google.com/papers/mapreduce.html</font>
+<font color='#555555'>;   http://216.239.37.132/papers/mapreduce-osdi04.pdf</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; In map-reduce terminology the documents analyzed in the program below </font>
+<font color='#555555'>; correspond to the 'keys' and the dictionary extracted for each document</font>
+<font color='#555555'>; to the 'value'. The reduce step consists on reducing the multiple word </font>
+<font color='#555555'>; dictionaries to one dictionary with consolidated word counts.</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; The result of the calulations will be in a file Totals.lsp in the</font>
+<font color='#555555'>; working directory where this program was started. A directory called:</font>
+<font color='#555555'>; "mrdemo" should be present in the working directory of the server</font>
+<font color='#555555'>; node(s). This directory will contain node word counts for each</font>
+<font color='#555555'>; node. The reducing master node will load the dictionaries from here</font>
+<font color='#555555'>; via HTTP.</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; For a demo all node processes and the master/reducer process can</font>
+<font color='#555555'>; be run on the same CPU. This still cuts the total time in half</font>
+<font color='#555555'>; compared to sequential processing, because of better CPU usage in</font>
+<font color='#555555'>; a multi processing operating system.</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; See also http://newlisp.org/CodePatterns.html#distributed for more</font>
+<font color='#555555'>; details on configuring server nodes.</font>
+
+<font color='#555555'>; The documents to aquire</font>
+
+<font color='#555555'>; make program compatible with older versions of newLISP</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> <font color='#AA0000'>(</font><font color='#0000AA'>sys-info</font> <font color='#998800'>-2</font><font color='#AA0000'>)</font> <font color='#998800'>10111</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>constant</font> <font color='#AA0000'>(</font><font color='#0000AA'>global</font> 'term<font color='#AA0000'>)</font> name<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>;(define remote true) ; retrieve doc from http://www.gutenberg.org/</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> remote false<font color='#AA0000'>)</font> <font color='#555555'>; retrieve docs from a local harddisk</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>if</font> remote
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'docs '<font color='#AA0000'>(</font>
+		<font color='#555555'>; A Comedy of Masks - Ernest Dowson and Arthur Moore, 547KB</font>
+		<font color='#008800'>"http://www.gutenberg.org/files/16703/16703.txt"</font>  
+		<font color='#555555'>; The Adventures of Sherlock Holmes - Conan Doyle, 576KB</font>
+		<font color='#008800'>"http://www.gutenberg.org/cache/epub/1661/pg1661.txt"</font>
+		<font color='#555555'>; The tale of Beowulf - anonymous, 219KB</font>
+		<font color='#008800'>"http://www.gutenberg.org/files/20431/20431-8.txt"</font> 
+		<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#555555'>; when running local copies of the text files, then place them</font>
+	<font color='#555555'>; in a subdirectory 'mrdemo' of the current working directory</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'docs '<font color='#AA0000'>(</font>
+		<font color='#008800'>"mrdemo/Comedy.txt"</font>
+		<font color='#008800'>"mrdemo/Sherlock.txt"</font>
+		<font color='#008800'>"mrdemo/Beowulf.txt"</font>
+	<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#555555'>; The three nodes may run on different CPUs or all on the same CPU,</font>
+<font color='#555555'>; either in 'newlisp -c -w &lt;workdir&gt;' mode running as an inetd or xinetd</font>
+<font color='#555555'>; service or in 'newlisp -c -d &lt;port&gt; -w &lt;workdir&gt;' mode, where &lt;port&gt; </font>
+<font color='#555555'>; is a port number and &lt;workdir&gt; is the directory containing 'mrdemo'.</font>
+<font color='#555555'>; When running inetd or xinetd nodes on the same CPU, the port numbers</font>
+<font color='#555555'>; can be the same. For each request a new process will be started by</font>
+<font color='#555555'>; (x)inetd. When running on different computers each node would have </font>
+<font color='#555555'>; a different IP address or hostname. </font>
+<font color='#555555'>;</font>
+<font color='#555555'>; the following configuration is for 3 xinetd/inetd nodes on the same</font>
+<font color='#555555'>; CPU as the master reducer node.</font>
+
+<font color='#555555'>;(set 'nodes '(</font>
+<font color='#555555'>;	("localhost" 4711)</font>
+<font color='#555555'>;	("localhost" 4712)</font>
+<font color='#555555'>;	("localhost" 4713)</font>
+<font color='#555555'>;))</font>
+
+<font color='#555555'>; This configuration would be 'newlisp -c -d &lt;port&gt; -w &lt;workdir&gt;' type</font>
+<font color='#555555'>; proccesses started either on the same or different CPUs. Here shown</font>
+<font color='#555555'>; for the same CPU. For remote machines specify different host names</font>
+<font color='#555555'>; or IP numbers, the port numbers then can be identical. A directory</font>
+<font color='#555555'>; 'mrdemo' should be created in &lt;workdir&gt;. The '-w &lt;workdir&gt;' spec can</font>
+<font color='#555555'>; be omitted when placing 'mrdemo' in the the directory where the nodes</font>
+<font color='#555555'>; are started, i.e.:</font>
+<font color='#555555'>;    newlisp -c -d 10001 -w /Users/newlisp</font>
+<font color='#555555'>;</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'pid1 <font color='#AA0000'>(</font><font color='#0000AA'>process</font> <font color='#008800'>"/usr/local/bin/newlisp -c -d 10001 -w /Users/lutz/Sites"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'pid2 <font color='#AA0000'>(</font><font color='#0000AA'>process</font> <font color='#008800'>"/usr/local/bin/newlisp -c -d 10002 -w /Users/lutz/Sites"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'pid3 <font color='#AA0000'>(</font><font color='#0000AA'>process</font> <font color='#008800'>"/usr/local/bin/newlisp -c -d 10003 -w /Users/lutz/Sites"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>sleep</font> <font color='#998800'>1000</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"started servers -> "</font> pid1 <font color='#008800'>" "</font> pid2 <font color='#008800'>" "</font> pid3<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'nodes '<font color='#AA0000'>(</font>
+	<font color='#AA0000'>(</font><font color='#008800'>"localhost"</font> <font color='#998800'>10001</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#008800'>"localhost"</font> <font color='#998800'>10002</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#008800'>"localhost"</font> <font color='#998800'>10003</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; The worker node program could be loaded by a node during startup, but</font>
+
+<font color='#555555'>; the program with the request. In most caseas the newLISP startup</font>
+<font color='#555555'>; and program load time is very small compared to the node processing</font>
+<font color='#555555'>; time. </font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'task <font color='#008800'>[text]
+(local (url id start text)
+	(setq WORDS:total '(0))
+	(set 'url "%s")
+	(set 'id %d)
+	(set 'start (time-of-day))
+	(set 'text (lower-case (read-file url)))
+	(set 'text (parse text "[^a-z]+" 0))
+	(bayes-train text 'WORDS)
+	(save (string "mrdemo/words-" id ".lsp") 'WORDS)
+
+	&#059; return a list of node id, doc, words proccessed and time spent
+	(list 	(list 'node id) 
+		(list 'doc (last (parse url "/")))
+		(list 'words (WORDS:total 0))
+		(list 'ms  (- (time-of-day) start)) 
+	)
+)
+[/text]</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; the idle procedure is called when a node has finished processing</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>idle-proc param<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> param <font color='#AA0000'>(</font><font color='#0000AA'>println</font> param<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+
+<font color='#555555'>; map the counting task onto the nodes using 'net-eval'.</font>
+<font color='#555555'>; wait a maximum of 30 seconds for all nodes to finish.</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>net-eval</font> <font color='#AA0000'>(</font><font color='#0000AA'>list</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>list</font> <font color='#AA0000'>(</font>nodes <font color='#998800'>0</font> <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>nodes <font color='#998800'>0</font> <font color='#998800'>1</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> task <font color='#AA0000'>(</font>docs <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#AA0000'>)</font> 
+	<font color='#AA0000'>(</font><font color='#0000AA'>list</font> <font color='#AA0000'>(</font>nodes <font color='#998800'>1</font> <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>nodes <font color='#998800'>1</font> <font color='#998800'>1</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> task <font color='#AA0000'>(</font>docs <font color='#998800'>1</font><font color='#AA0000'>)</font> <font color='#998800'>1</font><font color='#AA0000'>)</font> <font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>list</font> <font color='#AA0000'>(</font>nodes <font color='#998800'>2</font> <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>nodes <font color='#998800'>2</font> <font color='#998800'>1</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> task <font color='#AA0000'>(</font>docs <font color='#998800'>2</font><font color='#AA0000'>)</font> <font color='#998800'>2</font><font color='#AA0000'>)</font> <font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font> <font color='#998800'>30000</font> idle-proc<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>println</font><font color='#AA0000'>)</font>
+<font color='#555555'>; reduce procedure to consolidate all node name spaces in to one </font>
+<font color='#555555'>; Totals name space</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>reduce space totals<font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>dotree</font> <font color='#AA0000'>(</font>w space<font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>let</font> <font color='#AA0000'>(</font>prior <font color='#AA0000'>(</font><font color='#0000AA'>sym</font> <font color='#AA0000'>(</font><font color='#0000AA'>term</font> w<font color='#AA0000'>)</font> totals<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+            <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>not</font> <font color='#AA0000'>(</font><font color='#0000AA'>eval</font> prior<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+                <font color='#AA0000'>(</font><font color='#0000AA'>set</font> prior <font color='#AA0000'>(</font><font color='#0000AA'>eval</font> w<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+                <font color='#AA0000'>(</font><font color='#0000AA'>setf</font> <font color='#AA0000'>(</font><font color='#AA0000'>(</font><font color='#0000AA'>eval</font> prior<font color='#AA0000'>)</font> <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>+</font> $it <font color='#AA0000'>(</font><font color='#0000AA'>first</font> <font color='#AA0000'>(</font><font color='#0000AA'>eval</font> w<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+            <font color='#AA0000'>)</font>
+        <font color='#AA0000'>)</font>
+    <font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>dotimes</font> <font color='#AA0000'>(</font>n <font color='#AA0000'>(</font><font color='#0000AA'>length</font> nodes<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'url <font color='#AA0000'>(</font><font color='#0000AA'>string</font> <font color='#008800'>"http://"</font> <font color='#AA0000'>(</font>nodes n <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#008800'>":"</font> <font color='#AA0000'>(</font>nodes n <font color='#998800'>1</font><font color='#AA0000'>)</font> <font color='#008800'>"/mrdemo/words-"</font> n <font color='#008800'>".lsp"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"reduce from "</font> url<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>load</font> url<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font>reduce WORDS 'Totals<font color='#AA0000'>)</font>
+	<font color='#555555'>; zero out for next node aquired</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>dotree</font> <font color='#AA0000'>(</font>w WORDS<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>set</font> w '<font color='#AA0000'>(</font><font color='#998800'>0</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"Saving Totals"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>save</font> <font color='#008800'>"Totals.lsp"</font> 'Totals<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"destroying processes ..."</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>destroy</font> pid1<font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>destroy</font> pid2<font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>destroy</font> pid3<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; On a MacOS X  10.6 MacMini Intel 1.834 Ghz Core 2 Duo he following </font>
+<font color='#555555'>; output is generated when using local doc files (slightly different </font>
+<font color='#555555'>; from the remote versions).</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; ~> ./mapreduce </font>
+<font color='#555555'>; started servers -> 28402 28403 28404</font>
+<font color='#555555'>; ("localhost" 10003 ((node 2) (doc "Beowulf.txt") (words 38764) (ms 174)))</font>
+<font color='#555555'>; ("localhost" 10001 ((node 0) (doc "Comedy.txt") (words 98107) (ms 321)))</font>
+<font color='#555555'>; ("localhost" 10002 ((node 1) (doc "Sherlock.txt") (words 108215) (ms 326)))</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; reduce from http://localhost:10001/mrdemo/words-0.lsp</font>
+<font color='#555555'>; reduce from http://localhost:10002/mrdemo/words-1.lsp</font>
+<font color='#555555'>; reduce from http://localhost:10003/mrdemo/words-2.lsp</font>
+<font color='#555555'>; Saving Totals</font>
+<font color='#555555'>; destroying processes ...</font>
+<font color='#555555'>; ~> </font>
+
+<font color='#555555'>; When nodes retrieve the docouments over the Internet from</font>
+<font color='#555555'>; www.gutenberg.org the whoole process takes a longer time:</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; ~> ./mapreduce </font>
+<font color='#555555'>; started servers -> 28379 28380 28381</font>
+<font color='#555555'>; ("localhost" 10001 ((node 0) (doc "16703.txt") (words 98107) (ms 6829)))</font>
+<font color='#555555'>; ("localhost" 10003 ((node 2) (doc "20431-8.txt") (words 38754) (ms 8358)))</font>
+<font color='#555555'>; ("localhost" 10002 ((node 1) (doc "pg1661.txt") (words 109002) (ms 11084)))</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; reduce from http://localhost:10001/mrdemo/words-0.lsp</font>
+<font color='#555555'>; reduce from http://localhost:10002/mrdemo/words-1.lsp</font>
+<font color='#555555'>; reduce from http://localhost:10003/mrdemo/words-2.lsp</font>
+<font color='#555555'>; Saving Totals</font>
+<font color='#555555'>; destroying processes ...</font>
+<font color='#555555'>; ~> </font>
+ 
+
+<font color='#555555'>; eof ;</font>
+
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

@@ -1,0 +1,125 @@
+<html>
+<head>
+<style type="text/css" media="screen">
+<!--
+body, h4, p {
+    font-family: Lucida Sans, Helvetica, sans-serif;
+    line-height: 120%;
+    max-width: 1000px;
+    }
+
+h1, h2, h3 {
+    margin-top: 3%;
+    font-family: Lucida Sans, Helvetica, sans-serif;
+    line-height: 120%;
+    color: #404040;
+    }
+
+table {
+    margin: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-style: solid;
+    border-width: 0px;
+    border-color: #888888;
+    padding: 3px;
+    background: #f8ffff;
+    font-size: 95%;
+    }
+    
+th {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #888888;
+    padding: 3px;
+    background: #eeeeee;
+    font-size: 100%;
+    }
+    
+td {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #888888;
+    padding: 3px;
+    background: #f8ffff;
+    font-size: 100%;
+    }
+    
+pre {
+    margin: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #888888;
+    padding: 4px;
+    font-family: Andale Mono, "Bitstream Vera Sans Mono", Monaco, "Courier New";
+    font-size: 90%;
+    background: #f8ffff;
+    }
+
+tt {
+    font-family: Andale Mono, "Bitstream Vera Sans Mono", Monaco, "Courier New";
+    font-size: 100%;
+    }
+    
+-->
+</style>
+</head>
+<body>
+<blockquote>
+<h3>Starting newLISP server on Mac OS X using <tt>launchd</tt></h3>
+
+<p>Put the following file in your home directory into</p>
+
+<blockquote><pre>
+~/Library/LaunchAgents/org.newlisp.newlisp.plist
+</pre></blockquote>
+
+<p>newLISP server will be loaded automatically when Mac OS X starts and the user is logged in. The file can also be put into /Library/LaunchAgents/ when newLISP server should be run for any user.</p>
+
+
+<blockquote><pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN"
+		"http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;Label&lt;/key&gt;
+	&lt;string&gt;org.newlisp.newlisp&lt;/string&gt;
+	&lt;key&gt;ProgramArguments&lt;/key&gt;
+	&lt;array&gt;
+		&lt;string&gt;/usr/bin/newlisp&lt;/string&gt;
+		&lt;string&gt;-c&lt;/string&gt;
+		&lt;string&gt;-d4711&lt;/string&gt;
+		&lt;string&gt;-w/Users/lutz/Sites&lt;/string&gt;
+	&lt;/array&gt;
+	&lt;key&gt;RunAtLoad&lt;/key&gt;
+	&lt;true/&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</pre></blockquote>
+
+Change the <tt>-d</tt> port number and <tt>-w</tt> working directory to the local requirements. The Mac OS X utility <em>launchctl</em> can be used to check if newLISP is loaded and to manually load or unload it.
+
+<p>To see if newLISP server is loaded:</p>
+
+<blockquote><pre>
+launchctl list | grep newlisp
+</pre></blockquote>
+
+<p>To manually unload:</p>
+
+<blockquote><pre>
+launchctl unload ~/Library/LaunchAgents/org.newlisp.newlisp.plist
+</pre></blockquote>
+
+<p>To restart without rebooting:</p>
+
+<blockquote><pre>
+launchctl load ~/Library/LaunchAgents/org.newlisp.newlisp.plist
+</pre></blockquote>
+<center>&sect;</center>
+</blockquote>
+</html>
+

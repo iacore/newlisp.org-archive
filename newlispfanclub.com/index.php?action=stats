@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://newlispfanclub.com/Themes/default/css/minified_1451dd7350b47b84179bda6f75e6c43d.css?smf213_1668469015">
+	<style>
+	img.avatar { max-width: 65px !important; max-height: 65px !important; }
+	
+	</style>
+	<script>
+		var smf_theme_url = "https://newlispfanclub.com/Themes/default";
+		var smf_default_theme_url = "https://newlispfanclub.com/Themes/default";
+		var smf_images_url = "https://newlispfanclub.com/Themes/default/images";
+		var smf_smileys_url = "https://newlispfanclub.com/Smileys";
+		var smf_smiley_sets = "default,aaron,akyhne,fugue,alienine";
+		var smf_smiley_sets_default = "default";
+		var smf_avatars_url = "https://newlispfanclub.com/avatars";
+		var smf_scripturl = "https://newlispfanclub.com/index.php";
+		var smf_iso_case_folding = false;
+		var smf_charset = "UTF-8";
+		var smf_session_id = "820175742d334db2a0ec2d714db371a1";
+		var smf_session_var = "ace096301";
+		var smf_member_id = 0;
+		var ajax_notification_text = 'Loading...';
+		var help_popup_heading_text = 'A little lost? Let me explain:';
+		var banned_text = 'Sorry Guest, you are banned from using this forum!';
+		var smf_txt_expand = 'Expand';
+		var smf_txt_shrink = 'Shrink';
+		var smf_quote_expand = false;
+		var allow_xhjr_credentials = false;
+	</script>
+	<script src="https://newlispfanclub.com/Themes/default/scripts/jquery-3.6.0.min.js"></script>
+	<script src="https://newlispfanclub.com/Themes/default/scripts/minified_e03c1ff9f934bb58c703d4f579e2d553.js?smf213_1668469015"></script>
+	<script>
+	var smf_you_sure ='Are you sure you want to do this?';
+	</script>
+	<title>newLISP Fan Club - Statistics Center</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:site_name" content="newLISP Fan Club">
+	<meta property="og:title" content="newLISP Fan Club - Statistics Center">
+	<meta property="og:description" content="newLISP Fan Club - Statistics Center">
+	<meta name="description" content="newLISP Fan Club - Statistics Center">
+	<meta name="theme-color" content="#557EA0">
+	<link rel="help" href="https://newlispfanclub.com/index.php?action=help">
+	<link rel="contents" href="https://newlispfanclub.com/index.php">
+	<link rel="search" href="https://newlispfanclub.com/index.php?action=search">
+	<link rel="alternate" type="application/rss+xml" title="newLISP Fan Club - RSS" href="https://newlispfanclub.com/index.php?action=.xml;type=rss2">
+	<link rel="alternate" type="application/atom+xml" title="newLISP Fan Club - Atom" href="https://newlispfanclub.com/index.php?action=.xml;type=atom">
+</head>
+<body id="smf" class="action_stats">
+<div id="footerfix">
+	<div id="top_section">
+		<div class="inner_wrap">
+			<ul class="floatleft" id="top_info">
+				<li class="welcome">
+					Welcome to <strong>newLISP Fan Club</strong>.
+				</li>
+				<li class="button_login">
+					<a href="https://newlispfanclub.com/index.php?action=login" class="open" onclick="return reqOverlayDiv(this.href, 'Log in', 'login');">
+						<span class="main_icons login"></span>
+						<span class="textmenu">Log in</span>
+					</a>
+				</li>
+				<li class="button_signup">
+					<a href="https://newlispfanclub.com/index.php?action=signup" class="open">
+						<span class="main_icons regcenter"></span>
+						<span class="textmenu">Sign up</span>
+					</a>
+				</li>
+			</ul>
+			<form id="search_form" class="floatright" action="https://newlispfanclub.com/index.php?action=search2" method="post" accept-charset="UTF-8">
+				<input type="search" name="search" value="">&nbsp;
+				<select name="search_selection">
+					<option value="all" selected>Entire forum </option>
+				</select>
+				<input type="submit" name="search2" value="Search" class="button">
+				<input type="hidden" name="advanced" value="0">
+			</form>
+		</div><!-- .inner_wrap -->
+	</div><!-- #top_section -->
+	<div id="header">
+		<h1 class="forumtitle">
+			<a id="top" href="https://newlispfanclub.com/index.php">newLISP Fan Club</a>
+		</h1>
+		<img id="smflogo" src="https://newlispfanclub.com/Themes/default/images/smflogo.svg" alt="Simple Machines Forum" title="Simple Machines Forum">
+	</div>
+	<div id="wrapper">
+		<div id="upper_section">
+			<div id="inner_section">
+				<div id="inner_wrap" class="hide_720">
+					<div class="user">
+						<time datetime="2023-07-19T00:52:15Z">July 18, 2023, 05:52:15 PM</time>
+					</div>
+					<div class="news">
+						<h2>News: </h2>
+						<p><a href="https://newlispfanclub.com/index.php?topic=5248.0" class="bbc_link" target="_blank" rel="noopener">Welcome to the new forums!</a></p>
+					</div>
+				</div>
+				<a class="mobile_user_menu">
+					<span class="menu_icon"></span>
+					<span class="text_menu">Main Menu</span>
+				</a>
+				<div id="main_menu">
+					<div id="mobile_user_menu" class="popup_container">
+						<div class="popup_window description">
+							<div class="popup_heading">Main Menu
+								<a href="javascript:void(0);" class="main_icons hide_popup"></a>
+							</div>
+							
+					<ul class="dropmenu menu_nav">
+						<li class="button_home">
+							<a class="active" href="https://newlispfanclub.com/index.php">
+								<span class="main_icons home"></span><span class="textmenu">Home</span>
+							</a>
+						</li>
+						<li class="button_search">
+							<a href="https://newlispfanclub.com/index.php?action=search">
+								<span class="main_icons search"></span><span class="textmenu">Search</span>
+							</a>
+						</li>
+					</ul><!-- .menu_nav -->
+						</div>
+					</div>
+				</div>
+				<div class="navigate_section">
+					<ul>
+						<li>
+							<a href="https://newlispfanclub.com/index.php"><span>newLISP Fan Club</span></a>
+						</li>
+						<li class="last">
+							<span class="dividers"> &#9658; </span>
+							<a href="https://newlispfanclub.com/index.php?action=stats"><span>Statistics Center</span></a>
+						</li>
+					</ul>
+				</div><!-- .navigate_section -->
+			</div><!-- #inner_section -->
+		</div><!-- #upper_section -->
+		<div id="content_section">
+			<div id="main_content_section">
+	<div id="statistics" class="main_section">
+		<div class="cat_bar">
+			<h3 class="catbg">newLISP Fan Club - Statistics Center</h3>
+		</div>
+		<div class="roundframe">
+			<div class="title_bar">
+				<h4 class="titlebg">
+					<span class="main_icons general"></span> General Statistics
+				</h4>
+			</div>
+			<dl class="stats half_content">
+				<dt>Total Members:</dt>
+				<dd>498</dd>
+				<dt>Total Posts:</dt>
+				<dd>24,200</dd>
+				<dt>Total Topics:</dt>
+				<dd>4,249</dd>
+				<dt>Total Categories:</dt>
+				<dd>3</dd>
+				<dt>Users Online:</dt>
+				<dd>17</dd>
+				<dt>Most Online:</dt>
+				<dd>118 - May 25, 2023, 01:17:51 AM</dd>
+				<dt>Online today:</dt>
+				<dd>19</dd>
+			</dl>
+			<dl class="stats half_content">
+				<dt>Average registrations per day:</dt>
+				<dd>0.08</dd>
+				<dt>Average posts per day:</dt>
+				<dd>0.57</dd>
+				<dt>Average topics per day:</dt>
+				<dd>0.18</dd>
+				<dt>Total Boards:</dt>
+				<dd>8</dd>
+				<dt>Latest Member:</dt>
+				<dd><a href="https://newlispfanclub.com/index.php?action=profile;u=1512">nixfreak</a></dd>
+				<dt>Average online per day:</dt>
+				<dd>23.23</dd>
+				<dt>Gender stats:</dt>
+				<dd>None: 494<br>Male: 4<br>
+				</dd>
+			</dl>
+			<div class="half_content">
+				<div class="title_bar">
+					<h4 class="titlebg">
+						<span class="main_icons posters"></span> Top 10 Posters
+					</h4>
+				</div>
+				<dl class="stats">
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=5">Lutz</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 100%;"></div>
+						<span>5,296</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=38">newdep</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 39%;"></div>
+						<span>2,039</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=153">cormullion</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 38%;"></div>
+						<span>2,038</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=4">HPW</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 26%;"></div>
+						<span>1,389</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=39">pjot</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 14%;"></div>
+						<span>733</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=346">TedWalther</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 11%;"></div>
+						<span>608</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=104">rickyboy</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 11%;"></div>
+						<span>606</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=354">Jeff</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 11%;"></div>
+						<span>604</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=398">itistoday</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 8%;"></div>
+						<span>432</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=30">nigelbrown</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 8%;"></div>
+						<span>430</span>
+					</dd>
+				</dl>
+			</div><!-- .half_content -->
+			<div class="half_content">
+				<div class="title_bar">
+					<h4 class="titlebg">
+						<span class="main_icons boards"></span> Top 10 Boards
+					</h4>
+				</div>
+				<dl class="stats">
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?board=16.0">newLISP in the real world</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 100%;"></div>
+						<span>7,018</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?board=2.0">newLISP newS</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 88%;"></div>
+						<span>6,162</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?board=5.0">Anything else we might add?</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 78%;"></div>
+						<span>5,446</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?board=9.0">newLISP and the O.S.</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 37%;"></div>
+						<span>2,585</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?board=10.0">newLISP Graphics &amp; Sound</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 17%;"></div>
+						<span>1,226</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?board=15.0">Whither newLISP?</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 16%;"></div>
+						<span>1,091</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?board=12.0">So, what can you actually DO with newLISP?</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 6%;"></div>
+						<span>453</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?board=17.0">Dragonfly</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 3%;"></div>
+						<span>219</span>
+					</dd>
+				</dl>
+			</div><!-- .half_content -->
+			<div class="half_content">
+				<div class="title_bar">
+					<h4 class="titlebg">
+						<span class="main_icons topics_replies"></span> Top 10 Topics (by Replies)
+					</h4>
+				</div>
+				<dl class="stats">
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=119.0">RFC open on newLISP documentation</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 100%;"></div>
+						<span>280</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=4467.0">newLISP in a browser</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 41%;"></div>
+						<span>115</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=76.0">newlisp.DLL possible?</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 38%;"></div>
+						<span>105</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=2822.0">Dragonfly - a web framework for newLISP</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 26%;"></div>
+						<span>74</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=2574.0">Interesting problem for me</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 25%;"></div>
+						<span>70</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=2354.0">The 9.4.0 newLISP manual</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 24%;"></div>
+						<span>68</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=1689.0">newLisp competition 2007</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 24%;"></div>
+						<span>68</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=741.0">debian package for newLisp</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 23%;"></div>
+						<span>64</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=2307.0">Promoting my blog.</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 22%;"></div>
+						<span>61</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=341.0">Problem with UDP</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 21%;"></div>
+						<span>59</span>
+					</dd>
+				</dl>
+			</div><!-- .half_content -->
+			<div class="half_content">
+				<div class="title_bar">
+					<h4 class="titlebg">
+						<span class="main_icons topics_views"></span> Top 10 Topics (by Views)
+					</h4>
+				</div>
+				<dl class="stats">
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=119.0">RFC open on newLISP documentation</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 100%;"></div>
+						<span>139,468</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=4467.0">newLISP in a browser</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 91%;"></div>
+						<span>126,298</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=76.0">newlisp.DLL possible?</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 84%;"></div>
+						<span>116,794</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=407.0">newLISP now on Graham's list</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 34%;"></div>
+						<span>47,482</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=2822.0">Dragonfly - a web framework for newLISP</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 33%;"></div>
+						<span>45,981</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=1689.0">newLisp competition 2007</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 31%;"></div>
+						<span>43,027</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=741.0">debian package for newLisp</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 31%;"></div>
+						<span>42,795</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=2000.0">Functional programming - permutations</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 26%;"></div>
+						<span>36,725</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=3989.0">variable capture?</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 26%;"></div>
+						<span>35,871</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?topic=341.0">Problem with UDP</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 24%;"></div>
+						<span>33,884</span>
+					</dd>
+				</dl>
+			</div><!-- .half_content -->
+			<div class="half_content">
+				<div class="title_bar">
+					<h4 class="titlebg">
+						<span class="main_icons starters"></span> Top Topic Starters
+					</h4>
+				</div>
+				<dl class="stats">
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=38">newdep</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 100%;"></div>
+						<span>487</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=5">Lutz</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 85%;"></div>
+						<span>414</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=153">cormullion</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 49%;"></div>
+						<span>241</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=4">HPW</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 46%;"></div>
+						<span>224</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=354">Jeff</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 22%;"></div>
+						<span>109</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=119">Dmi</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 20%;"></div>
+						<span>95</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=415">Kazimir Majorinc</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 18%;"></div>
+						<span>88</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=39">pjot</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 17%;"></div>
+						<span>82</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=732">cameyo</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 15%;"></div>
+						<span>72</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=346">TedWalther</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 14%;"></div>
+						<span>66</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=605">kanen</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 13%;"></div>
+						<span>63</span>
+					</dd>
+				</dl>
+			</div><!-- .half_content -->
+			<div class="half_content">
+				<div class="title_bar">
+					<h4 class="titlebg">
+						<span class="main_icons time_online"></span> Most Time Online
+					</h4>
+				</div>
+				<dl class="stats">
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=398">itistoday</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 100%;"></div>
+						<span>8h 9m</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=1134">ralph.ronnquist</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 46%;"></div>
+						<span>3h 46m</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=732">cameyo</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 15%;"></div>
+						<span>1h 11m</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=147">newBert</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 7%;"></div>
+						<span>35m</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=1509">greg</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 6%;"></div>
+						<span>31m</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=812">bairui</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 4%;"></div>
+						<span>17m</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=1512">nixfreak</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 4%;"></div>
+						<span>17m</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=1510">dotmacro</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 3%;"></div>
+						<span>12m</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=4">HPW</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 2%;"></div>
+						<span>11m</span>
+					</dd>
+					<dt>
+						<a href="https://newlispfanclub.com/index.php?action=profile;u=577">Astrobe</a>
+					</dt>
+					<dd class="statsbar generic_bar righttext">
+						<div class="bar" style="width: 2%;"></div>
+						<span>10m</span>
+					</dd>
+				</dl>
+			</div><!-- .half_content -->
+		</div><!-- .roundframe -->
+		<br class="clear">
+		<div class="cat_bar">
+			<h3 class="catbg">
+				<span class="main_icons history"></span>Forum History (using forum time offset)
+			</h3>
+		</div>
+		<table id="stats" class="table_grid">
+			<thead>
+				<tr class="title_bar">
+					<th class="lefttext">Yearly Summary</th>
+					<th>New Topics</th>
+					<th>New Posts</th>
+					<th>New Members</th>
+					<th>Most Online</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="windowbg" id="year_2023">
+					<th class="lefttext">
+						<img id="year_img_2023" src="https://newlispfanclub.com/Themes/default/images/selected_open.png" alt="*"> <a href="#year_2023" id="year_link_2023">2023</a>
+					</th>
+					<th>11</th>
+					<th>35</th>
+					<th>5</th>
+					<th>118</th>
+				</tr>
+				<tr class="windowbg" id="tr_month_202307">
+					<th class="stats_month">
+						<img src="https://newlispfanclub.com/Themes/default/images/selected.png" alt="" id="img_202307"> <a id="m202307" href="https://newlispfanclub.com/index.php?action=stats;expand=202307#m202307" onclick="return doingExpandCollapse;">July 2023</a>
+					</th>
+					<th>1</th>
+					<th>3</th>
+					<th>0</th>
+					<th>26</th>
+				</tr>
+				<tr class="windowbg" id="tr_month_202306">
+					<th class="stats_month">
+						<img src="https://newlispfanclub.com/Themes/default/images/selected.png" alt="" id="img_202306"> <a id="m202306" href="https://newlispfanclub.com/index.php?action=stats;expand=202306#m202306" onclick="return doingExpandCollapse;">June 2023</a>
+					</th>
+					<th>1</th>
+					<th>1</th>
+					<th>1</th>
+					<th>34</th>
+				</tr>
+				<tr class="windowbg" id="tr_month_202305">
+					<th class="stats_month">
+						<img src="https://newlispfanclub.com/Themes/default/images/selected.png" alt="" id="img_202305"> <a id="m202305" href="https://newlispfanclub.com/index.php?action=stats;expand=202305#m202305" onclick="return doingExpandCollapse;">May 2023</a>
+					</th>
+					<th>9</th>
+					<th>31</th>
+					<th>4</th>
+					<th>118</th>
+				</tr>
+			</tbody>
+		</table>
+	</div><!-- #statistics -->
+	<script>
+		var oStatsCenter = new smf_StatsCenter({
+			sTableId: 'stats',
+
+			reYearPattern: /year_(\d+)/,
+			sYearImageCollapsed: 'selected.png',
+			sYearImageExpanded: 'selected_open.png',
+			sYearImageIdPrefix: 'year_img_',
+			sYearLinkIdPrefix: 'year_link_',
+
+			reMonthPattern: /tr_month_(\d+)/,
+			sMonthImageCollapsed: 'selected.png',
+			sMonthImageExpanded: 'selected_open.png',
+			sMonthImageIdPrefix: 'img_',
+			sMonthLinkIdPrefix: 'm',
+
+			reDayPattern: /tr_day_(\d+-\d+-\d+)/,
+			sDayRowClassname: 'windowbg',
+			sDayRowIdPrefix: 'tr_day_',
+
+			aCollapsedYears: [
+			],
+
+			aDataCells: [
+				'date',
+				'new_topics',
+				'new_posts',
+				'new_members',
+				'most_members_online'
+			]
+		});
+	</script><!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://m.okturtles.org/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '6']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="https://m.okturtles.org/matomo.php?idsite=6&rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+			</div><!-- #main_content_section -->
+		</div><!-- #content_section -->
+	</div><!-- #wrapper -->
+</div><!-- #footerfix -->
+	<div id="footer">
+		<div class="inner_wrap">
+		<ul>
+			<li class="floatright"><a href="https://newlispfanclub.com/index.php?action=help">Help</a> | <a href="https://newlispfanclub.com/index.php?action=agreement">Terms and Rules</a> | <a href="#top_section">Go Up &#9650;</a></li>
+			<li class="copyright"><a href="https://newlispfanclub.com/index.php?action=credits" title="License" target="_blank" rel="noopener">SMF 2.1.3 &copy; 2022</a>, <a href="https://www.simplemachines.org" title="Simple Machines" target="_blank" rel="noopener">Simple Machines</a></li>
+		</ul>
+		</div>
+	</div><!-- #footer -->
+<script>
+window.addEventListener("DOMContentLoaded", function() {
+	function triggerCron()
+	{
+		$.get('https://newlispfanclub.com' + "/cron.php?ts=1689727935");
+	}
+	window.setTimeout(triggerCron, 1);
+});
+</script>
+</body>
+</html>

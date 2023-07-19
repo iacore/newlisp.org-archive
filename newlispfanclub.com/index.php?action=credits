@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://newlispfanclub.com/Themes/default/css/minified_1451dd7350b47b84179bda6f75e6c43d.css?smf213_1668469015">
+	<style>
+	img.avatar { max-width: 65px !important; max-height: 65px !important; }
+	
+	</style>
+	<script>
+		var smf_theme_url = "https://newlispfanclub.com/Themes/default";
+		var smf_default_theme_url = "https://newlispfanclub.com/Themes/default";
+		var smf_images_url = "https://newlispfanclub.com/Themes/default/images";
+		var smf_smileys_url = "https://newlispfanclub.com/Smileys";
+		var smf_smiley_sets = "default,aaron,akyhne,fugue,alienine";
+		var smf_smiley_sets_default = "default";
+		var smf_avatars_url = "https://newlispfanclub.com/avatars";
+		var smf_scripturl = "https://newlispfanclub.com/index.php";
+		var smf_iso_case_folding = false;
+		var smf_charset = "UTF-8";
+		var smf_session_id = "820175742d334db2a0ec2d714db371a1";
+		var smf_session_var = "ace096301";
+		var smf_member_id = 0;
+		var ajax_notification_text = 'Loading...';
+		var help_popup_heading_text = 'A little lost? Let me explain:';
+		var banned_text = 'Sorry Guest, you are banned from using this forum!';
+		var smf_txt_expand = 'Expand';
+		var smf_txt_shrink = 'Shrink';
+		var smf_quote_expand = false;
+		var allow_xhjr_credentials = false;
+	</script>
+	<script src="https://newlispfanclub.com/Themes/default/scripts/jquery-3.6.0.min.js"></script>
+	<script src="https://newlispfanclub.com/Themes/default/scripts/minified_b00fbdf82aeb9f1ec3da9f6761492503.js?smf213_1668469015"></script>
+	<script>
+	var smf_you_sure ='Are you sure you want to do this?';
+	</script>
+	<title>Credits</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:site_name" content="newLISP Fan Club">
+	<meta property="og:title" content="Credits">
+	<meta property="og:description" content="Credits">
+	<meta name="description" content="Credits">
+	<meta name="theme-color" content="#557EA0">
+	<meta name="robots" content="noindex">
+	<link rel="help" href="https://newlispfanclub.com/index.php?action=help">
+	<link rel="contents" href="https://newlispfanclub.com/index.php">
+	<link rel="search" href="https://newlispfanclub.com/index.php?action=search">
+	<link rel="alternate" type="application/rss+xml" title="newLISP Fan Club - RSS" href="https://newlispfanclub.com/index.php?action=.xml;type=rss2">
+	<link rel="alternate" type="application/atom+xml" title="newLISP Fan Club - Atom" href="https://newlispfanclub.com/index.php?action=.xml;type=atom">
+</head>
+<body id="smf" class="action_credits">
+<div id="footerfix">
+	<div id="top_section">
+		<div class="inner_wrap">
+			<ul class="floatleft" id="top_info">
+				<li class="welcome">
+					Welcome to <strong>newLISP Fan Club</strong>.
+				</li>
+				<li class="button_login">
+					<a href="https://newlispfanclub.com/index.php?action=login" class="open" onclick="return reqOverlayDiv(this.href, 'Log in', 'login');">
+						<span class="main_icons login"></span>
+						<span class="textmenu">Log in</span>
+					</a>
+				</li>
+				<li class="button_signup">
+					<a href="https://newlispfanclub.com/index.php?action=signup" class="open">
+						<span class="main_icons regcenter"></span>
+						<span class="textmenu">Sign up</span>
+					</a>
+				</li>
+			</ul>
+			<form id="search_form" class="floatright" action="https://newlispfanclub.com/index.php?action=search2" method="post" accept-charset="UTF-8">
+				<input type="search" name="search" value="">&nbsp;
+				<select name="search_selection">
+					<option value="all" selected>Entire forum </option>
+				</select>
+				<input type="submit" name="search2" value="Search" class="button">
+				<input type="hidden" name="advanced" value="0">
+			</form>
+		</div><!-- .inner_wrap -->
+	</div><!-- #top_section -->
+	<div id="header">
+		<h1 class="forumtitle">
+			<a id="top" href="https://newlispfanclub.com/index.php">newLISP Fan Club</a>
+		</h1>
+		<img id="smflogo" src="https://newlispfanclub.com/Themes/default/images/smflogo.svg" alt="Simple Machines Forum" title="Simple Machines Forum">
+	</div>
+	<div id="wrapper">
+		<div id="upper_section">
+			<div id="inner_section">
+				<div id="inner_wrap" class="hide_720">
+					<div class="user">
+						<time datetime="2023-07-19T00:52:16Z">July 18, 2023, 05:52:16 PM</time>
+					</div>
+					<div class="news">
+						<h2>News: </h2>
+						<p><a href="https://newlispfanclub.com/index.php?topic=5248.0" class="bbc_link" target="_blank" rel="noopener">Welcome to the new forums!</a></p>
+					</div>
+				</div>
+				<a class="mobile_user_menu">
+					<span class="menu_icon"></span>
+					<span class="text_menu">Main Menu</span>
+				</a>
+				<div id="main_menu">
+					<div id="mobile_user_menu" class="popup_container">
+						<div class="popup_window description">
+							<div class="popup_heading">Main Menu
+								<a href="javascript:void(0);" class="main_icons hide_popup"></a>
+							</div>
+							
+					<ul class="dropmenu menu_nav">
+						<li class="button_home">
+							<a class="active" href="https://newlispfanclub.com/index.php">
+								<span class="main_icons home"></span><span class="textmenu">Home</span>
+							</a>
+						</li>
+						<li class="button_search">
+							<a href="https://newlispfanclub.com/index.php?action=search">
+								<span class="main_icons search"></span><span class="textmenu">Search</span>
+							</a>
+						</li>
+					</ul><!-- .menu_nav -->
+						</div>
+					</div>
+				</div>
+				<div class="navigate_section">
+					<ul>
+						<li class="last">
+							<a href="https://newlispfanclub.com/index.php"><span>newLISP Fan Club</span></a>
+						</li>
+					</ul>
+				</div><!-- .navigate_section -->
+			</div><!-- #inner_section -->
+		</div><!-- #upper_section -->
+		<div id="content_section">
+			<div id="main_content_section">
+	<div class="main_section" id="credits">
+		<div class="cat_bar">
+			<h3 class="catbg">Credits</h3>
+		</div>
+		<div class="windowbg">
+			<p>Simple Machines wants to thank everyone who helped make SMF 2.1 what it is today; shaping and directing our project, all through the thick and the thin. It wouldn't have been possible without you. This includes our users and especially Charter Members - thanks for installing and using our software as well as providing valuable feedback, bug reports, and opinions.</p>
+		</div>
+		<div class="cat_bar">
+			<h3 class="catbg">The Team</h3>
+		</div>
+		<div class="windowbg">
+			<dl>
+				<dt>
+					<strong>Project Management</strong>
+				</dt>
+				<dd>Aleksi "Lex" Kilpinen, Michele "Illori" Davis, Jessica "Suki" González, and Will "Kindred" Wagner.
+				</dd>
+				<dt>
+					<strong>Developers</strong>
+				</dt>
+				<dd>Shawn Bulen, John "live627" Rayes, Oscar "Ozp" Rydhé, Aaron van Geffen, Antechinus, Bjoern "Bloc" Kristiansen, Brad "IchBin™" Grow, Colin Schoen, emanuele, Hendrik Jan "Compuart" Visser, Jessica "Suki" González, Jon "Sesquipedalian" Stovell, Juan "JayBachatero" Hernandez, Karl "RegularExpression" Benson, Matthew "Labradoodle-360" Kerle, Grudge, Michael "Oldiesmann" Eshom, Michael "Thantos" Miller, Norv, Peter "Arantor" Spicer, Selman "[SiNaN]" Eser, Shitiz "Dragooon" Garg, Theodore "Orstio" Hildebrandt, Thorsten "TE" Eurich, and winrules.
+				</dd>
+				<dt>
+					<strong>Support Specialists</strong>
+				</dt>
+				<dd>Will "Kindred" Wagner, Doug Heffernan, lurkalot, shadav, Steve, Aleksi "Lex" Kilpinen, br360, GigaWatt, ziycon, Adam Tallon, Bigguy, Bruno "margarett" Alves, CapadY, ChalkCat, Chas Large, Duncan85, gbsothere, JimM, Justyne, Kat, Kevin "greyknight17" Hou, Krash, Mashby, Michael Colin Blaber, Old Fossil, S-Ace, Storman™, Wade "sησω" Poulsen, and xenovanis.
+				</dd>
+				<dt>
+					<strong>Customizers</strong>
+				</dt>
+				<dd>Diego Andrés, GL700Wing, Johnnie "TwitchisMental" Ballew, Jonathan "vbgamer45" Valentin, Michael "Mick." Gomez, Sami "SychO" Mazouz, Brannon "B" Hall, Gary M. Gadsdon, Jack "akabugeyes" Thorsen, Jason "JBlaze" Clemons, Joey "Tyrsson" Smith, Kays, NanoSector, Ricky., Russell "NEND" Najar, and SA™.
+				</dd>
+				<dt>
+					<strong>Documentation Writers</strong>
+				</dt>
+				<dd>Michele "Illori" Davis, Irisado, AngelinaBelle, Chainy, Graeme Spence, and Joshua "groundup" Dickerson.
+				</dd>
+				<dt>
+					<strong>Localizers</strong>
+				</dt>
+				<dd>Nikola "Dzonny" Novaković, m4z, Francisco "d3vcho" Domínguez, Robert Monden, and Relyana.
+				</dd>
+				<dt>
+					<strong>Marketing</strong>
+				</dt>
+				<dd>Adish "(F.L.A.M.E.R)" Patel, Bryan "Runic" Deakin, Marcus "cσσкιє мσηѕтєя" Forsberg, and Ralph "[n3rve]" Otowo.
+				</dd>
+				<dt>
+					<strong>Site Administrators</strong>
+				</dt>
+				<dd>Jeremy "SleePy" Darwood.
+				</dd>
+				<dt>
+					<strong>Servers Administrators</strong>
+				</dt>
+				<dd>Derek Schwab, Michael Johnson, and Liroy van Hoewijk.
+				</dd>
+			</dl>
+		</div>
+		<div class="cat_bar">
+			<h3 class="catbg">Special Thanks</h3>
+		</div>
+		<div class="windowbg">
+			<dl>
+				<dt>
+					<strong>Consulting Developers</strong>
+				</dt>
+				<dd>albertlast, Brett Flannigan, Mark Rose, René-Gilles "Nao 尚" Deberdt, tinoest, and everyone who <a href="https://github.com/SimpleMachines/SMF/graphs/contributors">contributed on GitHub</a>.
+				</dd>
+				<dt>
+					<strong>Beta Testers</strong>
+				</dt>
+				<dd>The invaluable few who tirelessly find bugs, provide feedback, and drive the developers crazier.
+				</dd>
+				<dt>
+					<strong>Language Translators</strong>
+				</dt>
+				<dd>Thank you for your efforts which make it possible for people all around the world to use SMF.
+				</dd>
+				<dt>
+					<strong>Founding Father of SMF</strong>
+				</dt>
+				<dd>Unknown W. "[Unknown]" Brackets.
+				</dd>
+				<dt>
+					<strong>Original Project Managers</strong>
+				</dt>
+				<dd>Jeff Lewis, Joseph Fung, and David Recordon.
+				</dd>
+				<dt>
+					<strong>In loving memory of</strong>
+				</dt>
+				<dd>Crip, K@, metallica48423, and Paul_Pauline.
+				</dd>
+			</dl>
+				<p class="posttext">And for anyone we may have missed, thank you!</p>
+		</div>
+		<div class="cat_bar">
+			<h3 class="catbg">Software/Graphics</h3>
+		</div>
+		<div class="windowbg">
+			<dl>
+				<dt><strong>Graphics</strong></dt>
+				<dd><a href="http://p.yusukekamiyamane.com/">Fugue Icons</a> | © 2012 Yusuke Kamiyamane | These icons are licensed under a Creative Commons Attribution 3.0 License</dd><dd><a href="https://techbase.kde.org/Projects/Oxygen/Licensing#Use_on_Websites">Oxygen Icons</a> | These icons are licensed under <a href="http://www.gnu.org/copyleft/lesser.html">GNU LGPLv3</a></dd>
+			</dl>
+			<dl>
+				<dt><strong>Software</strong></dt>
+				<dd><a href="https://jquery.org/">JQuery</a> | © John Resig | Licensed under <a href="https://github.com/jquery/jquery/blob/master/LICENSE.txt">The MIT License (MIT)</a></dd><dd><a href="https://briancherne.github.io/jquery-hoverIntent/">hoverIntent</a> | © Brian Cherne | Licensed under <a href="https://en.wikipedia.org/wiki/MIT_License">The MIT License (MIT)</a></dd><dd><a href="https://www.sceditor.com/">SCEditor</a> | © Sam Clarke | Licensed under <a href="https://en.wikipedia.org/wiki/MIT_License">The MIT License (MIT)</a></dd><dd><a href="http://wayfarerweb.com/jquery/plugins/animadrag/">animaDrag</a> | © Abel Mohler | Licensed under <a href="https://en.wikipedia.org/wiki/MIT_License">The MIT License (MIT)</a></dd><dd><a href="https://github.com/mzubala/jquery-custom-scrollbar">jQuery Custom Scrollbar</a> | © Maciej Zubala | Licensed under <a href="http://en.wikipedia.org/wiki/MIT_License">The MIT License (MIT)</a></dd><dd><a href="http://slippry.com/">jQuery Responsive Slider</a> | © booncon ROCKETS | Licensed under <a href="http://en.wikipedia.org/wiki/MIT_License">The MIT License (MIT)</a></dd><dd><a href="https://github.com/ichord/At.js">At.js</a> | © chord.luo@gmail.com | Licensed under <a href="https://github.com/ichord/At.js/blob/master/LICENSE-MIT">The MIT License (MIT)</a></dd><dd><a href="https://github.com/ttsvetko/HTML5-Desktop-Notifications">HTML5 Desktop Notifications</a> | © Tsvetan Tsvetkov | Licensed under <a href="https://github.com/ttsvetko/HTML5-Desktop-Notifications/blob/master/License.txt">The Apache License Version 2.0</a></dd><dd><a href="https://github.com/enygma/gauth">GAuth Code Generator/Validator</a> | © Chris Cornutt | Licensed under <a href="https://github.com/enygma/gauth/blob/master/LICENSE">The MIT License (MIT)</a></dd><dd><a href="https://github.com/enyo/dropzone">Dropzone.js</a> | © Matias Meno | Licensed under <a href="http://en.wikipedia.org/wiki/MIT_License">The MIT License (MIT)</a></dd><dd><a href="https://github.com/matthiasmullie/minify">Minify</a> | © Matthias Mullie | Licensed under <a href="http://en.wikipedia.org/wiki/MIT_License">The MIT License (MIT)</a></dd><dd><a href="https://github.com/true/php-punycode">PHP-Punycode</a> | © True B.V. | Licensed under <a href="http://en.wikipedia.org/wiki/MIT_License">The MIT License (MIT)</a></dd>
+			</dl>
+			<dl>
+				<dt><strong>Fonts</strong></dt>
+				<dd><a href="https://fontlibrary.org/en/font/anonymous-pro"> Anonymous Pro</a> | © 2009 | This font is licensed under the SIL Open Font License, Version 1.1</dd><dd><a href="https://fontlibrary.org/en/font/consolamono"> ConsolaMono</a> | © 2012 | This font is licensed under the SIL Open Font License, Version 1.1</dd><dd><a href="https://fontlibrary.org/en/font/phennig"> Phennig</a> | © 2009-2012 | This font is licensed under the SIL Open Font License, Version 1.1</dd>
+			</dl>
+		</div>
+		<div class="cat_bar">
+			<h3 class="catbg">Modifications</h3>
+		</div>
+		<div class="windowbg">
+			<ul>
+				<li><a href="https://custom.simplemachines.org/mods/index.php?mod=2569">Enhancements to purge inactive members: Version 1.3.9</a> | License: <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a> | Copyright © 2010-2021, davidhs</li>
+			</ul>
+		</div>
+		<div class="cat_bar">
+			<h3 class="catbg">Forum Copyright</h3>
+		</div>
+		<div class="windowbg">
+			<a href="https://newlispfanclub.com/index.php?action=credits" title="License" target="_blank" rel="noopener">SMF 2.1.3 &copy; 2022</a>, <a href="https://www.simplemachines.org" title="Simple Machines" target="_blank" rel="noopener">Simple Machines</a>
+		</div>
+	</div><!-- #credits --><!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://m.okturtles.org/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '6']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="https://m.okturtles.org/matomo.php?idsite=6&rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+			</div><!-- #main_content_section -->
+		</div><!-- #content_section -->
+	</div><!-- #wrapper -->
+</div><!-- #footerfix -->
+	<div id="footer">
+		<div class="inner_wrap">
+		<ul>
+			<li class="floatright"><a href="https://newlispfanclub.com/index.php?action=help">Help</a> | <a href="https://newlispfanclub.com/index.php?action=agreement">Terms and Rules</a> | <a href="#top_section">Go Up &#9650;</a></li>
+			<li class="copyright"><a href="https://newlispfanclub.com/index.php?action=credits" title="License" target="_blank" rel="noopener">SMF 2.1.3 &copy; 2022</a>, <a href="https://www.simplemachines.org" title="Simple Machines" target="_blank" rel="noopener">Simple Machines</a></li>
+		</ul>
+		</div>
+	</div><!-- #footer -->
+<script>
+window.addEventListener("DOMContentLoaded", function() {
+	function triggerCron()
+	{
+		$.get('https://newlispfanclub.com' + "/cron.php?ts=1689727935");
+	}
+	window.setTimeout(triggerCron, 1);
+});
+</script>
+</body>
+</html>

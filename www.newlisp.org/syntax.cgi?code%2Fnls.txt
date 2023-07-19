@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>code/nls.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'>; - nls - newLISP shell combines interactive OS and LISP shell</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; v.1.0 - adapted to new manual HTML formatting 2009-08-04</font>
+<font color='#555555'>; v.1.1 - better regex string for syntax filtering 2011-11-01</font>
+<font color='#555555'>;         now formats dolist, dotimes ... etc. correctly</font>
+<font color='#555555'>; v.1.2 - fix for Windows probelm passing cr-lf in command-event</font>
+<font color='#555555'>; c.1.3 - cut off cr-lf only on versions < 10.4.1</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; Directory and file commands to not work yet on names containing spaces!</font>
+<font color='#555555'>; Does not work with <,>,<<,>></font>
+<font color='#555555'>;</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; Use the prompt as if a Bash shell. Commands not starting with an opening</font>
+<font color='#555555'>; parenthesis or space are interpreted as UNIX shell cmomands, commands</font>
+<font color='#555555'>; starting with parenthesis or space are interpreted as interacive newLISP</font>
+<font color='#555555'>; commands.</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>help func-name<font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> func-name <font color='#008800'>"help"</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'func-name <font color='#008800'>""</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>find</font> func-name <font color='#008800'>"|+*-"</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>push</font> "\&#092;&#034; func-name<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'helpfile <font color='#AA0000'>(</font><font color='#0000AA'>read-file</font> <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> ostype <font color='#008800'>"Win32"</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>string</font> <font color='#AA0000'>(</font><font color='#0000AA'>env</font> <font color='#008800'>"NEWLISPDIR"</font><font color='#AA0000'>)</font> <font color='#008800'>"/newlisp_manual.html"</font><font color='#AA0000'>)</font> 
+    <font color='#008800'>"/usr/share/doc/newlisp/newlisp_manual.html"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'html-text <font color='#AA0000'>(</font><font color='#0000AA'>join</font> 
+    <font color='#AA0000'>(</font><font color='#0000AA'>find-all</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>{(syntax: \(%s.*?)(&lt;br/&gt;|&lt;/h4&gt;)}</font> func-name <font color='#AA0000'>)</font> helpfile $1<font color='#AA0000'>)</font> <font color='#008800'>"&#092;n"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"<.*?>"</font> html-text <font color='#008800'>""</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&amp;lt&#059;"</font> html-text <font color='#008800'>"<"</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&amp;gt&#059;"</font> html-text <font color='#008800'>">"</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>replace</font> <font color='#008800'>"&amp;amp&#059;"</font> html-text <font color='#008800'>"&amp;"</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>println</font> html-text<font color='#AA0000'>)</font>
+  <font color='#008800'>""</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; set the prompt to the current path</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>prompt-event</font> <font color='#AA0000'>(</font>fn <font color='#AA0000'>(</font>ctx<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>string</font> ctx <font color='#008800'>":"</font> <font color='#AA0000'>(</font><font color='#0000AA'>real-path</font><font color='#AA0000'>)</font> <font color='#008800'>"> "</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; handle some special commands, newLISP expressions and shell commands</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>command-event</font> <font color='#AA0000'>(</font>fn <font color='#AA0000'>(</font>s<font color='#AA0000'>)</font> 
+  <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>and</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> <font color='#AA0000'>(</font><font color='#0000AA'>sys-info</font> <font color='#998800'>-2</font><font color='#AA0000'>)</font> <font color='#998800'>10401</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> ostype <font color='#008800'>"Win32"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 's <font color='#AA0000'>(</font><font color='#0000AA'>chop</font> s <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+  <font color='#AA0000'>(</font><font color='#0000AA'>if</font> 
+    <font color='#555555'>; get syntax help</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>starts-with</font> s <font color='#008800'>"&#092;&#092;?|help"</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font>help <font color='#AA0000'>(</font><font color='#0000AA'>last</font> <font color='#AA0000'>(</font><font color='#0000AA'>parse</font> s <font color='#008800'>" "</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+    <font color='#555555'>; restart newLISP</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>starts-with</font> s <font color='#008800'>"reset"</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>reset</font> <font color='#0000AA'>true</font><font color='#AA0000'>)</font> <font color='#555555'>; restart</font>
+
+    <font color='#555555'>; avoid X-windows beeing started on OS X</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>starts-with</font> s <font color='#008800'>"x"</font><font color='#AA0000'>)</font>
+    <font color='#008800'>""</font>
+
+    <font color='#555555'>; all directory changes must be done inside newLISP</font>
+    <font color='#555555'>; previous directory cd -</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>starts-with</font> s <font color='#008800'>"cd -"</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'new-dir prev-dir<font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'prev-dir <font color='#AA0000'>(</font><font color='#0000AA'>real-path</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>string</font> <font color='#008800'>" "</font> <font color='#AA0000'>(</font><font color='#0000AA'>true?</font> <font color='#AA0000'>(</font><font color='#0000AA'>change-dir</font> new-dir<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	
+    <font color='#555555'>; pushd</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>starts-with</font> s <font color='#008800'>"pushd"</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'prev-dir <font color='#AA0000'>(</font><font color='#0000AA'>real-path</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>push</font> prev-dir dir-stack<font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>string</font> <font color='#008800'>" "</font> <font color='#AA0000'>(</font><font color='#0000AA'>true?</font> <font color='#AA0000'>(</font><font color='#0000AA'>change-dir</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> <font color='#AA0000'>(</font><font color='#0000AA'>parse</font> s <font color='#008800'>" "</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+    <font color='#555555'>; popd</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>starts-with</font> s <font color='#008800'>"popd"</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'prev-dir <font color='#AA0000'>(</font><font color='#0000AA'>real-path</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>string</font> <font color='#008800'>" "</font> <font color='#AA0000'>(</font><font color='#0000AA'>true?</font> <font color='#AA0000'>(</font><font color='#0000AA'>change-dir</font> <font color='#AA0000'>(</font><font color='#0000AA'>pop</font> dir-stack<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+    <font color='#555555'>; go to home directory</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>=</font> s <font color='#008800'>"cd"</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'prev-dir <font color='#AA0000'>(</font><font color='#0000AA'>real-path</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>string</font> <font color='#008800'>" "</font> <font color='#AA0000'>(</font><font color='#0000AA'>true?</font> <font color='#AA0000'>(</font><font color='#0000AA'>change-dir</font> <font color='#AA0000'>(</font><font color='#0000AA'>env</font> <font color='#008800'>"HOME"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+    <font color='#555555'>; change directory cd</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>starts-with</font> s <font color='#008800'>"cd"</font><font color='#AA0000'>)</font> 
+    <font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'prev-dir <font color='#AA0000'>(</font><font color='#0000AA'>real-path</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>string</font> <font color='#008800'>" "</font> <font color='#AA0000'>(</font><font color='#0000AA'>true?</font> <font color='#AA0000'>(</font><font color='#0000AA'>change-dir</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> <font color='#AA0000'>(</font><font color='#0000AA'>parse</font> s <font color='#008800'>" "</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+    <font color='#555555'>; else handle as a shell command, start newLISP expressions</font>
+    <font color='#555555'>; with either a space or a parenthesis</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>starts-with</font> s <font color='#008800'>"[&#092;&#092;.a-zA-Z]"</font> <font color='#998800'>0</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>append</font> <font color='#008800'>"!"</font> s<font color='#AA0000'>)</font>
+
+    <font color='#0000AA'>true</font> s<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>;; eof</font>
+
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

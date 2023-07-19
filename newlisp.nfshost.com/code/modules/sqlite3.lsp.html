@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "HTML 4.01 Transitional">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>sqlite3.lsp</title>
+
+<link rel="stylesheet" type="text/css" href="newlispdoc.css" />
+</head>
+
+<body style="margin: 20px;" text="#111111" bgcolor="#FFFFFF" 
+            link="#376590" vlink="#551A8B" alink="#ffAA28">
+<blockquote>
+<center><h1>sqlite3.lsp</h1></center>
+<p><a href="index.html">Module index</a></p><a href="sqlite3.lsp.src.html">source</a>&nbsp;<a href="sqlite3.lsp">download</a><br/>
+<h2>Module:&nbsp;sqlite3.lsp </h2><p>SQLite3 database interface routines</p>
+<b>Version: </b>1.6 - comments redone for automatic documentation<br/>
+<b>Version: </b>1.7 - D.C. fixed getting types when null values are present<br/>
+<b>Version: </b>1.8 - D.C. made 64-Bit integers work<br/>
+<b>Version: </b>1.9 - new library detection routine<br/>
+<b>Version: </b>2.0 - added documentation for close<br/>
+<b>Version: </b>2.1 - use default functor for query<br/>
+<b>Version: </b>2.2 - detection for NEWLISP64, lib path for OpenBSD, tested for 64-bit <br/>
+<b>Version: </b>2.3 - C.H. added parameter binding for safer SQL (guard against SQL-injection)<br/>
+<b>Version: </b>2.4 - doc changes<br/>
+<b>Version: </b>2.5 - changed sqlite3_bind_blob to sqlite3_bind_text in function bind-parameter<br/>
+<b>Version: </b>2.61 - added function  <tt>sql3:colnames</tt>.<br/>
+<b>Version: </b>2.7 - changed deprecated <tt>name</tt> to <tt>term</tt>, <tt>inc</tt> to <tt>++</tt><br/>
+<b>Version: </b>2.71 - minor doc changes<br/>
+<b>Version: </b>2.72 - add support for CentOS 6 Linux 64Bit<br/>
+<b>Version: </b>2.73 - doc additions<br/>
+<b>Version: </b>2.83- added sqlite3 library path for UBUNTU 12.04/10 64-bit and others<br/>
+<b>Author: </b>Lutz Mueller 2004-2013, Dmitri Cherniak 2007, Clemens Hintze 2009<br/>
+<br/><br/>
+ <h2>Module for SQLite3 database bindings</h2>
+ To use this module include the following <tt>load</tt>  or <tt>module</tt> statement at the
+ beginning of the program file:
+ <pre>
+ (load "/usr/share/newlisp/modules/sqlite3.lsp")
+ ; or shorter
+ (module "sqlite3.lsp")
+ </pre>
+ Test the module:
+ <pre>
+ (test-sqlite3)
+ </pre>
+ This function, located at the and of the module file, exercises
+ most of the functions.
+<br/><br/>
+ SQLite version 3.0 introduced a new database format and is incompatible
+ whith the previous 2.1 to 2.8 format. Old SQLite 2.x based databases can
+ be converted  using the old and new sqlite client application:
+<br/><br/>
+    sqlite OLD.DB .dump | sqlite3 NEW.DB
+<br/><br/>
+ While in sqlite 2.8 all returned fields where of string type, SQLite3
+ returns, text, integer or float. Blobs are returned as text and NULLs
+ are returned as nil.
+<br/><br/>
+ See also the documentation at <a href="http://sqlite.org">sqlite.org</a> <br/><br/>
+ <h2>Requirements:</h2> 
+ One of the libraries sqlite3.dll for Win32 or libsqlite3.so for UNIX like
+ operating systems is required from http://www.sqlite.org.
+<br/><br/>
+ SQLite is an <em>in-process</em> database. The library contains the whole database
+ system. An extra database server is not required. SQLite also has limited
+ mutiuser capabilities for accessing a common database from several programs
+ at the same time. See the documentation at <a href="http://sqlite.org">sqlite.org</a> 
+ for details.
+<br/><br/>
+ The following is a short example how to use SQLite3:
+<br/><br/>
+<b>Example:</b><blockquote><pre> (sql3:open "MYDB")      ; opens/creates a database returns a handle (ignore)
+                         ; or 'nil' on failure
+
+ (sql3:sql "select * from mytable;")	; make a SQL query, return result
+ (sql3 "select * from mytable;") ; use default functor as alias
+
+ (sql3:error)            ; return error text
+
+ (sql3:close)            ; close the database</pre></blockquote>
+ Function calls returning <tt>nil</tt> signal that an error has occurred. The
+ function <tt>sql3:error</tt> can then be used to get details about the error
+ as a text string.
+<br/><br/>
+ At the bottom of the source file <tt>sqlite3.lsp</tt> a test routine called
+ <tt>test-sqlite3</tt> can be found to test for correct installation of SQLite.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br/><br/><center>&sect;</center><br/>
+<a name="sql3_open"></a><h3><font color=#CC0000>sql3:open</font></h3>
+<b>syntax: (<font color=#CC0000>sql3:open</font> <em>str-db-name</em>)</b><br/>
+<b>parameter: </b><em>str-db-name</em> - The name of the database.<br/>
+<p><b>return: </b>A database handle (discard), or <tt>nil</tt> on failure.</p>
+ Opens or creates a database. If the database does exist it gets opened, 
+ else a new database with the name given is created.
+ If trying to open a database that already has been opened <tt>nil</tt> is returned
+ and an error text can be retrieved using <tt>sql3:error</tt>.
+
+
+<br/><br/><center>&sect;</center><br/>
+<a name="sql3_close"></a><h3><font color=#CC0000>sql3:close</font></h3>
+<b>syntax: (<font color=#CC0000>sql3:close</font>)</b><br/>
+<p><b>return: </b>Returns <tt>true</tt> on success;</p>
+ Closes the currently open database.
+
+
+
+<br/><br/><center>&sect;</center><br/>
+<a name="sql3_sql"></a><h3><font color=#CC0000>sql3:sql</font></h3>
+<b>syntax: (<font color=#CC0000>sql3:sql</font> <em>str-sql</em> [<em>sql-args</em>])</b><br/>
+<b>parameter: </b><em>str-sql</em> - The SQL statement.<br/>
+<b>parameter: </b><em>sql-args</em> - Parameters for the SQL statement's host variables<br/>
+<br/><br/>
+ Executes the SQL statement in <em>str-sql</em>. For <tt>select</tt> statements a table
+ of the result set is returned or <tt>()</tt> for the empty set. For other statements
+ <tt>true</tt> is returned for a  successful outcome. On failure <tt>nil</tt> is returened 
+ and <tt>sql3:error</tt> can be used to retrieve the error text.
+<br/><br/>
+ If the parameter <em>sql-args</em> is given, it has either to be a list of values (if
+ the SQL statement use the '?' type of host variables) or an association list
+ whose every association is formed like (<em>varname</em> <em>value</em>). The <em>varname</em> is
+ the name of the host variable used in the SQL statement e.g. <tt>:name</tt> or <tt>?123</tt>.
+<br/><br/>
+ Strings are bound to host variables as BLOBs. That mean the data will be passed
+ as is, without any further modification.
+<br/><br/>
+ Using host variables is much safer than passing those values via string
+ composition as no SQL quoting problem can occur (SQL injection attack).
+ For example:
+<br/><br/>
+<b>Example:</b><blockquote><pre> ; traditional usage 
+ (sql3:sql "select * from persons where age &gt; 18;") 
+
+ ; safer usage using SQLite parameter binding
+ (sql3:sql "select * from persons where age &gt; ?;" '(18))
+
+ ; bind parameters from association lists
+ (sql3:sql "select * from persons where name like :name;" '((":name" "Do%")))
+ (sql3:sql "select * from persons where age &gt; :a and name like :n;" '((":n" "Do%") (":a" 18)))</pre></blockquote>
+<br/><br/><center>&sect;</center><br/>
+<a name="sql3_colnames"></a><h3><font color=#CC0000>sql3:colnames</font></h3>
+<b>syntax: (<font color=#CC0000>sql3:colnames</font>)</b><br/>
+<p><b>return: </b>A list of column header names.</p>
+ Returns a list of column header names for the last query. This is
+ a function wrapper around the internal variable <tt>sql3:col-names</tt>.
+
+
+
+<br/><br/><center>&sect;</center><br/>
+<a name="sql3_rowid"></a><h3><font color=#CC0000>sql3:rowid</font></h3>
+<b>syntax: (<font color=#CC0000>sql3:rowid</font>)</b><br/>
+<p><b>return: </b>The last row id from last <tt>insert</tt>.</p>
+ Gets the id of the last row inserted.
+
+
+<br/><br/><center>&sect;</center><br/>
+<a name="sql3_tables"></a><h3><font color=#CC0000>sql3:tables</font></h3>
+<b>syntax: (<font color=#CC0000>sql3:tables</font>)</b><br/>
+<p><b>return: </b>A list of tables in the database.</p>
+
+
+
+<br/><br/><center>&sect;</center><br/>
+<a name="sql3_columns"></a><h3><font color=#CC0000>sql3:columns</font></h3>
+<b>syntax: (<font color=#CC0000>sql3:columns</font> <em>str-tabel-name</em>)</b><br/>
+<p><b>return: </b>A list of column names for a table.</p>
+
+
+
+<br/><br/><center>&sect;</center><br/>
+<a name="sql3_changes"></a><h3><font color=#CC0000>sql3:changes</font></h3>
+<b>syntax: (<font color=#CC0000>sql3:changes</font>)</b><br/>
+<p><b>return: </b>The Number of rows changed/affected by the last SQL statement.</p>
+
+
+
+
+<br/><br/><center>&sect;</center><br/>
+<a name="sql3_timeout"></a><h3><font color=#CC0000>sql3:timeout</font></h3>
+<b>syntax: (<font color=#CC0000>sql3:timeout</font> <em>num-milli-seconds</em>)</b><br/>
+<p><b>return: </b><tt>true</tt> on success or <tt>nil</tt> on failure.</p>
+ Sets busy timeout in milliseconds.
+
+
+
+
+<br/><br/><center>&sect;</center><br/>
+<a name="sql3_error"></a><h3><font color=#CC0000>sql3:error</font></h3>
+<b>syntax: (<font color=#CC0000>sql3:error</font>)</b><br/>
+<p><b>return: </b>The error text of the last error occured in <tt>sql3:sql</tt>.</p>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+
+<br/><br/><center>- &part; -</center><br/>
+<center><font face='Arial' size='-2' color='#444444'>
+generated with <a href="http://newlisp.org">newLISP</a>&nbsp;
+and <a href="http://newlisp.org/newLISPdoc.html">newLISPdoc</a>
+</font></center>
+</blockquote>
+</body>
+</html>

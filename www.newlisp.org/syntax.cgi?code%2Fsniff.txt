@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>code/sniff.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/env newlisp</font>
+
+<font color='#555555'>; sniff  v.1.23 - net work packet snifffer</font>
+<font color='#555555'>; 2010-March-26 added out-commented callback method</font>
+<font color='#555555'>; 2010-April-10 documentation</font>
+<font color='#555555'>; 2010-April-27 added 'packet' output format for whole packet</font>
+<font color='#555555'>;               added output of unknown packets</font>
+<font color='#555555'>; 2010-April-29 help text improvements</font>
+<font color='#555555'>; 2010-May-29 added library path for OpenBSD 4.6 </font>
+<font color='#555555'>; 2013-Sep-22 change stats to pstats (stats is function since 10.4.2)</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; See also http://www.tcpdump.org/pcap.htm</font>
+<font color='#555555'>; tested on Mac OS X 10.6 and UBUNTU 9.4 and Win32</font>
+<font color='#555555'>; for a Win32 library goto http://www.winpcap.org/</font>
+<font color='#555555'>; first version L.M.in March 2010</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; This script must be run with super user prigileges.</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>unless</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>2</font><font color='#AA0000'>)</font> 
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>[text]
+- sniff - network packet sniffer, version 1.21, April 2010
+
+USAGE UNIX: 
+    sudo sniff &lt;device&gt; [&lt;filter&gt; [&lt;count&gt; [hex | ascii | packet]]] 
+
+USAGE Win32:
+    newlisp sniff &lt;device&gt; [&lt;filter&gt; [&lt;count&gt; [hex | ascii | packet]]]   
+
+The program must run in super user or administrator mode. On Unix the 
+sudo utility can be used, and the OS will ask for the root password.
+
+EXAMPLES: 
+    sniff eth01 'tcp port 80' 100 hex
+    sniff en1 ip 100 packet           <-- best all purpose format
+    sniff eth0 'ip host 10.1.2.3'
+    sniff en0
+    sniff ""
+    
+Use an empty string "" or '' for &lt;device&gt; to let sniff find out a device.
+This works well on Windows but frequently does not work on UNIX, where
+it is better to use the ifconfig utility to find a connected device. 
+
+The 'hex' option dumps data in HEX and ASCII, the 'ascii' option only in 
+ASCII format. Both options only dump the data part of the packet after the 
+TCP, UDP or frst 8 bytees of the ICMP header. The 'packet' option dumps
+the whole packet starting with the IP header and in HEX and ASCII format. 
+
+Default &lt;filter&gt; expression is 'ip' for all protocols. The protocol ids:
+tcp, udp and icmp are supported. Default packet &lt;count&gt; is 10 and 
+default output mode is no output.
+[/text]</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font>
+
+<font color='#555555'>; import pcap library</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'bit-64 <font color='#AA0000'>(</font><font color='#0000AA'>=</font> <font color='#998800'>256</font> <font color='#AA0000'>(</font><font color='#0000AA'>&amp;</font> <font color='#AA0000'>(</font><font color='#0000AA'>sys-info</font> <font color='#998800'>-1</font><font color='#AA0000'>)</font> <font color='#998800'>256</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'files '<font color='#AA0000'>(</font>
+	<font color='#008800'>"/usr/lib/libpcap.dylib"</font>   <font color='#555555'>; Mac OS X 10.6</font>
+	<font color='#008800'>"/usr/lib/libpcap.so.0.8"</font>  <font color='#555555'>; UBUNTU 9.04</font>
+	<font color='#008800'>"/usr/lib/libpcap.so.1.0.0"</font><font color='#555555'>; UBUNTU 9.04</font>
+	<font color='#008800'>"/usr/lib/libpcap.so.6.0"</font>  <font color='#555555'>; OpenBSD 4.8</font>
+	<font color='#008800'>"c:/windows/system32/wpcap.dll"</font> <font color='#555555'>; Win32 XP</font>
+<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'libpcap <font color='#AA0000'>(</font>files <font color='#AA0000'>(</font><font color='#0000AA'>or</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>find</font> <font color='#0000AA'>true</font> <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>file?</font> files<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>throw-error</font> <font color='#008800'>"cannot find  pcap packet capture library"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; import library functions</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> libpcap <font color='#008800'>"pcap_lookupdev"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> libpcap <font color='#008800'>"pcap_lookupnet"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> libpcap <font color='#008800'>"pcap_open_live"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> libpcap <font color='#008800'>"pcap_compile"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> libpcap <font color='#008800'>"pcap_setfilter"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> libpcap <font color='#008800'>"pcap_next"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> libpcap <font color='#008800'>"pcap_loop"</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>import</font> libpcap <font color='#008800'>"pcap_stats"</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; allocate ptr varables used in library API</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'errbuf <font color='#AA0000'>(</font><font color='#0000AA'>dup</font> <font color='#008800'>"&#092;000"</font> <font color='#998800'>256</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#555555'>; for error message</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'fp <font color='#AA0000'>(</font><font color='#0000AA'>dup</font> <font color='#008800'>"&#092;000"</font> <font color='#998800'>8</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#555555'>; sizeof pointer (32 and 64 bit)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'net <font color='#008800'>"&#092;000&#092;000&#092;000&#092;000"</font><font color='#AA0000'>)</font> <font color='#555555'>; IP number of sniffing device</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'mask <font color='#008800'>"&#092;000&#092;000&#092;000&#092;000"</font><font color='#AA0000'>)</font> <font color='#555555'>; net mask of sniffing device</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'header <font color='#AA0000'>(</font><font color='#0000AA'>dup</font> <font color='#008800'>"&#092;000"</font> <font color='#998800'>24</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#555555'>; space for packet header (32 and 64 bit)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'protocols '<font color='#AA0000'>(</font><font color='#AA0000'>(</font><font color='#998800'>6</font> TCP<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#998800'>17</font> UDP<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#998800'>1</font> ICMP<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#998800'>0</font> IP<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; constants</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'PCAP_BUFFSIZE <font color='#998800'>1518</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'PROMISCUOUS <font color='#998800'>1</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'SIZE_ETHER <font color='#998800'>14</font><font color='#AA0000'>)</font> 
+
+<font color='#555555'>; get device</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'dev <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> dev <font color='#008800'>""</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'dev <font color='#AA0000'>(</font>pcap_lookupdev errbuf<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'>zero?</font> dev<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> errbuf<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"must exit"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>exit</font> <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> <font color='#AA0000'>(</font>pcap_lookupnet dev net mask errbuf<font color='#AA0000'>)</font> <font color='#998800'>-1</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>get-string</font> errbuf<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"must exit"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>exit</font> <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; get filter expression</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>3</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'filter-exp <font color='#AA0000'>(</font><font color='#0000AA'>lower-case</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>3</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'filter-exp <font color='#008800'>"ip"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#555555'>; default is all packets</font>
+
+<font color='#555555'>; get packet count</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'packet-count <font color='#AA0000'>(</font><font color='#0000AA'>int</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>4</font><font color='#AA0000'>)</font> <font color='#998800'>10</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#555555'>; default 10</font>
+
+<font color='#555555'>; get output options</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'out-opt <font color='#AA0000'>(</font><font color='#0000AA'>or</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>5</font><font color='#AA0000'>)</font> <font color='#008800'>"none"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>	
+
+<font color='#555555'>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'handle <font color='#AA0000'>(</font>pcap_open_live dev PCAP_BUFFSIZE PROMISCUOUS <font color='#998800'>1000</font> errbuf<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> handle <font color='#998800'>0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>get-string</font> errbuf<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"must exit"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>exit</font> <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> <font color='#AA0000'>(</font>pcap_compile handle fp filter-exp <font color='#998800'>0</font> net<font color='#AA0000'>)</font> <font color='#998800'>-1</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"could not compile filter:"</font> filter-exp<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"must exit"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>exit</font> <font color='#998800'>3</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> <font color='#AA0000'>(</font>pcap_setfilter handle fp<font color='#AA0000'>)</font> <font color='#998800'>-1</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"could not install filter:"</font> filter-exp<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"must exit"</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>exit</font> <font color='#998800'>4</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; transform ip number to n.n.n.n</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>ip-to-ascii ip<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>join</font> <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>string</font> <font color='#AA0000'>(</font><font color='#0000AA'>unpack</font> <font color='#008800'>"bbbb"</font> <font color='#AA0000'>(</font><font color='#0000AA'>pack</font> <font color='#008800'>">lu"</font> ip<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#008800'>"."</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	
+<font color='#555555'>; tansform mac address to n:n::n:n:n:n</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>eth-to-ascii host<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>join</font> <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#AA0000'>(</font>fn <font color='#AA0000'>(</font>x<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"%02x"</font> x<font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>unpack</font> <font color='#008800'>"bbbbbb"</font> host<font color='#AA0000'>)</font> <font color='#AA0000'>)</font> <font color='#008800'>":"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; packet handler, called when packet arrives</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>report-packet header packet<font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> bit-64
+		<font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>set</font> '<font color='#AA0000'>(</font>tm usec dummy caplen len<font color='#AA0000'>)</font>  <font color='#AA0000'>(</font><font color='#0000AA'>unpack</font> <font color='#008800'>"Lu lu lu lu lu"</font> header<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>set</font> '<font color='#AA0000'>(</font>tm usec caplen len<font color='#AA0000'>)</font>  <font color='#AA0000'>(</font><font color='#0000AA'>unpack</font> <font color='#008800'>"lu lu lu lu"</font> header<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"time: "</font> <font color='#AA0000'>(</font><font color='#0000AA'>date</font> tm <font color='#998800'>0</font> <font color='#008800'>"%H:%M:%S."</font><font color='#AA0000'>)</font> usec <font color='#008800'>" captured:"</font> caplen <font color='#008800'>" wire:"</font> len<font color='#AA0000'>)</font>
+
+	<font color='#555555'>; get pcap header</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>set</font> '<font color='#AA0000'>(</font>dhost shost type<font color='#AA0000'>)</font>  <font color='#AA0000'>(</font><font color='#0000AA'>unpack</font> <font color='#008800'>"s6 s6 d"</font> packet<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"from ether addr: "</font> <font color='#AA0000'>(</font>eth-to-ascii shost<font color='#AA0000'>)</font> 
+			<font color='#008800'>" to: "</font> <font color='#AA0000'>(</font>eth-to-ascii dhost<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#555555'>; IP header at p + SIZE_ETHER: sniff_ip</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>set</font> '<font color='#AA0000'>(</font>vhl tos ip-len id off ttl proto sum src dest<font color='#AA0000'>)</font> 
+		<font color='#AA0000'>(</font><font color='#0000AA'>unpack</font> <font color='#008800'>"> b b u u u b b u lu lu"</font> <font color='#AA0000'>(</font><font color='#0000AA'>+</font> packet SIZE_ETHER<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'IP_HL <font color='#AA0000'>(</font><font color='#0000AA'>&amp;</font> vhl <font color='#998800'>0x0f</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'IP_V <font color='#AA0000'>(</font><font color='#0000AA'>>></font> vhl <font color='#998800'>4</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'>or</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> IP_HL <font color='#998800'>5</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> ip-len <font color='#AA0000'>(</font><font color='#0000AA'>*</font> IP_HL <font color='#998800'>4</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"ERROR malformed IP datagram"</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>throw</font> <font color='#0000AA'>true</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'protocol <font color='#AA0000'>(</font><font color='#0000AA'>lookup</font> proto protocols<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#555555'>; with multiple &lt;condition&gt; &lt;body&gt; terms</font>
+	<font color='#555555'>; TCP header: sniff_tcp</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>=</font> protocol 'TCP<font color='#AA0000'>)</font> <font color='#555555'>; TCP 6</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>set</font> '<font color='#AA0000'>(</font>sport dport seq ack offx2<font color='#AA0000'>)</font> 
+			<font color='#AA0000'>(</font><font color='#0000AA'>unpack</font> <font color='#008800'>"> u u lu lu b"</font> <font color='#AA0000'>(</font><font color='#0000AA'>+</font> packet SIZE_ETHER <font color='#AA0000'>(</font><font color='#0000AA'>*</font> IP_HL <font color='#998800'>4</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'TH_OFF  <font color='#AA0000'>(</font><font color='#0000AA'>>></font> <font color='#AA0000'>(</font><font color='#0000AA'>&amp;</font> offx2 <font color='#998800'>0xf0</font><font color='#AA0000'>)</font> <font color='#998800'>4</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#555555'>; * 4 -> offset</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> TH_OFF <font color='#998800'>5</font><font color='#AA0000'>)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"ERROR malformed TCP segment"</font><font color='#AA0000'>)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>throw</font> <font color='#0000AA'>true</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+		<font color='#AA0000'>(</font><font color='#0000AA'>println</font> protocol <font color='#008800'>" from ip addr: "</font> <font color='#AA0000'>(</font>ip-to-ascii src<font color='#AA0000'>)</font> <font color='#008800'>" port:"</font> sport
+                 <font color='#008800'>" to: "</font> <font color='#AA0000'>(</font>ip-to-ascii dest<font color='#AA0000'>)</font> <font color='#008800'>" port:"</font> dport<font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>=</font> protocol 'UDP<font color='#AA0000'>)</font> <font color='#555555'>; UDP 17</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>set</font> '<font color='#AA0000'>(</font>sport dport ulen sum<font color='#AA0000'>)</font> 
+			<font color='#AA0000'>(</font><font color='#0000AA'>unpack</font> <font color='#008800'>"> u u u u"</font> <font color='#AA0000'>(</font><font color='#0000AA'>+</font> packet SIZE_ETHER <font color='#AA0000'>(</font><font color='#0000AA'>*</font> IP_HL <font color='#998800'>4</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'TH_OFF <font color='#998800'>2</font><font color='#AA0000'>)</font> <font color='#555555'>; 2*4=8 bytes of UDP header length</font>
+
+		<font color='#AA0000'>(</font><font color='#0000AA'>println</font> protocol <font color='#008800'>" from "</font> <font color='#AA0000'>(</font>ip-to-ascii src<font color='#AA0000'>)</font> <font color='#008800'>" port:"</font> sport
+                 <font color='#008800'>" to "</font> <font color='#AA0000'>(</font>ip-to-ascii dest<font color='#AA0000'>)</font> <font color='#008800'>" port:"</font> dport<font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>=</font> protocol 'ICMP<font color='#AA0000'>)</font> <font color='#555555'>; ICMP 1</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>set</font> '<font color='#AA0000'>(</font>type code cksum other<font color='#AA0000'>)</font> 
+			<font color='#AA0000'>(</font><font color='#0000AA'>unpack</font> <font color='#008800'>"> b b u lu"</font> <font color='#AA0000'>(</font><font color='#0000AA'>+</font> packet SIZE_ETHER <font color='#AA0000'>(</font><font color='#0000AA'>*</font> IP_HL <font color='#998800'>4</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'TH_OFF <font color='#998800'>2</font><font color='#AA0000'>)</font> <font color='#555555'>; 2*4=8 bytes of ICMP header length</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>println</font> protocol 
+			<font color='#008800'>" from: "</font> <font color='#AA0000'>(</font>ip-to-ascii src<font color='#AA0000'>)</font> <font color='#008800'>" to: "</font> <font color='#AA0000'>(</font>ip-to-ascii dest<font color='#AA0000'>)</font><font color='#AA0000'>)</font> 
+		<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"type: "</font> type <font color='#008800'>" code: "</font> code  <font color='#008800'>" checksum: "</font> cksum<font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font>
+
+	<font color='#0000AA'>true</font> <font color='#555555'>; catch all other</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'TH_OFF <font color='#998800'>0</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"Protocol: "</font> proto
+			<font color='#008800'>" from: "</font> <font color='#AA0000'>(</font>ip-to-ascii src<font color='#AA0000'>)</font> <font color='#008800'>" to: "</font> <font color='#AA0000'>(</font>ip-to-ascii dest<font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font> <font color='#555555'>; end if</font>
+
+	<font color='#555555'>; dump payload</font>
+	<font color='#555555'>;(set 'ip-len (min len (- caplen SIZE_ETHER)))</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'payload-len <font color='#AA0000'>(</font><font color='#0000AA'>-</font> ip-len <font color='#AA0000'>(</font><font color='#0000AA'>*</font> IP_HL <font color='#998800'>4</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>*</font> TH_OFF <font color='#998800'>4</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"packet total len w/o ether-header:"</font> ip-len<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>", payload length:"</font> payload-len<font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'>and</font> <font color='#AA0000'>(</font><font color='#0000AA'>zero?</font> payload-len<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>!=</font> out-opt <font color='#008800'>"packet"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>throw</font> <font color='#0000AA'>true</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> out-opt <font color='#008800'>"packet"</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'data <font color='#AA0000'>(</font><font color='#0000AA'>unpack</font> <font color='#AA0000'>(</font><font color='#0000AA'>dup</font> <font color='#008800'>"b"</font> ip-len<font color='#AA0000'>)</font> 
+			<font color='#AA0000'>(</font><font color='#0000AA'>+</font> packet SIZE_ETHER <font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'data <font color='#AA0000'>(</font><font color='#0000AA'>unpack</font> <font color='#AA0000'>(</font><font color='#0000AA'>dup</font> <font color='#008800'>"b"</font> payload-len<font color='#AA0000'>)</font> 
+			<font color='#AA0000'>(</font><font color='#0000AA'>+</font> packet SIZE_ETHER <font color='#AA0000'>(</font><font color='#0000AA'>*</font> IP_HL <font color='#998800'>4</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>*</font> TH_OFF <font color='#998800'>4</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font>
+
+	<font color='#555555'>; dump data as hex and ascii</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'>or</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> out-opt <font color='#008800'>"hex"</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> out-opt <font color='#008800'>"packet"</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'addr <font color='#998800'>0</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>dolist</font> <font color='#AA0000'>(</font>line <font color='#AA0000'>(</font><font color='#0000AA'>explode</font> data <font color='#998800'>16</font><font color='#AA0000'>)</font> <font color='#AA0000'>)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"%05d "</font> addr<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"%-48s"</font> <font color='#AA0000'>(</font><font color='#0000AA'>join</font> <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#AA0000'>(</font>fn <font color='#AA0000'>(</font>b<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"%02x "</font> b<font color='#AA0000'>)</font><font color='#AA0000'>)</font> line<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#008800'>" "</font>
+				<font color='#AA0000'>(</font><font color='#0000AA'>join</font> <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#AA0000'>(</font>fn <font color='#AA0000'>(</font>c<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>or</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> c <font color='#998800'>32</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>></font> c <font color='#998800'>126</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#008800'>"."</font> <font color='#AA0000'>(</font><font color='#0000AA'>char</font> c<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> line<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>inc</font> addr <font color='#998800'>16</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font>
+
+	<font color='#555555'>; dump ascii only</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>when</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> out-opt <font color='#008800'>"ascii"</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>dolist</font> <font color='#AA0000'>(</font>line <font color='#AA0000'>(</font><font color='#0000AA'>explode</font> data <font color='#998800'>64</font><font color='#AA0000'>)</font> <font color='#AA0000'>)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>join</font> <font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#AA0000'>(</font>fn <font color='#AA0000'>(</font>c<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>or</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> c <font color='#998800'>32</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>></font> c <font color='#998800'>126</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#008800'>"."</font> <font color='#AA0000'>(</font><font color='#0000AA'>char</font> c<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> line<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>)</font>
+	<font color='#AA0000'>)</font>
+
+	<font color='#0000AA'>true</font>
+<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'counter <font color='#998800'>0</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"device: "</font> <font color='#AA0000'>(</font><font color='#0000AA'>get-string</font> dev<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; Method using pcap_next and newLISP controlling</font>
+<font color='#555555'>; this method leves more time in newLISP to do </font>
+<font color='#555555'>; stuff in the while loop.</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>while</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> counter packet-count<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'capture '<font color='#AA0000'>(</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'packet <font color='#AA0000'>(</font>pcap_next handle header<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>unless</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> packet <font color='#998800'>0</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>print</font> <font color='#008800'>"&#092;n--- "</font> <font color='#AA0000'>(</font><font color='#0000AA'>inc</font> counter<font color='#AA0000'>)</font> <font color='#008800'>"---  "</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>catch</font> <font color='#AA0000'>(</font>report-packet header packet <font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; Alternative method using callback with pcap_loop</font>
+<font color='#555555'>; and pcap library controlling. This leaves less</font>
+<font color='#555555'>; time for newLISP as the waiting for new packets</font>
+<font color='#555555'>; happens inside libpcap</font>
+<font color='#555555'>;(define (callback-handler params header packet)</font>
+<font color='#555555'>;	(unless (= packet 0)</font>
+<font color='#555555'>;		(print "&#092;n--- " (inc counter) "---  ")</font>
+<font color='#555555'>;		(catch (report-packet header packet ))</font>
+<font color='#555555'>;))</font>
+<font color='#555555'>;(pcap_loop handle 20 (callback 0 'callback-handler) 0)</font>
+
+
+<font color='#555555'>; report pcap status</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'pstats <font color='#AA0000'>(</font><font color='#0000AA'>dup</font> <font color='#008800'>"&#092;000"</font> <font color='#998800'>8</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font>pcap_stats handle pstats<font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>map</font> <font color='#0000AA'>set</font> '<font color='#AA0000'>(</font>received dropped<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>unpack</font> <font color='#008800'>"lu lu"</font> pstats<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#008800'>"&#092;npackages dropped: "</font> dropped<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>; eof</font>
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

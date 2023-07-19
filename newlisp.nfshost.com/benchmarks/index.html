@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>Benchmarking newLISP</title>
+</head>
+<body>
+<blockquote>
+<font face="Georgia, Verdana, Arial, Helvetica, sans-serif">
+
+<h2>Benchmarking newLISP <small><small><small>(some samples updated to v.9.0, all timings on v.8.3)</small></small></small></h2>
+
+<p>As of September 17th, 2004 the shootout at <a href="http://debian.org">debian.org</a>
+also contains newLISP as a language.&nbsp;&nbsp; On the Debian site more iterations
+are run and memory requirements as well as lines of code are also
+reported. <i>Brent Fulgham</i> from <a href="ttp://debian.org">debian.org</a> 
+is continuing the work <i>Doug Bagley</i> started some years ago.
+<br> <br>
+Rather than continuing separate benchmarks the numbers on this page are copied from the 
+<a href="http://shootout.alioth.debian.org/great/index.php?sort=cpu">
+shooutout at debian.org</a> for better objectivity.</p>
+<p>Since January/2005 I have stopped updating
+benchmarks. Too much changes are occurring on the 
+<a href="http://shootout.alioth.debian.org/great/index.php?sort=cpu">Debian shootout site</a> 
+and too quick to keep up. </p>
+<p>Many of the algorithms could be coded more efficiently and shorter using <i>implicit indexing</i> which was introduced in later versions of newLISP.</p>
+
+<p>Another site displaying <i>Doug Bagley's</i> work can be found here: <a href="
+http://dada.perl.it/shootout/"> http://dada.perl.it/shootout/</a></p>
+<br> 
+
+<h4 style="text-align: center;">Time to complete a benchmark in different scripting languages</h4>
+
+<div style="text-align: center;">
+<small>All measurements are in seconds</small><br><br></div>
+
+<table x:str="" 
+  style="border-collapse: collapse; width: 435pt; text-align: left; margin-right: auto; margin-left: auto;"
+  border="1" cellpadding="3" cellspacing="1">
+
+<col style="width: 158pt;" width="210"> 
+<col style="width: 57pt;" width="76"> 
+<col style="width: 58pt;" width="77">
+<col style="width: 57pt;" width="76"> 
+<col style="width: 48pt;" width="64"> 
+
+<tbody>
+<tr style="height: 12.75pt;" height="17">
+<td class="xl24" style="height: 12.75pt; width: 158pt;" height="17" width="210"><br></td>
+<td class="xl24" style="width: 57pt; text-align: center; font-weight: bold;" width="76">Perl</td>
+<td class="xl24" style="width: 57pt; text-align: center; font-weight: bold;" width="76">Python</td>
+<td class="xl24" style="width: 57pt; text-align: center; font-weight: bold;" width="76">newLISP</td>
+<td class="xl27" style="width: 48pt; text-align: center; font-weight: bold;" width="64">best</td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Ackerman</td>
+<td style="text-align: right;" class="xl25"><a href="ackermann.perl.txt">116.27</a></td>
+<td style="text-align: right;" class="xl25"><a href="ackermann.python.txt">n/a</a></td>
+<td class="xl26" x:num="94.40" align="right"><a href="/syntax.cgi?benchmarks/ackermann.newlisp.txt">94.40</a></td>
+<td style="text-align: left;" class="xl25">NEWLISP</td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;">Array Access</td>
+<td class="xl26" x:num="9.54" align="right"><a href="array.perl.txt">9.54</a></td>
+<td class="xl26" x:num="6.15" style="text-align: right;"><a href="array.python.txt">6.15</a></td>
+<td class="xl26" x:num="10.23" align="right"><a href="/syntax.cgi?benchmarks/array.newlisp.txt">10.23</a></td>
+<td>PYTHON</td>
+</tr>
+
+<tr>
+<td style="vertical-align: top;">Concatenate</td>
+<td style="vertical-align: top; text-align: right;"><a href="stringcat.perl.txt">0.03</a><br> </td>
+<td style="vertical-align: top; text-align: right;"><a href="stringcat.python.txt">0.06</a><br> </td> 
+<td style="vertical-align: top; text-align: right;"><a href="/syntax.cgi?benchmarks/stringcat.newlisp.txt">0.03</a><br> </td>
+<td style="vertical-align: top;">NEWLISP/PERL<br> </td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Count Words</td>
+<td class="xl26" x:num="0.53" align="right"><a href="wc.perl.txt">0.53</a></td>
+<td class="xl26" x:num="0.79" align="right"><a href="wc.python.txt">0.79</a></td>
+<td class="xl26" x:num="4.39" align="right"><a href="/syntax.cgi?benchmarks/wc.newlisp.txt">4.39</a></td>
+<td>PERL</td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Deque Lists</td>
+<td class="xl26" x:num="0.73" align="right"><a href="list.perl.txt">0.73</a></td>
+<td class="xl26" x:num="0.68" align="right"><a href="list.python.txt">0.68</a></td>
+<td class="xl26" x:num="0.30" align="right"><a href="/syntax.cgi?benchmarks/list.newlisp.txt">0.30</a></td>
+<td>NEWLISP</td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;">Echo Client/Server</td> 
+<td class="xl26" x:num="5.55" align="right"><a href="echo.perl.txt">5.55</a></td>
+<td style="vertical-align: top; text-align: right;"><a href="echo.python.txt">n/a</a></td>
+<td class="xl26" x:num="2.52" align="right"><a href="/syntax.cgi?benchmarks/echo.newlisp.txt">2.52</a></td>
+<td>NEWLISP</td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;">Exceptions</td> 
+<td class="xl26" x:num="3.96" align="right"><a href="except.perl.txt">3.96</a></td>
+<td class="xl26" x:num="4.38" align="right"><a href="except.python.txt">4.38</a></td>
+<td class="xl26" x:num="0.98" align="right"><a href="/syntax.cgi?benchmarks/except.newlisp.txt">0.98</a></td>
+<td>NEWLISP</td>
+</tr>
+
+<tr>
+<td style="vertical-align: top;">Fannkuch (new)</td>
+<td style="vertical-align: top; text-align: right;">n/a</td>
+<td style="vertical-align: top; text-align: right;">n/a</td>
+<td style="vertical-align: top; text-align: right;"><a href="/syntax.cgi?benchmarks/fannkuch.newlisp.txt">code</a><br> </td>
+<td></td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Fibonacci Numbers</td>
+<td class="xl26" x:num="9.48" align="right"><a href="fibo.perl.txt">9.48</a></td>
+<td class="xl26" x:num="6.45" align="right"><a href="fibo.python.txt">6.45</a></td>
+<td class="xl26" x:num="5.69" align="right"><a href="/syntax.cgi?benchmarks/fibo.newlisp.txt">5.69</a></td>
+<td>NEWLISP</td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Hash Access</td>
+<td class="xl26" x:num="0.83" align="right"><a href="hash.perl.txt">0.83</a></td>
+<td class="xl26" x:num="0.51" align="right"><a href="hash2.python.txt">0.51</a></td>
+<td class="xl26" x:num="0.99" align="right"><a href="/syntax.cgi?benchmarks/hash.newlisp.txt">0.99</a></td>
+<td>PYTHON</td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Hash Update</td>
+<td class="xl26" x:num="6.61" align="right"><a href="hash2.perl.txt">6.61</a></td>
+<td class="xl26" x:num="4.16" align="right"><a href="hash2.python.txt">4.16</a></td>
+<td class="xl26" x:num="6.50" align="right"><a href="/syntax.cgi?benchmarks/hash2.newlisp.txt">6.50</a></td>
+<td>PYTHON</td>
+</tr>
+
+<tr>
+<td style="vertical-align: top;">Heap Sort<br> </td>
+<td style="vertical-align: top; text-align: right;"><a href="heapsort.perl.txt">4.92</a><br> </td>
+<td style="vertical-align: top; text-align: right;"><a href="heapsort.python.txt">3.76</a><br> </td>
+<td style="vertical-align: top; text-align: right;"><a href="/syntax.cgi?benchmarks/heapsort.newlisp.txt">6.62</a><br> </td>
+<td style="vertical-align: top;">PYTHON<br> </td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Matrix Multiplication</td>
+<td class="xl26" x:num="19.77" align="right"><a href="matrix.perl.txt">19.77</a></td>
+<td class="xl26" x:num="0.39" align="right"><a href="matrix.python.txt">0.39</a></td>
+<td class="xl26" x:num="0.21" align="right"><a href="/syntax.cgi?benchmarks/matrix.newlisp.txt">0.21</a></td>
+<td>NEWLISP</td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Method Calls</td>
+<td style="text-align: right;" class="xl25"><a href="methcall.perl.txt">9.25</a><br> </td>
+<td class="xl26" x:num="6.82" align="right"><a href="methcall.python.txt">6.82</a></td>
+<td class="xl26" x:num="3.01" align="right"><a href="/syntax.cgi?benchmarks/methcall.newlisp.txt">3.01</a></td>
+<td>NEWLISP</td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Nested Loops</td>
+<td style="text-align: right;" class="xl25"><a href="nestedloop.perl.txt">14.06</a></td>
+<td class="xl26" x:num="10.84" align="right"><a href="nestedloop.python.txt">10.84</a></td>
+<td class="xl26" x:num="9.97" align="right"><a href="/syntax.cgi?benchmarks/nestedloop.newlisp.txt">9.97</a></td>
+<td>NEWLISP</td>
+</tr>
+
+<tr>
+<td style="vertical-align: top;">Nsieve (new)</td>
+<td style="vertical-align: top; text-align: right;">n/a</td>
+<td style="vertical-align: top; text-align: right;">n/a</td>
+<td style="vertical-align: top; text-align: right;"><a href="/syntax.cgi?benchmarks/nsieve.newlisp.txt">code</a><br> </td>
+<td></td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Object Instantiation</td>
+<td class="xl26" x:num="32.92" align="right"><a href="objinst.perl.txt">32.92</a></td>
+<td class="xl26" x:num="12.36" align="right"><a href="objinst.python.txt">12.36</a></td>
+<td class="xl26" x:num="19.78" align="right"><a href="/syntax.cgi?benchmarks/objinst.newlisp.txt">19.78</a></td>
+<td>PYTHON</td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Prime</td>
+<td class="xl26" x:num="21.67" align="right"><a href="sieve.perl.txt">21.67</a></td>
+<td class="xl26" x:num="16.67" align="right"><a href="sieve.python.txt">16.67</a></td>
+<td class="xl26" x:num="29.54" align="right"><a href="/syntax.cgi?benchmarks/sieve.newlisp.txt">29.54</a></td>
+<td>PYTHON</td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Random Numbers</td>
+<td class="xl26" x:num="1.77" align="right"><a href="random.perl.txt">1.77</a></td>
+<td class="xl26" x:num="2.12" align="right"><a href="random.python.txt">2.12</a></td>
+<td class="xl26" x:num="1.51" align="right"><a href="/syntax.cgi?benchmarks/random.newlisp.txt">1.51</a></td>
+<td>NEWLISP</td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Regular Expressions</td>
+<td class="xl26" x:num="2.60" align="right"><a href="regexmatch.perl.txt">2.60</a></td>
+<td class="xl26" x:num="3.17" align="right"><a href="regexmatch.python.txt">3.17</a></td>
+<td class="xl26" x:num="3.84" align="right"><a href="/syntax.cgi?benchmarks/regexmatch.newlisp.txt">3.84</a></td>
+<td>PERL</td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Reverse a File</td>
+<td class="xl26" x:num="0.41" align="right"><a href="reversefile.perl.txt">0.41</a></td>
+<td class="xl26" x:num="0.39" align="right"><a href="reversefile.python.txt">0.39</a></td>
+<td class="xl26" x:num="1.00" align="right"><a href="/syntax.cgi?benchmarks/reversefile.newlisp.txt">1.00</a></td>
+<td>PYTHON</td>
+</tr>
+
+<tr>
+<td style="vertical-align: top;">Spell Checker<br> </td>
+<td style="vertical-align: top; text-align: right;"><a href="spellcheck.perl.txt">1.27</a><br> </td>
+<td style="vertical-align: top; text-align: right;"><a href="spellcheck.python.txt">1.21</a><br> </td>
+<td style="vertical-align: top; text-align: right;"><a href="/syntax.cgi?benchmarks/spellcheck.newlisp.txt">3.01</a><br> </td>
+<td>PYTHON</td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Startup</td>
+<td class="xl26" x:num="0.94" align="right"><a href="hello.perl.txt">0.94</a></td>
+<td class="xl26" x:num="5.69" align="right"><a href="hello.python.txt">5.69</a></td>
+<td class="xl26" x:num="0.74" align="right"><a href="/syntax.cgi?benchmarks/hello.newlisp.txt">0.74</a></td>
+<td>NEWLISP</td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Statistical Moments</td>
+<td class="xl26" x:num="1.00" align="right"><a href="moments.perl.txt">1.00</a></td>
+<td class="xl26" x:num="1.00" align="right"><a href="moments.python.txt">1.00</a></td>
+<td class="xl26" x:num="1.46" align="right"><a href="/syntax.cgi?benchmarks/moments.newlisp.txt">1.46</a></td>
+<td>PERL</td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Sum a File of Numbers</td>
+<td class="xl26" x:num="8.15" align="right"><a href="sumcol.perl.txt">8.15</a></td>
+<td class="xl26" x:num="13.63" align="right"><a href="sumcol.python.txt">13.63</a></td>
+<td style="text-align: right;" class="xl25"><a href="/syntax.cgi?benchmarks/sumcol.newlisp.txt">20.70</a></td>
+<td>PERL</td>
+</tr>
+
+<tr>
+<td style="vertical-align: top;">Synchronize</td>
+<td style="vertical-align: top; text-align: right;"><a href="prodcons.perl.txt">n/a</a><br> </td>
+<td style="vertical-align: top; text-align: right;"><a href="prodcons.python.txt">6.25</a><br> </td>
+<td style="vertical-align: top; text-align: right;"><a href="/syntax.cgi?benchmarks/prodcons.newlisp.txt">1.52</a><br> </td>
+<td>NEWLISP</td>
+</tr>
+
+<tr>
+<td style="vertical-align: top;">Takfp (new)</td>
+<td style="vertical-align: top; text-align: right;">n/a</td>
+<td style="vertical-align: top; text-align: right;">n/a</td>
+<td style="vertical-align: top; text-align: right;"><a href="/syntax.cgi?benchmarks/takfp.newlisp.txt">code</a><br> </td>
+<td></td>
+</tr>
+
+<tr style="height: 15pt;" height="20">
+<td class="xl24" style="height: 15pt;" height="20">Word Frequency</td>
+<td class="xl26" x:num="1.03" align="right"><a href="wordfreq.perl.txt">1.03</a></td>
+<td class="xl26" x:num="1.50" align="right"><a href="wordfreq.python.txt">1.50</a></td>
+<td class="xl26" x:num="6.78" align="right"><a href="/syntax.cgi?benchmarks/wordfreq.newlisp.txt">6.78</a></td>
+<td>PERL</td>
+</tr>
+
+</tbody>
+</table>
+<br>
+<div style="text-align: center;">
+<small>For a detail on benchmark methodology see 
+<a href="http://shootout.alioth.debian.org/faq.php">here</a>.</small><br>
+<!-- http://shootout.alioth.debian.org/gp4/faq.php -->
+<br>
+<blockquote>
+<font size="-1"><p>Note that in some of the programs when running version 8.9.4 or greater, the function 'symbol' has to be replaced with 'sym'. The longer writing 'symbol' is deprecated.</p></font>
+</blockquote>
+</div>
+
+<h3>Procedure</h3> Twenty-five pieces representing different
+areas in programing where taken from the Perl, Python code
+examples and rewritten for newLISP.&nbsp; The results are shown
+in the table above. When clicking on the time measurement for a
+specific language the code can be seen. Special thanks go to 
+<span style="font-style: italic;">Doug Bagley</span> for coding or
+collecting the code pieces for Perl, Python and Guile and to 
+<span style="font-style: italic;">Brent Fulgham</span>, who now continues
+this work. As new code for newLISP and the other languages are
+available it gets copied to this site. Current values shown are from
+December 1st, 2004, except for the Regex benchmark, which is from September 28th. 
+The shootout site at Debian.org is undergoing frequent changes. Numbers will be 
+updated here from time to time as they become available.
+<br> <br>
+Times marked with 'n/a' have source code most of the time but do not
+run currently for different reasons. Most of the 'n/a' marked
+benchmarks worked before on Doug Bagley's website and will eventally on
+the debian site too.
+<br> <br>
+
+<h3>Observations</h3>
+Although Perl, Python and newLISP show similar performance, newLISP is
+fastest in 11 tests, Python in 8 and Perl in 6 in the
+currently available measurements. In 5 of the tests newLISP is better
+by a margin of a 100% or more. (Client Server, Exceptions, List
+Processing, Method Calls and Synchronize). In the Concatenate benchmarks
+the numbers for newLISP and Perl tie.
+<br> <br>
+<center>
+<font size="-3">copyright &copy; Lutz Mueller, 2004<br>
+last updated: 2004-12-03<br> </font>
+</center>
+</font>
+</blockquote>
+</body>
+</html>

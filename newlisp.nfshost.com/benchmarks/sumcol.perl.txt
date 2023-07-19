@@ -1,0 +1,8 @@
+#!/usr/bin/perl
+# $Id: sumcol.perl.html,v 1.5 2004/07/03 07:11:34 bfulgham Exp $
+# http://www.bagley.org/~doug/shootout/
+
+use integer;
+shift;
+while (<>) { $tot += $_ }
+print "$tot\n";

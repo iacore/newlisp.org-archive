@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>code/fibo-gen.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>;; - recursion -</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; The fibonacci sequence is a classic example </font>
+<font color='#555555'>;; for application of a recursive algorithm.</font>
+<font color='#555555'>;; Each number in the fibonacci sequence is the sum</font>
+<font color='#555555'>;; of the two previous numbers</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; (fibr n) => fibonacci(n)</font>
+<font color='#555555'>;;</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>fibr n<font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> n <font color='#998800'>2</font><font color='#AA0000'>)</font> <font color='#998800'>1</font>
+      <font color='#AA0000'>(</font><font color='#0000AA'>+</font>  <font color='#AA0000'>(</font>fibr <font color='#AA0000'>(</font><font color='#0000AA'>-</font> n <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+          <font color='#AA0000'>(</font>fibr <font color='#AA0000'>(</font><font color='#0000AA'>-</font> n <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>;; - iteration -</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; Much faster than with recursion, the sequence can be</font>
+<font color='#555555'>;; built using an iterative algorithm. In this example</font>
+<font color='#555555'>;; the entire sequence up to certain number n is built</font>
+<font color='#555555'>;; and returned.</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; (fib n) returns a list of all  </font>
+<font color='#555555'>;; fibonacci numbers up to n</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; (fib n) => (1 1 2 3 5 8 13 21 ...)</font>
+<font color='#555555'>;;</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>fib n<font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>let</font> <font color='#AA0000'>(</font>f '<font color='#AA0000'>(</font><font color='#998800'>0</font> <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>dotimes</font> <font color='#AA0000'>(</font>i n<font color='#AA0000'>)</font> 
+            <font color='#AA0000'>(</font><font color='#0000AA'>push</font> <font color='#AA0000'>(</font><font color='#0000AA'>+</font> <font color='#AA0000'>(</font>f <font color='#998800'>-1</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>f <font color='#998800'>-2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> f <font color='#998800'>-1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font><font color='#998800'>1</font> f<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>;; - generator - </font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; A generator keeps state in between different repeated</font>
+<font color='#555555'>;; calls and remembers the results in a growing list fibo:mem.</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; (fibo) gets called reepeatedly</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; (fibo) => 1</font>
+<font color='#555555'>;; (fibo) => 2</font>
+<font color='#555555'>;; (fibo) => 3, 5 8 13 21 ...</font>
+<font color='#555555'>;;</font>
+<font color='#555555'>;; fibo:mem => (0 1 1 2 3 5 8 13 21 ...)</font>
+<font color='#555555'>;;</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>fibo:fibo<font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>not</font> fibo:mem<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'fibo:mem '<font color='#AA0000'>(</font><font color='#998800'>0</font> <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>push</font> <font color='#AA0000'>(</font><font color='#0000AA'>+</font> <font color='#AA0000'>(</font>fibo:mem <font color='#998800'>-1</font><font color='#AA0000'>)</font> <font color='#AA0000'>(</font>fibo:mem <font color='#998800'>-2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> fibo:mem <font color='#998800'>-1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#555555'>;; eof</font>
+
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

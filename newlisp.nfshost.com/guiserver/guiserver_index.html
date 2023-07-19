@@ -1,0 +1,308 @@
+<!doctype html public "HTML 4.01 transitional">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="description" content="newLISP-GS Users Manual and Reference Index">
+   <title>guiserver.lsp Index</title>
+
+<style type="text/css" media="screen">
+<!--
+
+body, h1, h4, h4, h4, p {
+   font-family: Lucida Sans, Verdana, Helvetica, sanserif;
+   color: #444444;
+ }
+
+pre, tt {
+   font-family: Lucida Console, Courier;
+}
+
+-->
+</style>
+
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#376590" vlink="#551A8B" alink="#ffAA28">
+
+
+<h4>Initialization and application setup</h4>
+
+<a href="guiserver.lsp.html#gs_init" target="body">gs:init</a><br />
+<a href="guiserver.lsp.html#gs_listen" target="body">gs:listen</a><br />
+<a href="guiserver.lsp.html#gs_check-event" target="body">gs:check-event</a><br />
+
+
+<h4>Containers</h4>
+
+<a href="guiserver.lsp.html#gs_dialog" target="body">gs:dialog</a><br />
+<a href="guiserver.lsp.html#gs_frame" target="body">gs:frame</a><br />
+<a href="guiserver.lsp.html#gs_menu-bar" target="body">gs:menu-bar</a><br />
+<a href="guiserver.lsp.html#gs_panel" target="body">gs:panel</a><br />
+<a href="guiserver.lsp.html#gs_scroll-pane" target="body">gs:scroll-pane</a><br />
+<a href="guiserver.lsp.html#gs_split-pane" target="body">gs:split-pane</a><br />
+<a href="guiserver.lsp.html#gs_tabbed-pane" target="body">gs:tabbed-pane</a><br />
+<a href="guiserver.lsp.html#gs_tool-bar" target="body">gs:tool-bar</a><br />
+<a href="guiserver.lsp.html#gs_canvas" target="body">gs:canvas</a><br />
+<a href="guiserver.lsp.html#gs_window" target="body">gs:window</a><br />
+
+<h4>Labels</h4>
+
+<a href="guiserver.lsp.html#gs_label" target="body">gs:label</a><br />
+<a href="guiserver.lsp.html#gs_image-label" target="body">gs:image-label</a><br />
+
+<h4>Control widgets</h4>
+
+<a href="guiserver.lsp.html#gs_button" target="body">gs:button</a><br />
+<a href="guiserver.lsp.html#gs_check-box" target="body">gs:check-box</a><br />
+<a href="guiserver.lsp.html#gs_combo-box" target="body">gs:combo-box</a><br />
+<a href="guiserver.lsp.html#gs_image-button" target="body">gs:image-button</a><br />
+<a href="guiserver.lsp.html#gs_list-box" target="body">gs:list-box</a><br />
+<a href="guiserver.lsp.html#gs_menu" target="body">gs:menu</a><br />
+<a href="guiserver.lsp.html#gs_menu-popup" target="body">gs:menu-popup</a><br />
+<a href="guiserver.lsp.html#gs_menu-item" target="body">gs:menu-item</a><br />
+<a href="guiserver.lsp.html#gs_menu-item-check" target="body">gs:menu-item-check</a><br />
+<a href="guiserver.lsp.html#gs_progress-bar" target="body">gs:progress-bar</a><br />
+<a href="guiserver.lsp.html#gs_slider" target="body">gs:slider</a><br />
+<a href="guiserver.lsp.html#gs_text-area" target="body">gs:text-area</a><br />
+<a href="guiserver.lsp.html#gs_text-field" target="body">gs:text-field</a><br />
+<a href="guiserver.lsp.html#gs_text-pane" target="body">gs:text-pane</a><br />
+
+<h4>Placing components in containers</h4>
+<a href="guiserver.lsp.html#gs_add-to" target="body">gs:add-to</a><br />
+
+<h4>Summary of commands</h4>
+
+<a href="guiserver.lsp.html#gs_add-list-item" target="body">gs:add-list-item</a><br />
+<a href="guiserver.lsp.html#gs_add-separator" target="body">gs:add-separator</a><br />
+<a href="guiserver.lsp.html#gs_add-to" target="body">gs:add-to</a><br />
+<a href="guiserver.lsp.html#gs_append-text" target="body">gs:append-text</a><br />
+<a href="guiserver.lsp.html#gs_check-event" target="body">gs:check-event</a><br />
+<a href="guiserver.lsp.html#gs_clear-list" target="body">gs:clear-list</a><br />
+<a href="guiserver.lsp.html#gs_clear-text" target="body">gs:clear-text</a><br />
+<a href="guiserver.lsp.html#gs_copy-text" target="body">gs:copy-text</a><br />
+<a href="guiserver.lsp.html#gs_cut-text" target="body">gs:cut-text</a><br />
+<a href="guiserver.lsp.html#gs_destroy-shell" target="body">gs:destroy-shell</a><br />
+<a href="guiserver.lsp.html#gs_disable" target="body">gs:disable</a><br />
+<a href="guiserver.lsp.html#gs_dispose" target="body">gs:dispose</a><br />
+<a href="guiserver.lsp.html#gs_dispose-splash" target="body">gs:dispose-splash</a><br />
+<a href="guiserver.lsp.html#gs_enable" target="body">gs:enable</a><br />
+<a href="guiserver.lsp.html#gs_eval-shell" target="body">gs:eval-shell</a><br />
+<a href="guiserver.lsp.html#gs_find-text" target="body">gs:find-text</a><br />
+<a href="guiserver.lsp.html#gs_window-closed" target="body">gs:frame-closed</a><br />
+<a href="guiserver.lsp.html#gs_get-fonts" target="body">gs:get-fonts</a><br />
+<a href="guiserver.lsp.html#gs_get-bounds" target="body">gs:get-bounds</a><br />
+<a href="guiserver.lsp.html#gs_get-font-metrics" target="body">gs:get-font-metrics</a><br />
+<a href="guiserver.lsp.html#gs_get-screen" target="body">gs:get-screen</a><br />
+<a href="guiserver.lsp.html#gs_get-selected-text" target="body">gs:get-selected-text</a><br />
+<a href="guiserver.lsp.html#gs_get-text" target="body">gs:get-text</a><br />
+<a href="guiserver.lsp.html#gs_get-text-position" target="body">gs:get-text-position</a><br />
+<a href="guiserver.lsp.html#gs_get-version" target="body">gs:get-version</a><br />
+<a href="guiserver.lsp.html#gs_goto-text" target="body">gs:goto-text</a><br />
+<a href="guiserver.lsp.html#gs_insert-list-item" target="body">gs:insert-list-item</a><br />
+<a href="guiserver.lsp.html#gs_insert-tab" target="body">gs:insert-tab</a><br />
+<a href="guiserver.lsp.html#gs_insert-text" target="body">gs:insert-text</a><br />
+<a href="guiserver.lsp.html#gs_layout" target="body">gs:layout</a><br />
+<a href="guiserver.lsp.html#gs_load-text" target="body">gs:load-text</a><br />
+<a href="guiserver.lsp.html#gs_no-action" target="body">gs:no-action</a><br />
+<a href="guiserver.lsp.html#gs_paste-text" target="body">gs:paste-text</a><br />
+<a href="guiserver.lsp.html#gs_redo-text" target="body">gs:redo-text</a><br />
+<a href="guiserver.lsp.html#gs_remove-from" target="body">gs:remove-from</a><br />
+<a href="guiserver.lsp.html#gs_remove-list-item" target="body">gs:remove-list-item</a><br/>
+<a href="guiserver.lsp.html#gs_remove-tab" target="body">gs:remove-tab</a><br />
+<a href="guiserver.lsp.html#gs_request-focus" target="body">gs:request-focus</a><br />
+<a href="guiserver.lsp.html#gs_run-shell" target="body">gs:run-shell</a><br />
+<a href="guiserver.lsp.html#gs_select-list-item" target="body">gs:select-list-item</a><br />
+<a href="guiserver.lsp.html#gs_select-text" target="body">gs:select-text</a><br />
+<a href="guiserver.lsp.html#gs_set-accelerator" target="body">gs:set-accelerator</a><br />
+<a href="guiserver.lsp.html#gs_set-background" target="body">gs:set-background</a><br />
+<a href="guiserver.lsp.html#gs_set-bevel-border" target="body">gs:set-bevel-border</a><br />
+<a href="guiserver.lsp.html#gs_set-border-layout" target="body">gs:set-border-layout</a><br />
+<a href="guiserver.lsp.html#gs_set-caret" target="body">gs:set-caret</a><br />
+<a href="guiserver.lsp.html#gs_set-caret-color" target="body">gs:set-caret-color</a><br />
+<a href="guiserver.lsp.html#gs_set-color" target="body">gs:set-color</a><br />
+<a href="guiserver.lsp.html#gs_set-cursor" target="body">gs:set-cursor</a><br />
+<a href="guiserver.lsp.html#gs_set-echo-char" target="body">gs:set-echo-char</a><br />
+<a href="guiserver.lsp.html#gs_set-editable" target="body">gs:set-editable</a><br />
+<a href="guiserver.lsp.html#gs_set-flow-layout" target="body">gs:set-flow-layout</a><br />
+<a href="guiserver.lsp.html#gs_set-font" target="body">gs:set-font</a><br />
+<a href="guiserver.lsp.html#gs_set-foreground" target="body">gs:set-foreground</a><br />
+<a href="guiserver.lsp.html#gs_set-grid-layout" target="body">gs:set-grid-layout</a><br />
+<a href="guiserver.lsp.html#gs_set-icon" target="body">gs:set-icon</a><br />
+<a href="guiserver.lsp.html#gs_set-look-and-feel" target="body">gs:set-look-and-feel</a><br />
+<a href="guiserver.lsp.html#gs_set-resizable" target="body">gs:set-resizable</a><br />
+<a href="guiserver.lsp.html#gs_set-pressed-icon" target="body">gs:set-pressed-icon</a><br />
+<a href="guiserver.lsp.html#gs_set-selected" target="body">gs:set-selected</a><br />
+<a href="guiserver.lsp.html#gs_set-size" target="body">gs:set-size</a><br />
+<a href="guiserver.lsp.html#gs_set-selection-color" target="body">gs:set-selection-color</a><br />
+<a href="guiserver.lsp.html#gs_set-syntax" target="body">gs:set-syntax</a><br />
+<a href="guiserver.lsp.html#gs_set-syntax-colors" target="body">gs:set-syntax-colors</a><br />
+<a href="guiserver.lsp.html#gs_set-tab-size" target="body">gs:set-tab-size</a><br />
+<a href="guiserver.lsp.html#gs_set-text" target="body">gs:set-text</a><br />
+<a href="guiserver.lsp.html#gs_set-titled-border" target="body">gs:set-titled-border</a><br />
+<a href="guiserver.lsp.html#gs_set-tool-tip" target="body">gs:set-tool-tip</a><br />
+<a href="guiserver.lsp.html#gs_set-trace" target="body">gs:set-trace</a><br />
+<a href="guiserver.lsp.html#gs_set-utf8" target="body">gs:set-utf8</a><br />
+<a href="guiserver.lsp.html#gs_set-value" target="body">gs:set-value</a><br />
+<a href="guiserver.lsp.html#gs_set-visible" target="body">gs:set-visible</a><br />
+<a href="guiserver.lsp.html#gs_undo-text" target="body">gs:undo-text</a><br />
+<a href="guiserver.lsp.html#gs_undo-enable" target="body">gs:undo-enable</a><br />
+
+<h4>The Table UI</h4>
+
+<a href="guiserver.lsp.html#gs_table" target="body">gs:table</a><br />
+<a href="guiserver.lsp.html#gs_table-add-column" target="body">gs:table-add-column</a><br />
+<a href="guiserver.lsp.html#gs_table-add-row" target="body">gs:table-add-row</a><br />
+<a href="guiserver.lsp.html#gs_table-get" target="body">gs:table-get</a><br />
+<a href="guiserver.lsp.html#gs_table-get-cell" target="body">gs:table-get-cell</a><br />
+<a href="guiserver.lsp.html#gs_table-get-size" target="body">gs:table-get-size</a><br />
+<a href="guiserver.lsp.html#gs_table-set-cell" target="body">gs:table-set-cell</a><br />
+<a href="guiserver.lsp.html#gs_table-set-column" target="body">gs:table-set-column</a><br />
+<a href="guiserver.lsp.html#gs_table-set-row-number" target="body">gs:table-set-row-number</a><br />
+
+<h4>Special dialogs</h4>
+
+<a href="guiserver.lsp.html#gs_color-dialog" target="body">gs:color-dialog</a><br />
+<a href="guiserver.lsp.html#gs_message-dialog" target="body">gs:message-dialog</a><br />
+<a href="guiserver.lsp.html#gs_confirm-dialog" target="body">gs:confirm-dialog</a><br />
+<a href="guiserver.lsp.html#gs_open-file-dialog" target="body">gs:open-file-dialog</a><br />
+<a href="guiserver.lsp.html#gs_save-file-dialog" target="body">gs:save-file-dialog</a><br />
+
+<h4>2D Graphics functions</h4>
+
+<a href="guiserver.lsp.html#gs_color-tag" target="body">gs:color-tag</a><br/>
+<a href="guiserver.lsp.html#gs_delete-tag" target="body">gs:delete-tag</a><br/>
+<a href="guiserver.lsp.html#gs_draw-arc" target="body">gs:draw-arc</a><br/>
+<a href="guiserver.lsp.html#gs_draw-circle" target="body">gs:draw-circle</a><br/>
+<a href="guiserver.lsp.html#gs_draw-ellipse" target="body">gs:draw-ellipse</a><br/>
+<a href="guiserver.lsp.html#gs_draw-image" target="body">gs:draw-image</a><br/>
+<a href="guiserver.lsp.html#gs_draw-line" target="body">gs:draw-line</a><br/>
+<a href="guiserver.lsp.html#gs_draw-path" target="body">gs:draw-path</a><br/>
+<a href="guiserver.lsp.html#gs_draw-polygon" target="body">gs:draw-polygon</a><br />
+<a href="guiserver.lsp.html#gs_draw-rect" target="body">gs:draw-rect</a><br/>
+<a href="guiserver.lsp.html#gs_draw-round-rect" target="body">gs:draw-round-rect</a><br/>
+<a href="guiserver.lsp.html#gs_draw-text" target="body">gs:draw-text</a><br/>
+<a href="guiserver.lsp.html#gs_export " target="body">gs:export </a><br />
+<a href="guiserver.lsp.html#gs_fill-arc" target="body">gs:fill-arc</a><br />
+<a href="guiserver.lsp.html#gs_fill-circle" target="body">gs:fill-circle</a><br/>
+<a href="guiserver.lsp.html#gs_fill-ellipse" target="body">gs:fill-ellipse</a><br />
+<a href="guiserver.lsp.html#gs_fill-polygon" target="body">gs:fill-polygon</a><br />
+<a href="guiserver.lsp.html#gs_fill-rect" target="body">gs:fill-rect</a><br />
+<a href="guiserver.lsp.html#gs_fill-round-rect" target="body">gs:fill-round-rect</a><br />
+<a href="guiserver.lsp.html#gs_hide-tag" target="body">gs:hide-tag</a><br />
+<a href="guiserver.lsp.html#gs_move-tag" target="body">gs:move-tag</a><br />
+<a href="guiserver.lsp.html#gs_reorder-tags" target="body">gs:reorder-tags</a><br />
+<a href="guiserver.lsp.html#gs_rotate-tag" target="body">gs:rotate-tag</a><br />
+<a href="guiserver.lsp.html#gs_save-text" target="body">gs:save-text</a><br />
+<a href="guiserver.lsp.html#gs_scale-tag" target="body">gs:scale-tag</a><br />
+<a href="guiserver.lsp.html#gs_shear-tag" target="body">gs:shear-tag</a><br />
+<a href="guiserver.lsp.html#gs_show-popup" target="body">gs:show-popup</a><br />
+<a href="guiserver.lsp.html#gs_show-tag" target="body">gs:show-tag</a><br />
+<a href="guiserver.lsp.html#gs_set-canvas" target="body">gs:set-canvas</a><br />
+<a href="guiserver.lsp.html#gs_set-paint" target="body">gs:set-paint</a><br />
+<a href="guiserver.lsp.html#gs_set-rotation" target="body">gs:set-rotation</a><br />
+<a href="guiserver.lsp.html#gs_set-scale" target="body">gs:set-scale</a><br />
+<a href="guiserver.lsp.html#gs_set-stroke" target="body">gs:set-stroke</a><br />
+<a href="guiserver.lsp.html#gs_set-translation" target="body">gs:set-translation</a><br />
+<a href="guiserver.lsp.html#gs_set-anti-aliasing" target="body">gs:set-anti-aliasing</a><br />
+<a href="guiserver.lsp.html#gs_translate-tag" target="body">gs:translate-tag</a><br />
+<a href="guiserver.lsp.html#gs_update" target="body">gs:update</a><br />
+
+<h4>Events</h4>
+
+<a href="guiserver.lsp.html#gs_key-event" target="body">gs:key-event</a><br />
+<a href="guiserver.lsp.html#gs_mouse-clicked" target="body">gs:mouse-clicked</a><br />
+<a href="guiserver.lsp.html#gs_mouse-dragged" target="body">gs:mouse-dragged</a><br />
+<a href="guiserver.lsp.html#gs_mouse-event" target="body">gs:mouse-event</a><br />
+<a href="guiserver.lsp.html#gs_mouse-moved" target="body">gs:mouse-moved</a><br />
+<a href="guiserver.lsp.html#gs_mouse-pressed" target="body">gs:mouse-pressed</a><br />
+<a href="guiserver.lsp.html#gs_mouse-released" target="body">gs:mouse-released</a><br />
+<a href="guiserver.lsp.html#gs_mouse-wheel" target="body">gs:mouse-wheel</a><br />
+<a href="guiserver.lsp.html#gs_window-closed" target="body">gs:window-closed</a><br />
+<a href="guiserver.lsp.html#gs_window-resized" target="body">gs:window-resized</a><br />
+
+<h4>Sound and MIDI API</h4>
+
+<a href="guiserver.lsp.html#gs_add-track" target="body">gs:add-track</a><br />
+<a href="guiserver.lsp.html#gs_channel-bend" target="body">gs:channel-bend</a><br />
+<a href="guiserver.lsp.html#gs_get-instruments" target="body">gs:get-instruments</a><br />
+<a href="guiserver.lsp.html#gs_instruments" target="body">gs:instruments</a><br />
+<a href="guiserver.lsp.html#gs_midi-bpm " target="body">gs:midi-bpm</a><br />
+<a href="guiserver.lsp.html#gs_midi-close" target="body">gs:midi-close</a><br />
+<a href="guiserver.lsp.html#gs_midi-init" target="body">gs:midi-init</a><br />
+<a href="guiserver.lsp.html#gs_midi-patch" target="body">gs:midi-patch</a><br />
+<a href="guiserver.lsp.html#gs_mute-track" target="body">gs:mute-track</a><br />
+<a href="guiserver.lsp.html#gs_play-note" target="body">gs:play-note</a><br />
+<a href="guiserver.lsp.html#gs_play-sequence" target="body">gs:play-sequence</a><br />
+<a href="guiserver.lsp.html#gs_save-sequence" target="body">gs:save-sequence</a><br />
+<a href="guiserver.lsp.html#gs_stop-sequence" target="body">gs:stop-sequence</a><br />
+<a href="guiserver.lsp.html#gs_play-sound" target="body">gs:play-sound</a><br />
+
+<h4>Predefined colors</h4>
+A list of rgb components<br />
+<br />
+<a>gs:black</a><br />
+<a>gs:blue</a><br />
+<a>gs:cyan</a><br />
+<a>gs:darkGray</a><br />
+<a>gs:gray</a><br />
+<a>gs:green</a><br />
+<a>gs:lightGray</a><br />
+<a>gs:magenta</a><br />
+<a>gs:orange</a><br />
+<a>gs:pink</a><br />
+<a>gs:red</a><br />
+<a>gs:white</a><br />
+<a>gs:yellow</a><br />
+
+<h4>Built-in icons and images</h4>
+Usage: /local/newLISP128.png<br />
+<br />
+<a>clear-down32.png</a><br />
+<a>clear32.png</a><br />
+<a>copy-down32.png</a><br />
+<a>copy32.png</a><br />
+<a>cut-down32.png</a><br />
+<a>cut32.png</a><br />
+<a>dotgray16.png</a><br />
+<a>dotgray32.png</a><br />
+<a>dotgreen16.png</a><br />
+<a>dotgreen32.png</a><br />
+<a>dotred16.png</a><br />
+<a>dotred32.png</a><br />
+<a>dotyellow16.png</a><br />
+<a>dotyellow32.png</a><br />
+<a>edit-down32.png</a><br />
+<a>edit32.png</a><br />
+<a>folder-closed-down32.png</a><br />
+<a>folder-closed32.png</a><br />
+<a>folder-opened-down32.png</a><br />
+<a>folder-opened32.png</a><br />
+<a>font-book-down32.png</a><br />
+<a>font-book32.png</a><br />
+<a>green10.png</a><br />
+<a>info-down32.png</a><br />
+<a>info32.png</a><br />
+<a>new-down32.png</a><br />
+<a>new32.png</a><br />
+<a>newLISP-down32.png</a><br />
+<a>newLISP128.png</a><br />
+<a>newLISP16.png</a><br />
+<a>newLISP20.png</a><br />
+<a>newLISP32.png</a><br />
+<a>newLISP64.png</a><br />
+<a>newLISPsplashWin.png</a><br />
+<a>paste-down32.png</a><br />
+<a>paste32.png</a><br />
+<a>pressedbutton32.png</a><br />
+<a>red10.png</a><br />
+<a>restart-down32.png</a><br />
+<a>restart32.png</a><br />
+<a>run-down32.png</a><br />
+<a>run32.png</a><br />
+<a>save-down32.png</a><br />
+<a>save32.png</a><br />
+<a>search-down32.png</a><br />
+<a>search32.png</a><br />
+<a>stop-down32.png</a><br />
+<a>stop32.png</a><br />
+</body>
+</html>

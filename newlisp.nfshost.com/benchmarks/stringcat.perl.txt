@@ -1,0 +1,12 @@
+d: strcat.perl,v 1.4 2001/04/29 06:13:05 doug Exp $
+# http://www.bagley.org/~doug/shootout/
+
+use strict;
+
+my $NUM = $ARGV[0];
+$NUM = 1 if ($NUM < 1);
+
+my $str = "";
+$str .= "hello\n" foreach (1..$NUM);
+print length($str),"\n";
+

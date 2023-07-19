@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>benchmarks/nsieve.newlisp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'># nsieve - benchmark</font>
+<font color='#555555'>#</font>
+<font color='#555555'># by Lutz Mueller 2004-12-11</font>
+<font color='#555555'>#</font>
+<font color='#555555'># A solution with a newLISP array for flags is about the same </font>
+<font color='#555555'># speed but uses much more memory. Here a character vector is</font>
+<font color='#555555'># manipulated directly.</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>nsieve m f, cnt<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'cnt <font color='#998800'>0</font><font color='#AA0000'>)</font>
+
+        <font color='#AA0000'>(</font><font color='#0000AA'>for</font> <font color='#AA0000'>(</font>i <font color='#998800'>2</font> m<font color='#AA0000'>)</font>
+            <font color='#AA0000'>(</font><font color='#0000AA'>if</font> <font color='#AA0000'>(</font><font color='#0000AA'>=</font> <font color='#AA0000'>(</font><font color='#0000AA'>char</font> f:isPrime i<font color='#AA0000'>)</font> <font color='#998800'>1</font><font color='#AA0000'>)</font>
+                <font color='#AA0000'>(</font><font color='#0000AA'>begin</font>
+                    <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'k <font color='#AA0000'>(</font><font color='#0000AA'>+</font> i i<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+                    <font color='#AA0000'>(</font><font color='#0000AA'>while</font> <font color='#AA0000'>(</font><font color='#0000AA'><=</font> k m<font color='#AA0000'>)</font>
+                        <font color='#AA0000'>(</font><font color='#0000AA'>cpymem</font> <font color='#008800'>"&#092;000"</font> <font color='#AA0000'>(</font><font color='#0000AA'>+</font> k <font color='#AA0000'>(</font><font color='#0000AA'>address</font> f:isPrime<font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#998800'>1</font><font color='#AA0000'>)</font>
+                        <font color='#AA0000'>(</font><font color='#0000AA'>inc</font> 'k i<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	        <font color='#AA0000'>(</font><font color='#0000AA'>inc</font> 'cnt<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+         cnt<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'n <font color='#AA0000'>(</font><font color='#0000AA'>integer</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+    <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'm <font color='#AA0000'>(</font><font color='#0000AA'>*</font> <font color='#AA0000'>(</font><font color='#0000AA'>pow</font> <font color='#998800'>2</font> n<font color='#AA0000'>)</font> <font color='#998800'>10000</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'flags:isPrime <font color='#AA0000'>(</font><font color='#0000AA'>dup</font> <font color='#008800'>"&#092;001"</font> <font color='#AA0000'>(</font><font color='#0000AA'>+</font> m <font color='#998800'>1</font><font color='#AA0000'>)</font> <font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+    <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"Primes up to %8d%8d"</font> m <font color='#AA0000'>(</font>nsieve m flags<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+    <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'm <font color='#AA0000'>(</font><font color='#0000AA'>*</font> <font color='#AA0000'>(</font><font color='#0000AA'>pow</font> <font color='#998800'>2</font> <font color='#AA0000'>(</font><font color='#0000AA'>-</font> n <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#998800'>10000</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"Primes up to %8d%8d"</font> m <font color='#AA0000'>(</font>nsieve m flags<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+    <font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'm <font color='#AA0000'>(</font><font color='#0000AA'>*</font> <font color='#AA0000'>(</font><font color='#0000AA'>pow</font> <font color='#998800'>2</font> <font color='#AA0000'>(</font><font color='#0000AA'>-</font> n <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#998800'>10000</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"Primes up to %8d%8d"</font> m <font color='#AA0000'>(</font>nsieve m flags<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+    <font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font>main<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

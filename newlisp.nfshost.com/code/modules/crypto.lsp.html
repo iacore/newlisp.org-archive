@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "HTML 4.01 Transitional">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>crypto.lsp</title>
+
+<link rel="stylesheet" type="text/css" href="newlispdoc.css" />
+</head>
+
+<body style="margin: 20px;" text="#111111" bgcolor="#FFFFFF" 
+            link="#376590" vlink="#551A8B" alink="#ffAA28">
+<blockquote>
+<center><h1>crypto.lsp</h1></center>
+<p><a href="index.html">Module index</a></p><a href="crypto.lsp.src.html">source</a>&nbsp;<a href="crypto.lsp">download</a><br/>
+<h2>Module:&nbsp;crypto.lsp </h2><p>SSL crypto functions for MD5 and SHA-1 hashing</p>
+<b>Version: </b>1.01 - initial release<br/>
+<b>Version: </b>1.02 - renamed to crypto, new lib detection<br/>
+<b>Version: </b>1.04 - added hmac encryption from amazon.com query API<br/>
+<b>Version: </b>1.05 - added added gnuwin32/bin/libeay32.dll for crypto on Win32<br/>
+<b>Version: </b>1.06 - added ripemd160<br/>
+<b>Version: </b>1.07 - added libcrypto for OpenBSD and tested for 64-bit<br/>
+<b>Version: </b>1.08 - help text corrections<br/>
+<b>Version: </b>1.09 - added lib path for Windows 7<br/>
+<b>Version: </b>1.10 - added SHA256<br/>
+<b>Version: </b>1.11 - added  path for UBUNTU Linux 13.04<br/>
+<b>Version: </b>1.12 - added  path for UBUNTU Linux 12.04 and CentOS, removed old<br/>
+<b>Version: </b>1.13 - fix for crypto:hmac. Thanks Cormullion, March 2014<br/>
+<b>Version: </b>1.14 - starting v10.6.3 import using "cdecl" on Windows<br/>
+<b>Version: </b>1.15 - added path for Debian Jessie<br/>
+<b>Author: </b>Lutz Mueller 2007, Martin Quiroga 2007, Norman Deppenbroek 2009, <br/>
+<b>Author: </b>Marc Hildman, 2011<br/>
+<br/><br/>
+ <h2>Module for SSL lib crypto  bindings</h2>
+ This modules imports functions for the MD5 and SHA-1 hashing algorithms described
+ here: <a href="http://www.ietf.org/rfc/rfc3174.txt">http://www.ietf.org/rfc/rfc3174.txt</a> .
+ The crypto library is part of the <a href="http://www.openssl.org/">OpenSSL</a> libraries.
+<br/><br/>
+ To use this module include the following <tt>load</tt> statement at the
+ beginning of the program file:
+ <pre>
+ (load "/usr/share/newlisp/modules/crypto.lsp")
+ ; or as a shorter alternative
+ (module "crypto.lsp")
+ </pre>
+ <h2>Requirements:</h2> 
+ On Mac OS X, UBUNTU and many other Linux, BSDs and other UNIX installations
+ <tt>libcrypto.so</tt> is installed by default as part of the OpenSSL
+ libraries in <tt>usr/lib/libcrypto.so</tt>. If loading this module 
+ finishes with an error message the path of the library should be corrected.
+ For MS Windows a library is available at 
+ <a href="http://gnuwin32.sourceforge.net/">http://gnuwin32.sourceforge.net/</a> .
+<br/><br/>
+ This module has been tested on Mac OS X, UBUNTU Linux and FreeBSD.
+
+
+
+
+
+
+<br/><br/><center>&sect;</center><br/>
+<a name="crypto_md5"></a><h3><font color=#CC0000>crypto:md5</font></h3>
+<b>syntax: (<font color=#CC0000>crypto:md5</font> <em>string</em> <em>bool-raw</em>)</b><br/>
+<b>parameter: </b><em>string</em> - The string buffer for which to calculate a MD5 hash<br/>
+<b>parameter: </b><em>bool-raw</em> - Return the raw binay buffer when <tt>true</tt>.<br/>
+<p><b>return: </b>The 16 Byte MD5 hash as a 32 Byte long hex string or as a 16 byte binary buffer.</p>
+<b>Example:</b><blockquote><pre> (crypto:md5 "ABC") =&gt; "902fbdd2b1df0c4f70b4a5d23525e932"
+
+ (crypto:md5 (read-file "newlisp-9.1.0.tgz")) =&gt; "46c79c93e904df35c6a8474ace406c92"</pre></blockquote>
+<br/><br/><center>&sect;</center><br/>
+<a name="crypto_sha1"></a><h3><font color=#CC0000>crypto:sha1</font></h3>
+<b>syntax: (<font color=#CC0000>crypto:sha1</font> <em>string</em> <em>bool-raw</em>)</b><br/>
+<b>parameter: </b><em>string</em> - The string buffer for which to calculate a SHA-1 hash<br/>
+<b>parameter: </b><em>bool-raw</em> - Return the raw binay buffer when <tt>true</tt>.<br/>
+<p><b>return: </b>The 20 Byte SHA-1 hash as a 40 Byte long hex string or as a 20 byte binary buffer.</p>
+<b>Example:</b><blockquote><pre> (crypto:sha1 "ABC") =&gt; "3c01bdbb26f358bab27f267924aa2c9a03fcfdb8"
+
+ (crypto:sha1 (read-file "newlisp-9.1.0.tgz")) =&gt; "2127a9c487f338b00f36cfd60b5f33d27b8d0010"</pre></blockquote>
+<br/><br/><center>&sect;</center><br/>
+<a name="crypto_sha256"></a><h3><font color=#CC0000>crypto:sha256</font></h3>
+<b>syntax: (<font color=#CC0000>crypto:sha256</font> <em>string</em> <em>bool-raw</em>)</b><br/>
+<b>parameter: </b><em>string</em> - The string buffer for which to calculate a SHA-256 hash<br/>
+<b>parameter: </b><em>bool-raw</em> - Return the raw binay buffer when <tt>true</tt>.<br/>
+<p><b>return: </b>The 32 Byte SHA-1 hash as a 64 Byte long hex string or as a 32 byte binary buffer.</p>
+<b>Example:</b><blockquote><pre> (crypto:sha256 "ABC") =&gt; "b5d4045c3f466fa91fe2cc6abe79232a1a57cdf104f7a26e716e0a1e2789df78" 
+</pre></blockquote>
+<br/><br/><center>&sect;</center><br/>
+<a name="crypto_hmac"></a><h3><font color=#CC0000>crypto:hmac</font></h3>
+<b>syntax: (<font color=#CC0000>crypto:hmac</font> <em>func-hash</em> <em>str-message</em> <em>str-key</em>)</b><br/>
+<b>parameter: </b><em>func-hash</em> - The hash function to use.<br/>
+<b>parameter: </b><em>str-message</em> - The message to encrypt.<br/>
+<b>parameter: </b><em>str-key</em> - The encryption key.<br/>
+<br/><br/>
+ This function is part of the amazon.com
+ <a href="http://docs.amazonwebservices.com/AWSEC2/2007-08-29/DeveloperGuide/using-query-api.html">Query-API</a>  and based on <a href="http://www.faqs.org/rfcs/rfc2104.html">RFC2104</a> - HMAC: Keyed-Hashing for Message Authentication.
+<br/><br/>
+<b>Example:</b><blockquote><pre> (set 'output (crypto:hmac crypto:md5 "Hello World" "secret"))
+ (unpack (dup "c" (length output)) output)
+ =&gt; (107 59 -76 66 117 -119 -35 -31 -7 -121 90 55 -109 -68 32 98)</pre></blockquote>
+<br/><br/><center>&sect;</center><br/>
+<a name="crypto_ripemd160"></a><h3><font color=#CC0000>crypto:ripemd160</font></h3>
+<b>syntax: (<font color=#CC0000>crypto:ripemd160</font> <em>string</em> <em>bool-raw</em>)</b><br/>
+<b>parameter: </b><em>string</em> - The string buffer for which to calculate a RIPEMD160 hash <br/>
+<b>parameter: </b><em>bool-raw</em> - Return the raw binay buffer when <tt>true</tt>. <br/>
+<p><b>return: </b>The 20 Byte RIPEMD160 hash as a 40 Byte long hex string or as a 20 byte binary buffer. </p>
+<b>Example:</b><blockquote><pre> (crypto:ripemd160 "ABC") =&gt; "df62d400e51d3582d53c2d89cfeb6e10d32a3ca6" 
+ 
+ (crypto:ripemd160 (read-file "newlisp.exe")) =&gt; "9c1185a5c5e9fc54612808977ee8f548b2258d31" </pre></blockquote>
+
+<br/><br/><center>- &part; -</center><br/>
+<center><font face='Arial' size='-2' color='#444444'>
+generated with <a href="http://newlisp.org">newLISP</a>&nbsp;
+and <a href="http://newlisp.org/newLISPdoc.html">newLISPdoc</a>
+</font></center>
+</blockquote>
+</body>
+</html>

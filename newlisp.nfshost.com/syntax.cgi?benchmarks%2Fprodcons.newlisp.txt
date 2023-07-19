@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>benchmarks/prodcons.newlisp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'># prodcons.newlisp - benchmark Producer/consumer </font>
+<font color='#555555'># newLISP v.8.3.0 or later required</font>
+<font color='#555555'># Note that newLISP does not use Pthreads but classic UNIX/fork() processes </font>
+<font color='#555555'># therefore no mutexes amd condition variables but semaphores and shared memory</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>constant</font> 'wait <font color='#998800'>-1</font> 'sig <font color='#998800'>1</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>consumer n<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'i <font color='#998800'>0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>while</font> <font color='#AA0000'>(</font><font color='#0000AA'><</font> i n<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>semaphore</font> cons-sem wait<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'i <font color='#AA0000'>(</font><font color='#0000AA'>share</font> data<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>share</font> consumed <font color='#AA0000'>(</font><font color='#0000AA'>+</font> <font color='#AA0000'>(</font><font color='#0000AA'>share</font> consumed<font color='#AA0000'>)</font> <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>semaphore</font> prod-sem sig<font color='#AA0000'>)</font><font color='#AA0000'>)</font>  
+	<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		
+		
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>producer n<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>for</font> <font color='#AA0000'>(</font>i <font color='#998800'>1</font> n<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>semaphore</font> prod-sem wait<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>share</font> data i<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>share</font> produced <font color='#AA0000'>(</font><font color='#0000AA'>+</font> <font color='#AA0000'>(</font><font color='#0000AA'>share</font> produced<font color='#AA0000'>)</font> <font color='#998800'>1</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>semaphore</font> cons-sem sig<font color='#AA0000'>)</font><font color='#AA0000'>)</font>   
+	<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>main n<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'produced <font color='#AA0000'>(</font><font color='#0000AA'>share</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#555555'>; get shared mem addresses</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'consumed <font color='#AA0000'>(</font><font color='#0000AA'>share</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'data <font color='#AA0000'>(</font><font color='#0000AA'>share</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>	
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>share</font> produced <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#555555'>; init shared memory</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>share</font> consumed <font color='#998800'>0</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>share</font> data <font color='#998800'>0</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'prod-sem <font color='#AA0000'>(</font><font color='#0000AA'>semaphore</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#555555'>; get semaphores</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'cons-sem <font color='#AA0000'>(</font><font color='#0000AA'>semaphore</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'prod-pid <font color='#AA0000'>(</font><font color='#0000AA'>fork</font> <font color='#AA0000'>(</font>producer n<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> <font color='#555555'>; start processes</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'cons-pid <font color='#AA0000'>(</font><font color='#0000AA'>fork</font> <font color='#AA0000'>(</font>consumer n<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>semaphore</font> prod-sem sig<font color='#AA0000'>)</font> <font color='#555555'>; get producer started</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>wait-pid</font> prod-pid<font color='#AA0000'>)</font> <font color='#555555'>; wait for processe to finish</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>wait-pid</font> cons-pid<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>semaphore</font> cons-sem <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#555555'>; release semaphore</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>semaphore</font> prod-sem <font color='#998800'>0</font><font color='#AA0000'>)</font> <font color='#555555'>; release semaphore</font>
+
+	<font color='#AA0000'>(</font><font color='#0000AA'>println</font> <font color='#AA0000'>(</font><font color='#0000AA'>share</font> produced<font color='#AA0000'>)</font> <font color='#008800'>" "</font> <font color='#AA0000'>(</font><font color='#0000AA'>share</font> consumed<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font>main <font color='#AA0000'>(</font><font color='#0000AA'>integer</font> <font color='#AA0000'>(</font><font color='#0000AA'>last</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+
+	
+		
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

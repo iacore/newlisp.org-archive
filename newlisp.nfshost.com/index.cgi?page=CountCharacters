@@ -1,0 +1,463 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+
+
+<head>
+  <title>newLISP  - CountCharacters</title>
+  <META name="verify-v1" content="uI5QBi0dvEoNnrT+Vrm63toHH4Ep1y6BBR61veuiWKU=" />
+  <META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.cgi" />
+  <meta name="description"`
+      content="newLISP is a general purpose scripting language for developing web applications and programs in general in the domains of artificial intelligence (AI), statistics and machine learning.">
+  <meta name="keywords"
+      content="lisp,scheme,programming,scripting language,ai,artificial intelligence,statistics,machine learning,distributed and parallel processing,gpl">
+  <META name="verify-v1" content="uI5QBi0dvEoNnrT+Vrm63toHH4Ep1y6BBR61veuiWKU=" />
+  <style type="text/css" media="screen">
+<!--
+ 
+ /* style for top title portion of site */
+
+ .title {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 20px;
+   font-weight: 200;
+   margin: 0 10%;
+   margin-bottom: 3px;
+   color: #888;
+  background-color: #FFFFFF;
+ }
+
+ /* link behaviour in title box */
+ .title a {
+   background-color: transparent;
+   text-decoration: none;
+   color: #eee;
+   text-decoration: none;
+ }
+
+ .title a:hover {
+   color: #fff;
+   text-decoration: underline;
+   background-color: transparent;
+ }
+
+ /* the name on top of each page (except the Home page) */
+
+ .pagename {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 18px;
+   margin-bottom: 20px;
+ }
+
+ /* style of content box where all 
+   user text lives 
+ */
+ .content {
+   margin: 0 10%;
+   max-width: 900px;
+   padding: 10px;
+  background-color: #FFFFFF;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+ .content a {
+   background-color: transparent;
+   text-decoration: none;
+   color: #25a;
+ }
+
+ .content a:hover {
+   padding: 0px;
+   color: #FFF;
+   text-decoration: none;
+   background-color: #888;
+ }
+
+ .content a:visited {
+
+ }
+
+
+ /* style for menu on top */
+ .menu {   
+   margin-left: 0px;
+   margin-right: 0px;
+   padding: 1px;
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+   font-size: 16px;
+   line-height: 16px;
+   color: #FFF;
+   background-color: #369;
+ }
+
+ /* links in menu */
+ .menu a {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 0px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+ .menu a:hover {
+   color: #fff;
+   border-bottom: 0px;
+   padding: 0px;
+   background-color: #888;
+   text-decoration: none;
+ }
+
+ .menu a:visited {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+ .menu-bottom {   
+   margin: 0 10%;
+   max-width: 880px;
+   margin-top: 10px;
+   padding: 1px;
+   font-family: Verdanan, Arial, Helvetica, sans-serif;
+   font-size: 15px;
+   background-color: #369;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+ /* links in menu-bottom */
+ .menu-bottom a {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+ .menu-bottom a:hover {
+   color: #fff;
+   border-bottom: 0px;
+   padding: 1px;
+   background-color: #888;
+   text-decoration: none;
+ }
+
+ .menu-bottom a:visited {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+ /* the bottom bar between content box and menu */
+ .bottombar {
+   font-size: 4px;
+   margin: 0 10%;
+   padding: 10px;
+   padding-top: 2px;
+   padding-bottom: 6px;
+  background-color: #FFFFFF;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+ }
+
+
+ /* where the copyright notice is */
+ .footer {
+   text-align: center;
+   margin: 0 10%;
+   max-width: 880px;
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 10px;
+   line-height: 12px;
+ }
+
+
+ /* style for whole site except overwritten
+     by enclosed tags
+ */
+ body {
+   font-family: Geneva, Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 16px;
+   line-height: 20px;
+   color: #606060;
+ }
+
+
+ /* style for == title == */
+ h1 {
+   font-family: Helvetica;
+   font-size: 32px;
+   color: #369;
+   font-weight: 100;
+ }
+
+ /* style for === title === */
+ h2 {
+   font-family: Helvetica;
+   font-size: 30px;
+   font-weight: 100;
+   color: #369;
+ }
+
+ /* style for ==== title ==== */
+ h3 {
+   font-size: 20px;
+   font-weight: 100;
+   color: #369;
+   margin-top: 20px;
+   padding: 0px;
+ }
+
+ /* style for ===== text =====  used for blog title */
+ h4 {
+   font-size: 18px;
+   font-weight: 100;
+   color: #777;
+   margin: 0px;
+   padding: 0px;
+}
+
+ /* style for ====== text ======  used for comment title */
+ h5 {
+   font-size: 12px;
+   font-weight: normal;
+   color: #a22;
+   margin: 3px;
+   padding: 0px;
+ }
+
+ /* for <small> tag */
+ small {
+   font-size: 10px;
+ }
+
+
+ /* for the bold tag */
+ b {
+  color: 999;
+ }
+
+ /* for <big> tag, will not work on Netscape v.4 */
+ big {
+ }
+
+ /* for <p> tag */
+ p {
+   margin-left: 40px;
+   margin-right: 40px;
+ }
+
+ /* for <table> tag, these are used when displating the files,changes,referencrs tables */
+ table {
+   border-width: 1px;
+   border-style: solid;
+   border-color: #ccc;
+   background-color: #ccc;
+ }
+
+ /* for table tags <tr> <th> <td> */
+ tr, th, td {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 12px;
+   background-color: #eee;
+ }
+
+ /* for quick table tags with [,] 
+     use these (not <table><tr><td>)
+     when doing layout with tables
+ */
+ table.quick {
+   border-width: 1px;
+   border-style: solid;
+   border-color: #ccc;
+   background-color: #ccc;
+ }
+
+
+ /* for quick table tags with: || 
+ */
+  td.quick {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 11px;
+   background-color: #eef;
+   padding: 5px;
+ }
+
+ 
+ /* links in general, if not overwritten in other divs
+ a:hover {
+   text-decoration: none;
+   background-color: #transparent;
+ }
+
+ /* for  spec */
+ img {
+
+ }
+
+ /* line separator */
+ hr {
+   margin-top: 10px;
+   border: 0px;
+   border-top: 1px #ddd solid;
+ } 
+
+ /* style of the text edit area and text 
+    entry for search and passwords 
+ */
+ .textarea {
+   font-family: courier, helvetica, verdana,arial,sans-serif;
+   left-margin: 20px;
+   font-size: 12px;
+   background-color: #eee;
+}
+
+ /* buttons for save and search */
+ .button {
+ }
+
+ /* example for custom style in  or  */
+ .mybox { border: 1px #ccc dashed; }
+
+ /* other custom styles used */
+
+ .smallred { font-size: 10px; font-weight: normal; color: #a22; }
+
+ .mediumred { font-size: 12px; font-weight: normal; color: #a22; }
+
+-->
+
+-->
+</style>
+</head>
+
+<body bgcolor="#AAAAAA">
+
+<!-- content -->
+<div class="content">
+<h2> Character counter, import C demo </h2>
+A short C program:<br>
+<br>
+<br>
+<tt>#include&nbsp;&lt;stdio.h&gt;</tt><br>
+<tt>#include&nbsp;&lt;memory.h&gt;</tt><br>
+<br>
+<tt>int&nbsp;cnts[128];</tt><br>
+<br>
+<tt>int&nbsp;*&nbsp;count_characters(char&nbsp;*&nbsp;str,&nbsp;int&nbsp;length)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;{</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;int&nbsp;i;</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;memset((void&nbsp;*)cnts,&nbsp;0,&nbsp;128&nbsp;*&nbsp;sizeof(int));</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;for(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;length;&nbsp;i++)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cnts[str[i]]&nbsp;+=&nbsp;1;</tt><br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;return(cnts);</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;}</tt><br>
+	<br>
+<br>
+compile it to a shared library<br>
+<br>
+<br>
+on macOS:<br>
+<tt>&nbsp;&nbsp;&nbsp;gcc&nbsp;count-characters.c&nbsp;-bundle&nbsp;-o&nbsp;count-characters.dylib</tt><br>
+<br>
+on other UNIX<br>
+<tt>&nbsp;&nbsp;&nbsp;gcc&nbsp;count-characters.c&nbsp;-shared&nbsp;-o&nbsp;count-characters.so</tt><br>
+<br>
+<br>
+now use it:<br>
+<br>
+<tt>newLISP&nbsp;v.9.2.0&nbsp;on&nbsp;OSX&nbsp;UTF-8,&nbsp;execute&nbsp;'newlisp&nbsp;-h'&nbsp;for&nbsp;more&nbsp;info.</tt><br>
+<br>
+<tt>&gt;&nbsp;(define&nbsp;count-chars&nbsp;(import&nbsp;"count-characters.dylib"&nbsp;"count_characters"))</tt><br>
+<tt>count_characters&nbsp;&lt;8CEF0&gt;</tt><br>
+<br>
+<tt>&gt;&nbsp;(unpack&nbsp;(dup&nbsp;"lu"&nbsp;128)&nbsp;(count-chars&nbsp;(read-file&nbsp;"war_and_peace.txt")&nbsp;3217389))</tt><br>
+<tt>(0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;67418&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;</tt><br>
+<tt>&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;0&nbsp;511976&nbsp;3938&nbsp;17974&nbsp;2&nbsp;1&nbsp;3&nbsp;0&nbsp;</tt><br>
+<tt>&nbsp;7526&nbsp;640&nbsp;640&nbsp;339&nbsp;1&nbsp;39921&nbsp;5850&nbsp;30686&nbsp;26&nbsp;230&nbsp;348&nbsp;</tt><br>
+<tt>&nbsp;163&nbsp;55&nbsp;25&nbsp;49&nbsp;51&nbsp;38&nbsp;169&nbsp;54&nbsp;1003&nbsp;1148&nbsp;1&nbsp;2&nbsp;1&nbsp;3138&nbsp;</tt><br>
+<tt>&nbsp;2&nbsp;6204&nbsp;3638&nbsp;1783&nbsp;2021&nbsp;1867&nbsp;1908&nbsp;1247&nbsp;4016&nbsp;7404&nbsp;</tt><br>
+<tt>&nbsp;320&nbsp;1191&nbsp;687&nbsp;3288&nbsp;3627&nbsp;1638&nbsp;6117&nbsp;35&nbsp;2704&nbsp;2974&nbsp;</tt><br>
+<tt>&nbsp;6464&nbsp;278&nbsp;939&nbsp;2896&nbsp;348&nbsp;1265&nbsp;108&nbsp;47&nbsp;0&nbsp;47&nbsp;0&nbsp;1&nbsp;0&nbsp;</tt><br>
+<tt>&nbsp;199012&nbsp;30984&nbsp;59225&nbsp;116122&nbsp;312451&nbsp;52818&nbsp;49877&nbsp;</tt><br>
+<tt>&nbsp;162871&nbsp;166004&nbsp;2214&nbsp;19194&nbsp;95740&nbsp;58261&nbsp;180228&nbsp;</tt><br>
+<tt>&nbsp;190868&nbsp;38854&nbsp;2300&nbsp;144967&nbsp;159746&nbsp;219083&nbsp;65006&nbsp;</tt><br>
+<tt>&nbsp;25940&nbsp;56197&nbsp;3719&nbsp;44945&nbsp;2282&nbsp;0&nbsp;0&nbsp;0&nbsp;1&nbsp;0)</tt><br>
+<tt>&gt;&nbsp;</tt><br>
+<br>
+
+</div>
+
+<!-- end content -->
+
+<!-- comments -->
+
+<!-- end comments -->
+<!-- the menu -->
+
+<!-- the menu end -->
+
+<!-- copyright -->
+  <div class="footer" align="center">
+  <br>
+Copyright &copy; 2021, Lutz Mueller. All rights reserved.<br>
+ 
+  <a href="http://www.newlisp.net/">Site</a> powered by <a href="http://newlisp.net">newLISP</a> wiki v4.6
+<!--
+  in 4ms
+-->
+<br>
+  </div>
+<!-- end copyright -->
+
+<!-- <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1098066-1";
+urchinTracker();
+</script> -->
+
+</body>
+</html>
+

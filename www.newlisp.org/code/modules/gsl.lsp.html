@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "HTML 4.01 Transitional">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>gsl.lsp</title>
+
+<link rel="stylesheet" type="text/css" href="newlispdoc.css" />
+</head>
+
+<body style="margin: 20px;" text="#111111" bgcolor="#FFFFFF" 
+            link="#376590" vlink="#551A8B" alink="#ffAA28">
+<blockquote>
+<center><h1>gsl.lsp</h1></center>
+<p><a href="index.html">Module index</a></p><a href="gsl.lsp.src.html">source</a>&nbsp;<a href="gsl.lsp">download</a><br/>
+<h2>Module:&nbsp;gsl.lsp </h2><p>Selected functions from the GNU Scientific Library</p>
+<b>Version: </b>1.0 - initial release. Minimum newLISP version is 10.4.0.<br/>
+<b>Version: </b>1.1 - added check for extended ffi enabled version.<br/>
+<b>Version: </b>1.2 - changed ostype Win32 to Windows<br/>
+<b>Version: </b>1.3 - replaced 0.0 in CholeskyD with (float 0) for all locales<br/>
+<b>Author: </b>Lutz Mueller 2012, 2014<br/>
+
+ <h2>Module GSL For The GNU Scientific Library</h2>
+ The <a href="http://www.gnu.org/software/gsl/">GSL</a> GNU Scientific Library
+ implements over a 1000 functions from different subject areas. In this 
+ release of the <tt>gsl.lsp</tt> module only a few linear algebra functions
+ are implemented.
+
+ To use this module, the main GSL library <tt>libgsl</tt> and  a supporting
+ library <tt>libgslcblas</tt> must be installed. 
+<br/><br/>
+ This module requires newLISP version 10.4.0 as a minimum. For 64-bit
+ newLISP on Mac OSX, Linux and other Unix, 10.4.2 is the minimum. 
+<br/><br/>
+ Precompiled 32-bit and 64-bit libraries for the binary distributions i
+ of newLISP versions are available in the
+ <a href="http://www.nuevatec.com/GSL/">http://www.nuevatec.com/GSL/</a>  directory. See the <tt>INSTALL.txt</tt> file in that directory for instructions how
+ to install the library files.
+<br/><br/>
+ The module contains <tt>(test-gsl)</tt> to test all implemented functions.
+
+<br/><br/><center>&sect;</center><br/>
+<a name="gsl_CholeskyD"></a><h3><font color=#CC0000>gsl:CholeskyD</font></h3>
+<b>syntax: (<font color=#CC0000>gsl:CholeskyD</font> <em>matrix-A</em>)</b><br/>
+<b>parameter: </b><em>matrix-A</em> - A square matrix of m row vectors with n = m column elements each.<br/>
+<p><b>return: </b>The matrix L .</p>
+ The function performs a Cholesky decomposition of <em>matrix-A</em>. The matrix A must
+ be symmetric and positive definite square.
+<br/><br/>
+ A = L * Lt
+<br/><br/>
+ Lt is the transposition of L. 
+<br/><br/>
+<b>Example:</b><blockquote><pre> (gsl:CholeskyD '((4 2 -2) (2 10 2) (-2 2 5)))
+
+ gsl:Cholesky-L =&gt; 
+
+ (  ( 2 0 0 )
+    ( 1 3 0 )
+    (-1 1 1.732050808)  )
+</pre></blockquote>
+<br/><br/><center>&sect;</center><br/>
+<a name="gsl_Cholesky-solve"></a><h3><font color=#CC0000>gsl:Cholesky-solve</font></h3>
+<b>syntax: (<font color=#CC0000>gsl:Cholesky-solve</font> <em>matrix-A</em> <em>vector-b</em>)</b><br/>
+<b>parameter: </b><em>matrix-A</em> - A square matrix of m row vectors with n = m column elements each.<br/>
+<b>Params: </b><vector-b> A vector of n elements.<br/>
+<p><b>return: </b>Vector x containing a solution for Ax = b .</p>
+<br/><br/>
+<b>Example:</b><blockquote><pre> (gsl:Cholesky-solve '((4 2 -2) (2 10 2) (-2 2 5)) '(1 2 3)) 
+ 
+ =&gt; (0.8333333333 -0.1666666667 1)
+</pre></blockquote>
+<br/><br/><center>&sect;</center><br/>
+<a name="gsl_QRD"></a><h3><font color=#CC0000>gsl:QRD</font></h3>
+<b>syntax: (<font color=#CC0000>gsl:QRD</font> <em>matrix-A</em>)</b><br/>
+<b>parameter: </b><em>matrix-A</em> - A list of m row vector lists with n column elements each.<br/>
+<p><b>return: </b>Vector <em>tau</em> of k = min(n, m) elements.</p>
+ The function does QR decomposition of a matrix A.
+<br/><br/>
+ A = Q * R
+<br/><br/>
+ The function works for both, square and rectangular matrices.
+ The number of rows m in A must be equal to or greater than the number of columns n.
+ The orthogonal m * m matrix Q can be found in the variable <tt>gsl:QR-Q</tt>.
+ The m * n matrix R can be found in the variable <tt>gsl:QR-R</tt>.
+<br/><br/>
+<b>Example:</b><blockquote><pre> (gsl:QRD '((12 -51 4) (6 167 -68) (-4 24 -41)) ) =&gt; (1.857142857 1.993846154 0)
+
+ gsl:QR-Q =&gt; 
+
+ (  ( 0.8571428571 -0.3942857143 -0.3314285714 )
+    ( 0.4285714286  0.9028571429  0.03428571429)
+    (-0.2857142857  0.1714285714 -0.9428571429 )  )
+
+ gsl:QR-R =&gt; 
+
+ (  (14  21 -14 )
+    ( 0 175 -70 )
+    ( 0   0  35 )  )</pre></blockquote>
+<br/><br/><center>&sect;</center><br/>
+<a name="gsl_QR-solve"></a><h3><font color=#CC0000>gsl:QR-solve</font></h3>
+<b>syntax: (<font color=#CC0000>gsl:QR-solve</font> <em>matrix-A</em> <em>vector-b</em>)</b><br/>
+<b>parameter: </b><em>matrix-A</em> - A matrix of m row vectors with n column elements each.<br/>
+<b>Params: </b><vector-b> A vector of n elements.<br/>
+<p><b>return: </b>Vector x containing a solution for Ax = b .</p>
+ Matrix A is either square or overdetermined with m > n, more rows than columns.
+ When m > n, then the variable <tt>gsl:QR-residual</tt> contains a vector of residuals.
+ For a square matrix A this vector contains 0's.
+<br/><br/>
+<b>Example:</b><blockquote><pre> (gsl:QR-solve '((12 -51 4) (6 167 -68) (-4 24 -41)) '(1 2 3))
+ 
+ =&gt; (0.009387755102 -0.02432653061 -0.08832653061)
+
+ (gsl:QR-solve '((1 2) (3 4) (5 6) (7 8)) '(1 2 3 4))
+ =&gt; (9.690821045e-16 0.5)
+
+ gsl:QR-residual 
+ =&gt; (2.512815377e-17 1.103917396e-16 -2.961679405e-16 1.606480472e-16)</pre></blockquote>
+<br/><br/><center>&sect;</center><br/>
+<a name="gsl_SVD"></a><h3><font color=#CC0000>gsl:SVD</font></h3>
+<b>syntax: (<font color=#CC0000>gsl:SVD</font> <em>matrix-A</em>)</b><br/>
+<b>parameter: </b><em>matrix-A</em> - A matrix of m row vectors with n column elements each.<br/>
+<p><b>return: </b>A vector of diagonal elements from the S matrix.</p>
+ The function does a SVD (Singular Value Decomposition) of the <em>matrix-A</em> into
+ its components U, S and V. Matrix U is orthogonal m*n. S is a diagonal
+ square matrix of n singular values. V is a n*n square orthogonal matrix.
+ The function works for both, square and rectangular matrices.
+<br/><br/>
+ A = U * S * Vt 
+<br/><br/>
+ Vt is the transposition of V.
+<br/><br/>
+ The number of rows m in A must be equal to or greater than the number of columns n.
+ The m*n matrix U can be found in the variable <tt>gsl:SVD-U</tt>.
+ The diagonal elements of matrix S can be found in the vector variable <tt>gsl:SVD-S</tt>.
+ The n*n matrix V can be found in the variable <tt>gsl:SVD-V</tt>.
+<br/><br/>
+<b>Example:</b><blockquote><pre> (gsl:SVD '((1 2) (3 4) (5 6) (7 8))) =&gt; (14.2690955 0.6268282324)
+
+ gsl:SVD-U =&gt;
+ (  (-0.1524832333 -0.8226474722 )
+    (-0.3499183718 -0.4213752877 )
+    (-0.5473535103 -0.02010310314)
+    (-0.7447886488  0.3811690814 )  )
+  
+ gsl:SVD-S =&gt; 
+
+ (14.2690955 0.6268282324)
+
+ gsl:SVD-V =&gt; 
+
+ (  (-0.641423028   0.7671873951)
+    (-0.7671873951 -0.641423028 )  )</pre></blockquote>
+<br/><br/><center>&sect;</center><br/>
+<a name="gsl_SVD-solve"></a><h3><font color=#CC0000>gsl:SVD-solve</font></h3>
+<b>syntax: (<font color=#CC0000>gsl:SVD-solve</font> <em>matrix-A</em> <em>vector-b</em>)</b><br/>
+<b>parameter: </b><em>matrix-A</em> - A matrix of m row vectors with n column elements each.<br/>
+<b>Params: </b><vector-b> A vector of n elements<br/>
+<p><b>return: </b>a vector x containing a solution for Ax = b .</p>
+ The number of rows m in A must be equal to or greater than the number n of columns.
+<br/><br/>
+<b>Example:</b><blockquote><pre> (gsl:SV-solve '((1 2) (3 4) (5 6) (7 8)) '(1 2 3 4))
+ 
+ =&gt; (5.551115123e-16 0.5 0 0)
+ </pre></blockquote>
+
+<br/><br/><center>- &part; -</center><br/>
+<center><font face='Arial' size='-2' color='#444444'>
+generated with <a href="http://newlisp.org">newLISP</a>&nbsp;
+and <a href="http://newlisp.org/newLISPdoc.html">newLISPdoc</a>
+</font></center>
+</blockquote>
+</body>
+</html>

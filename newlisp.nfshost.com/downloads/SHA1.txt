@@ -1,0 +1,3 @@
+SHA1(newlisp-10.7.5.tgz)= 706fd8af9eb22e19a6f662a2a18fcbba083721db
+SHA1(newlisp-ide-4.7.tgz)= 4986b5e39b0a4aafcdd23e7395b4524c087b112b
+SHA1(newlisp-wiki-4.7.tgz)= 458a6ddc7064b0bb70353ada6461ba87d5ccc52a

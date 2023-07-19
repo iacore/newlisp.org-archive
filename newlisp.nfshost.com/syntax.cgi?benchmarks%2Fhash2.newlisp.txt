@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>benchmarks/hash2.newlisp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>#!/usr/bin/newlisp</font>
+
+<font color='#555555'>#</font>
+<font color='#555555'># hash2 - benchmark</font>
+<font color='#555555'>#</font>
+<font color='#555555'># newLISP does not have hashtables but can</font>
+<font color='#555555'># simulate hashes efficient with symbols</font>
+<font color='#555555'>#</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>context</font> 'Hash1<font color='#AA0000'>)</font> <font color='#555555'>; create hash container</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>context</font> 'MAIN<font color='#AA0000'>)</font> <font color='#555555'>; go back to MAIN context</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>context</font> 'Hash2<font color='#AA0000'>)</font> <font color='#555555'>; create hash container</font>
+<font color='#AA0000'>(</font><font color='#0000AA'>context</font> 'MAIN<font color='#AA0000'>)</font> <font color='#555555'>; go back to MAIN context</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'n <font color='#AA0000'>(</font><font color='#0000AA'>integer</font> <font color='#AA0000'>(</font><font color='#0000AA'>main-args</font> <font color='#998800'>2</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>dotimes</font> <font color='#AA0000'>(</font>i <font color='#998800'>10000</font><font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>set</font> <font color='#AA0000'>(</font><font color='#0000AA'>sym</font> <font color='#AA0000'>(</font><font color='#0000AA'>format</font> <font color='#008800'>"foo_%d"</font> i<font color='#AA0000'>)</font> Hash1<font color='#AA0000'>)</font> i<font color='#AA0000'>)</font> <font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>dotimes</font> <font color='#AA0000'>(</font>i n<font color='#AA0000'>)</font>
+	<font color='#AA0000'>(</font><font color='#0000AA'>dotree</font> <font color='#AA0000'>(</font>k Hash1<font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>set</font> 'key <font color='#AA0000'>(</font><font color='#0000AA'>sym</font> <font color='#AA0000'>(</font>name k<font color='#AA0000'>)</font> Hash2 <font color='#0000AA'>nil</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+		<font color='#AA0000'>(</font><font color='#0000AA'>if</font> key 
+			<font color='#AA0000'>(</font><font color='#0000AA'>inc</font> key <font color='#AA0000'>(</font><font color='#0000AA'>eval</font> k<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+			<font color='#AA0000'>(</font><font color='#0000AA'>set</font> <font color='#AA0000'>(</font><font color='#0000AA'>sym</font> <font color='#AA0000'>(</font>name k<font color='#AA0000'>)</font> Hash2<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>eval</font> k<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>println</font> Hash1:foo_1 <font color='#008800'>" "</font> Hash1:foo_9999 <font color='#008800'>" "</font> Hash2:foo_1 <font color='#008800'>" "</font> Hash2:foo_9999<font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>exit</font><font color='#AA0000'>)</font>
+
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

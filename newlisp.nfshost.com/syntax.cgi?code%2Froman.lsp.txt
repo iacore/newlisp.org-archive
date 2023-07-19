@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "4.01 Transitional"><html><head><title>code/roman.lsp.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">pre {font-size: 100%}</style></head><body>
+<pre>
+<font color='#555555'>; roman.lsp</font>
+<font color='#555555'>; Sam Cox December 8, 2003</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; LM 2003/12/12: took out type checking of n</font>
+<font color='#555555'>;                 </font>
+<font color='#555555'>;</font>
+<font color='#555555'>; This function constructs a roman numeral representation from its positive</font>
+<font color='#555555'>; integer argument, N.  For example,</font>
+<font color='#555555'>;</font>
+<font color='#555555'>;     (roman 1988) --> MCMLXXXVIII</font>
+<font color='#555555'>;</font>
+<font color='#555555'>; The Roman method of writing numbers uses two kinds of symbols: the basic</font>
+<font color='#555555'>; symbols are I=1, X=10, C=100 and M=1000; the auxiliary symbols are V=5,</font>
+<font color='#555555'>; L=50 and D=500. A rule prescribes that the symbol for the larger number</font>
+<font color='#555555'>; always stands to the left of that for the smaller number. An exception</font>
+<font color='#555555'>; is motivated by the desire to use as few symbols as possible. For</font>
+<font color='#555555'>; example, the number nine can be represented as VIIII (5+4) or IX (10-1);</font>
+<font color='#555555'>; the latter is preferred.  Therefore, if the symbol of a smaller number</font>
+<font color='#555555'>; stands at the left, the corresponding number has to be subtracted, not</font>
+<font color='#555555'>; added.  It is not permitted to place several basic symbols or an</font>
+<font color='#555555'>; auxiliary symbol in front.  For example, use CML for 950 instead of LM.</font>
+<font color='#555555'>; ---</font>
+<font color='#555555'>; The VNR Encyclopedia of Mathematics, W. Gellert, H. Kustner, M. Hellwich,</font>
+<font color='#555555'>; and H. Kastner, eds., Van Nostrand Reinhold Company, New York, 1975.  </font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>roman n<font color='#AA0000'>)</font>
+        <font color='#AA0000'>(</font>roman-aux <font color='#008800'>""</font> n <font color='#AA0000'>(</font><font color='#0000AA'>first</font> *ROMAN*<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>rest</font> *ROMAN*<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>roman-aux result n pair remaining<font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font>roman-aux-2 result n <font color='#AA0000'>(</font><font color='#0000AA'>first</font> pair<font color='#AA0000'>)</font> <font color='#AA0000'>(</font>second pair<font color='#AA0000'>)</font> remaining<font color='#AA0000'>)</font><font color='#AA0000'>)</font> 
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>roman-aux-2 result n val rep remaining<font color='#AA0000'>)</font>
+    <font color='#AA0000'>(</font><font color='#0000AA'>if</font>
+        <font color='#AA0000'>(</font><font color='#0000AA'>=</font> n <font color='#998800'>0</font><font color='#AA0000'>)</font>
+            result
+        <font color='#AA0000'>(</font><font color='#0000AA'><</font> n val<font color='#AA0000'>)</font>
+            <font color='#AA0000'>(</font>roman-aux result n <font color='#AA0000'>(</font><font color='#0000AA'>first</font> remaining<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>rest</font> remaining<font color='#AA0000'>)</font><font color='#AA0000'>)</font>
+        <font color='#555555'>;else</font>
+            <font color='#AA0000'>(</font>roman-aux-2 <font color='#AA0000'>(</font><font color='#0000AA'>append</font> result rep<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>-</font> n val<font color='#AA0000'>)</font> val rep remaining<font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> 
+
+<font color='#AA0000'>(</font><font color='#0000AA'>define</font> <font color='#AA0000'>(</font>second x<font color='#AA0000'>)</font> <font color='#AA0000'>(</font><font color='#0000AA'>nth</font> <font color='#998800'>1</font> x<font color='#AA0000'>)</font><font color='#AA0000'>)</font> 
+
+<font color='#AA0000'>(</font><font color='#0000AA'>setq</font> *ROMAN*
+         '<font color='#AA0000'>(</font><font color='#AA0000'>(</font> <font color='#998800'>1000</font>  <font color='#008800'>"M"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>  <font color='#998800'>999</font> <font color='#008800'>"IM"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>  <font color='#998800'>990</font> <font color='#008800'>"XM"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>  <font color='#998800'>900</font> <font color='#008800'>"CM"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>  <font color='#998800'>500</font>  <font color='#008800'>"D"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>  <font color='#998800'>499</font> <font color='#008800'>"ID"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>  <font color='#998800'>490</font> <font color='#008800'>"XD"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>  <font color='#998800'>400</font> <font color='#008800'>"CD"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>  <font color='#998800'>100</font>  <font color='#008800'>"C"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>   <font color='#998800'>99</font> <font color='#008800'>"IC"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>   <font color='#998800'>90</font> <font color='#008800'>"XC"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>   <font color='#998800'>50</font>  <font color='#008800'>"L"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>   <font color='#998800'>49</font> <font color='#008800'>"IL"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>   <font color='#998800'>40</font> <font color='#008800'>"XL"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>   <font color='#998800'>10</font>  <font color='#008800'>"X"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>    <font color='#998800'>9</font> <font color='#008800'>"IX"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>    <font color='#998800'>5</font>  <font color='#008800'>"V"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>    <font color='#998800'>4</font> <font color='#008800'>"IV"</font> <font color='#AA0000'>)</font>
+           <font color='#AA0000'>(</font>    <font color='#998800'>1</font>  <font color='#008800'>"I"</font> <font color='#AA0000'>)</font><font color='#AA0000'>)</font><font color='#AA0000'>)</font> 
+
+<font color='#555555'>; end of file</font>
+
+
+
+</pre>
+<center><font face='Arial' size='-2' color='#444444'>syntax highlighting with <a href="http://newlisp.org">newLISP</a>&nbsp;and <a href="http://newlisp.org/syntax.cgi?code/syntax-cgi.txt">syntax.cgi</a></font></center>
+</body></html>

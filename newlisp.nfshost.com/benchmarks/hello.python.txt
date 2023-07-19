@@ -1,0 +1,5 @@
+#!/usr/bin/python
+# $Id: hello.python,v 1.1 2001/06/17 22:00:34 doug Exp $
+# http://www.bagley.org/~doug/shootout/
+
+print "hello world"

@@ -1,0 +1,971 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+
+
+<head>
+  <title>newLISP  - Code Snippets</title>
+  <META name="verify-v1" content="uI5QBi0dvEoNnrT+Vrm63toHH4Ep1y6BBR61veuiWKU=" />
+  <META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.cgi" />
+  <meta name="description"`
+      content="newLISP is a general purpose scripting language for developing web applications and programs in general in the domains of artificial intelligence (AI), statistics and machine learning.">
+  <meta name="keywords"
+      content="lisp,scheme,programming,scripting language,ai,artificial intelligence,statistics,machine learning,distributed and parallel processing,gpl">
+  <META name="verify-v1" content="uI5QBi0dvEoNnrT+Vrm63toHH4Ep1y6BBR61veuiWKU=" />
+  <style type="text/css" media="screen">
+<!--
+ 
+ /* style for top title portion of site */
+
+ .title {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 20px;
+   font-weight: 200;
+   margin: 0 10%;
+   margin-bottom: 3px;
+   color: #888;
+  background-color: #FFFFFF;
+ }
+
+ /* link behaviour in title box */
+ .title a {
+   background-color: transparent;
+   text-decoration: none;
+   color: #eee;
+   text-decoration: none;
+ }
+
+ .title a:hover {
+   color: #fff;
+   text-decoration: underline;
+   background-color: transparent;
+ }
+
+ /* the name on top of each page (except the Home page) */
+
+ .pagename {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 18px;
+   margin-bottom: 20px;
+ }
+
+ /* style of content box where all 
+   user text lives 
+ */
+ .content {
+   margin: 0 10%;
+   max-width: 900px;
+   padding: 10px;
+  background-color: #FFFFFF;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+ .content a {
+   background-color: transparent;
+   text-decoration: none;
+   color: #25a;
+ }
+
+ .content a:hover {
+   padding: 0px;
+   color: #FFF;
+   text-decoration: none;
+   background-color: #888;
+ }
+
+ .content a:visited {
+
+ }
+
+
+ /* style for menu on top */
+ .menu {   
+   margin-left: 0px;
+   margin-right: 0px;
+   padding: 1px;
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+   font-size: 16px;
+   line-height: 16px;
+   color: #FFF;
+   background-color: #369;
+ }
+
+ /* links in menu */
+ .menu a {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 0px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+ .menu a:hover {
+   color: #fff;
+   border-bottom: 0px;
+   padding: 0px;
+   background-color: #888;
+   text-decoration: none;
+ }
+
+ .menu a:visited {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+ .menu-bottom {   
+   margin: 0 10%;
+   max-width: 880px;
+   margin-top: 10px;
+   padding: 1px;
+   font-family: Verdanan, Arial, Helvetica, sans-serif;
+   font-size: 15px;
+   background-color: #369;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+ /* links in menu-bottom */
+ .menu-bottom a {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+ .menu-bottom a:hover {
+   color: #fff;
+   border-bottom: 0px;
+   padding: 1px;
+   background-color: #888;
+   text-decoration: none;
+ }
+
+ .menu-bottom a:visited {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+ /* the bottom bar between content box and menu */
+ .bottombar {
+   font-size: 4px;
+   margin: 0 10%;
+   padding: 10px;
+   padding-top: 2px;
+   padding-bottom: 6px;
+  background-color: #FFFFFF;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+ }
+
+
+ /* where the copyright notice is */
+ .footer {
+   text-align: center;
+   margin: 0 10%;
+   max-width: 880px;
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 10px;
+   line-height: 12px;
+ }
+
+
+ /* style for whole site except overwritten
+     by enclosed tags
+ */
+ body {
+   font-family: Geneva, Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 16px;
+   line-height: 20px;
+   color: #606060;
+ }
+
+
+ /* style for == title == */
+ h1 {
+   font-family: Helvetica;
+   font-size: 32px;
+   color: #369;
+   font-weight: 100;
+ }
+
+ /* style for === title === */
+ h2 {
+   font-family: Helvetica;
+   font-size: 30px;
+   font-weight: 100;
+   color: #369;
+ }
+
+ /* style for ==== title ==== */
+ h3 {
+   font-size: 20px;
+   font-weight: 100;
+   color: #369;
+   margin-top: 20px;
+   padding: 0px;
+ }
+
+ /* style for ===== text =====  used for blog title */
+ h4 {
+   font-size: 18px;
+   font-weight: 100;
+   color: #777;
+   margin: 0px;
+   padding: 0px;
+}
+
+ /* style for ====== text ======  used for comment title */
+ h5 {
+   font-size: 12px;
+   font-weight: normal;
+   color: #a22;
+   margin: 3px;
+   padding: 0px;
+ }
+
+ /* for <small> tag */
+ small {
+   font-size: 10px;
+ }
+
+
+ /* for the bold tag */
+ b {
+  color: 999;
+ }
+
+ /* for <big> tag, will not work on Netscape v.4 */
+ big {
+ }
+
+ /* for <p> tag */
+ p {
+   margin-left: 40px;
+   margin-right: 40px;
+ }
+
+ /* for <table> tag, these are used when displating the files,changes,referencrs tables */
+ table {
+   border-width: 1px;
+   border-style: solid;
+   border-color: #ccc;
+   background-color: #ccc;
+ }
+
+ /* for table tags <tr> <th> <td> */
+ tr, th, td {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 12px;
+   background-color: #eee;
+ }
+
+ /* for quick table tags with [,] 
+     use these (not <table><tr><td>)
+     when doing layout with tables
+ */
+ table.quick {
+   border-width: 1px;
+   border-style: solid;
+   border-color: #ccc;
+   background-color: #ccc;
+ }
+
+
+ /* for quick table tags with: || 
+ */
+  td.quick {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 11px;
+   background-color: #eef;
+   padding: 5px;
+ }
+
+ 
+ /* links in general, if not overwritten in other divs
+ a:hover {
+   text-decoration: none;
+   background-color: #transparent;
+ }
+
+ /* for  spec */
+ img {
+
+ }
+
+ /* line separator */
+ hr {
+   margin-top: 10px;
+   border: 0px;
+   border-top: 1px #ddd solid;
+ } 
+
+ /* style of the text edit area and text 
+    entry for search and passwords 
+ */
+ .textarea {
+   font-family: courier, helvetica, verdana,arial,sans-serif;
+   left-margin: 20px;
+   font-size: 12px;
+   background-color: #eee;
+}
+
+ /* buttons for save and search */
+ .button {
+ }
+
+ /* example for custom style in  or  */
+ .mybox { border: 1px #ccc dashed; }
+
+ /* other custom styles used */
+
+ .smallred { font-size: 10px; font-weight: normal; color: #a22; }
+
+ .mediumred { font-size: 12px; font-weight: normal; color: #a22; }
+
+-->
+
+-->
+</style>
+</head>
+
+<body bgcolor="#AAAAAA">
+
+<!-- content -->
+<div class="content">
+<center> <div class="title">puts the fun <a href="index.cgi"><img src="images/newLISP-icon-86.jpg" alt="newLISP button" order="0" border="0"/></a>  back in Lisp</div><div class="menu"><a href="index.cgi?Home">Home</a>  &#183; <a href="index.cgi?FAQ">About</a>  &#183; <a href="index.cgi?Downloads">Downloads</a>  &#183; <a href="index.cgi?Documentation">Docs</a>  &#183; <a href="modules/"> Modules</a>  &#183; <a href="index.cgi?Code_Contributions">Links</a>  &#183; <a href="index.cgi?Tips_and_Tricks">Tips&amp;Tricks</a>  &#183; <a href="index.cgi?Libraries">C-Libs</a>  &#183; <a href="index.cgi?Applications">Apps</a>  &#183; <a href="index.cgi?Art">Art</a>  &#183; <a href="http://newlispfanclub.com">Forum</a>  </div></center>
+<br>
+<br>
+<h5> last updated 2015-9-17 </h5>
+<br>
+<h2> Code Snippets </h2>
+<h3> True random numbers from atmospheric noise </h3>
+<tt>;&nbsp;generate&nbsp;1000&nbsp;random&nbsp;numbers&nbsp;between&nbsp;1&nbsp;and&nbsp;10</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(true-random&nbsp;1000&nbsp;1&nbsp;10)</tt><br>
+<br>
+<tt>(define&nbsp;(true-random&nbsp;num&nbsp;from&nbsp;to)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;(params&nbsp;(format&nbsp;"num=%d&amp;min=%d&amp;max=%d&amp;"&nbsp;num&nbsp;from&nbsp;to)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre&nbsp;"http://www.random.org/integers/?"</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post&nbsp;"col=1&amp;base=10&amp;format=plain&amp;rnd=new")</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(map&nbsp;int&nbsp;(parse&nbsp;(get-url&nbsp;(append&nbsp;pre&nbsp;params&nbsp;post))))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;)</tt><br>
+<tt>)</tt><br>
+<tt>;</tt><br>
+<h3> Reset the archive flag on Win32 </h3>
+<tt>;&nbsp;resets&nbsp;the&nbsp;Win32&nbsp;archive&nbsp;flag&nbsp;on&nbsp;a&nbsp;file</tt><br>
+<tt>;&nbsp;By&nbsp;CaveGuy&nbsp;2009</tt><br>
+<br>
+<tt>(define&nbsp;(reset-archive-flag&nbsp;file-name)</tt><br>
+<tt>&nbsp;&nbsp;(if&nbsp;(not&nbsp;GetFileAttributesA)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(begin</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(import&nbsp;"kernel32.DLL"&nbsp;"GetFileAttributesA")</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(import&nbsp;"kernel32.DLL"&nbsp;"SetFileAttributesA")))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(setq&nbsp;fname&nbsp;file-name</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file-attrib&nbsp;(GetFileAttributesA&nbsp;(address&nbsp;fname))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new-attrib&nbsp;(^&nbsp;file-attrib&nbsp;(&amp;&nbsp;file-attrib&nbsp;0x20)))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;(SetFileAttributesA&nbsp;(address&nbsp;fname)&nbsp;new-attrib)&nbsp;)&nbsp;</tt><br>
+;<br>
+<h3> Set the file time in Win32 </h3>
+<tt>;&nbsp;Given&nbsp;a&nbsp;full&nbsp;path&nbsp;to&nbsp;the&nbsp;source&nbsp;and&nbsp;destination&nbsp;</tt><br>
+<tt>;&nbsp;file,&nbsp;FixFileTime&nbsp;will&nbsp;copy&nbsp;the&nbsp;FileTime&nbsp;info&nbsp;</tt><br>
+<tt>;&nbsp;from&nbsp;the&nbsp;src&nbsp;file&nbsp;to&nbsp;the&nbsp;dest&nbsp;file.</tt><br>
+<tt>;&nbsp;By&nbsp;CaveGuy&nbsp;2009</tt><br>
+<br>
+<tt>(define&nbsp;(FixFileTime&nbsp;src&nbsp;dest&nbsp;,&nbsp;result)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(unless&nbsp;SetFileTime</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(import&nbsp;"kernel32.DLL"&nbsp;"_lopen")</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(import&nbsp;"kernel32.DLL"&nbsp;"_lclose")</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(import&nbsp;"kernel32.DLL"&nbsp;"GetFileTime")</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(import&nbsp;"kernel32.DLL"&nbsp;"SetFileTime")</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(setq&nbsp;lpCreationTime&nbsp;0</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lpLastAccessTime&nbsp;0</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lpLastWriteTime&nbsp;0))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(setq&nbsp;hFileS&nbsp;(_lopen&nbsp;src&nbsp;1)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hFileD&nbsp;(_lopen&nbsp;dest&nbsp;1)&nbsp;)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(when&nbsp;(and&nbsp;(&gt;&nbsp;hFileS&nbsp;0)&nbsp;(&gt;&nbsp;hFileD&nbsp;0))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(GetFileTime&nbsp;hFileS</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(address&nbsp;lpCreationTime)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(address&nbsp;lpLastAccessTime)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(address&nbsp;lpLastWriteTime)&nbsp;)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(set&nbsp;'result&nbsp;(SetFileTime&nbsp;hFileD</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(address&nbsp;lpCreationTime)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(address&nbsp;lpLastAccessTime)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(address&nbsp;lpLastWriteTime))))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(if&nbsp;(&gt;&nbsp;hFileS&nbsp;0)&nbsp;(_lclose&nbsp;hFileS))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(if&nbsp;(&gt;&nbsp;hFileD&nbsp;0)&nbsp;(_lclose&nbsp;hfileD))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;;(if&nbsp;(zero?&nbsp;result)&nbsp;nil&nbsp;true))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(not&nbsp;(zero?&nbsp;result))&nbsp;)</tt><br>
+<tt>;&nbsp;</tt><br>
+<h3> URL encode and decode </h3>
+<tt>;&nbsp;Character&nbsp;strings&nbsp;in&nbsp;URLs&nbsp;and&nbsp;POST&nbsp;data&nbsp;when&nbsp;</tt><br>
+<tt>;&nbsp;using&nbsp;HTTP&nbsp;methods&nbsp;must&nbsp;not&nbsp;use&nbsp;certain&nbsp;unsafe&nbsp;</tt><br>
+<tt>;&nbsp;characters.&nbsp;These&nbsp;routines&nbsp;encode&nbsp;and&nbsp;decode&nbsp;</tt><br>
+<tt>;&nbsp;to&nbsp;save&nbsp;URL&nbsp;format.</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(url-encode&nbsp;"this&nbsp;is&nbsp;a&nbsp;test?")&nbsp;</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;"this%20is%20a%20test%3F"</tt><br>
+<tt>;&nbsp;(url-decode&nbsp;"this%20is%20a%20test%3F")&nbsp;</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;"this&nbsp;is&nbsp;a&nbsp;test?"</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(url-encode&nbsp;"所有的愛是公平的")&nbsp;</tt><br>
+<tt>;&nbsp;=&gt;&nbsp;&nbsp;"%e6%89%80%e6%9c%89%e7%9a%84%e6%84%9b%e6%98%af%e5%85%ac%e5%b9%b3%e7%9a%84"</tt><br>
+<tt>;&nbsp;(url-decode&nbsp;(url-encode&nbsp;""所有的愛是公平的"))&nbsp;=&gt;&nbsp;"所有的愛是公平的"&nbsp;</tt><br>
+<br>
+<tt>;&nbsp;simple&nbsp;encoder</tt><br>
+<tt>(define&nbsp;(url-encode&nbsp;str)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;(replace&nbsp;{([^a-zA-Z0-9])}&nbsp;str&nbsp;(format&nbsp;"%%%2X"&nbsp;(char&nbsp;$1))&nbsp;0))</tt><br>
+<br>
+<tt>;&nbsp;UTF-8&nbsp;encoder,&nbsp;encodes&nbsp;everything&nbsp;into&nbsp;%xx&nbsp;form</tt><br>
+<tt>(define&nbsp;(url-encode&nbsp;str)&nbsp;;&nbsp;for&nbsp;UTF-8&nbsp;strings&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;(join&nbsp;(map&nbsp;(fn&nbsp;(c)&nbsp;(format&nbsp;"%%%02x"&nbsp;c))&nbsp;(unpack&nbsp;(dup&nbsp;"b"&nbsp;(length&nbsp;str))&nbsp;str))))</tt><br>
+<br>
+<tt>;&nbsp;universal&nbsp;decoder,&nbsp;works&nbsp;for&nbsp;ASCII&nbsp;and&nbsp;UTF-8</tt><br>
+<tt>&nbsp;&nbsp;(define&nbsp;(url-decode&nbsp;url&nbsp;(opt&nbsp;nil))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;opt&nbsp;(replace&nbsp;"+"&nbsp;url&nbsp;"&nbsp;"))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(replace&nbsp;"%([0-9a-f][0-9a-f])"&nbsp;url&nbsp;(pack&nbsp;"b"&nbsp;(int&nbsp;$1&nbsp;0&nbsp;16))&nbsp;1))</tt><br>
+<br>
+<h3> Write a HTML page of all links found </h3>
+<tt>;&nbsp;write&nbsp;links.html&nbsp;with&nbsp;all&nbsp;links&nbsp;in&nbsp;page</tt><br>
+<br>
+<tt>(setq&nbsp;page&nbsp;(get-url&nbsp;"http://news.google.com"))</tt><br>
+<br>
+<tt>(write-file&nbsp;"links.html"&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;(join&nbsp;(find-all&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&lt;a&nbsp;href=([^&gt;]+)&gt;([^&gt;]*)&lt;/a&gt;"&nbsp;page)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&lt;br&gt;\n"))</tt><br>
+;<br>
+<h3> Load modules only once </h3>
+<tt>;&nbsp;-&nbsp;include&nbsp;-&nbsp;loads&nbsp;a&nbsp;module&nbsp;from&nbsp;the&nbsp;standard&nbsp;location,</tt><br>
+<tt>;&nbsp;but&nbsp;only&nbsp;loads&nbsp;the&nbsp;file&nbsp;if&nbsp;not&nbsp;already&nbsp;loaded.&nbsp;</tt><br>
+<tt>;&nbsp;Also&nbsp;shows&nbsp;how&nbsp;to&nbsp;write&nbsp;functions&nbsp;with&nbsp;memory.</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;example:</tt><br>
+<tt>;&nbsp;(include&nbsp;"zlib.lsp")&nbsp;</tt><br>
+<tt>;&nbsp;(include&nbsp;"sqlite3.lsp")</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;include:modules&nbsp;=&gt;&nbsp;("zlib.lsp"&nbsp;"sqlite3.lsp")</tt><br>
+<br>
+<tt>(define&nbsp;(include:include&nbsp;mdl)</tt><br>
+<tt>&nbsp;&nbsp;(unless&nbsp;(find&nbsp;mdl&nbsp;include:modules)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(module&nbsp;mdl)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(push&nbsp;mdl&nbsp;include:modules&nbsp;-1)))</tt><br>
+<br>
+<tt>;&nbsp;module&nbsp;is&nbsp;a&nbsp;predefined&nbsp;function&nbsp;since&nbsp;v.10.0&nbsp;</tt><br>
+<h3> Get the type of an expression </h3>
+<tt>;&nbsp;-&nbsp;type&nbsp;-&nbsp;function</tt><br>
+<tt>;&nbsp;Returns&nbsp;the&nbsp;type&nbsp;of&nbsp;a&nbsp;newLISP&nbsp;expression.</tt><br>
+<tt>;&nbsp;"cdecl"&nbsp;and&nbsp;"stdcall"&nbsp;are&nbsp;library&nbsp;functions.&nbsp;</tt><br>
+<tt>;&nbsp;They&nbsp;behave&nbsp;like&nbsp;primitives&nbsp;but&nbsp;are&nbsp;not&nbsp;global.</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;example:</tt><br>
+<tt>;&nbsp;(type&nbsp;'(a&nbsp;b&nbsp;c))&nbsp;=&gt;&nbsp;"list"&nbsp;</tt><br>
+<tt></tt><br>
+<tt>(define&nbsp;(type&nbsp;x)</tt><br>
+<tt>&nbsp;&nbsp;(let&nbsp;(types&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'("bool"&nbsp;"bool"&nbsp;"integer"&nbsp;"float"&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"string"&nbsp;"symbol"&nbsp;"context"&nbsp;"primitive"&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"import-simple"&nbsp;"import-libffi"&nbsp;"quote"&nbsp;"list"&nbsp;"lambda"&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fexpr"&nbsp;"array"))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(types&nbsp;(&amp;&nbsp;0xf&nbsp;((dump&nbsp;x)&nbsp;1)))))</tt><br>
+<tt>;</tt><br>
+<h3> Calculate Pi to N digits on UNIX </h3>
+<tt>;&nbsp;-&nbsp;pi&nbsp;-&nbsp;calculate&nbsp;to&nbsp;n&nbsp;digits&nbsp;on&nbsp;Unix</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;Calculate&nbsp;Pi&nbsp;to&nbsp;n&nbsp;digits&nbsp;on&nbsp;macOS&nbsp;and&nbsp;other&nbsp;</tt><br>
+<tt>;&nbsp;Unix&nbsp;this&nbsp;requires&nbsp;the&nbsp;UNIX&nbsp;utility&nbsp;bc&nbsp;which&nbsp;is&nbsp;</tt><br>
+<tt>;&nbsp;installed&nbsp;by&nbsp;default&nbsp;on&nbsp;most&nbsp;UNIX&nbsp;systems</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(pi&nbsp;30)&nbsp;</tt><br>
+<tt>;&nbsp;=&gt;&nbsp;"3.141592653589793238462643383276"</tt><br>
+<br>
+<tt>(define&nbsp;(pi&nbsp;n)</tt><br>
+<tt>&nbsp;(replace&nbsp;"\\"&nbsp;(join&nbsp;(exec&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(format&nbsp;"echo&nbsp;'scale=%d;&nbsp;4&nbsp;*&nbsp;a(1)'&nbsp;|&nbsp;bc&nbsp;-ql"&nbsp;n)))&nbsp;""))&nbsp;</tt><br>
+<tt>;</tt><br>
+<h3> Create memoizing Functions </h3>
+<tt>;&nbsp;A&nbsp;memoizing&nbsp;function&nbsp;caches&nbsp;its&nbsp;result&nbsp;for&nbsp;faster</tt><br>
+<tt>;&nbsp;retrieval&nbsp;when&nbsp;called&nbsp;with&nbsp;the&nbsp;same&nbsp;parameters&nbsp;</tt><br>
+<tt>;&nbsp;again&nbsp;the&nbsp;following&nbsp;function&nbsp;makes&nbsp;a&nbsp;memoizing&nbsp;</tt><br>
+<tt>;&nbsp;function&nbsp;from&nbsp;any&nbsp;built-in&nbsp;or&nbsp;user&nbsp;defined&nbsp;</tt><br>
+<tt>;&nbsp;function&nbsp;with&nbsp;an&nbsp;arbitrary&nbsp;number&nbsp;of&nbsp;arguments.&nbsp;</tt><br>
+<tt>;&nbsp;</tt><br>
+<tt>;&nbsp;(memoize&nbsp;my-add&nbsp;add)</tt><br>
+<tt>;&nbsp;(my-add&nbsp;3&nbsp;4)&nbsp;=&gt;&nbsp;7</tt><br>
+<tt>;&nbsp;(my-add&nbsp;5&nbsp;6)&nbsp;=&gt;&nbsp;11</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(define&nbsp;(fibo&nbsp;n)</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;(if(&lt;&nbsp;n&nbsp;2)&nbsp;1</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;(+&nbsp;&nbsp;(fibo&nbsp;(-&nbsp;n&nbsp;1))</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(fibo&nbsp;(-&nbsp;n&nbsp;2)))))</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(memoize&nbsp;fibo-m&nbsp;fibo)</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(time&nbsp;(fibo-m&nbsp;25))&nbsp;=&gt;&nbsp;148</tt><br>
+<tt>;&nbsp;(time&nbsp;(fibo-m&nbsp;25))&nbsp;=&gt;&nbsp;0</tt><br>
+<br>
+<tt>(define-macro&nbsp;(memoize&nbsp;mem-func&nbsp;func)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;(set&nbsp;(sym&nbsp;mem-func&nbsp;mem-func)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(letex&nbsp;((f&nbsp;func)&nbsp;(c&nbsp;mem-func))&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(lambda&nbsp;()&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(or&nbsp;(context&nbsp;c&nbsp;(string&nbsp;(args)))&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(context&nbsp;c&nbsp;(string&nbsp;(args))&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(apply&nbsp;f&nbsp;(args))))</tt><br>
+))))<br>
+<br>
+<tt>;&nbsp;recursive&nbsp;fibo&nbsp;can&nbsp;be&nbsp;made&nbsp;even&nbsp;faster&nbsp;when&nbsp;also&nbsp;</tt><br>
+<tt>;&nbsp;caching&nbsp;intermediate&nbsp;results&nbsp;occurring&nbsp;during&nbsp;</tt><br>
+<tt>;&nbsp;recursion:</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(memoize&nbsp;fibo</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;(lambda&nbsp;(n)</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if(&lt;&nbsp;n&nbsp;2)&nbsp;1</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(+&nbsp;&nbsp;(fibo&nbsp;(-&nbsp;n&nbsp;1))</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(fibo&nbsp;(-&nbsp;n&nbsp;2))))))</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(time&nbsp;(fibo&nbsp;80))&nbsp;=&gt;&nbsp;0.024&nbsp;;&nbsp;24&nbsp;micro&nbsp;seconds</tt><br>
+<tt>;&nbsp;(fibo&nbsp;80)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;37889062373143906</tt><br>
+<tt>;</tt><br>
+<h3> Sort naturally </h3>
+<tt>;&nbsp;sorts&nbsp;same&nbsp;letters&nbsp;followed&nbsp;by&nbsp;numbers&nbsp;in&nbsp;number&nbsp;</tt><br>
+<tt>;&nbsp;order&nbsp;newLISP&nbsp;v9.2.5&nbsp;minimum&nbsp;is&nbsp;required&nbsp;for&nbsp;()&nbsp;</tt><br>
+<tt>;&nbsp;return&nbsp;of&nbsp;find-all&nbsp;ported&nbsp;to&nbsp;newLISP&nbsp;by&nbsp;G.&nbsp;Fischer</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(natural-sort&nbsp;'("a10"&nbsp;"a2"&nbsp;"a1"&nbsp;"a14"))&nbsp;</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;("a1"&nbsp;"a2"&nbsp;"a10"&nbsp;"a14")&nbsp;</tt><br>
+<br>
+<tt>(define&nbsp;(natural-sort&nbsp;l)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;(let&nbsp;(natural-key&nbsp;(lambda&nbsp;(s)&nbsp;(filter&nbsp;true?&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(flat&nbsp;(transpose&nbsp;(list&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(parse&nbsp;s&nbsp;"[0-9]+"&nbsp;0)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(map&nbsp;int&nbsp;(find-all&nbsp;"[0-9]+"&nbsp;s))))))))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(sort&nbsp;l&nbsp;(fn&nbsp;(x&nbsp;y)&nbsp;(&lt;&nbsp;(natural-key&nbsp;x)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(natural-key&nbsp;y))))&nbsp;</tt><br>
+<tt>))</tt><br>
+<tt>;</tt><br>
+<h3> Set std I/O on Win32 into text or binary mode </h3>
+<tt>;&nbsp;On&nbsp;Win32&nbsp;CR-LF&nbsp;gets&nbsp;translated&nbsp;to&nbsp;LF&nbsp;on&nbsp;stdin</tt><br>
+<tt>;&nbsp;and&nbsp;on&nbsp;stdout&nbsp;a&nbsp;CR&nbsp;is&nbsp;added&nbsp;in&nbsp;front&nbsp;of&nbsp;each&nbsp;LF</tt><br>
+<tt>;&nbsp;the&nbsp;following&nbsp;puts&nbsp;std&nbsp;I/O&nbsp;into&nbsp;text&nbsp;mode.</tt><br>
+<tt>;&nbsp;Binary&nbsp;mode&nbsp;is&nbsp;default&nbsp;on&nbsp;all&nbsp;versions&nbsp;of&nbsp;newLISP.</tt><br>
+<br>
+<tt>(import&nbsp;"msvcrt.dll"&nbsp;"_setmode")&nbsp;</tt><br>
+<br>
+<tt>(define&nbsp;O_BINARY&nbsp;0x8000)</tt><br>
+<tt>(define&nbsp;O_TEXT&nbsp;0x4000)&nbsp;</tt><br>
+<br>
+<tt>(_setmode&nbsp;0&nbsp;O_TEXT)&nbsp;</tt><br>
+<tt>;</tt><br>
+<h3> Hide the Win32 console </h3>
+<tt>;&nbsp;hide&nbsp;the&nbsp;Win32&nbsp;console&nbsp;window</tt><br>
+<tt>;&nbsp;posted&nbsp;by&nbsp;'Sleeper'</tt><br>
+<tt>;</tt><br>
+<br>
+<tt>(import&nbsp;"kernel32.dll"&nbsp;"FreeConsole")&nbsp;</tt><br>
+<tt>(FreeConsole)&nbsp;</tt><br>
+<br>
+<tt>;</tt><br>
+<h3> Check if a file is a link </h3>
+<tt>;&nbsp;check&nbsp;if&nbsp;file&nbsp;is&nbsp;a&nbsp;link</tt><br>
+<tt>;&nbsp;mac&nbsp;OS,&nbsp;Linux&nbsp;and&nbsp;BSDs,&nbsp;not&nbsp;on&nbsp;Win32</tt><br>
+<tt>;&nbsp;see&nbsp;man&nbsp;page&nbsp;for&nbsp;fstat&nbsp;on&nbsp;Unix</tt><br>
+<tt>;&nbsp;instead&nbsp;of&nbsp;octal&nbsp;0120000&nbsp;can&nbsp;use:</tt><br>
+<tt>;&nbsp;0xA000&nbsp;hex&nbsp;or&nbsp;40960&nbsp;decimal</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;example:&nbsp;</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;(link?&nbsp;"Desktop")&nbsp;=&gt;&nbsp;true</tt><br>
+<br>
+<tt>(define&nbsp;(link?&nbsp;path-name)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(=&nbsp;0120000&nbsp;(&amp;&nbsp;(file-info&nbsp;path-name&nbsp;1)&nbsp;0120000)))</tt><br>
+<tt>;</tt><br>
+<h3> Start AppleScript from newLISP </h3>
+<tt>;&nbsp;takes&nbsp;a&nbsp;piece&nbsp;of&nbsp;AppleScript&nbsp;and&nbsp;returns</tt><br>
+<tt>;&nbsp;the&nbsp;output</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;example:</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(osa&nbsp;{tell&nbsp;app&nbsp;"Finder"&nbsp;to&nbsp;display&nbsp;dialog&nbsp;</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"hello&nbsp;world"})</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;the&nbsp;first&nbsp;version&nbsp;returns&nbsp;an&nbsp;empty&nbsp;list&nbsp;on&nbsp;</tt><br>
+<tt>;&nbsp;error&nbsp;second&nbsp;version&nbsp;returns&nbsp;error&nbsp;messages&nbsp;</tt><br>
+<tt>;&nbsp;as&nbsp;part&nbsp;of&nbsp;the&nbsp;output</tt><br>
+<br>
+<tt>;&nbsp;discard&nbsp;error&nbsp;output</tt><br>
+<tt>(define&nbsp;(osa&nbsp;str)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(exec&nbsp;(format&nbsp;{osascript&nbsp;-e&nbsp;'%s'&nbsp;2&gt;&nbsp;/dev/null}&nbsp;str)))</tt><br>
+<br>
+<tt>;&nbsp;return&nbsp;error&nbsp;message&nbsp;in&nbsp;stdout</tt><br>
+<tt>(define&nbsp;(osa&nbsp;str)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(exec&nbsp;(format&nbsp;{osascript&nbsp;-e&nbsp;'%s'&nbsp;2&gt;&amp;1&nbsp;}&nbsp;str)))</tt><br>
+<tt>;</tt><br>
+<h3> Get a list of local IPs  </h3>
+<tt>;&nbsp;get&nbsp;all&nbsp;IPs&nbsp;assigned&nbsp;to&nbsp;this&nbsp;machine&nbsp;on&nbsp;Win32</tt><br>
+<tt>;&nbsp;on&nbsp;Linux/UNIX&nbsp;use&nbsp;(exec&nbsp;"ifconfig")</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(get-ips)&nbsp;</tt><br>
+<tt>;&nbsp;=&gt;&nbsp;("192.168.2.254"&nbsp;"255.255.255.0"&nbsp;"192.168.2.94")</tt><br>
+<tt>;</tt><br>
+<tt>(define&nbsp;(get-ips&nbsp;,&nbsp;ips)</tt><br>
+<tt>&nbsp;&nbsp;(dolist&nbsp;(ln&nbsp;(exec&nbsp;"ipconfig"))&nbsp;;&nbsp;ifconfig&nbsp;on&nbsp;mac&nbsp;OS&nbsp;/&nbsp;UNIX</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(find&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b}&nbsp;ln&nbsp;0)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(push&nbsp;$0&nbsp;ips)))</tt><br>
+<tt>&nbsp;&nbsp;ips)</tt><br>
+<tt>;</tt><br>
+<h3> Clean out HTML really quick </h3>
+<tt>;&nbsp;clean&nbsp;HTML&nbsp;tags</tt><br>
+<tt>;</tt><br>
+<tt>(define&nbsp;(clean-html&nbsp;page)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(replace&nbsp;"&lt;[^&gt;]*&gt;"&nbsp;page&nbsp;""&nbsp;0))</tt><br>
+<br>
+try the following:<br>
+<br>
+<tt>(clean-html&nbsp;(get-url&nbsp;"http://yahoo.com"))</tt><br>
+<tt>;</tt><br>
+<h3> Clean out HTML really perfect </h3>
+<tt>;&nbsp;needs&nbsp;OpenSource&nbsp;lynx&nbsp;text&nbsp;browser</tt><br>
+<tt>;&nbsp;available&nbsp;for&nbsp;all&nbsp;platforms</tt><br>
+<tt>;</tt><br>
+<tt>(define&nbsp;(html2text&nbsp;url)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(exec&nbsp;(string&nbsp;"lynx&nbsp;-dump&nbsp;"&nbsp;url&nbsp;"&nbsp;&gt;&nbsp;/tmp/text-file"))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(read-file&nbsp;"/tmp/text-file"))</tt><br>
+<br>
+<h3> Show a directory tree </h3>
+<tt>;</tt><br>
+<tt>(define&nbsp;(show-tree&nbsp;dir)</tt><br>
+<tt>&nbsp;&nbsp;(dolist&nbsp;(nde&nbsp;(directory&nbsp;dir))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(and&nbsp;(directory?&nbsp;(append&nbsp;dir&nbsp;"/"&nbsp;nde))&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(!=&nbsp;nde&nbsp;".")&nbsp;(!=&nbsp;nde&nbsp;".."))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(show-tree&nbsp;(append&nbsp;dir&nbsp;"/"&nbsp;nde))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(println&nbsp;(append&nbsp;dir&nbsp;"/"&nbsp;nde)))</tt><br>
+<tt>&nbsp;&nbsp;)</tt><br>
+<tt>)</tt><br>
+<br>
+<tt>(show-tree&nbsp;((main-args)&nbsp;2))</tt><br>
+<br>
+<tt>(exit)</tt><br>
+<tt>;</tt><br>
+<h3> Apply functions to directories and files recursively </h3>
+<tt>;&nbsp;apply-dir&nbsp;-&nbsp;applies&nbsp;a&nbsp;file&nbsp;and&nbsp;a&nbsp;directory&nbsp;function</tt><br>
+<tt>;&nbsp;to&nbsp;all&nbsp;files&nbsp;and&nbsp;directories&nbsp;in&nbsp;dir</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;USAGE:</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(apply-to-dir&nbsp;&lt;file-func&gt;&nbsp;&lt;dir-func&gt;&nbsp;&lt;root-dir&gt;)</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;EXAMPLE:</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(apply-dir&nbsp;delete-file&nbsp;remove-dir&nbsp;"someDir")</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;the&nbsp;example&nbsp;would&nbsp;delete&nbsp;all&nbsp;file&nbsp;and&nbsp;directories</tt><br>
+<tt>;&nbsp;in&nbsp;someDir&nbsp;in&nbsp;the&nbsp;current&nbsp;directory</tt><br>
+<tt>;</tt><br>
+<br>
+<tt>(define&nbsp;(apply-dir&nbsp;ffunc&nbsp;dfunc&nbsp;dir)</tt><br>
+<tt>&nbsp;&nbsp;(dolist&nbsp;(nde&nbsp;(directory&nbsp;dir))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(and&nbsp;(directory?&nbsp;(append&nbsp;dir&nbsp;"/"&nbsp;nde))&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(!=&nbsp;nde&nbsp;".")&nbsp;(!=&nbsp;nde&nbsp;".."))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(begin</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(apply-dir&nbsp;ffunc&nbsp;dfunc&nbsp;(append&nbsp;dir&nbsp;"/"&nbsp;nde))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dfunc&nbsp;(append&nbsp;dir&nbsp;"/"&nbsp;nde)))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ffunc&nbsp;(append&nbsp;dir&nbsp;"/"&nbsp;nde)))))</tt><br>
+<tt>;</tt><br>
+<br>
+<h3> Run a newLISP script from a Windows .cmd file  </h3>
+<tt>;&nbsp;@rem&nbsp;Posted&nbsp;by&nbsp;alex&nbsp;</tt><br>
+<tt>;&nbsp;@newlisp.exe&nbsp;"%~f0"&nbsp;%*&nbsp;&amp;&nbsp;goto&nbsp;:EOF</tt><br>
+<tt>#&nbsp;begin&nbsp;newlisp-program&nbsp;</tt><br>
+<tt>(println&nbsp;"Hello&nbsp;World!")&nbsp;</tt><br>
+<tt>(exit)</tt><br>
+<tt>#&nbsp;end&nbsp;newlisp-program</tt><br>
+<br>
+<h3> Generate permutations of multisets </h3>
+<tt>;&nbsp;Warren-Hanson&nbsp;algorithm&nbsp;for&nbsp;generating&nbsp;</tt><br>
+<tt>;&nbsp;permutations&nbsp;of&nbsp;multisets.</tt><br>
+<tt>;&nbsp;</tt><br>
+<br>
+<tt>(define&nbsp;(make-k-permutations&nbsp;k&nbsp;multiset)</tt><br>
+<tt>(let&nbsp;((pivots&nbsp;(unique&nbsp;multiset)))</tt><br>
+<tt>&nbsp;&nbsp;(if&nbsp;(=&nbsp;k&nbsp;1)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(map&nbsp;list&nbsp;pivots)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;((acc&nbsp;'()))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dolist&nbsp;(p&nbsp;pivots)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;((sub-multiset&nbsp;(remove1&nbsp;p&nbsp;multiset)))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dolist&nbsp;(sub-perm</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(make-k-permutations&nbsp;(-&nbsp;k&nbsp;1)&nbsp;sub-multiset))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(push&nbsp;(cons&nbsp;p&nbsp;sub-perm)&nbsp;acc))))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;acc))))</tt><br>
+<br>
+<tt>(define&nbsp;(remove1&nbsp;elt&nbsp;lst)</tt><br>
+<tt>&nbsp;(let&nbsp;((elt-pos&nbsp;(find&nbsp;elt&nbsp;lst)))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(if&nbsp;elt-pos&nbsp;(pop&nbsp;lst&nbsp;elt-pos))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;lst))</tt><br>
+<br>
+<tt>;&nbsp;(make-k-permutations&nbsp;2&nbsp;&nbsp;'(1&nbsp;2&nbsp;3&nbsp;2))&nbsp;</tt><br>
+<tt>;&nbsp;&nbsp;=&gt;&nbsp;&nbsp;((3&nbsp;2)&nbsp;(3&nbsp;1)&nbsp;(2&nbsp;2)&nbsp;(2&nbsp;3)&nbsp;(2&nbsp;1)&nbsp;(1&nbsp;3)&nbsp;(1&nbsp;2))</tt><br>
+<tt>;</tt><br>
+<h3> Permutations of a set </h3>
+<tt>;&nbsp;posted&nbsp;by&nbsp;Ralph&nbsp;Ronnquist&nbsp;2015</tt><br>
+<br>
+<tt>(define&nbsp;(permutations&nbsp;items)</tt><br>
+<tt>&nbsp;(if&nbsp;(empty?&nbsp;items)&nbsp;'()</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(1&nbsp;items)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(let&nbsp;((e&nbsp;(cons&nbsp;(first&nbsp;items)))&nbsp;(n&nbsp;(length&nbsp;items)))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(flat&nbsp;(map&nbsp;(fn&nbsp;(p&nbsp;(i&nbsp;-1))&nbsp;(collect&nbsp;(append&nbsp;(0&nbsp;(inc&nbsp;i)&nbsp;p)&nbsp;e&nbsp;(i&nbsp;p))&nbsp;n))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(permutations&nbsp;(rest&nbsp;items)))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(list&nbsp;items)))</tt><br>
+<br>
+<tt>;&nbsp;(permutations&nbsp;'(1&nbsp;2&nbsp;3))&nbsp;</tt><br>
+<tt>;&nbsp;=&gt;&nbsp;((1&nbsp;2&nbsp;3)&nbsp;(2&nbsp;1&nbsp;3)&nbsp;(2&nbsp;3&nbsp;1)&nbsp;(1&nbsp;3&nbsp;2)&nbsp;(3&nbsp;1&nbsp;2)&nbsp;(3&nbsp;2&nbsp;1))</tt><br>
+<br>
+<h3> Combinations </h3>
+<tt>;&nbsp;items&nbsp;is&nbsp;the&nbsp;set&nbsp;of&nbsp;elements</tt><br>
+<tt>;&nbsp;k&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;elements&nbsp;to&nbsp;choose</tt><br>
+<tt>;&nbsp;posted&nbsp;by&nbsp;Ralph&nbsp;Ronnquist&nbsp;2015</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(combinations&nbsp;'(a&nbsp;b&nbsp;c&nbsp;d)&nbsp;3)&nbsp;=&gt;</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((b&nbsp;c&nbsp;d)&nbsp;(a&nbsp;c&nbsp;d)&nbsp;(a&nbsp;b&nbsp;c)&nbsp;(a&nbsp;b&nbsp;d))</tt><br>
+<br>
+<tt>(define&nbsp;(combinations&nbsp;items&nbsp;k)</tt><br>
+<tt>&nbsp;(if&nbsp;(&lt;=&nbsp;(length&nbsp;items)&nbsp;k)&nbsp;(list&nbsp;items)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(=&nbsp;k&nbsp;1)&nbsp;(map&nbsp;list&nbsp;items)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(append&nbsp;(combinations&nbsp;(rest&nbsp;items)&nbsp;k)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(map&nbsp;(curry&nbsp;cons&nbsp;(first&nbsp;items))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(combinations&nbsp;(rest&nbsp;items)&nbsp;(dec&nbsp;k))))))</tt><br>
+<tt>;</tt><br>
+<br>
+<h3> Binomial Coefficient </h3>
+<tt>;&nbsp;Contributed&nbsp;by&nbsp;Ted&nbsp;Walther,&nbsp;2014</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;An&nbsp;efficient&nbsp;way&nbsp;to&nbsp;calculate&nbsp;binomial-coefficient</tt><br>
+<tt>;&nbsp;fast&nbsp;algorithm&nbsp;less&nbsp;likely&nbsp;to&nbsp;overflow,&nbsp;translated</tt><br>
+<tt>;&nbsp;from&nbsp;C&nbsp;code&nbsp;found&nbsp;here:</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;http://blog.plover.com/math/choose.html</tt><br>
+<tt>;&nbsp;Based&nbsp;on&nbsp;algorithm&nbsp;found&nbsp;in&nbsp;"Lilavati",&nbsp;a&nbsp;treatise</tt><br>
+<tt>;&nbsp;on&nbsp;arithmetic&nbsp;written&nbsp;about&nbsp;850&nbsp;years&nbsp;ago&nbsp;in&nbsp;India.</tt><br>
+<tt>;&nbsp;The&nbsp;algorithm&nbsp;also&nbsp;appears&nbsp;in&nbsp;the&nbsp;article&nbsp;on&nbsp;"Algebra"</tt><br>
+<tt>;&nbsp;from&nbsp;the&nbsp;first&nbsp;edition&nbsp;of&nbsp;the&nbsp;Encyclopaedia&nbsp;Britannica,</tt><br>
+<tt>;&nbsp;published&nbsp;in&nbsp;1768.&nbsp;</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(binomial-coefficient&nbsp;3&nbsp;2)&nbsp;=&gt;&nbsp;3L</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(binomial-coefficient&nbsp;1000000&nbsp;5)</tt><br>
+<tt>;&nbsp;=&gt;&nbsp;8333250000291666250000200000L</tt><br>
+<br>
+<tt>(define&nbsp;(binomial-coefficient&nbsp;n&nbsp;k)</tt><br>
+<tt>&nbsp;&nbsp;(if&nbsp;(&gt;&nbsp;k&nbsp;n)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;0</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;(r&nbsp;1L)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(for&nbsp;(d&nbsp;1&nbsp;k)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(setq&nbsp;r&nbsp;(/&nbsp;(*&nbsp;r&nbsp;n)&nbsp;d))&nbsp;(--&nbsp;n))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r)))</tt><br>
+<tt>;</tt><br>
+<br>
+<h3> Format ordinal numbers </h3>
+<tt>;&nbsp;Format&nbsp;ordinal&nbsp;numbers</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(ordinal&nbsp;3)&nbsp;=&gt;&nbsp;"3rd"</tt><br>
+<tt>;&nbsp;(ordinal&nbsp;4)&nbsp;=&gt;&nbsp;"4th"</tt><br>
+<tt>;&nbsp;(ordinal&nbsp;65)&nbsp;=&gt;&nbsp;"65th"</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;contributed&nbsp;by&nbsp;Ted&nbsp;Walther,&nbsp;2014</tt><br>
+<tt>;</tt><br>
+<tt>(define&nbsp;(ordinal&nbsp;n)</tt><br>
+<tt>&nbsp;&nbsp;(let&nbsp;(nn&nbsp;(string&nbsp;n))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(cond</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((regex&nbsp;{1[123]$}&nbsp;nn)&nbsp;(string&nbsp;nn&nbsp;"th"))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((regex&nbsp;{1$}&nbsp;nn)&nbsp;(string&nbsp;nn&nbsp;"st"))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((regex&nbsp;{2$}&nbsp;nn)&nbsp;(string&nbsp;nn&nbsp;"nd"))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((regex&nbsp;{3$}&nbsp;nn)&nbsp;(string&nbsp;nn&nbsp;"rd"))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((regex&nbsp;{[4567890]$}&nbsp;nn)&nbsp;(string&nbsp;nn&nbsp;"th"))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(true&nbsp;nn))))</tt><br>
+<tt>(global&nbsp;'ordinal)</tt><br>
+<br>
+<h3> Send email using UNIX sendmail </h3>
+<tt>;&nbsp;send&nbsp;email&nbsp;-&nbsp;Linux/UNIX</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;a&nbsp;very&nbsp;short&nbsp;alternative&nbsp;to&nbsp;the&nbsp;smtp.lsp&nbsp;module</tt><br>
+<tt>;&nbsp;in&nbsp;the&nbsp;newLISP&nbsp;distribution,&nbsp;but&nbsp;needs&nbsp;'sendmail'</tt><br>
+<tt>;&nbsp;in&nbsp;your&nbsp;system&nbsp;in&nbsp;/usr/bin&nbsp;or&nbsp;/bin&nbsp;(on&nbsp;FreeBSD)</tt><br>
+<tt>;&nbsp;most&nbsp;UNIX&nbsp;systems&nbsp;seem&nbsp;to&nbsp;have&nbsp;it.</tt><br>
+<tt>;</tt><br>
+<tt>(define&nbsp;(sendmail&nbsp;to&nbsp;from&nbsp;subject&nbsp;body)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(exec&nbsp;"/usr/bin/sendmail&nbsp;-t"</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(format&nbsp;"To:&nbsp;%s\nFrom:&nbsp;%s\nSubject:&nbsp;%s\n\n%s"</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;from&nbsp;subject&nbsp;body)))</tt><br>
+<br>
+<h3> Add with alternating signs </h3>
+<tt>;&nbsp;add&nbsp;with&nbsp;alternating&nbsp;signs:</tt><br>
+<tt>;&nbsp;thanks&nbsp;to&nbsp;Rick&nbsp;for&nbsp;an&nbsp;improved,&nbsp;faster&nbsp;version</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(+-&nbsp;a&nbsp;b&nbsp;c&nbsp;d&nbsp;e&nbsp;....&nbsp;n)&nbsp;is&nbsp;equivalent&nbsp;to</tt><br>
+<tt>;&nbsp;a&nbsp;+&nbsp;b&nbsp;-&nbsp;c&nbsp;+&nbsp;d&nbsp;-&nbsp;e....n&nbsp;</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;example:</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(+-&nbsp;1&nbsp;2&nbsp;3&nbsp;4&nbsp;5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;-1</tt><br>
+<tt>;&nbsp;(apply&nbsp;+-&nbsp;(sequence&nbsp;1&nbsp;5)&nbsp;&nbsp;=&gt;&nbsp;-1&nbsp;</tt><br>
+<br>
+<tt>(define&nbsp;(+-)&nbsp;</tt><br>
+<tt>&nbsp;(let&nbsp;(signs&nbsp;(cons&nbsp;1&nbsp;(series&nbsp;1&nbsp;-1&nbsp;(-&nbsp;(length&nbsp;(args))&nbsp;1))))&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(apply&nbsp;add&nbsp;(map&nbsp;mul&nbsp;signs&nbsp;(args)))))</tt><br>
+<tt>;</tt><br>
+<h3> Get the directory part of a filename </h3>
+<tt>;&nbsp;get&nbsp;directory&nbsp;part&nbsp;of&nbsp;a&nbsp;filename</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;example:</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;&nbsp;(dirname&nbsp;"/usr/etc/hosts")&nbsp;=&gt;&nbsp;"/usr/etc"</tt><br>
+<tt>;&nbsp;&nbsp;(dirname&nbsp;"c:\\WINDOWS\\system32\\chkdsk.exe")&nbsp;</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;"c:/WINDOWS/system32"</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;Note&nbsp;that&nbsp;MS&nbsp;Windows&nbsp;allows&nbsp;both&nbsp;/&nbsp;and&nbsp;\&nbsp;as&nbsp;</tt><br>
+<tt>;&nbsp;path&nbsp;separators</tt><br>
+<tt>;</tt><br>
+<br>
+<tt>(define&nbsp;(dirname&nbsp;path)</tt><br>
+<tt>&nbsp;(join&nbsp;(chop&nbsp;(parse&nbsp;path&nbsp;"/|\\\\"&nbsp;0))&nbsp;"/"))</tt><br>
+<tt>;</tt><br>
+<h3> Get file name part of filename </h3>
+<tt>;&nbsp;get&nbsp;file&nbsp;name&nbsp;part&nbsp;of&nbsp;filename,&nbsp;strip&nbsp;</tt><br>
+<tt>;&nbsp;directory&nbsp;part</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;example:</tt><br>
+<tt>;&nbsp;&nbsp;(basename&nbsp;"/usr/etc/hosts")&nbsp;=&gt;&nbsp;"hosts"</tt><br>
+<tt>;</tt><br>
+<br>
+<tt>(define&nbsp;(basename&nbsp;path)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(last&nbsp;(parse&nbsp;path&nbsp;"/")))&nbsp;</tt><br>
+<tt>;</tt><br>
+<h3> Multiple list zipper </h3>
+<tt>;&nbsp;transpose&nbsp;multiple&nbsp;lists&nbsp;into&nbsp;one</tt><br>
+<tt>;&nbsp;thanks&nbsp;to&nbsp;Nigel&nbsp;et&nbsp;al</tt><br>
+<tt>;&nbsp;</tt><br>
+<tt>(define&nbsp;(zip)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(transpose&nbsp;(args)))&nbsp;</tt><br>
+<br>
+<tt>;&nbsp;(zip&nbsp;'(1&nbsp;2&nbsp;3)&nbsp;'(a&nbsp;b&nbsp;c)&nbsp;'(x&nbsp;y&nbsp;z))&nbsp;</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;((1&nbsp;a&nbsp;x)&nbsp;(2&nbsp;b&nbsp;y)&nbsp;(3&nbsp;c&nbsp;z))</tt><br>
+<tt>;</tt><br>
+<h3> Run a Win32 shell and hide window </h3>
+<tt>;&nbsp;run&nbsp;a&nbsp;Win32&nbsp;command&nbsp;shell&nbsp;program</tt><br>
+<tt>;&nbsp;hiding&nbsp;the&nbsp;window&nbsp;at&nbsp;the&nbsp;same&nbsp;time</tt><br>
+<br>
+<tt>;&nbsp;(winexec&nbsp;0&nbsp;"open"&nbsp;"newlisp.exe"&nbsp;""&nbsp;""&nbsp;0)&nbsp;;hide</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(winexec&nbsp;0&nbsp;"open"&nbsp;"newlisp.exe"&nbsp;""&nbsp;""&nbsp;1)&nbsp;;display</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;(winexec&nbsp;0&nbsp;"open"&nbsp;"newlisp.exe"&nbsp;""&nbsp;""&nbsp;2)&nbsp;;minimize</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;The&nbsp;last&nbsp;two&nbsp;parameters&nbsp;before&nbsp;the&nbsp;mode&nbsp;number&nbsp;are&nbsp;</tt><br>
+<tt>;&nbsp;command&nbsp;line&nbsp;parameters&nbsp;and&nbsp;startup&nbsp;directory&nbsp;the&nbsp;</tt><br>
+<tt>;&nbsp;application&nbsp;assumes.&nbsp;Here&nbsp;the&nbsp;original&nbsp;API:</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;&nbsp;HINSTANCE&nbsp;ShellExecute(</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;HWND&nbsp;hwnd,&nbsp;//&nbsp;handle&nbsp;to&nbsp;parent&nbsp;window</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;LPCTSTR&nbsp;lpOperation,&nbsp;//&nbsp;operation&nbsp;to&nbsp;perform</tt><br>
+<br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;LPCTSTR&nbsp;lpFile,&nbsp;//&nbsp;filename&nbsp;or&nbsp;folder&nbsp;name</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;LPCTSTR&nbsp;lpParameters,&nbsp;//&nbsp;executable-file&nbsp;params</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;LPCTSTR&nbsp;lpDirectory,&nbsp;//&nbsp;default&nbsp;directory</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;INT&nbsp;nShowCmd&nbsp;//&nbsp;whether&nbsp;file&nbsp;is&nbsp;shown&nbsp;opened</tt><br>
+<tt>;&nbsp;&nbsp;&nbsp;&nbsp;);</tt><br>
+<tt>;</tt><br>
+<tt>;&nbsp;the&nbsp;function&nbsp;uses&nbsp;an&nbsp;import&nbsp;from&nbsp;a&nbsp;Win32&nbsp;</tt><br>
+<tt>;&nbsp;system&nbsp;library:</tt><br>
+<br>
+<tt>(define&nbsp;winexec&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;(import&nbsp;"shell32.dll"&nbsp;"ShellExecuteA"))</tt><br>
+<br>
+<tt>;&nbsp;Note&nbsp;that&nbsp;'process'&nbsp;also&nbsp;has&nbsp;an&nbsp;option&nbsp;for&nbsp;</tt><br>
+<tt>;&nbsp;hiding/showing&nbsp;the&nbsp;launched&nbsp;process&nbsp;window.&nbsp;</tt><br>
+<tt>;&nbsp;This&nbsp;make&nbsp;this&nbsp;function&nbsp;obsolete,&nbsp;but&nbsp;it&nbsp;is&nbsp;</tt><br>
+<tt>;&nbsp;shown&nbsp;here&nbsp;as&nbsp;an&nbsp;example&nbsp;on&nbsp;how&nbsp;to&nbsp;import&nbsp;a&nbsp;</tt><br>
+<tt>;&nbsp;Win32&nbsp;function.</tt><br>
+<h3> Hide/show window from inside script</h3>
+<tt>(import&nbsp;"kernel32.dll"&nbsp;"GetConsoleWindow")</tt><br>
+<tt>(import&nbsp;"user32.dll"&nbsp;"ShowWindow")</tt><br>
+<tt>(constant&nbsp;'SW_HIDE&nbsp;0)</tt><br>
+<tt>(constant&nbsp;'SW_SHOW&nbsp;5)</tt><br>
+<br>
+<tt>(setq&nbsp;hwndConsole&nbsp;(GetConsoleWindow))</tt><br>
+<tt>(if-not&nbsp;(zero?&nbsp;hwndConsole)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;(ShowWindow&nbsp;hwndConsole&nbsp;SW_HIDE)</tt><br>
+<tt>)</tt><br>
+<br>
+<br>
+<tt>;;&nbsp;eof&nbsp;;;</tt><br>
+
+</div>
+
+<!-- end content -->
+
+<!-- comments -->
+
+<!-- end comments -->
+<!-- the menu -->
+
+<!-- the menu end -->
+
+<!-- copyright -->
+  <div class="footer" align="center">
+  <br>
+Copyright &copy; 2021, Lutz Mueller. All rights reserved.<br>
+ 
+  <a href="http://www.newlisp.net/">Site</a> powered by <a href="http://newlisp.net">newLISP</a> wiki v4.6
+<!--
+  in 8ms
+-->
+<br>
+  </div>
+<!-- end copyright -->
+
+<!-- <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1098066-1";
+urchinTracker();
+</script> -->
+
+</body>
+</html>
+

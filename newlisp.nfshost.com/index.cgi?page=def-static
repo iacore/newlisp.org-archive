@@ -1,0 +1,473 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+
+
+<head>
+  <title>newLISP  - def-static</title>
+  <META name="verify-v1" content="uI5QBi0dvEoNnrT+Vrm63toHH4Ep1y6BBR61veuiWKU=" />
+  <META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.cgi" />
+  <meta name="description"`
+      content="newLISP is a general purpose scripting language for developing web applications and programs in general in the domains of artificial intelligence (AI), statistics and machine learning.">
+  <meta name="keywords"
+      content="lisp,scheme,programming,scripting language,ai,artificial intelligence,statistics,machine learning,distributed and parallel processing,gpl">
+  <META name="verify-v1" content="uI5QBi0dvEoNnrT+Vrm63toHH4Ep1y6BBR61veuiWKU=" />
+  <style type="text/css" media="screen">
+<!--
+ 
+ /* style for top title portion of site */
+
+ .title {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 20px;
+   font-weight: 200;
+   margin: 0 10%;
+   margin-bottom: 3px;
+   color: #888;
+  background-color: #FFFFFF;
+ }
+
+ /* link behaviour in title box */
+ .title a {
+   background-color: transparent;
+   text-decoration: none;
+   color: #eee;
+   text-decoration: none;
+ }
+
+ .title a:hover {
+   color: #fff;
+   text-decoration: underline;
+   background-color: transparent;
+ }
+
+ /* the name on top of each page (except the Home page) */
+
+ .pagename {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 18px;
+   margin-bottom: 20px;
+ }
+
+ /* style of content box where all 
+   user text lives 
+ */
+ .content {
+   margin: 0 10%;
+   max-width: 900px;
+   padding: 10px;
+  background-color: #FFFFFF;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+ .content a {
+   background-color: transparent;
+   text-decoration: none;
+   color: #25a;
+ }
+
+ .content a:hover {
+   padding: 0px;
+   color: #FFF;
+   text-decoration: none;
+   background-color: #888;
+ }
+
+ .content a:visited {
+
+ }
+
+
+ /* style for menu on top */
+ .menu {   
+   margin-left: 0px;
+   margin-right: 0px;
+   padding: 1px;
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+   font-size: 16px;
+   line-height: 16px;
+   color: #FFF;
+   background-color: #369;
+ }
+
+ /* links in menu */
+ .menu a {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 0px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+ .menu a:hover {
+   color: #fff;
+   border-bottom: 0px;
+   padding: 0px;
+   background-color: #888;
+   text-decoration: none;
+ }
+
+ .menu a:visited {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+ .menu-bottom {   
+   margin: 0 10%;
+   max-width: 880px;
+   margin-top: 10px;
+   padding: 1px;
+   font-family: Verdanan, Arial, Helvetica, sans-serif;
+   font-size: 15px;
+   background-color: #369;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+ /* links in menu-bottom */
+ .menu-bottom a {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+ .menu-bottom a:hover {
+   color: #fff;
+   border-bottom: 0px;
+   padding: 1px;
+   background-color: #888;
+   text-decoration: none;
+ }
+
+ .menu-bottom a:visited {
+   border: 0px #555 solid;
+   border-bottom: 0px;
+   padding: 1px;
+   color: #fff;
+   text-decoration: none;
+ }
+
+ /* the bottom bar between content box and menu */
+ .bottombar {
+   font-size: 4px;
+   margin: 0 10%;
+   padding: 10px;
+   padding-top: 2px;
+   padding-bottom: 6px;
+  background-color: #FFFFFF;
+  /* offset left, top, thickness, color with alpha */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /* IE */
+  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray');
+  /* slightly different syntax for IE8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='gray')";
+ }
+
+
+ /* where the copyright notice is */
+ .footer {
+   text-align: center;
+   margin: 0 10%;
+   max-width: 880px;
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 10px;
+   line-height: 12px;
+ }
+
+
+ /* style for whole site except overwritten
+     by enclosed tags
+ */
+ body {
+   font-family: Geneva, Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 16px;
+   line-height: 20px;
+   color: #606060;
+ }
+
+
+ /* style for == title == */
+ h1 {
+   font-family: Helvetica;
+   font-size: 32px;
+   color: #369;
+   font-weight: 100;
+ }
+
+ /* style for === title === */
+ h2 {
+   font-family: Helvetica;
+   font-size: 30px;
+   font-weight: 100;
+   color: #369;
+ }
+
+ /* style for ==== title ==== */
+ h3 {
+   font-size: 20px;
+   font-weight: 100;
+   color: #369;
+   margin-top: 20px;
+   padding: 0px;
+ }
+
+ /* style for ===== text =====  used for blog title */
+ h4 {
+   font-size: 18px;
+   font-weight: 100;
+   color: #777;
+   margin: 0px;
+   padding: 0px;
+}
+
+ /* style for ====== text ======  used for comment title */
+ h5 {
+   font-size: 12px;
+   font-weight: normal;
+   color: #a22;
+   margin: 3px;
+   padding: 0px;
+ }
+
+ /* for <small> tag */
+ small {
+   font-size: 10px;
+ }
+
+
+ /* for the bold tag */
+ b {
+  color: 999;
+ }
+
+ /* for <big> tag, will not work on Netscape v.4 */
+ big {
+ }
+
+ /* for <p> tag */
+ p {
+   margin-left: 40px;
+   margin-right: 40px;
+ }
+
+ /* for <table> tag, these are used when displating the files,changes,referencrs tables */
+ table {
+   border-width: 1px;
+   border-style: solid;
+   border-color: #ccc;
+   background-color: #ccc;
+ }
+
+ /* for table tags <tr> <th> <td> */
+ tr, th, td {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 12px;
+   background-color: #eee;
+ }
+
+ /* for quick table tags with [,] 
+     use these (not <table><tr><td>)
+     when doing layout with tables
+ */
+ table.quick {
+   border-width: 1px;
+   border-style: solid;
+   border-color: #ccc;
+   background-color: #ccc;
+ }
+
+
+ /* for quick table tags with: || 
+ */
+  td.quick {
+   font-family: Helvetica, Verdanan, Arial, sans-serif;
+   font-size: 11px;
+   background-color: #eef;
+   padding: 5px;
+ }
+
+ 
+ /* links in general, if not overwritten in other divs
+ a:hover {
+   text-decoration: none;
+   background-color: #transparent;
+ }
+
+ /* for  spec */
+ img {
+
+ }
+
+ /* line separator */
+ hr {
+   margin-top: 10px;
+   border: 0px;
+   border-top: 1px #ddd solid;
+ } 
+
+ /* style of the text edit area and text 
+    entry for search and passwords 
+ */
+ .textarea {
+   font-family: courier, helvetica, verdana,arial,sans-serif;
+   left-margin: 20px;
+   font-size: 12px;
+   background-color: #eee;
+}
+
+ /* buttons for save and search */
+ .button {
+ }
+
+ /* example for custom style in  or  */
+ .mybox { border: 1px #ccc dashed; }
+
+ /* other custom styles used */
+
+ .smallred { font-size: 10px; font-weight: normal; color: #a22; }
+
+ .mediumred { font-size: 12px; font-weight: normal; color: #a22; }
+
+-->
+
+-->
+</style>
+</head>
+
+<body bgcolor="#AAAAAA">
+
+<!-- content -->
+<div class="content">
+<h2> Creating lexically scoped functions in newLISP </h2>
+A default function looks and behaves similar to statically scoped functions found in other programming languages. Several functions can share one namespace.<br>
+<br>
+Using the built-in primitive <tt>def-new</tt>, a function or macro can be defined to create other functions enclosed in their own namespace:<br>
+<br>
+<tt>&nbsp;&nbsp;(define&nbsp;(def-static&nbsp;s&nbsp;body)&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(def-new&nbsp;'body&nbsp;(sym&nbsp;s&nbsp;s)))&nbsp;</tt><br>
+<br>
+<tt>&nbsp;&nbsp;(setq&nbsp;sum&nbsp;0)</tt><br>
+<br>
+<tt>&nbsp;&nbsp;(def-static&nbsp;'acc&nbsp;(lambda&nbsp;(x)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(inc&nbsp;sum&nbsp;x)))</tt><br>
+<br>
+<br>
+<tt>&nbsp;&nbsp;(acc&nbsp;5)&nbsp;&nbsp;→&nbsp;5</tt><br>
+<tt>&nbsp;&nbsp;(acc&nbsp;5)&nbsp;&nbsp;→&nbsp;10</tt><br>
+<tt>&nbsp;&nbsp;(acc&nbsp;2)&nbsp;&nbsp;→&nbsp;12</tt><br>
+<tt></tt><br>
+<tt>&nbsp;&nbsp;acc:sum&nbsp;&nbsp;→&nbsp;12</tt><br>
+<tt>&nbsp;&nbsp;acc:x&nbsp;&nbsp;&nbsp;&nbsp;→&nbsp;nil</tt><br>
+<br>
+<tt>&nbsp;&nbsp;acc:acc&nbsp;&nbsp;→&nbsp;(lambda&nbsp;(acc:x)&nbsp;(inc&nbsp;acc:sum&nbsp;acc:x))</tt><br>
+<br>
+<tt>&nbsp;&nbsp;sum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→&nbsp;0</tt><br>
+<br>
+The function works by creating a context and <em>default functor</em> from the name of the function. The value of <tt>acc:sum</tt> is initialized to <tt>0</tt> copying the value of <tt>MAIN:sum</tt>.<br>
+<br>
+Using <tt>acc</tt> as a prototype, new statically scoped functions can be created:<br>
+<br>
+<tt>&nbsp;&nbsp;(new&nbsp;'acc&nbsp;'myacc)</tt><br>
+<tt>&nbsp;&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;(myacc&nbsp;3)&nbsp;→&nbsp;15</tt><br>
+<br>
+The new function will start of with <tt>myacc:sum</tt> as present in <tt>acc:sum</tt>
+when doing the copy with <tt>new</tt>.<br>
+<br>
+Using a more complex method, a <tt>def-static</tt> can be defined as a macro which can be used like the normal define function:<br>
+<br>
+<tt>&nbsp;&nbsp;;;&nbsp;define&nbsp;static&nbsp;functions&nbsp;(use&nbsp;only&nbsp;in&nbsp;context&nbsp;MAIN)</tt><br>
+<tt>&nbsp;&nbsp;;;</tt><br>
+<tt>&nbsp;&nbsp;;;&nbsp;Example:</tt><br>
+<tt>&nbsp;&nbsp;;;</tt><br>
+<tt>&nbsp;&nbsp;;;&nbsp;(def-static&nbsp;(foo&nbsp;x)&nbsp;(+&nbsp;x&nbsp;x))</tt><br>
+<tt>&nbsp;&nbsp;;;</tt><br>
+<tt>&nbsp;&nbsp;;;&nbsp;foo:foo&nbsp;&nbsp;&nbsp;→&nbsp;(lambda&nbsp;(foo:x)&nbsp;(+&nbsp;foo:x&nbsp;foo:x))</tt><br>
+<tt>&nbsp;&nbsp;;;</tt><br>
+<tt>&nbsp;&nbsp;;;&nbsp;(foo&nbsp;10)&nbsp;&nbsp;→&nbsp;20</tt><br>
+<tt>&nbsp;&nbsp;;;</tt><br>
+<tt>&nbsp;&nbsp;(define-macro&nbsp;(def-static)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;(temp&nbsp;(append&nbsp;(lambda)&nbsp;(list&nbsp;(1&nbsp;(args&nbsp;0))&nbsp;(args&nbsp;1))))</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(def-new&nbsp;'temp&nbsp;(sym&nbsp;(args&nbsp;0&nbsp;0)&nbsp;(args&nbsp;0&nbsp;0)))))</tt><br>
+<br>
+<tt>&nbsp;&nbsp;(def-static&nbsp;(acc&nbsp;x)</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(inc&nbsp;sum&nbsp;x))</tt><br>
+<br>
+<tt>&nbsp;&nbsp;(acc&nbsp;5)&nbsp;&nbsp;→&nbsp;5</tt><br>
+<tt>&nbsp;&nbsp;(acc&nbsp;5)&nbsp;&nbsp;→&nbsp;10</tt><br>
+<tt>&nbsp;&nbsp;(acc&nbsp;2)&nbsp;&nbsp;→&nbsp;12</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>&nbsp;&nbsp;acc:sum&nbsp;&nbsp;→&nbsp;12</tt><br>
+<tt>&nbsp;&nbsp;acc:x&nbsp;&nbsp;&nbsp;&nbsp;→&nbsp;nil</tt><br>
+<br>
+The macro <tt>def-static</tt> first creates a lambda expression of the function to be defined in the current name space and assigns it to the variable <tt>temp</tt>. In a second step the lambda function in <tt>temp</tt> is copied to its own name space. This happens by assigning it to the default functor <tt>acc:acc</tt> symbol built from the name of the function.<br>
+
+</div>
+
+<!-- end content -->
+
+<!-- comments -->
+
+<!-- end comments -->
+<!-- the menu -->
+
+<!-- the menu end -->
+
+<!-- copyright -->
+  <div class="footer" align="center">
+  <br>
+Copyright &copy; 2021, Lutz Mueller. All rights reserved.<br>
+ 
+  <a href="http://www.newlisp.net/">Site</a> powered by <a href="http://newlisp.net">newLISP</a> wiki v4.6
+<!--
+  in 4ms
+-->
+<br>
+  </div>
+<!-- end copyright -->
+
+<!-- <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1098066-1";
+urchinTracker();
+</script> -->
+
+</body>
+</html>
+
